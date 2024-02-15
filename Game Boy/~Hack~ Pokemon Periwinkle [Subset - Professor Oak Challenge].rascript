@@ -162,6 +162,174 @@ pokedex_lookup = {
     "Tentaquil":bit3(pokedex_start + 19)
 }
 
+badge_lookup = {
+    "Blobbos":"450639",
+    "Caterpie":"450652",
+    "Metapod":"450653",
+    "Butterfree":"450654",
+    "Weedle":"450656",
+    "Kakuna":"450657",
+    "Beedrill":"450658",
+    "Pidgey":"450659",
+    "Pidgeotto":"450660",
+    "Pidgeot":"450661",
+    "Rattata":"450667",
+    "Raticate":"450668",
+    "Spearow":"450669",
+    "Fearow":"450670",
+    "Pikachu":"450671",
+    "Nidoran♀":"450701",
+    "Nidorina":"450702",
+    "Nidoran♂":"450703",
+    "Nidorino":"450704",
+    "Oddish":"450715",
+    "Gloom":"450716",
+    "Mankey":"450717",
+    "Primeape":"450718",
+    "Bellsprout":"450738",
+    "Weepinbell":"450739",
+    "Brock":"450676",
+    "Bulbasaur":"450677",
+    "Ivysaur":"450678",
+    "Venusaur":"450679",
+    "Charmander":"450680",
+    "Charmeleon":"450681",
+    "Charizard":"450682",
+    "Ekans":"450683",
+    "Arbok":"450684",
+    "Raichu":"450685",
+    "Sandshrew":"450686",
+    "Sandslash":"450687",
+    "The First Moon Evo":"450695",
+    "The Second Moon Evo":"450696",
+    "Clefairy":"450697",
+    "The Third Moon Evo":"450698",
+    "Vulpix":"450699",
+    "Ninetales":"450700",
+    "Jigglypuff":"450708",
+    "The Final Moon Evo":"450709",
+    "Zubat":"450710",
+    "Golbat":"450711",
+    "Vileplume":"450712",
+    "Paras":"450713",
+    "Parasect":"450714",
+    "Venonat":"450719",
+    "Venomoth":"450720",
+    "Diglett":"450721",
+    "Dugtrio":"450722",
+    "Meowth":"450723",
+    "Persian":"450724",
+    "Poliwag":"450729",
+    "Poliwhirl":"450730",
+    "Poliwrath":"450731",
+    "Abra":"450732",
+    "Kadabra":"450733",
+    "Alakazam":"450734",
+    "Machop":"450735",
+    "Machoke":"450736",
+    "Machamp":"450737",
+    "Victreebel":"450740",
+    "Tentacool":"450741",
+    "Tentacruel":"450742",
+    "Geodude":"450743",
+    "Graveler":"450744",
+    "Golem":"450745",
+    "Ponyta":"450746",
+    "Rapidash":"450747",
+    "Magnemite":"450749",
+    "Magneton":"450750",
+    "Farfetch'd":"450751",
+    "Doduo":"450752",
+    "Dodrio":"450753",
+    "Shellder":"450761",
+    "Cloyster":"450762",
+    "Gastly":"450763",
+    "Haunter":"450764",
+    "Gengar":"450765",
+    "Onix":"450766",
+    "Drowzee":"450767",
+    "Hypno":"450768",
+    "Krabby":"450769",
+    "Kingler":"450770",
+    "Exeggcute":"450772",
+    "Exeggutor":"450773",
+    "Cubone":"450774",
+    "Marowak":"450775",
+    "The First Hitmon":"450776",
+    "Lickitung":"450777",
+    "Rhyhorn":"450783",
+    "Rhydon":"450784",
+    "Chansey":"450785",
+    "Tangela":"450786",
+    "Kangaskhan":"450787",
+    "Horsea":"450788",
+    "Seadra":"450789",
+    "Goldeen":"450790",
+    "Seaking":"450791",
+    "Staryu":"450792",
+    "Starmie":"450793",
+    "Mr. Mime":"450794",
+    "Scyther":"450795",
+    "Pinsir":"450796",
+    "Tauros":"450797",
+    "Magikarp":"450802",
+    "Gyarados":"450803",
+    "Lapras":"450804",
+    "Eevee":"450805",
+    "Vaporeon":"450806",
+    "Jolteon":"450807",
+    "Flareon":"450808",
+    "Porygon":"450809",
+    "Snorlax":"450816",
+    "Dratini":"450817",
+    "Dragonair":"450818",
+    "Dragonite":"450819",
+    "Jumpeon":"450820",
+    "Koga":"450688",
+    "Psyduck":"450725",
+    "Golduck":"450726",
+    "Growlithe":"450727",
+    "Arcanine":"450728",
+    "Slowpoke":"450754",
+    "Slowbro":"450755",
+    "Seel":"450756",
+    "Dewgong":"450757",
+    "Grimer":"450758",
+    "Muk":"450759",
+    "Voltorb":"450778",
+    "Electrode":"450779",
+    "Koffing":"450780",
+    "Weezing":"450781",
+    "Jynx":"450798",
+    "Electabuzz":"450799",
+    "Magmar":"450800",
+    "Ditto":"450810",
+    "The Mt. Moon Fossil":"450811",
+    "The Mt. Moon Evolution":"450812",
+    "Aerodactyl":"450813",
+    "Zapdos":"450821",
+    "Meltan":"450822",
+    "Melmetal":"450823",
+    "Misty":"450689",
+    "Lt. Surge":"450690",
+    "Squirtle":"450705",
+    "Wartortle":"450706",
+    "Blastoise":"450707",
+    "Erika":"450691",
+    "Articuno":"450824",
+    "Sabrina and Blaine - Part 1":"450692",
+    "Sabrina and Blaine - Part 2":"450693",
+    "Oboma":"450694",
+    "The Other Hitmon":"450782",
+    "Moltres":"450825",
+    "Pokemon League":"450771",
+    "The Other Fossil":"450814",
+    "The Other Evolution":"450815",
+    "Baracktwo":"450826",
+    "Mew":"450827",
+    "Tentaquil":"450828"
+}
+
 point_lookup = {
     "Bulbasaur":1,
     "Ivysaur":2,
@@ -321,6 +489,13 @@ point_lookup = {
     "Tentaquil":3
 }
 
+moon_evos = [
+    "Nidoqueen",
+    "Nidoking",
+    "Clefable",
+    "Wigglytuff"
+]
+
 // Starter: Blobbos
 // Route 1: Pidgey, Rattata, Oddish, Bellsprout
 // Route 22: Nidoran♂, Nidoran♀, Mankey, Spearow
@@ -395,14 +570,10 @@ one_badge_p1 = [
     "Raichu",
     "Sandshrew",
     "Sandslash",
-    "Nidoqueen",
-    "Nidoking",
     "Clefairy",
-    "Clefable",
     "Vulpix",
     "Ninetales",
     "Jigglypuff",
-    "Wigglytuff",
     "Zubat",
     "Golbat",
     "Vileplume",
@@ -433,7 +604,6 @@ one_badge_p1 = [
     "Rapidash",
     "Magnemite",
     "Magneton",
-    "Farfetch'd",
     "Doduo",
     "Dodrio",
     "Shellder",
@@ -505,17 +675,21 @@ two_badges_p1 = [
 ]
 
 two_badges_p2 = [
-    "Aerodactyl",
     "Zapdos",
     "Meltan",
     "Melmetal"
 ]
 
 // Vermilion City: Squirtle
-four_badges = [
+three_badges = [
     "Squirtle",
     "Wartortle",
     "Blastoise"
+]
+
+four_badges = [
+    "Farfetch'd",
+    "Aerodactyl"
 ]
 
 five_badges = [
@@ -577,8 +751,8 @@ function two_badges_obtained() {
 
 function three_badges_obtained() {
     return bit0(0xd356) == 1
-    && bit1(0xd356) == 1
-    && bit2(0xd356) == 0
+    && bit1(0xd356) == 0
+    && bit2(0xd356) == 1
     && bit3(0xd356) == 0
     && bit4(0xd356) == 1
     && bit5(0xd356) == 0
@@ -699,12 +873,17 @@ function fossil_stage2_obtained() {
     return pokedex_lookup["Omastar"] + pokedex_lookup["Kabutops"]
 }
 
+function moon_evo_obtained() {
+    return pokedex_lookup["Nidoqueen"] + pokedex_lookup["Nidoking"] + pokedex_lookup["Clefable"] + pokedex_lookup["Wigglytuff"]
+}
+
 function ready_for_first_badge() {
     return all_caught(zero_badges)
     && none_caught(one_badge_p1)
     && none_caught(one_badge_p2)
     && none_caught(two_badges_p1)
     && none_caught(two_badges_p2)
+    && none_caught(three_badges)
     && none_caught(four_badges)
     && none_caught(five_badges)
     && none_caught(eight_badges)
@@ -712,6 +891,7 @@ function ready_for_first_badge() {
     && hitmon_obtained() == 0
     && fossil_stage1_obtained() == 0
     && fossil_stage2_obtained() == 0
+    && moon_evo_obtained() == 0
 }
 
 function ready_for_second_badge() {
@@ -720,6 +900,7 @@ function ready_for_second_badge() {
     && all_caught(one_badge_p2)
     && none_caught(two_badges_p1)
     && none_caught(two_badges_p2)
+    && none_caught(three_badges)
     && none_caught(four_badges)
     && none_caught(five_badges)
     && none_caught(eight_badges)
@@ -727,6 +908,7 @@ function ready_for_second_badge() {
     && hitmon_obtained() == 1
     && fossil_stage1_obtained() == 0
     && fossil_stage2_obtained() == 0
+    && moon_evo_obtained() == 3
 }
 
 function ready_for_third_badge() {
@@ -735,6 +917,7 @@ function ready_for_third_badge() {
     && all_caught(one_badge_p2)
     && all_caught(two_badges_p1)
     && all_caught(two_badges_p2)
+    && none_caught(three_badges)
     && none_caught(four_badges)
     && none_caught(five_badges)
     && none_caught(eight_badges)
@@ -742,6 +925,7 @@ function ready_for_third_badge() {
     && hitmon_obtained() == 1
     && fossil_stage1_obtained() == 1
     && fossil_stage2_obtained() == 1
+    && moon_evo_obtained() == 4
 }
 
 function ready_for_fourth_badge() {
@@ -750,13 +934,15 @@ function ready_for_fourth_badge() {
     && all_caught(one_badge_p2)
     && all_caught(two_badges_p1)
     && all_caught(two_badges_p2)
-    //&& all_caught(four_badges)
+    && all_caught(three_badges)
+    && none_caught(four_badges)
     && none_caught(five_badges)
     && none_caught(eight_badges)
     && none_caught(post_game)
     && hitmon_obtained() == 1
     && fossil_stage1_obtained() == 1
     && fossil_stage2_obtained() == 1
+    && moon_evo_obtained() == 4
 }
 
 function ready_for_fifth_badge() {
@@ -765,6 +951,7 @@ function ready_for_fifth_badge() {
     && all_caught(one_badge_p2)
     && all_caught(two_badges_p1)
     && all_caught(two_badges_p2)
+    && all_caught(three_badges)
     && all_caught(four_badges)
     && none_caught(five_badges)
     && none_caught(eight_badges)
@@ -772,6 +959,7 @@ function ready_for_fifth_badge() {
     && hitmon_obtained() == 1
     && fossil_stage1_obtained() == 1
     && fossil_stage2_obtained() == 1
+    && moon_evo_obtained() == 4
 }
 
 function ready_for_67_badge() {
@@ -787,6 +975,7 @@ function ready_for_67_badge() {
     && hitmon_obtained() == 1
     && fossil_stage1_obtained() == 1
     && fossil_stage2_obtained() == 1
+    && moon_evo_obtained() == 4
 }
 
 function ready_for_eighth_badge() {
@@ -802,6 +991,7 @@ function ready_for_eighth_badge() {
     && hitmon_obtained() == 1
     && fossil_stage1_obtained() == 1
     && fossil_stage2_obtained() == 1
+    && moon_evo_obtained() == 4
 }
 
 function ready_for_elite_four() {
@@ -817,6 +1007,7 @@ function ready_for_elite_four() {
     && hitmon_obtained() == 2
     && fossil_stage1_obtained() == 1
     && fossil_stage2_obtained() == 1
+    && moon_evo_obtained() == 4
 }
 
 function pokemon_caught(p) {
@@ -854,6 +1045,26 @@ function get_second_stage2_fossil() {
     && fossil_stage2_obtained() == 2
 }
 
+function get_first_moon_evo() {
+    return prev(pokedex_lookup["Nidoqueen"]) + prev(pokedex_lookup["Nidoking"]) + prev(pokedex_lookup["Clefable"]) + prev(pokedex_lookup["Wigglytuff"]) == 0
+    && moon_evo_obtained() == 1
+}
+
+function get_second_moon_evo() {
+    return prev(pokedex_lookup["Nidoqueen"]) + prev(pokedex_lookup["Nidoking"]) + prev(pokedex_lookup["Clefable"]) + prev(pokedex_lookup["Wigglytuff"]) == 1
+    && moon_evo_obtained() == 2
+}
+
+function get_third_moon_evo() {
+    return prev(pokedex_lookup["Nidoqueen"]) + prev(pokedex_lookup["Nidoking"]) + prev(pokedex_lookup["Clefable"]) + prev(pokedex_lookup["Wigglytuff"]) == 2
+    && moon_evo_obtained() == 3
+}
+
+function get_fourth_moon_evo() {
+    return prev(pokedex_lookup["Nidoqueen"]) + prev(pokedex_lookup["Nidoking"]) + prev(pokedex_lookup["Clefable"]) + prev(pokedex_lookup["Wigglytuff"]) == 3
+    && moon_evo_obtained() == 4
+}
+
 function good_to_catch_0b_pokemon() {
     return no_badges_obtained()
     //&& none_caught(zero_badges)
@@ -868,6 +1079,7 @@ function good_to_catch_0b_pokemon() {
     && hitmon_obtained() == 0
     && fossil_stage1_obtained() == 0
     && fossil_stage2_obtained() == 0
+    && moon_evo_obtained() == 0
 }
 
 function good_to_catch_1b_pokemon() {
@@ -877,6 +1089,7 @@ function good_to_catch_1b_pokemon() {
     //&& none_caught(one_badge_p2)
     && none_caught(two_badges_p1)
     && none_caught(two_badges_p2)
+    && none_caught(three_badges)
     && none_caught(four_badges)
     && none_caught(five_badges)
     && none_caught(eight_badges)
@@ -884,6 +1097,7 @@ function good_to_catch_1b_pokemon() {
     && hitmon_obtained() <= 1
     && fossil_stage1_obtained() == 0
     && fossil_stage2_obtained() == 0
+    && moon_evo_obtained() <= 3
 }
 
 function good_to_catch_2b_pokemon() {
@@ -893,6 +1107,7 @@ function good_to_catch_2b_pokemon() {
     && all_caught(one_badge_p2)
     //&& none_caught(two_badges_p1)
     //&& none_caught(two_badges_p2)
+    && none_caught(three_badges)
     && none_caught(four_badges)
     && none_caught(five_badges)
     && none_caught(eight_badges)
@@ -900,15 +1115,35 @@ function good_to_catch_2b_pokemon() {
     && hitmon_obtained() <= 1
     && fossil_stage1_obtained() <= 1
     && fossil_stage2_obtained() <= 1
+    && moon_evo_obtained() >= 3
 }
 
-function good_to_catch_4b_pokemon() {
+function good_to_catch_3b_pokemon() {
     return three_badges_obtained()
     && all_caught(zero_badges)
     && all_caught(one_badge_p1)
     && all_caught(one_badge_p2)
     && all_caught(two_badges_p1)
     && all_caught(two_badges_p2)
+    //&& none_caught(three_badges)
+    && none_caught(four_badges)
+    && none_caught(five_badges)
+    && none_caught(eight_badges)
+    && none_caught(post_game)
+    && hitmon_obtained() <= 1
+    && fossil_stage1_obtained() <= 1
+    && fossil_stage2_obtained() <= 1
+    && moon_evo_obtained() == 4
+}
+
+function good_to_catch_4b_pokemon() {
+    return four_badges_obtained()
+    && all_caught(zero_badges)
+    && all_caught(one_badge_p1)
+    && all_caught(one_badge_p2)
+    && all_caught(two_badges_p1)
+    && all_caught(two_badges_p2)
+    && all_caught(three_badges)
     //&& none_caught(four_badges)
     && none_caught(five_badges)
     && none_caught(eight_badges)
@@ -916,15 +1151,17 @@ function good_to_catch_4b_pokemon() {
     && hitmon_obtained() <= 1
     && fossil_stage1_obtained() <= 1
     && fossil_stage2_obtained() <= 1
+    && moon_evo_obtained() == 4
 }
 
 function good_to_catch_5b_pokemon() {
-    return four_badges_obtained()
+    return five_badges_obtained()
     && all_caught(zero_badges)
     && all_caught(one_badge_p1)
     && all_caught(one_badge_p2)
     && all_caught(two_badges_p1)
     && all_caught(two_badges_p2)
+    && all_caught(three_badges)
     && all_caught(four_badges)
     //&& none_caught(five_badges)
     && none_caught(eight_badges)
@@ -932,6 +1169,7 @@ function good_to_catch_5b_pokemon() {
     && hitmon_obtained() <= 1
     && fossil_stage1_obtained() <= 1
     && fossil_stage2_obtained() <= 1
+    && moon_evo_obtained() == 4
 }
 
 function good_to_catch_8b_pokemon() {
@@ -941,6 +1179,7 @@ function good_to_catch_8b_pokemon() {
     && all_caught(one_badge_p2)
     && all_caught(two_badges_p1)
     && all_caught(two_badges_p2)
+    && all_caught(three_badges)
     && all_caught(four_badges)
     && all_caught(five_badges)
     //&& none_caught(eight_badges)
@@ -948,6 +1187,7 @@ function good_to_catch_8b_pokemon() {
     && hitmon_obtained() >= 1
     && fossil_stage1_obtained() <= 1
     && fossil_stage2_obtained() <= 1
+    && moon_evo_obtained() == 4
 }
 
 function good_to_catch_postgame_pokemon() {
@@ -957,6 +1197,7 @@ function good_to_catch_postgame_pokemon() {
     && all_caught(one_badge_p2)
     && all_caught(two_badges_p1)
     && all_caught(two_badges_p2)
+    && all_caught(three_badges)
     && all_caught(four_badges)
     && all_caught(five_badges)
     && all_caught(eight_badges)
@@ -964,6 +1205,7 @@ function good_to_catch_postgame_pokemon() {
     && hitmon_obtained() == 2
     && fossil_stage1_obtained() >= 1
     && fossil_stage2_obtained() >= 1
+    && moon_evo_obtained() == 4
 }
 
 // ----------------------
@@ -972,6 +1214,7 @@ function good_to_catch_postgame_pokemon() {
 
 for p in zero_badges {
     achievement(
+        badge = badge_lookup[p],
         title = p,
         description = format("Register {0} as caught in your Pokedex!", p),
         points = point_lookup[p],
@@ -986,6 +1229,7 @@ for p in zero_badges {
 // ----------------------------------
 
 achievement(
+    badge = badge_lookup["Brock"],
     title = "Brock",
     description = "Obtain the Boulder Badge with all 25 possible Pokemon!",
     points = 10,
@@ -994,6 +1238,7 @@ achievement(
 
 for p in one_badge_p1 {
     achievement(
+        badge = badge_lookup[p],
         title = p,
         description = format("Register {0} as caught in your Pokedex!", p),
         points = point_lookup[p],
@@ -1003,6 +1248,7 @@ for p in one_badge_p1 {
 
 // Hitmonchan or Hitmonlee
 achievement(
+    badge = badge_lookup["The First Hitmon"],
     title = "The First Hitmon",
     description = "Register Hitmonchan or Hitmonlee as caught in your Pokedex!",
     points = 1,
@@ -1011,6 +1257,7 @@ achievement(
 
 for p in one_badge_p2 {
     achievement(
+        badge = badge_lookup[p],
         title = p,
         description = format("Register {0} as caught in your Pokedex!", p),
         points = point_lookup[p],
@@ -1018,19 +1265,45 @@ for p in one_badge_p2 {
     )
 }
 
+achievement(
+    badge = badge_lookup["The First Moon Evo"],
+    title = "The First Moon Evo",
+    description = "Register Nidoqueen, Nidoking, Clefable or Wigglytuff as caught in your Pokedex!",
+    points = 3,
+    trigger = good_to_catch_1b_pokemon() && get_first_moon_evo()
+)
+
+achievement(
+    badge = badge_lookup["The Second Moon Evo"],
+    title = "The Second Moon Evo",
+    description = "Register Nidoqueen, Nidoking, Clefable or Wigglytuff as caught in your Pokedex!",
+    points = 3,
+    trigger = good_to_catch_1b_pokemon() && get_second_moon_evo()
+)
+
+achievement(
+    badge = badge_lookup["The Third Moon Evo"],
+    title = "The Third Moon Evo",
+    description = "Register Nidoqueen, Nidoking, Clefable or Wigglytuff as caught in your Pokedex!",
+    points = 2,
+    trigger = good_to_catch_1b_pokemon() && get_third_moon_evo()
+)
+
 // ------------------------------------
 // Two Badges: Koga: You now have Surf!
 // ------------------------------------
 
 achievement(
+    badge = badge_lookup["Koga"],
     title = "Koga",
-    description = "Obtain the Soul Badge with all 121 possible Pokemon!",
+    description = "Obtain the Soul Badge with all 119 possible Pokemon!",
     points = 10,
     trigger = ready_for_second_badge() && trigger_when(second_gym_beat())
 )
 
 for p in two_badges_p1 {
     achievement(
+        badge = badge_lookup[p],
         title = p,
         description = format("Register {0} as caught in your Pokedex!", p),
         points = point_lookup[p],
@@ -1040,6 +1313,7 @@ for p in two_badges_p1 {
 
 // Omanyte or Kabuto
 achievement(
+    badge = badge_lookup["The Mt. Moon Fossil"],
     title = "The Mt. Moon Fossil",
     description = "Register Omanyte or Kabuto as caught in your Pokedex!",
     points = 1,
@@ -1048,6 +1322,7 @@ achievement(
 
 // Omastar or Kabutops
 achievement(
+    badge = badge_lookup["The Mt. Moon Evolution"],
     title = "The Mt. Moon Evolution",
     description = "Register Omastar or Kabutops as caught in your Pokedex!",
     points = 2,
@@ -1056,6 +1331,7 @@ achievement(
 
 for p in two_badges_p2 {
     achievement(
+        badge = badge_lookup[p],
         title = p,
         description = format("Register {0} as caught in your Pokedex!", p),
         points = point_lookup[p],
@@ -1063,30 +1339,50 @@ for p in two_badges_p2 {
     )
 }
 
-// --------------------------------------
-// Three Badges: Misty: You now have Cut!
-// --------------------------------------
-
 achievement(
-    title = "Misty",
-    description = "Obtain the Cascade Badge with all 145 possible Pokemon!",
-    points = 10,
-    trigger = ready_for_third_badge() && trigger_when(third_gym_beat())
+    badge = badge_lookup["The Final Moon Evo"],
+    title = "The Final Moon Evo",
+    description = "Register Nidoqueen, Nidoking, Clefable or Wigglytuff as caught in your Pokedex!",
+    points = 2,
+    trigger = good_to_catch_2b_pokemon() && get_fourth_moon_evo()
 )
-
 
 // -------------------------------------
 // Four Badges: Surge: You now have Fly!
 // -------------------------------------
 achievement(
+    badge = badge_lookup["Lt. Surge"],
     title = "Lt. Surge",
-    description = "Obtain the Thunder Badge with all 145 possible Pokemon!",
+    description = "Obtain the Thunder Badge with all 143 possible Pokemon!",
+    points = 10,
+    trigger = ready_for_third_badge() && trigger_when(third_gym_beat())
+)
+
+for p in three_badges {
+    achievement(
+        badge = badge_lookup[p],
+        title = p,
+        description = format("Register {0} as caught in your Pokedex!", p),
+        points = point_lookup[p],
+        trigger = good_to_catch_3b_pokemon() && pokemon_caught(p)
+    )
+}
+
+// --------------------------------------
+// Four Badges: Misty: You now have Cut!
+// --------------------------------------
+
+achievement(
+    badge = badge_lookup["Misty"],
+    title = "Misty",
+    description = "Obtain the Cascade Badge with all 146 possible Pokemon!",
     points = 10,
     trigger = ready_for_fourth_badge() && trigger_when(fourth_gym_beat())
 )
 
 for p in four_badges {
     achievement(
+        badge = badge_lookup[p],
         title = p,
         description = format("Register {0} as caught in your Pokedex!", p),
         points = point_lookup[p],
@@ -1099,6 +1395,7 @@ for p in four_badges {
 // ------------------------------------------
 
 achievement(
+    badge = badge_lookup["Erika"],
     title = "Erika",
     description = "Obtain the Rainbow Badge with all 148 possible Pokemon!",
     points = 10,
@@ -1107,6 +1404,7 @@ achievement(
 
 for p in five_badges {
     achievement(
+        badge = badge_lookup[p],
         title = p,
         description = format("Register {0} as caught in your Pokedex!", p),
         points = point_lookup[p],
@@ -1118,6 +1416,7 @@ for p in five_badges {
 // Five Badges: Misty or Sabrina or Blaine
 // ---------------------------------------
 achievement(
+    badge = badge_lookup["Sabrina and Blaine - Part 1"],
     title = "Sabrina and Blaine - Part 1",
     description = "Obtain the Marsh or Volcano Badge with all 149 possible Pokemon!",
     points = 10,
@@ -1128,6 +1427,7 @@ achievement(
 // Six Badges: Misty or Sabrina or Blaine
 // --------------------------------------
 achievement(
+    badge = badge_lookup["Sabrina and Blaine - Part 2"],
     title = "Sabrina and Blaine - Part 2",
     description = "Obtain the Marsh or Volcano Badge with all 149 possible Pokemon!",
     points = 10,
@@ -1138,6 +1438,7 @@ achievement(
 // Eight Badges: Oboma
 // -------------------
 achievement(
+    badge = badge_lookup["Oboma"],
     title = "Oboma",
     description = "Obtain the Change Badge with all 149 possible Pokemon!",
     points = 10,
@@ -1146,6 +1447,7 @@ achievement(
 
 // Hitmonchan or Hitmonlee
 achievement(
+    badge = badge_lookup["The Other Hitmon"],
     title = "The Other Hitmon",
     description = "Register Hitmonchan or Hitmonlee as caught in your Pokedex!",
     points = 1,
@@ -1154,6 +1456,7 @@ achievement(
 
 for p in eight_badges {
     achievement(
+        badge = badge_lookup[p],
         title = p,
         description = format("Register {0} as caught in your Pokedex!", p),
         points = point_lookup[p],
@@ -1166,6 +1469,7 @@ for p in eight_badges {
 // ----------
 
 achievement(
+    badge = badge_lookup["Pokemon League"],
     title = "Pokemon League",
     description = "Defeat the Elite Four and Champion with all 151 possible Pokemon!",
     points = 25,
@@ -1178,6 +1482,7 @@ achievement(
 
 // Omanyte or Kabuto
 achievement(
+    badge = badge_lookup["The Other Fossil"],
     title = "The Other Fossil",
     description = "Register Omanyte or Kabuto as caught in your Pokedex!",
     points = 1,
@@ -1186,6 +1491,7 @@ achievement(
 
 // Omastar or Kabutops
 achievement(
+    badge = badge_lookup["The Other Evolution"],
     title = "The Other Evolution",
     description = "Register Omastar or Kabutops as caught in your Pokedex!",
     points = 2,
@@ -1194,6 +1500,7 @@ achievement(
 
 for p in post_game {
     achievement(
+        badge = badge_lookup[p],
         title = p,
         description = format("Register {0} as caught in your Pokedex!", p),
         points = point_lookup[p],
