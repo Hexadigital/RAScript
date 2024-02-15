@@ -696,7 +696,7 @@ five_badges = [
     "Articuno"
 ]
 
-eight_badges = [
+pre_league = [
     "Moltres"
 ]
 
@@ -886,7 +886,7 @@ function ready_for_first_badge() {
     && none_caught(three_badges)
     && none_caught(four_badges)
     && none_caught(five_badges)
-    && none_caught(eight_badges)
+    && none_caught(pre_league)
     && none_caught(post_game)
     && hitmon_obtained() == 0
     && fossil_stage1_obtained() == 0
@@ -903,7 +903,7 @@ function ready_for_second_badge() {
     && none_caught(three_badges)
     && none_caught(four_badges)
     && none_caught(five_badges)
-    && none_caught(eight_badges)
+    && none_caught(pre_league)
     && none_caught(post_game)
     && hitmon_obtained() == 1
     && fossil_stage1_obtained() == 0
@@ -920,7 +920,7 @@ function ready_for_third_badge() {
     && none_caught(three_badges)
     && none_caught(four_badges)
     && none_caught(five_badges)
-    && none_caught(eight_badges)
+    && none_caught(pre_league)
     && none_caught(post_game)
     && hitmon_obtained() == 1
     && fossil_stage1_obtained() == 1
@@ -937,7 +937,7 @@ function ready_for_fourth_badge() {
     && all_caught(three_badges)
     && none_caught(four_badges)
     && none_caught(five_badges)
-    && none_caught(eight_badges)
+    && none_caught(pre_league)
     && none_caught(post_game)
     && hitmon_obtained() == 1
     && fossil_stage1_obtained() == 1
@@ -954,7 +954,7 @@ function ready_for_fifth_badge() {
     && all_caught(three_badges)
     && all_caught(four_badges)
     && none_caught(five_badges)
-    && none_caught(eight_badges)
+    && none_caught(pre_league)
     && none_caught(post_game)
     && hitmon_obtained() == 1
     && fossil_stage1_obtained() == 1
@@ -970,7 +970,7 @@ function ready_for_67_badge() {
     && all_caught(two_badges_p2)
     && all_caught(four_badges)
     && all_caught(five_badges)
-    && none_caught(eight_badges)
+    && none_caught(pre_league)
     && none_caught(post_game)
     && hitmon_obtained() == 1
     && fossil_stage1_obtained() == 1
@@ -986,7 +986,7 @@ function ready_for_eighth_badge() {
     && all_caught(two_badges_p2)
     && all_caught(four_badges)
     && all_caught(five_badges)
-    && all_caught(eight_badges)
+    && none_caught(pre_league)
     && none_caught(post_game)
     && hitmon_obtained() == 1
     && fossil_stage1_obtained() == 1
@@ -1002,7 +1002,7 @@ function ready_for_elite_four() {
     && all_caught(two_badges_p2)
     && all_caught(four_badges)
     && all_caught(five_badges)
-    && all_caught(eight_badges)
+    && all_caught(pre_league)
     && none_caught(post_game)
     && hitmon_obtained() == 2
     && fossil_stage1_obtained() == 1
@@ -1074,7 +1074,7 @@ function good_to_catch_0b_pokemon() {
     && none_caught(two_badges_p2)
     && none_caught(four_badges)
     && none_caught(five_badges)
-    && none_caught(eight_badges)
+    && none_caught(pre_league)
     && none_caught(post_game)
     && hitmon_obtained() == 0
     && fossil_stage1_obtained() == 0
@@ -1092,7 +1092,7 @@ function good_to_catch_1b_pokemon() {
     && none_caught(three_badges)
     && none_caught(four_badges)
     && none_caught(five_badges)
-    && none_caught(eight_badges)
+    && none_caught(pre_league)
     && none_caught(post_game)
     && hitmon_obtained() <= 1
     && fossil_stage1_obtained() == 0
@@ -1110,7 +1110,7 @@ function good_to_catch_2b_pokemon() {
     && none_caught(three_badges)
     && none_caught(four_badges)
     && none_caught(five_badges)
-    && none_caught(eight_badges)
+    && none_caught(pre_league)
     && none_caught(post_game)
     && hitmon_obtained() <= 1
     && fossil_stage1_obtained() <= 1
@@ -1128,7 +1128,7 @@ function good_to_catch_3b_pokemon() {
     //&& none_caught(three_badges)
     && none_caught(four_badges)
     && none_caught(five_badges)
-    && none_caught(eight_badges)
+    && none_caught(pre_league)
     && none_caught(post_game)
     && hitmon_obtained() <= 1
     && fossil_stage1_obtained() <= 1
@@ -1146,7 +1146,7 @@ function good_to_catch_4b_pokemon() {
     && all_caught(three_badges)
     //&& none_caught(four_badges)
     && none_caught(five_badges)
-    && none_caught(eight_badges)
+    && none_caught(pre_league)
     && none_caught(post_game)
     && hitmon_obtained() <= 1
     && fossil_stage1_obtained() <= 1
@@ -1164,7 +1164,7 @@ function good_to_catch_5b_pokemon() {
     && all_caught(three_badges)
     && all_caught(four_badges)
     //&& none_caught(five_badges)
-    && none_caught(eight_badges)
+    && none_caught(pre_league)
     && none_caught(post_game)
     && hitmon_obtained() <= 1
     && fossil_stage1_obtained() <= 1
@@ -1182,7 +1182,7 @@ function good_to_catch_8b_pokemon() {
     && all_caught(three_badges)
     && all_caught(four_badges)
     && all_caught(five_badges)
-    //&& none_caught(eight_badges)
+    //&& none_caught(pre_league)
     && none_caught(post_game)
     && hitmon_obtained() >= 1
     && fossil_stage1_obtained() <= 1
@@ -1200,7 +1200,7 @@ function good_to_catch_postgame_pokemon() {
     && all_caught(three_badges)
     && all_caught(four_badges)
     && all_caught(five_badges)
-    && all_caught(eight_badges)
+    && all_caught(pre_league)
     //&& none_caught(post_game)
     && hitmon_obtained() == 2
     && fossil_stage1_obtained() >= 1
@@ -1454,7 +1454,7 @@ achievement(
     trigger = good_to_catch_8b_pokemon() && get_second_hitmon()
 )
 
-for p in eight_badges {
+for p in pre_league {
     achievement(
         badge = badge_lookup[p],
         title = p,
