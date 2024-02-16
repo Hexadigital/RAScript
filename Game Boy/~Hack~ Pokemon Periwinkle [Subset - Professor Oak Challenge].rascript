@@ -732,6 +732,32 @@ function get_caught_count() {
     + bit3(pokedex_start + 19)
 }
 
+function get_prev_caught_count() {
+    return prev(bitcount(pokedex_start))
+    + prev(bitcount(pokedex_start + 1))
+    + prev(bitcount(pokedex_start + 2))
+    + prev(bitcount(pokedex_start + 3))
+    + prev(bitcount(pokedex_start + 4))
+    + prev(bitcount(pokedex_start + 5))
+    + prev(bitcount(pokedex_start + 6))
+    + prev(bitcount(pokedex_start + 7))
+    + prev(bitcount(pokedex_start + 8))
+    + prev(bitcount(pokedex_start + 9))
+    + prev(bitcount(pokedex_start + 10))
+    + prev(bitcount(pokedex_start + 11))
+    + prev(bitcount(pokedex_start + 12))
+    + prev(bitcount(pokedex_start + 13))
+    + prev(bitcount(pokedex_start + 14))
+    + prev(bitcount(pokedex_start + 15))
+    + prev(bitcount(pokedex_start + 16))
+    + prev(bitcount(pokedex_start + 17))
+    + prev(bitcount(pokedex_start + 18))
+    + prev(bit0(pokedex_start + 19))
+    + prev(bit1(pokedex_start + 19))
+    + prev(bit2(pokedex_start + 19))
+    + prev(bit3(pokedex_start + 19))
+}
+
 function get_badge_count() => bitcount(0xd356)
 
 function no_badges_obtained() => bitcount(0xd356) == 0
@@ -1012,6 +1038,7 @@ function ready_for_elite_four() {
 
 function pokemon_caught(p) {
     return byte(0xd35e) != 0
+    && get_caught_count() == get_prev_caught_count() + 1
     && pokedex_lookup[p] > prev(pokedex_lookup[p])
 }
 
