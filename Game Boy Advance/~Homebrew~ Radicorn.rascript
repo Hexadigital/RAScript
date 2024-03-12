@@ -42,7 +42,7 @@ achievement(
 achievement(
     id = 407056,
     badge = "460850",
-    title = "Re50nant Rhap50dy",
+    title = "Re50nant",
     description = "Score 50 points!",
     points = 5,
     trigger = in_game && scored(50)
