@@ -8,6 +8,7 @@ score = dword(0x007eac)
 title_screen = state == 0x00
 game_started = prev(state) == 0x01 && state == 0x02
 in_game = state == 0x02
+not_paused = state != 0x03
 died = prev(state) == 0x02 && state == 0x04
 
 in_air = player == 0x01 || player == 0x02
@@ -65,7 +66,7 @@ achievement(
     title = "Air Pre55ure",
     description = "Accumulate 55 seconds of airtime in one run!",
     points = 5,
-    trigger = repeated(55*60, in_air) && never(died)
+    trigger = repeated(55*60, in_air && not_paused) && never(died)
 )
 
 // Duck more than 100 times in one run!
@@ -105,7 +106,7 @@ leaderboard(
     start = game_started,
     cancel = title_screen,
     submit = died, 
-    value = measured(tally(0, in_air)),
+    value = measured(tally(0, in_air && not_paused)),
     format = "FRAMES"
 )
 
