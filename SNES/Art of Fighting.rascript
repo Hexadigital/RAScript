@@ -45,9 +45,10 @@ for key in BonusGameLookup {
     BonusGameToID[BonusGameLookup[key]] = key
 }
 
+cheat_detected = byte(0x019608) == 0x7f && byte(0x000169) == 0x00 && prev(byte(0x00016b)) == 0x02 && byte(0x00016b) == 0x40
+
 function cheats_disabled() {
-    return byte(0x0192c1) == 0 && byte(0x0195b1) == 0
-        && bit1(0x019411) == 1
+    return disable_when(cheat_detected)
 }
 
 score = word(0x019549) * 10
@@ -65,6 +66,7 @@ max_difficulty = byte(0x01956d) == 8
 // Clear the game using Ryo on Level 8 difficulty with the number of rounds set to 3!
 achievement(
     title = "Ryo's Gauntlet",
+    badge = "470931",
     points = 50,
     description = "Clear the game using Ryo on Level 8 difficulty with the number of rounds set to 3!",
     trigger = cheats_disabled() && game_mode == GameModeToID["Story"] &&
@@ -75,6 +77,7 @@ achievement(
 // Clear the game using Robert on Level 8 difficulty with the number of rounds set to 3!
 achievement(
     title = "Robert's Gauntlet",
+    badge = "470932",
     points = 50,
     description = "Clear the game using Robert on Level 8 difficulty with the number of rounds set to 3!",
     trigger = cheats_disabled() && game_mode == GameModeToID["Story"] &&
@@ -85,6 +88,7 @@ achievement(
 // Clear the game without using a continue using Ryo on Level 4 difficulty or higher with the number of rounds set to 3!
 achievement(
     title = "Ryo's Survival Challenge",
+    badge = "470933",
     points = 50,
     description = "Clear the game without using a continue using Ryo on Level 4 difficulty or higher with the number of rounds set to 3!",
     trigger = cheats_disabled() && game_mode == GameModeToID["Story"] && normal_difficulty &&
@@ -96,6 +100,7 @@ achievement(
 // Clear the game without using a continue using Robert on Level 4 difficulty or higher with the number of rounds set to 3!
 achievement(
     title = "Robert's Survival Challenge",
+    badge = "470934",
     points = 50,
     description = "Clear the game without using a continue using Robert on Level 4 difficulty or higher with the number of rounds set to 3!",
     trigger = cheats_disabled() && game_mode == GameModeToID["Story"] && normal_difficulty &&
@@ -107,6 +112,7 @@ achievement(
 // Successfully complete the Bottle Cut minigame!
 achievement(
     title = "Bottle Cut",
+    badge = "470928",
     points = 3,
     description = "Break all the bottles in the Bottle Cut bonus game!",
     trigger = cheats_disabled() && game_mode == GameModeToID["Story"] &&
@@ -117,6 +123,7 @@ achievement(
 // Successfully complete the Ice Pillar Smash minigame!
 achievement(
     title = "Ice Pillar Smash",
+    badge = "470929",
     points = 4,
     description = "Break all the ice in the Ice Pillar Smash bonus game!",
     trigger = cheats_disabled() && game_mode == GameModeToID["Story"] &&
@@ -127,6 +134,7 @@ achievement(
 // Successfully complete the Super Fire Blow minigame!
 achievement(
     title = "Super Fire Blow",
+    badge = "470930",
     points = 5,
     description = "Perform 5 Hao-Kens in the Super Fire Blow bonus game!",
     trigger = cheats_disabled() && game_mode == GameModeToID["Story"] &&
@@ -137,6 +145,7 @@ achievement(
 // Win any round in a Story Mode match without taking damage!
 achievement(
     title = "Todo-ally Untouchable",
+    badge = "470927",
     points = 5,
     description = "Win a round against Todo in Story Mode without taking damage, on Level 4 difficulty or higher!",
     trigger = cheats_disabled() && game_mode == GameModeToID["Story"] &&
@@ -147,6 +156,7 @@ achievement(
 // Using Todo, defeat Ryo or Robert in 1P vs. Com Mode on Level 4 difficulty or higher and with the number of rounds set to 3!
 achievement(
     title = "Todo's Revenge",
+    badge = "470874",
     points = 5,
     description = "Using Todo, defeat Ryo or Robert in 1P vs. COM Mode on Level 4 difficulty or higher and with the number of rounds set to 3!",
     trigger = cheats_disabled() && game_mode == GameModeToID["1P vs. COM"] &&
@@ -157,6 +167,7 @@ achievement(
 // Using Jack, defeat Ryo or Robert in 1P vs. Com Mode on Level 4 difficulty or higher and with the number of rounds set to 3!
 achievement(
     title = "Jack's Revenge",
+    badge = "470920",
     points = 5,
     description = "Using Jack, defeat Ryo or Robert in 1P vs. COM Mode on Level 4 difficulty or higher and with the number of rounds set to 3!",
     trigger = cheats_disabled() && game_mode == GameModeToID["1P vs. COM"] &&
@@ -167,6 +178,7 @@ achievement(
 // Using Lee, defeat Ryo or Robert in 1P vs. Com Mode on Level 4 difficulty or higher and with the number of rounds set to 3!
 achievement(
     title = "Lee's Revenge",
+    badge = "470921",
     points = 5,
     description = "Using Lee, defeat Ryo or Robert in 1P vs. COM Mode on Level 4 difficulty or higher and with the number of rounds set to 3!",
     trigger = cheats_disabled() && game_mode == GameModeToID["1P vs. COM"] &&
@@ -177,6 +189,7 @@ achievement(
 // Using King, defeat Ryo or Robert in 1P vs. Com Mode on Level 4 difficulty or higher and with the number of rounds set to 3!
 achievement(
     title = "King's Revenge",
+    badge = "470922",
     points = 5,
     description = "Using King, defeat Ryo or Robert in 1P vs. COM Mode on Level 4 difficulty or higher and with the number of rounds set to 3!",
     trigger = cheats_disabled() && game_mode == GameModeToID["1P vs. COM"] &&
@@ -187,6 +200,7 @@ achievement(
 // Using Micky, defeat Ryo or Robert in 1P vs. Com Mode on Level 4 difficulty or higher and with the number of rounds set to 3!
 achievement(
     title = "Micky's Revenge",
+    badge = "470923",
     points = 5,
     description = "Using Micky, defeat Ryo or Robert in 1P vs. COM Mode on Level 4 difficulty or higher and with the number of rounds set to 3!",
     trigger = cheats_disabled() && game_mode == GameModeToID["1P vs. COM"] &&
@@ -197,6 +211,7 @@ achievement(
 // Using John, defeat Ryo or Robert in 1P vs. Com Mode on Level 4 difficulty or higher and with the number of rounds set to 3!
 achievement(
     title = "John's Revenge",
+    badge = "470924",
     points = 5,
     description = "Using John, defeat Ryo or Robert in 1P vs. COM Mode on Level 4 difficulty or higher and with the number of rounds set to 3!",
     trigger = cheats_disabled() && game_mode == GameModeToID["1P vs. COM"] &&
@@ -207,6 +222,7 @@ achievement(
 // Using Mr. Big, defeat Ryo or Robert in 1P vs. Com Mode on Level 4 difficulty or higher and with the number of rounds set to 3!
 achievement(
     title = "Mr. Big's Revenge",
+    badge = "470925",
     points = 5,
     description = "Using Mr. Big, defeat Ryo or Robert in 1P vs. COM Mode on Level 4 difficulty or higher and with the number of rounds set to 3!",
     trigger = cheats_disabled() && game_mode == GameModeToID["1P vs. COM"] &&
@@ -217,6 +233,7 @@ achievement(
 // Using Mr. Karate, defeat Ryo or Robert in 1P vs. Com Mode on Level 4 difficulty or higher and with the number of rounds set to 3!
 achievement(
     title = "Mr. Karate's Revenge",
+    badge = "470926",
     points = 5,
     description = "Using Mr. Karate, defeat Ryo or Robert in 1P vs. COM Mode on Level 4 difficulty or higher and with the number of rounds set to 3!",
     trigger = cheats_disabled() && game_mode == GameModeToID["1P vs. COM"] &&
@@ -226,6 +243,7 @@ achievement(
 
 achievement(
     title = "Mirror Match",
+    badge = "470873",
     points = 5,
     description = "Defeat any character using that same character in 1P vs. COM Mode on Level 4 difficulty or higher and with the number of rounds set to 3!",
     trigger = cheats_disabled() && game_mode == GameModeToID["1P vs. COM"] &&
@@ -282,6 +300,11 @@ leaderboard(
 
 // Better rich presence that shows what mode the player is in, and for story mode, their progress and current score.
 rich_presence_conditional_display(
+    once(cheat_detected),
+    "Cheat code detected, achievements disabled!"
+)
+
+rich_presence_conditional_display(
     game_mode == GameModeToID["Story"] && score == 0 && p2_character <= CharacterToID["Robert"],
     "At the title screen"
 )
@@ -320,7 +343,7 @@ achievement(
     title = "Defeat Todo", points = 5, type="progression",
     description = "Defeat Todo with Ryo in story mode on level 4 difficulty or higher and three round matches",
     id = 30384, badge = "31131", published = "12/1/2015 00:43:26", modified = "8/8/2020 18:24:52",
-    trigger = byte(0x0192C1) == 0 && byte(0x0195B1) == 0 && bit1(0x019411) == 1 && byte(0x01956D) >= 4 &&
+    trigger = cheats_disabled() && byte(0x01956D) >= 4 &&
               byte(0x0192CD) == 0 && byte(0x019407) == 2 && byte(0x019557) >= 2 && prev(byte(0x019555)) == 1 &&
               byte(0x019555) == 2 && byte(0x019571) == 0
 )
@@ -329,7 +352,7 @@ achievement(
     title = "Defeat Jack", points = 5, type="progression",
     description = "Defeat Jack with Ryo in story mode on level 4 difficulty or higher and three round matches",
     id = 30385, badge = "31133", published = "12/1/2015 00:43:30", modified = "5/16/2021 02:52:13",
-    trigger = byte(0x0192C1) == 0 && byte(0x0195B1) == 0 && bit1(0x019411) == 1 && byte(0x01956D) >= 4 &&
+    trigger = cheats_disabled() && byte(0x01956D) >= 4 &&
               byte(0x0192CD) == 0 && byte(0x019407) == 3 && byte(0x019557) >= 2 && prev(byte(0x019555)) == 1 &&
               byte(0x019555) == 2 && byte(0x019571) == 0
 )
@@ -338,7 +361,7 @@ achievement(
     title = "Defeat Lee", points = 5, type="progression",
     description = "Defeat Lee with Ryo in story mode on level 4 difficulty or higher and three round matches",
     id = 30386, badge = "31135", published = "12/1/2015 00:43:33", modified = "5/16/2021 02:52:15",
-    trigger = byte(0x0192C1) == 0 && byte(0x0195B1) == 0 && bit1(0x019411) == 1 && byte(0x01956D) >= 4 &&
+    trigger = cheats_disabled() && byte(0x01956D) >= 4 &&
               byte(0x0192CD) == 0 && byte(0x019407) == 4 && byte(0x019557) >= 2 && prev(byte(0x019555)) == 1 &&
               byte(0x019555) == 2 && byte(0x019571) == 0
 )
@@ -347,7 +370,7 @@ achievement(
     title = "Defeat King", points = 5, type="progression",
     description = "Defeat King with Ryo in story mode on level 4 difficulty or higher and three round matches",
     id = 30387, badge = "31137", published = "12/1/2015 00:43:36", modified = "5/16/2021 02:52:17",
-    trigger = byte(0x0192C1) == 0 && byte(0x0195B1) == 0 && bit1(0x019411) == 1 && byte(0x01956D) >= 4 &&
+    trigger = cheats_disabled() && byte(0x01956D) >= 4 &&
               byte(0x0192CD) == 0 && byte(0x019407) == 5 && byte(0x019557) >= 2 && prev(byte(0x019555)) == 1 &&
               byte(0x019555) == 2 && byte(0x019571) == 0
 )
@@ -356,7 +379,7 @@ achievement(
     title = "Defeat Micky", points = 5, type="progression",
     description = "Defeat Micky with Ryo in story mode on level 4 difficulty or higher and three round matches",
     id = 30388, badge = "31139", published = "12/1/2015 00:43:40", modified = "5/16/2021 02:52:19",
-    trigger = byte(0x0192C1) == 0 && byte(0x0195B1) == 0 && bit1(0x019411) == 1 && byte(0x01956D) >= 4 &&
+    trigger = cheats_disabled() && byte(0x01956D) >= 4 &&
               byte(0x0192CD) == 0 && byte(0x019407) == 6 && byte(0x019557) >= 2 && prev(byte(0x019555)) == 1 &&
               byte(0x019555) == 2 && byte(0x019571) == 0
 )
@@ -365,7 +388,7 @@ achievement(
     title = "Defeat John", points = 5, type="progression",
     description = "Defeat John with Ryo in story mode on level 4 difficulty or higher and three round matches",
     id = 30389, badge = "31141", published = "12/1/2015 00:43:45", modified = "5/16/2021 02:52:21",
-    trigger = byte(0x0192C1) == 0 && byte(0x0195B1) == 0 && bit1(0x019411) == 1 && byte(0x01956D) >= 4 &&
+    trigger = cheats_disabled() && byte(0x01956D) >= 4 &&
               byte(0x0192CD) == 0 && byte(0x019407) == 7 && byte(0x019557) >= 2 && prev(byte(0x019555)) == 1 &&
               byte(0x019555) == 2 && byte(0x019571) == 0
 )
@@ -374,7 +397,7 @@ achievement(
     title = "Defeat Mr. Big", points = 5, type="progression",
     description = "Defeat Mr. Big with Ryo in story mode on level 4 difficulty or higher and three round matches",
     id = 30390, badge = "31143", published = "12/1/2015 00:43:49", modified = "5/14/2022 04:59:07",
-    trigger = byte(0x0192C1) == 0 && byte(0x0195B1) == 0 && bit1(0x019411) == 1 && byte(0x01956D) >= 4 &&
+    trigger = cheats_disabled() && byte(0x01956D) >= 4 &&
               byte(0x0192CD) == 0 && byte(0x019407) == 8 && byte(0x019557) >= 2 && prev(byte(0x019555)) == 1 &&
               byte(0x019555) == 2 && byte(0x019571) == 0
 )
@@ -383,7 +406,7 @@ achievement(
     title = "Defeat Mr. Karate", points = 10, type="progression",
     description = "Defeat Mr. Karate with Ryo in story mode on level 4 difficulty or higher and three round matches",
     id = 30399, badge = "31145", published = "12/1/2015 00:44:36", modified = "5/16/2021 02:52:25",
-    trigger = byte(0x0192C1) == 0 && byte(0x0195B1) == 0 && bit1(0x019411) == 1 && byte(0x01956D) >= 4 &&
+    trigger = cheats_disabled() && byte(0x01956D) >= 4 &&
               byte(0x0192CD) == 0 && byte(0x019407) == 9 && byte(0x019557) >= 2 && prev(byte(0x019555)) == 1 &&
               byte(0x019555) == 2 && byte(0x019571) == 0
 )
@@ -392,7 +415,7 @@ achievement(
     title = "Defeat Todo Again", points = 5, type="progression",
     description = "Defeat Todo with Robert in story mode on level 4 difficulty or higher and three round matches",
     id = 30392, badge = "31132", published = "12/1/2015 00:44:04", modified = "5/16/2021 02:52:29",
-    trigger = byte(0x0192C1) == 0 && byte(0x0195B1) == 0 && bit1(0x019411) == 1 && byte(0x01956D) >= 4 &&
+    trigger = cheats_disabled() && byte(0x01956D) >= 4 &&
               byte(0x0192CD) == 1 && byte(0x019407) == 2 && byte(0x019557) >= 2 && prev(byte(0x019555)) == 1 &&
               byte(0x019555) == 2 && byte(0x019571) == 0
 )
@@ -401,7 +424,7 @@ achievement(
     title = "Defeat Jack Again", points = 5, type="progression",
     description = "Defeat Jack with Robert in story mode on level 4 difficulty or higher and three round matches",
     id = 30393, badge = "31134", published = "12/1/2015 00:44:07", modified = "5/16/2021 02:52:32",
-    trigger = byte(0x0192C1) == 0 && byte(0x0195B1) == 0 && bit1(0x019411) == 1 && byte(0x01956D) >= 4 &&
+    trigger = cheats_disabled() && byte(0x01956D) >= 4 &&
               byte(0x0192CD) == 1 && byte(0x019407) == 3 && byte(0x019557) >= 2 && prev(byte(0x019555)) == 1 &&
               byte(0x019555) == 2 && byte(0x019571) == 0
 )
@@ -410,7 +433,7 @@ achievement(
     title = "Defeat Lee Again", points = 5, type="progression",
     description = "Defeat Lee with Robert in story mode on level 4 difficulty or higher and three round matches",
     id = 30394, badge = "31136", published = "12/1/2015 00:44:12", modified = "5/16/2021 02:52:33",
-    trigger = byte(0x0192C1) == 0 && byte(0x0195B1) == 0 && bit1(0x019411) == 1 && byte(0x01956D) >= 4 &&
+    trigger = cheats_disabled() && byte(0x01956D) >= 4 &&
               byte(0x0192CD) == 1 && byte(0x019407) == 4 && byte(0x019557) >= 2 && prev(byte(0x019555)) == 1 &&
               byte(0x019555) == 2 && byte(0x019571) == 0
 )
@@ -419,7 +442,7 @@ achievement(
     title = "Defeat King Again", points = 5, type="progression",
     description = "Defeat King with Robert in story mode on level 4 difficulty or higher and three round matches",
     id = 30395, badge = "31138", published = "12/1/2015 00:44:22", modified = "5/16/2021 02:52:35",
-    trigger = byte(0x0192C1) == 0 && byte(0x0195B1) == 0 && bit1(0x019411) == 1 && byte(0x01956D) >= 4 &&
+    trigger = cheats_disabled() && byte(0x01956D) >= 4 &&
               byte(0x0192CD) == 1 && byte(0x019407) == 5 && byte(0x019557) >= 2 && prev(byte(0x019555)) == 1 &&
               byte(0x019555) == 2 && byte(0x019571) == 0
 )
@@ -428,7 +451,7 @@ achievement(
     title = "Defeat Micky Again", points = 5, type="progression",
     description = "Defeat Micky with Robert in story mode on level 4 difficulty or higher and three round matches",
     id = 30396, badge = "31148", published = "12/1/2015 00:44:25", modified = "5/16/2021 02:52:36",
-    trigger = byte(0x0192C1) == 0 && byte(0x0195B1) == 0 && bit1(0x019411) == 1 && byte(0x01956D) >= 4 &&
+    trigger = cheats_disabled() && byte(0x01956D) >= 4 &&
               byte(0x0192CD) == 1 && byte(0x019407) == 6 && byte(0x019557) >= 2 && prev(byte(0x019555)) == 1 &&
               byte(0x019555) == 2 && byte(0x019571) == 0
 )
@@ -437,7 +460,7 @@ achievement(
     title = "Defeat John Again", points = 5, type="progression",
     description = "Defeat John with Robert in story mode on level 4 difficulty or higher and three round matches",
     id = 30397, badge = "31147", published = "12/1/2015 00:44:29", modified = "5/16/2021 02:52:39",
-    trigger = byte(0x0192C1) == 0 && byte(0x0195B1) == 0 && bit1(0x019411) == 1 && byte(0x01956D) >= 4 &&
+    trigger = cheats_disabled() && byte(0x01956D) >= 4 &&
               byte(0x0192CD) == 1 && byte(0x019407) == 7 && byte(0x019557) >= 2 && prev(byte(0x019555)) == 1 &&
               byte(0x019555) == 2 && byte(0x019571) == 0
 )
@@ -446,7 +469,7 @@ achievement(
     title = "Defeat Mr. Big Again", points = 5, type="progression",
     description = "Defeat Mr. Big with Robert in story mode on level 4 difficulty or higher and three round matches",
     id = 30398, badge = "31144", published = "12/1/2015 00:44:33", modified = "5/14/2022 04:59:07",
-    trigger = byte(0x0192C1) == 0 && byte(0x0195B1) == 0 && bit1(0x019411) == 1 && byte(0x01956D) >= 4 &&
+    trigger = cheats_disabled() && byte(0x01956D) >= 4 &&
               byte(0x0192CD) == 1 && byte(0x019407) == 8 && byte(0x019557) >= 2 && prev(byte(0x019555)) == 1 &&
               byte(0x019555) == 2 && byte(0x019571) == 0
 )
@@ -455,7 +478,7 @@ achievement(
     title = "Defeat Mr. Karate Again", points = 10, type="progression",
     description = "Defeat Mr. Karate with Robert in story mode on level 4 difficulty or higher and three round matches",
     id = 30391, badge = "31146", published = "12/1/2015 00:44:00", modified = "5/16/2021 02:52:44",
-    trigger = byte(0x0192C1) == 0 && byte(0x0195B1) == 0 && bit1(0x019411) == 1 && byte(0x01956D) >= 4 &&
+    trigger = cheats_disabled() && byte(0x01956D) >= 4 &&
               byte(0x0192CD) == 1 && byte(0x019407) == 9 && byte(0x019557) >= 2 && prev(byte(0x019555)) == 1 &&
               byte(0x019555) == 2 && byte(0x019571) == 0
 )
