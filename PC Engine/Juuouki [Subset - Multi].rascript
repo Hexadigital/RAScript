@@ -9,6 +9,8 @@ p1_charges = byte(0x0804)
 p2_charges = byte(0x0814)
 p1_lives = byte(0x0900)
 p2_lives = byte(0x0910)
+p1_health = byte(0x0800)
+p2_health = byte(0x0810)
 
 function get_p1_score() {
     return low4(0x0015) * 100
@@ -44,6 +46,10 @@ function stage_cleared(num) {
     && stage == num + 1
 }
 
+function a_player_is_dead() {
+    return (p1_health == 0 && p1_lives == 0) || (p2_health == 0 && p2_lives == 0)
+}
+
 
 // Take on the power of a wolf during Stage 1 in co-op!
 achievement(
@@ -63,7 +69,7 @@ achievement(
     title = "Flesh Ripper",
     description = "Clear Stage 1 in co-op!",
     points = 4,
-    trigger = !in_demo && multi_player && stage_cleared(1)
+    trigger = !in_demo && multi_player && !a_player_is_dead() && stage_cleared(1)
 )
 
 // Take on the power of a dragon during Stage 2 in co-op!
@@ -83,7 +89,7 @@ achievement(
     title = "Thunder Vision",
     description = "Clear Stage 2 in co-op!",
     points = 5,
-    trigger = !in_demo && multi_player && stage_cleared(2)
+    trigger = !in_demo && multi_player && !a_player_is_dead() && stage_cleared(2)
 )
 
 // Take on the power of a bear during Stage 3 in co-op!
@@ -103,7 +109,7 @@ achievement(
     title = "Snail Smasher",
     description = "Clear Stage 3 in co-op!",
     points = 5,
-    trigger = !in_demo && multi_player && stage_cleared(3)
+    trigger = !in_demo && multi_player && !a_player_is_dead() && stage_cleared(3)
 )
 
 // Take on the power of a tiger during Stage 4 in co-op!
@@ -123,7 +129,7 @@ achievement(
     title = "Strong Things in Small Packages",
     description = "Clear Stage 4 in co-op!",
     points = 10,
-    trigger = !in_demo && multi_player && stage_cleared(4)
+    trigger = !in_demo && multi_player && !a_player_is_dead() && stage_cleared(4)
 )
 
 // Take on the power of a wolf during Stage 5 in co-op!
@@ -143,7 +149,7 @@ achievement(
     title = "Burning Horns",
     description = "Clear Stage 5 and beat the game in co-op!",
     points = 25,
-    trigger = !in_demo && multi_player && stage_cleared(5)
+    trigger = !in_demo && multi_player && !a_player_is_dead() && stage_cleared(5)
 )
 
 // Clear the game with at least 500000 points in co-op!
@@ -177,7 +183,16 @@ rich_presence_conditional_display(
 
 rich_presence_conditional_display(
     single_player,
-    "Playing co-op • Stage {0} • {1} {2} Remaining • Score: {3}",
+    "Playing solo • Stage {0} • {1} {2} Remaining • Score: {3}",
+    rich_presence_value("Stage", stage),
+    rich_presence_value("P1Lives", p1_lives),
+    rich_presence_lookup("LifeText", p1_lives, life_text, "Lives"),
+    rich_presence_value("P1Score", get_p1_score())
+)
+
+rich_presence_conditional_display(
+    !single_player && a_player_is_dead(),
+    "Playing co-op • Stage {0} • {1} {2} Remaining • Score: {3} • Someone is dead!",
     rich_presence_value("Stage", stage),
     rich_presence_value("P1Lives", p1_lives),
     rich_presence_lookup("LifeText", p1_lives, life_text, "Lives"),
