@@ -38,17 +38,17 @@ StageAfter = {
 }
 
 hard_cheevo_names = {
-    "1-1": "Crash Landing H",
-    "1-2": "Waste Disposal H",
-    "1-3": "Tanks for Nothing H",
+    "1-1": "Crash Landing",
+    "1-2": "Waste Disposal",
+    "1-3": "Tanks for Nothing",
     "1-4": "Helicarrier Takedown",
-    "2-1": "Cold Cuts H",
-    "2-2": "Let's Split Up! H",
-    "2-3": "Stalin for Time H",
+    "2-1": "Cold Cuts",
+    "2-2": "Let's Split Up!",
+    "2-3": "Stalin for Time",
     "2-4": "Orbital Defense",
-    "3-1": "Scorpion Horde H",
-    "3-2": "Dig and Be Eaten H",
-    "3-3": "Pressing Matters H",
+    "3-1": "Scorpion Horde",
+    "3-2": "Dig and Be Eaten",
+    "3-3": "Pressing Matters",
     "3-4": "The Behemoth"
 }
 
@@ -273,7 +273,7 @@ achievement(
 )
 
 achievement(
-    title = "Crash Landing", points = 3, type="progression",
+    title = "Crash Landing [old]", points = 3, type="progression",
     description = "Clear Level 1-1",
     id = 15212, badge = "266365", published = "10/12/2014 20:33:41", modified = "5/2/2022 00:01:38",
     trigger = never(byte(0x000110) == 5) &&
@@ -282,7 +282,7 @@ achievement(
 )
 
 achievement(
-    title = "Waste Disposal", points = 3, type="progression",
+    title = "Waste Disposal [old]", points = 3, type="progression",
     description = "Clear Level 1-2",
     id = 15213, badge = "266366", published = "10/12/2014 20:33:42", modified = "5/2/2022 00:01:38",
     trigger = never(byte(0x000110) == 5) &&
@@ -291,7 +291,7 @@ achievement(
 )
 
 achievement(
-    title = "Tanks for Nothing", points = 3, type="progression",
+    title = "Tanks for Nothing [old]", points = 3, type="progression",
     description = "Clear Level 1-3",
     id = 15214, badge = "266367", published = "10/12/2014 20:33:44", modified = "5/2/2022 00:01:39",
     trigger = never(byte(0x000110) == 5) &&
@@ -309,7 +309,7 @@ achievement(
 )
 
 achievement(
-    title = "Cold Cuts", points = 4, type="progression",
+    title = "Cold Cuts [old]", points = 4, type="progression",
     description = "Clear Level 2-1",
     id = 15216, badge = "266369", published = "10/12/2014 20:33:48", modified = "4/2/2024 14:44:12",
     trigger = never(byte(0x000110) == 5) &&
@@ -318,7 +318,7 @@ achievement(
 )
 
 achievement(
-    title = "Let's Split Up!", points = 4, type="progression",
+    title = "Let's Split Up! [old]", points = 4, type="progression",
     description = "Clear Level 2-2",
     id = 15217, badge = "266370", published = "10/12/2014 20:33:50", modified = "5/2/2022 00:01:40",
     trigger = never(byte(0x000110) == 5) &&
@@ -327,7 +327,7 @@ achievement(
 )
 
 achievement(
-    title = "Stalin for Time", points = 4, type="progression",
+    title = "Stalin for Time [old]", points = 4, type="progression",
     description = "Clear Level 2-3",
     id = 15218, badge = "266371", published = "10/12/2014 20:33:52", modified = "5/2/2022 00:01:40",
     trigger = never(byte(0x000110) == 5) &&
@@ -345,7 +345,7 @@ achievement(
 )
 
 achievement(
-    title = "Scorpion Horde", points = 5, type="progression",
+    title = "Scorpion Horde [old]", points = 5, type="progression",
     description = "Clear Level 3-1",
     id = 15220, badge = "266373", published = "10/12/2014 20:33:55", modified = "5/2/2022 00:01:41",
     trigger = never(byte(0x000110) == 5) &&
@@ -354,7 +354,7 @@ achievement(
 )
 
 achievement(
-    title = "Dig and Be Eaten", points = 5, type="progression",
+    title = "Dig and Be Eaten [old]", points = 5, type="progression",
     description = "Clear Level 3-2",
     id = 15221, badge = "266374", published = "10/12/2014 20:33:56", modified = "5/2/2022 00:01:41",
     trigger = never(byte(0x000110) == 5) &&
@@ -363,7 +363,7 @@ achievement(
 )
 
 achievement(
-    title = "Pressing Matters", points = 5, type="progression",
+    title = "Pressing Matters [old]", points = 5, type="progression",
     description = "Clear Level 3-3",
     id = 15222, badge = "266375", published = "10/12/2014 20:33:58", modified = "5/2/2022 00:01:41",
     trigger = never(byte(0x000110) == 5) &&
