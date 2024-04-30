@@ -5,8 +5,8 @@ in_demo = bit7(0x0008) == 1
 stage = byte(0x000e) + 1
 single_player = byte(0x0014) == 0
 multi_player = byte(0x0014) >= 1
-p1_charges = byte(0x0804)
-p2_charges = byte(0x0814)
+p1_charges = low4(0x0804)
+p2_charges = low4(0x0814)
 p1_lives = byte(0x0900)
 p2_lives = byte(0x0910)
 p1_health = byte(0x0800)
