@@ -157,9 +157,9 @@ achievement(
     //id = 0,
     //badge = "0",
     title = "Millionaire",
-    description = "Clear the game with at least 1000000 total points in co-op!",
+    description = "Clear the game with at least 500000 total points in co-op!",
     points = 25,
-    trigger = !in_demo && multi_player && stage_cleared(5) && get_p1_score() + get_p2_score() > 1000000
+    trigger = !in_demo && multi_player && stage_cleared(5) && get_p1_score() + get_p2_score() > 500000
 )
 
 leaderboard(
