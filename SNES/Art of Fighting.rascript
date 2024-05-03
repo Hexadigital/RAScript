@@ -53,6 +53,7 @@ function cheats_disabled() {
 
 score = word(0x019549) * 10
 game_mode = byte(0x019571)
+demo = byte(0x019309) == 0xff
 reset_detected = byte(0x01956d) == 0
 p1_health = word(0x019307)
 p1_max_starting_health = p1_health == 0xEF
@@ -115,7 +116,7 @@ achievement(
     badge = "470928",
     points = 3,
     description = "Break all the bottles in the Bottle Cut bonus game!",
-    trigger = cheats_disabled() && game_mode == GameModeToID["Story"] &&
+    trigger = cheats_disabled() && !demo && game_mode == GameModeToID["Story"] &&
               bonus_game == BonusGameToID["Bottle Cut"] &&
               prev(p1_health) >= 0x78 && p1_health == 1
 )
@@ -126,7 +127,7 @@ achievement(
     badge = "470929",
     points = 4,
     description = "Break all the ice in the Ice Pillar Smash bonus game!",
-    trigger = cheats_disabled() && game_mode == GameModeToID["Story"] &&
+    trigger = cheats_disabled() && !demo && game_mode == GameModeToID["Story"] &&
               bonus_game == BonusGameToID["Ice Pillar Smash"] &&
               prev(p1_health) >= 0x70 && p1_health == 1
 )
@@ -137,7 +138,7 @@ achievement(
     badge = "470930",
     points = 5,
     description = "Perform 5 Hao-Kens in the Super Fire Blow bonus game!",
-    trigger = cheats_disabled() && game_mode == GameModeToID["Story"] &&
+    trigger = cheats_disabled() && !demo && game_mode == GameModeToID["Story"] &&
               bonus_game == BonusGameToID["Super Fire Blow"] &&
               prev(byte(0x0195b3)) == 1 && byte(0x0195b3) == 0
 )
