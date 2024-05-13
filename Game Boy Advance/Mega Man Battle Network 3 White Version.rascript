@@ -392,6 +392,10 @@ EnemyHPLookup = {
     "FlashMan": 300,
     "FlashMan Beta": 700,
     "BeastMan": 500,
+    "BeastMan Beta": 900,
+    "BubbleMan": 500,
+    "BubbleMan Beta": 1200,
+    "DesertMan": 800,
     "GutsMan": 300,
     "GutsMan Alpha": 700
 }
@@ -400,7 +404,11 @@ ShopArrays = {
     "ACDC Area 2": 0x00b5e0,
     "ACDC Square": 0x00b620,
     "SciLab Square": 0x00b6a0,
-    "Yoka Square": 0x00b720
+    "Higsby's": 0x00ba60,
+    "Yoka 1": 0x00b6e0,
+    "Yoka Square": 0x00b720,
+    "Beach Square": 0x00b7e0,
+    "Beach Square Program": 0x00b820,
 }
 
 KeyItems = {
@@ -413,6 +421,8 @@ Jobs = [
     bit1(0x008300), // Help me with my son!
     bit2(0x008300), // My Navi is sick
     bit3(0x008300), // Please deliver this
+    bit5(0x008301), // Rare chips for cheap!
+    bit6(0x008301), // I'm broke!
     bit7(0x008301), // Chip prices
 ]
 
@@ -478,7 +488,22 @@ MysteryData = {
         bit3(0x008246), // RegUp1 BMD (Yoka: Ticket Machine Comp)
         bit6(0x008249), // Geyser B PMD (Yoka: Alarm Comp)
         bit7(0x008249), // RegUP1 BMD (Yoka: Alarm Comp)
+        bit6(0x0081e0), // Tornado L PMD (Yoka 1)
         bit7(0x0081e0), // Speed+1 BMD (Yoka 1)
+        bit6(0x0081e1), // HPMemory BMD (Yoka 2)
+        bit7(0x0081e1), // FullEnrg BMD (Yoka 2)
+        /// TODO: WWW
+    ],
+    "Beach": [
+        bit3(0x008243), // FireRatn H BMD (Beach Town: NetBattle Machine Comp)
+        bit7(0x008243), // HP+100 BMD (Beach Town: Relay Van Comp)
+        bit6(0x008244), // RegUP1 BMD (Beach Town: TV Station Control Panel Comp)
+        bit7(0x008244), // Atk+1 PMD (Beach Town: TV Station Control Panel Comp)
+        bit0(0x00824b), // Jealousy J PMD (Beach Town: Editing Equipment Comp)
+        bit1(0x00824b), // HPMemory BMD (Beach Town: Editing Equipment Comp)
+        bit7(0x0081e8), // Charge+1 BMD (Beach 1)
+        bit6(0x0081e9), // RegUP3 BMD (Beach 2)
+        bit7(0x0081e9), // Recov50 G BMD (Beach 2)
     ],
     "Zoo Comp": [
         bit5(0x008210), // Geddon1 D BMD (Yoka: Zoo Comp 1)
@@ -519,6 +544,7 @@ enemy_2_max_hp = word(0x03f43e)
 enemy_3_id = byte(0x03f4fb)
 enemy_3_hp = word(0x03f510)
 enemy_3_max_hp = word(0x03f512)
+busting_level = byte(0x017330)
 
 function buster_glitch() {
     return false // TODO
@@ -568,6 +594,10 @@ function battle_won_under_time(secs) {
     return battle_time <= secs * 60
 }
 
+function s_ranked() {
+    return prev(busting_level) == 0 && busting_level >= 0x0b && busting_level < 0x10
+}
+
 function shop_emptied(name) {
     return prev(dword(ShopArrays[name])) != 0 && dword(ShopArrays[name]) == 0
            && dword(ShopArrays[name] + 0x10) == 0 && dword(ShopArrays[name] + 0x14) == 0
@@ -610,7 +640,7 @@ achievement(
     title = "Lights Out",
     points = 3,
     type = "progression",
-    description = "Defeat FlashMan for the first time in the Principle's PC!",
+    description = "Defeat FlashMan for the first time!",
     trigger = no_glitches_enabled() && in_area("Principal's PC 2") && fighting_boss("FlashMan") && boss_killed()
 )
 
@@ -652,7 +682,7 @@ achievement(
     title = "Ripping Claws",
     points = 4,
     type = "progression",
-    description = "Defeat BeastMan for the first time in the Zoo Comp!",
+    description = "Defeat BeastMan for the first time!",
     trigger = no_glitches_enabled() && in_area("Zoo Comp 4") && fighting_boss("BeastMan") && boss_killed()
 )
 
@@ -661,6 +691,47 @@ achievement(
     points = 1,
     description = "Obtain Mr. Famous' personal wristband!",
     trigger = no_glitches_enabled() && in_area("Higsby's") && keyitem_obtained("WrstBand")
+)
+
+achievement(
+    title = "All Washed Up",
+    points = 5,
+    type = "progression",
+    description = "Defeat BubbleMan for the first time!",
+    trigger = no_glitches_enabled() && in_area("Yoka Area 1") && fighting_boss("BubbleMan") && boss_killed()
+)
+
+achievement(
+    title = "Quicksand",
+    points = 5,
+    type = "progression",
+    description = "Defeat DesertMan for the first time!",
+    trigger = no_glitches_enabled() && in_area("TV Station Editing Room") && fighting_boss("DesertMan") && boss_killed()
+)
+
+///////////////////////
+// Beta Boss S-Ranks //
+///////////////////////
+
+achievement(
+    title = "Blackout",
+    points = 5,
+    description = "Defeat FlashMan Beta with an S rank!",
+    trigger = no_glitches_enabled() && in_area("ACDC Area 2") && fighting_boss("FlashMan Beta") && s_ranked()
+)
+
+achievement(
+    title = "Declawed",
+    points = 5,
+    description = "Defeat BeastMan Beta with an S rank!",
+    trigger = no_glitches_enabled() && in_area("Doghouse Comp") && fighting_boss("BeastMan Beta") && s_ranked()
+)
+
+achievement(
+    title = "Scrubbed",
+    points = 5,
+    description = "Defeat BubbleMan Beta with an S rank!",
+    trigger = no_glitches_enabled() && in_area("Beach Area 1") && fighting_boss("BubbleMan Beta") && s_ranked()
 )
 
 /////////////////
@@ -683,7 +754,7 @@ achievement(
 achievement(
     title = "Principal's PC: Data Collector",
     points = 2,
-    description = "Collect all of the Blue Mystery Data in the Principal's PC!",
+    description = "Collect all of the Blue Mystery Data throughout the Principal's PC!",
     trigger = no_glitches_enabled() && (in_area("Principal's PC 1") || in_area("Principal's PC 2"))
               && prev(sum_of(MysteryData["Principal's PC"], bitflag_count)) == length(MysteryData["Principal's PC"]) - 1
               && measured(sum_of(MysteryData["Principal's PC"], bitflag_count) == length(MysteryData["Principal's PC"]))
@@ -708,6 +779,15 @@ achievement(
 )
 
 achievement(
+    title = "Zoo Comp: Data Collector",
+    points = 2,
+    description = "Collect all of the Blue Mystery Data throughout the Zoo Comp!",
+    trigger = no_glitches_enabled()
+              && prev(sum_of(MysteryData["Zoo Comp"], bitflag_count)) == length(MysteryData["Zoo Comp"]) - 1
+              && measured(sum_of(MysteryData["Zoo Comp"], bitflag_count) == length(MysteryData["Zoo Comp"]))
+)
+
+achievement(
     title = "Yoka: Data Collector",
     points = 2,
     description = "Collect all of the Blue and Purple Mystery Data throughout Yoka and Yoka Area!",
@@ -717,12 +797,12 @@ achievement(
 )
 
 achievement(
-    title = "Zoo Comp: Data Collector",
+    title = "Beach: Data Collector",
     points = 2,
-    description = "Collect all of the Blue Mystery Data throughout the Zoo Comp!",
+    description = "Collect all of the Blue and Purple Mystery Data throughout Yoka and Beach Area!",
     trigger = no_glitches_enabled()
-              && prev(sum_of(MysteryData["Zoo Comp"], bitflag_count)) == length(MysteryData["Zoo Comp"]) - 1
-              && measured(sum_of(MysteryData["Zoo Comp"], bitflag_count) == length(MysteryData["Zoo Comp"]))
+              && prev(sum_of(MysteryData["Beach"], bitflag_count)) == length(MysteryData["Beach"]) - 1
+              && measured(sum_of(MysteryData["Beach"], bitflag_count) == length(MysteryData["Beach"]))
 )
 
 /////////////////////
@@ -732,7 +812,7 @@ achievement(
 achievement(
     title = "ACDC 2: Shopping Spree",
     points = 1,
-    description = "Empty out the shop in ACDC 2!",
+    description = "Empty out the shop in ACDC Area 2!",
     trigger = no_glitches_enabled() && in_area("ACDC Area 2") && shop_emptied("ACDC Area 2")
 )
 
@@ -749,9 +829,35 @@ achievement(
 )
 
 achievement(
+    title = "Yoka 1: Shopping Spree", points = 5,
+    description = "Empty out the bugfrag shop in Yoka Area 1!",
+    trigger = no_glitches_enabled() && in_area("Yoka Area 1") && shop_emptied("Yoka 1")
+)
+
+achievement(
     title = "Yoka Square: Shopping Spree", points = 2,
     description = "Empty out the shop in Yoka Square!",
     trigger = no_glitches_enabled() && in_area("Yoka Square") && shop_emptied("Yoka Square")
+)
+
+achievement(
+    title = "Beach Square: Shopping Spree", points = 2,
+    description = "Empty out the chip shop in Beach Square!",
+    trigger = no_glitches_enabled() && in_area("Beach Square") && shop_emptied("Beach Square")
+)
+
+achievement(
+    title = "Beach Square: Shopping Spree 2", points = 2,
+    description = "Empty out the program shop in Beach Square!",
+    trigger = no_glitches_enabled() && in_area("Beach Square") && shop_emptied("Beach Square Program")
+)
+
+
+
+achievement(
+    title = "Higsby's: Shopping Spree", points = 3,
+    description = "Empty out Higsby's shop!",
+    trigger = no_glitches_enabled() && in_area("Higsby's") && shop_emptied("Higsby's")
 )
 
 //////////////////
@@ -760,7 +866,7 @@ achievement(
 
 leaderboard(
     title = "Deletion Time: FlashMan",
-    description = "Defeat FlashMan in the Principal's PC as fast as you can!",
+    description = "Defeat FlashMan for the first time as fast as you can!",
     start  = no_glitches_enabled() && in_area("Principal's PC 2") && fighting_boss("FlashMan") && boss_killed(),
     cancel = always_false(),
     submit = always_true(),
@@ -771,8 +877,30 @@ leaderboard(
 
 leaderboard(
     title = "Deletion Time: BeastMan",
-    description = "Defeat BeastMan in the Zoo Comp as fast as you can!",
+    description = "Defeat BeastMan for the first time as fast as you can!",
     start  = no_glitches_enabled() && in_area("Zoo Comp 4") && fighting_boss("BeastMan") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: BubbleMan",
+    description = "Defeat BubbleMan for the first time as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Yoka Area 1") && fighting_boss("BubbleMan") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: DesertMan",
+    description = "Defeat DesertMan for the first time as fast as you can!",
+    start  = no_glitches_enabled() && in_area("TV Station Editing Room") && fighting_boss("DesertMan") && boss_killed(),
     cancel = always_false(),
     submit = always_true(),
     value = measured(battle_time),
@@ -784,6 +912,28 @@ leaderboard(
     title = "Deletion Time: FlashMan Beta",
     description = "Defeat FlashMan Beta in ACDC Area 2 as fast as you can!",
     start  = no_glitches_enabled() && in_area("ACDC Area 2") && fighting_boss("FlashMan Beta") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: BeastMan Beta",
+    description = "Defeat BeastMan Beta in the Doghouse Comp as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Doghouse Comp") && fighting_boss("BeastMan Beta") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: BubbleMan Beta",
+    description = "Defeat BubbleMan Beta in the Beach Area 1 as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Beach Area 1") && fighting_boss("BubbleMan Beta") && boss_killed(),
     cancel = always_false(),
     submit = always_true(),
     value = measured(battle_time),
