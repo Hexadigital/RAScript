@@ -119,7 +119,7 @@ function get_cheevo_logic(path, level, special) {
 function get_leaderboard_logic(path, level, special) {
     logic = get_character() == path
     && get_level() == level
-    && get_remaining_time() > 0
+    && get_remaining_time() >= 1
     && congratulations()
     && cheats_deactivated()
     if special == true {
