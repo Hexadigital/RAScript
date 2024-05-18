@@ -66,7 +66,7 @@ achievement(
     title = "Air Pre55ure",
     description = "Accumulate 55 seconds of airtime in one run!",
     points = 5,
-    trigger = repeated(55*60, in_air && not_paused) && never(died)
+    trigger = repeated(55*60, in_game && in_air && not_paused) && never(died)
 )
 
 // Duck more than 100 times in one run!
