@@ -17,7 +17,7 @@ levels_completed_address = 0x1fd2
 function get_character() => byte(0x007b)
 function get_level() => byte(0x007a) + 1
 function special_levels_activated() => byte(0x0ba6) == 0x01
-function cheats_deactivated() => byte(0x0bd8) == 0x00
+function cheats_deactivated() => byte(0x0bd7) == 0x00
 function get_blocks_remaining() => byte(0x0b90)
 
 function get_starting_time(special) {
