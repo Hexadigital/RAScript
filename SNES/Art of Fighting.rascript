@@ -56,6 +56,7 @@ game_mode = byte(0x019571)
 demo = byte(0x019309) == 0xff
 reset_detected = byte(0x01956d) == 0
 p1_health = word(0x019307)
+p1_display_ki = word(0x01930d)
 p1_max_starting_health = p1_health == 0xEF
 p1_character = byte(0x0192cd)
 p2_character = byte(0x019407)
@@ -118,7 +119,7 @@ achievement(
     description = "Break all the bottles in the Bottle Cut bonus game!",
     trigger = cheats_disabled() && !demo && game_mode == GameModeToID["Story"] &&
               bonus_game == BonusGameToID["Bottle Cut"] &&
-              prev(p1_health) >= 0x78 && p1_health == 1
+              prev(p1_health) >= 0x78 && p1_health == 1 && p1_display_ki > 0
 )
 
 // Successfully complete the Ice Pillar Smash minigame!
