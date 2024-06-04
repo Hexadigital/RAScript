@@ -162,6 +162,11 @@ p2_combo_king_bonus = prev(byte(0x0047c97d)) == 0x00 && byte(0x0047c97d) == 0x01
 p3_combo_king_bonus = prev(byte(0x0047ce85)) == 0x00 && byte(0x0047ce85) == 0x01
 p4_combo_king_bonus = prev(byte(0x0047d38d)) == 0x00 && byte(0x0047d38d) == 0x01
 
+p1_berserker_bonus = prev(byte(0x0047c487)) == 0x00 && byte(0x0047c487) == 0x01
+p2_berserker_bonus = prev(byte(0x0047c98f)) == 0x00 && byte(0x0047c98f) == 0x01
+p3_berserker_bonus = prev(byte(0x0047ce97)) == 0x00 && byte(0x0047ce97) == 0x01
+p4_berserker_bonus = prev(byte(0x0047d39f)) == 0x00 && byte(0x0047d39f) == 0x01
+
 // Flat Zone (Event #45) (Game and Watch Forever!)
 area_in_event_45 = area_id == 0xF6
 // Battlefield (Multi-Man Melee)
@@ -542,6 +547,30 @@ achievement(
                   p4_is_player
                   && p4_character_id == CharacterToID["Jigglypuff"]
                   && p4_combo_king_bonus
+              ))
+)
+
+achievement(
+    title = "Flexing the Triforce of Power",
+    points = 10,
+    description = "As Ganondorf, get the Berserker bonus in any VS. Mode except Super Sudden Death",
+    trigger = in_versus_mode_without_ssd
+              && ((
+                  p1_is_player
+                  && p1_character_id == CharacterToID["Ganondorf"]
+                  && p1_berserker_bonus
+              ) || (
+                  p2_is_player
+                  && p2_character_id == CharacterToID["Ganondorf"]
+                  && p2_berserker_bonus
+              ) || (
+                  p3_is_player
+                  && p3_character_id == CharacterToID["Ganondorf"]
+                  && p3_berserker_bonus
+              ) || (
+                  p4_is_player
+                  && p4_character_id == CharacterToID["Ganondorf"]
+                  && p4_berserker_bonus
               ))
 )
 
