@@ -106,6 +106,11 @@ in_15min_melee = mode_check(0x24)
 in_endless_melee = mode_check(0x25)
 in_cruel_melee = mode_check(0x26)
 
+p1_character_id = byte(0x00480820)
+p2_character_id = byte(0x00480844)
+p3_character_id = byte(0x00480868)
+p4_character_id = byte(0x0048088c)
+
 p2_damage = word_be(0x00453f70)
 p3_damage = word_be(0x00454e00)
 p4_damage = word_be(0x00455c90)
@@ -142,11 +147,28 @@ p2_triple_ko_bonus = prev(byte(0x0047c9f7)) == 0x00 && byte(0x0047c9f7) == 0x01
 p3_triple_ko_bonus = prev(byte(0x0047ceff)) == 0x00 && byte(0x0047ceff) == 0x01
 p4_triple_ko_bonus = prev(byte(0x0047d407)) == 0x00 && byte(0x0047d407) == 0x01
 
+p1_crowd_bonus = prev(byte(0x0047c4cf)) == 0x00 && byte(0x0047c4cf) == 0x01
+p2_crowd_bonus = prev(byte(0x0047c9d7)) == 0x00 && byte(0x0047c9d7) == 0x01
+p3_crowd_bonus = prev(byte(0x0047cedf)) == 0x00 && byte(0x0047cedf) == 0x01
+p4_crowd_bonus = prev(byte(0x0047d3e7)) == 0x00 && byte(0x0047d3e7) == 0x01
+
+p1_bullseye_bonus = prev(byte(0x0047c4e3)) == 0x00 && byte(0x0047c4e3) == 0x01
+p2_bullseye_bonus = prev(byte(0x0047c9eb)) == 0x00 && byte(0x0047c9eb) == 0x01
+p3_bullseye_bonus = prev(byte(0x0047cef3)) == 0x00 && byte(0x0047cef3) == 0x01
+p4_bullseye_bonus = prev(byte(0x0047d3fb)) == 0x00 && byte(0x0047d3fb) == 0x01
+
+p1_combo_king_bonus = prev(byte(0x0047c475)) == 0x00 && byte(0x0047c475) == 0x01
+p2_combo_king_bonus = prev(byte(0x0047c97d)) == 0x00 && byte(0x0047c97d) == 0x01
+p3_combo_king_bonus = prev(byte(0x0047ce85)) == 0x00 && byte(0x0047ce85) == 0x01
+p4_combo_king_bonus = prev(byte(0x0047d38d)) == 0x00 && byte(0x0047d38d) == 0x01
+
 // Flat Zone (Event #45) (Game and Watch Forever!)
 area_in_event_45 = area_id == 0xF6
 // Battlefield (Multi-Man Melee)
 area_in_multiman_melee = area_id == 0x11d
 playing_as_gameandwatch = character_id == CharacterToID["Mr. Game & Watch"]
+
+items_off = byte(0x0045c370) == 0xff
 
 function damage_taken(player, amount) {
     if player == "p2" {
@@ -199,6 +221,7 @@ achievement(
 
 //Wired to Survive Complete 15-Minute Melee, unlocking the Kongo Jungle stage
 achievement(
+    type = "progression",
     title = "Wired to Survive",
     points = 10,
     description = "Complete 15-Minute Melee, unlocking the Kongo Jungle stage",
@@ -251,7 +274,7 @@ achievement(
     points = 3,
     description = "Break the Shield of any CPU Lv 5 or Higher in VS. Mode",
     trigger = in_versus_mode
-              && ( // P1 player, other CPU
+              && (( // P1 player, other CPU
               p1_is_player
               && (p2_is_cpu
               && p2_cpu_level >= 5
@@ -319,7 +342,7 @@ achievement(
               && p3_cpu_level <= 9
               && prev(p3_state) == 0xB3 // Shielding
               && p3_state == 0xCD) // Shield Break
-              )
+              ))
 )
 
 // Twosday KO Two Lv. 5+ CPUs with One Attack in VS. Mode
@@ -328,7 +351,7 @@ achievement(
     points = 5,
     description = "Get a Double KO bonus against two or more Lv. 5+ CPUs in any VS. Mode except Super Sudden Death",
     trigger = in_versus_mode_without_ssd
-              && ( // P1 player, other CPU
+              && (( // P1 player, other CPU
                   p1_is_player
                   && p1_double_ko_bonus
                   && ((p2_is_cpu
@@ -388,7 +411,7 @@ achievement(
                   && p3_cpu_level >= 5
                   && p3_cpu_level <= 9)
                   || p3_is_missing)
-              )
+              ))
 )
 
 // Oh Baby a Triple! KO Three Lv. 3+ CPUs with One Attack in VS. Mode
@@ -397,7 +420,7 @@ achievement(
     points = 10,
     description = "Get a Triple KO bonus against three Lv. 3+ CPUs in any VS. Mode except Super Sudden Death",
     trigger = in_versus_mode_without_ssd
-              && ( // P1 player, other CPU
+              && (( // P1 player, other CPU
                   p1_is_player
                   && p1_triple_ko_bonus
                   && p2_is_cpu
@@ -445,9 +468,82 @@ achievement(
                   && p3_is_cpu
                   && p3_cpu_level >= 3
                   && p3_cpu_level <= 9
-              )
+              ))
 )
 
+achievement(
+    title = "They Love Me",
+    points = 1,
+    description = "Get a Crowd Favourite bonus by getting the crowd to chant your name in any VS. Mode except Super Sudden Death",
+    trigger = in_versus_mode_without_ssd
+              && ((
+                  p1_is_player
+                  && p1_crowd_bonus
+              ) || (
+                  p2_is_player
+                  && p2_crowd_bonus
+              ) || (
+                  p3_is_player
+                  && p3_crowd_bonus
+              ) || (
+                  p4_is_player
+                  && p4_crowd_bonus
+              ))
+)
+
+achievement(
+    title = "Bullseye!",
+    points = 2,
+    description = "As Mewtwo or Samus, get the Bull's-eye KO Bonus with items turned off in any VS. Mode except Super Sudden Death",
+    trigger = in_versus_mode_without_ssd
+              && items_off
+              && ((
+                  p1_is_player
+                  && (p1_character_id == CharacterToID["Samus"]
+                      || p1_character_id == CharacterToID["Mewtwo"])
+                  && p1_bullseye_bonus
+              ) || (
+                  p2_is_player
+                  && (p2_character_id == CharacterToID["Samus"]
+                      || p2_character_id == CharacterToID["Mewtwo"])
+                  && p2_bullseye_bonus
+              ) || (
+                  p3_is_player
+                  && (p3_character_id == CharacterToID["Samus"]
+                      || p3_character_id == CharacterToID["Mewtwo"])
+                  && p3_bullseye_bonus
+              ) || (
+                  p4_is_player
+                  && (p4_character_id == CharacterToID["Samus"]
+                      || p4_character_id == CharacterToID["Mewtwo"])
+                  && p4_bullseye_bonus
+              ))
+)
+
+achievement(
+    title = "Hungrybox Tribute",
+    points = 10,
+    description = "As Jigglypuff, get the Combo King bonus in any VS. Mode except Super Sudden Death",
+    trigger = in_versus_mode_without_ssd
+              && items_off
+              && ((
+                  p1_is_player
+                  && p1_character_id == CharacterToID["Jigglypuff"]
+                  && p1_combo_king_bonus
+              ) || (
+                  p2_is_player
+                  && p2_character_id == CharacterToID["Jigglypuff"]
+                  && p2_combo_king_bonus
+              ) || (
+                  p3_is_player
+                  && p3_character_id == CharacterToID["Jigglypuff"]
+                  && p3_combo_king_bonus
+              ) || (
+                  p4_is_player
+                  && p4_character_id == CharacterToID["Jigglypuff"]
+                  && p4_combo_king_bonus
+              ))
+)
 
 for c in CharacterToID {
     leaderboard(
