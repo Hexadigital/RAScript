@@ -67,7 +67,38 @@ good_modes = [
     0x26, // Cruel Melee
 ]
 
+versus_modes = [
+    0x02, // Melee
+    0x1b, // Tournament Melee
+    0x0a, // [Special Melee] Camera Mode
+    0x1f, // [Special Melee] Stamina Mode
+    0x10, // [Special Melee] Super Sudden Death
+    0x1e, // [Special Melee] Giant Melee
+    0x1d, // [Special Melee] Tiny Melee
+    0x11, // [Special Melee] Invisible Melee
+    0x2a, // [Special Melee] Fixed-Camera Mode
+    0x2c, // [Special Melee] Single-Button Mode
+    0x13, // [Special Melee] Lightning Melee
+    0x12, // [Special Melee] Slo-Mo Melee
+]
+
+versus_modes_without_ssd = [
+    0x02, // Melee
+    0x1b, // Tournament Melee
+    0x0a, // [Special Melee] Camera Mode
+    0x1f, // [Special Melee] Stamina Mode
+    0x1e, // [Special Melee] Giant Melee
+    0x1d, // [Special Melee] Tiny Melee
+    0x11, // [Special Melee] Invisible Melee
+    0x2a, // [Special Melee] Fixed-Camera Mode
+    0x2c, // [Special Melee] Single-Button Mode
+    0x13, // [Special Melee] Lightning Melee
+    0x12, // [Special Melee] Slo-Mo Melee
+]
+
 in_a_good_mode = any_of(good_modes, mode_check)
+in_versus_mode = any_of(versus_modes, mode_check)
+in_versus_mode_without_ssd = any_of(versus_modes_without_ssd, mode_check)
 in_10man_melee = mode_check(0x21)
 in_100man_melee = mode_check(0x22)
 in_3min_melee = mode_check(0x23)
@@ -79,6 +110,37 @@ p2_damage = word_be(0x00453f70)
 p3_damage = word_be(0x00454e00)
 p4_damage = word_be(0x00455c90)
 p1_stocks = byte(0x0045310e)
+
+p1_state = word_be(tbyte_be(0x00453131) + 0x72)
+p2_state = word_be(tbyte_be(0x00453fc1) + 0x72)
+p3_state = word_be(tbyte_be(0x00454e51) + 0x72)
+p4_state = word_be(tbyte_be(0x00455ce1) + 0x72)
+
+p1_is_player = byte(0x00480821) == 0x00
+p2_is_player = byte(0x00480845) == 0x00
+p3_is_player = byte(0x00480869) == 0x00
+p4_is_player = byte(0x0048088d) == 0x00
+p1_is_cpu = byte(0x00480821) == 0x01
+p2_is_cpu = byte(0x00480845) == 0x01
+p3_is_cpu = byte(0x00480869) == 0x01
+p4_is_cpu = byte(0x0048088d) == 0x01
+p1_is_missing = byte(0x00480821) == 0x03
+p2_is_missing = byte(0x00480845) == 0x03
+p3_is_missing = byte(0x00480869) == 0x03
+p4_is_missing = byte(0x0048088d) == 0x03
+p1_cpu_level = byte(0x0048082f)
+p2_cpu_level = byte(0x00480853)
+p3_cpu_level = byte(0x00480877)
+p4_cpu_level = byte(0x0048089b)
+
+p1_double_ko_bonus = prev(byte(0x0047c4ee)) == 0x00 && byte(0x0047c4ee) == 0x01
+p2_double_ko_bonus = prev(byte(0x0047c9f6)) == 0x00 && byte(0x0047c9f6) == 0x01
+p3_double_ko_bonus = prev(byte(0x0047cefe)) == 0x00 && byte(0x0047cefe) == 0x01
+p4_double_ko_bonus = prev(byte(0x0047d406)) == 0x00 && byte(0x0047d406) == 0x01
+p1_triple_ko_bonus = prev(byte(0x0047c4ef)) == 0x00 && byte(0x0047c4ef) == 0x01
+p2_triple_ko_bonus = prev(byte(0x0047c9f7)) == 0x00 && byte(0x0047c9f7) == 0x01
+p3_triple_ko_bonus = prev(byte(0x0047ceff)) == 0x00 && byte(0x0047ceff) == 0x01
+p4_triple_ko_bonus = prev(byte(0x0047d407)) == 0x00 && byte(0x0047d407) == 0x01
 
 // Flat Zone (Event #45) (Game and Watch Forever!)
 area_in_event_45 = area_id == 0xF6
@@ -182,6 +244,210 @@ achievement(
               && multiman_melee_kills >= 5
               && multiman_melee_kills < 10
 )
+
+//Shield Buster Break the Shield of any CPU Lv 5 or Higher
+achievement(
+    title = "Shield Buster",
+    points = 3,
+    description = "Break the Shield of any CPU Lv 5 or Higher in VS. Mode",
+    trigger = in_versus_mode
+              && ( // P1 player, other CPU
+              p1_is_player
+              && (p2_is_cpu
+              && p2_cpu_level >= 5
+              && p2_cpu_level <= 9
+              && prev(p2_state) == 0xB3 // Shielding
+              && p2_state == 0xCD) // Shield Break
+              || (p3_is_cpu
+              && p3_cpu_level >= 5
+              && p3_cpu_level <= 9
+              && prev(p3_state) == 0xB3 // Shielding
+              && p3_state == 0xCD) // Shield Break
+              || (p4_is_cpu
+              && p4_cpu_level >= 5
+              && p4_cpu_level <= 9
+              && prev(p4_state) == 0xB3 // Shielding
+              && p4_state == 0xCD) // Shield Break
+              ) || ( // P2 player, other CPU
+              p2_is_player
+              && (p1_is_cpu
+              && p1_cpu_level >= 5
+              && p1_cpu_level <= 9
+              && prev(p1_state) == 0xB3 // Shielding
+              && p1_state == 0xCD) // Shield Break
+              || (p3_is_cpu
+              && p3_cpu_level >= 5
+              && p3_cpu_level <= 9
+              && prev(p3_state) == 0xB3 // Shielding
+              && p3_state == 0xCD) // Shield Break
+              || (p4_is_cpu
+              && p4_cpu_level >= 5
+              && p4_cpu_level <= 9
+              && prev(p4_state) == 0xB3 // Shielding
+              && p4_state == 0xCD) // Shield Break
+              ) || ( // P3 player, other CPU
+              p3_is_player
+              && (p1_is_cpu
+              && p1_cpu_level >= 5
+              && p1_cpu_level <= 9
+              && prev(p1_state) == 0xB3 // Shielding
+              && p1_state == 0xCD) // Shield Break
+              || (p2_is_cpu
+              && p2_cpu_level >= 5
+              && p2_cpu_level <= 9
+              && prev(p2_state) == 0xB3 // Shielding
+              && p2_state == 0xCD) // Shield Break
+              || (p4_is_cpu
+              && p4_cpu_level >= 5
+              && p4_cpu_level <= 9
+              && prev(p4_state) == 0xB3 // Shielding
+              && p4_state == 0xCD) // Shield Break
+              ) || ( // P4 player, other CPU
+              p4_is_player
+              && (p1_is_cpu
+              && p1_cpu_level >= 5
+              && p1_cpu_level <= 9
+              && prev(p1_state) == 0xB3 // Shielding
+              && p1_state == 0xCD) // Shield Break
+              || (p2_is_cpu
+              && p2_cpu_level >= 5
+              && p2_cpu_level <= 9
+              && prev(p2_state) == 0xB3 // Shielding
+              && p2_state == 0xCD) // Shield Break
+              || (p3_is_cpu
+              && p3_cpu_level >= 5
+              && p3_cpu_level <= 9
+              && prev(p3_state) == 0xB3 // Shielding
+              && p3_state == 0xCD) // Shield Break
+              )
+)
+
+// Twosday KO Two Lv. 5+ CPUs with One Attack in VS. Mode
+achievement(
+    title = "Twosday",
+    points = 5,
+    description = "Get a Double KO bonus against two or more Lv. 5+ CPUs in any VS. Mode except Super Sudden Death",
+    trigger = in_versus_mode_without_ssd
+              && ( // P1 player, other CPU
+                  p1_is_player
+                  && p1_double_ko_bonus
+                  && ((p2_is_cpu
+                  && p2_cpu_level >= 5
+                  && p2_cpu_level <= 9)
+                  || p2_is_missing)
+                  && ((p3_is_cpu
+                  && p3_cpu_level >= 5
+                  && p3_cpu_level <= 9)
+                  || p3_is_missing)
+                  && ((p4_is_cpu
+                  && p4_cpu_level >= 5
+                  && p4_cpu_level <= 9)
+                  || p4_is_missing)
+              ) || ( // P2 player, other CPU
+                  p2_is_player
+                  && p2_double_ko_bonus
+                  && ((p1_is_cpu
+                  && p1_cpu_level >= 5
+                  && p1_cpu_level <= 9)
+                  || p1_is_missing)
+                  && ((p3_is_cpu
+                  && p3_cpu_level >= 5
+                  && p3_cpu_level <= 9)
+                  || p3_is_missing)
+                  && ((p4_is_cpu
+                  && p4_cpu_level >= 5
+                  && p4_cpu_level <= 9)
+                  || p4_is_missing)
+              ) || ( // P3 player, other CPU
+                  p3_is_player
+                  && p3_double_ko_bonus
+                  && ((p1_is_cpu
+                  && p1_cpu_level >= 5
+                  && p1_cpu_level <= 9)
+                  || p1_is_missing)
+                  && ((p2_is_cpu
+                  && p2_cpu_level >= 5
+                  && p2_cpu_level <= 9)
+                  || p2_is_missing)
+                  && ((p4_is_cpu
+                  && p4_cpu_level >= 5
+                  && p4_cpu_level <= 9)
+                  || p4_is_missing)
+              ) || ( // P4 player, other CPU
+                  p4_is_player
+                  && p4_double_ko_bonus
+                  && ((p1_is_cpu
+                  && p1_cpu_level >= 5
+                  && p1_cpu_level <= 9)
+                  || p1_is_missing)
+                  && ((p2_is_cpu
+                  && p2_cpu_level >= 5
+                  && p2_cpu_level <= 9)
+                  || p2_is_missing)
+                  && ((p3_is_cpu
+                  && p3_cpu_level >= 5
+                  && p3_cpu_level <= 9)
+                  || p3_is_missing)
+              )
+)
+
+// Oh Baby a Triple! KO Three Lv. 3+ CPUs with One Attack in VS. Mode
+achievement(
+    title = "Oh Baby, a Triple!",
+    points = 10,
+    description = "Get a Triple KO bonus against three Lv. 3+ CPUs in any VS. Mode except Super Sudden Death",
+    trigger = in_versus_mode_without_ssd
+              && ( // P1 player, other CPU
+                  p1_is_player
+                  && p1_triple_ko_bonus
+                  && p2_is_cpu
+                  && p2_cpu_level >= 3
+                  && p2_cpu_level <= 9
+                  && p3_is_cpu
+                  && p3_cpu_level >= 3
+                  && p3_cpu_level <= 9
+                  && p4_is_cpu
+                  && p4_cpu_level >= 3
+                  && p4_cpu_level <= 9
+              ) || ( // P2 player, other CPU
+                  p2_is_player
+                  && p2_triple_ko_bonus
+                  && p1_is_cpu
+                  && p1_cpu_level >= 3
+                  && p1_cpu_level <= 9
+                  && p3_is_cpu
+                  && p3_cpu_level >= 3
+                  && p3_cpu_level <= 9
+                  && p4_is_cpu
+                  && p4_cpu_level >= 3
+                  && p4_cpu_level <= 9
+              ) || ( // P3 player, other CPU
+                  p3_is_player
+                  && p3_triple_ko_bonus
+                  && p1_is_cpu
+                  && p1_cpu_level >= 3
+                  && p1_cpu_level <= 9
+                  && p2_is_cpu
+                  && p2_cpu_level >= 3
+                  && p2_cpu_level <= 9
+                  && p4_is_cpu
+                  && p4_cpu_level >= 3
+                  && p4_cpu_level <= 9
+              ) || ( // P4 player, other CPU
+                  p4_is_player
+                  && p4_triple_ko_bonus
+                  && p1_is_cpu
+                  && p1_cpu_level >= 3
+                  && p1_cpu_level <= 9
+                  && p2_is_cpu
+                  && p2_cpu_level >= 3
+                  && p2_cpu_level <= 9
+                  && p3_is_cpu
+                  && p3_cpu_level >= 3
+                  && p3_cpu_level <= 9
+              )
+)
+
 
 for c in CharacterToID {
     leaderboard(
