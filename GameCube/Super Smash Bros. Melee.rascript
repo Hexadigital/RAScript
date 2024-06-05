@@ -1,6 +1,14 @@
 // Super Smash Bros. Melee
 // #ID = 9602
 
+///////////////////////////////////////////////////////////////////
+// As a warning, this file kinda grew in a disordered manner     //
+// due to a mix of deadlines and increasing scope. I originally  //
+// intended to do only two G&W achievements, but took on random  //
+// additional achievements as time went on, and the structure of //
+// this code reflects that...                                    //
+///////////////////////////////////////////////////////////////////
+
 CharacterLookup = {
     0x00: "Captain Falcon",
     0x01: "Donkey Kong",
@@ -105,6 +113,11 @@ in_3min_melee = mode_check(0x23)
 in_15min_melee = mode_check(0x24)
 in_endless_melee = mode_check(0x25)
 in_cruel_melee = mode_check(0x26)
+time_mode = byte(0x0045bf12) == 0x00
+stock_mode = byte(0x0045bf12) == 0x01
+coin_mode = byte(0x0045bf12) == 0x02
+bonus_mode = byte(0x0045bf12) == 0x03
+four_stocks = stock_mode && byte(0x0045bf14) == 0x04
 
 p1_character_id = byte(0x00480820)
 p2_character_id = byte(0x00480844)
@@ -112,9 +125,11 @@ p3_character_id = byte(0x00480868)
 p4_character_id = byte(0x0048088c)
 
 p2_damage = word_be(0x00453f70)
+p2_stamina = byte(0x004a1137)
 p3_damage = word_be(0x00454e00)
 p4_damage = word_be(0x00455c90)
 p1_stocks = byte(0x0045310e)
+p2_stocks = byte(0x00453f9e)
 
 p1_state = word_be(tbyte_be(0x00453131) + 0x72)
 p2_state = word_be(tbyte_be(0x00453fc1) + 0x72)
@@ -137,6 +152,18 @@ p1_cpu_level = byte(0x0048082f)
 p2_cpu_level = byte(0x00480853)
 p3_cpu_level = byte(0x00480877)
 p4_cpu_level = byte(0x0048089b)
+
+p1_rank = byte(0x0047c085)
+p1_won_versus = p1_rank == 0x00
+p2_rank = byte(0x0047c12d)
+p2_won_versus = p2_rank == 0x00
+p2_lost_versus = p2_rank >= 0x01 && p2_rank <= 0x04
+p3_rank = byte(0x0047c1d5)
+p3_won_versus = p3_rank== 0x00
+p3_lost_versus = p3_rank >= 0x01 && p3_rank <= 0x04
+p4_rank = byte(0x0047c27d)
+p4_won_versus = p4_rank == 0x00
+p4_lost_versus = p4_rank >= 0x01 && p4_rank <= 0x04
 
 p1_double_ko_bonus = prev(byte(0x0047c4ee)) == 0x00 && byte(0x0047c4ee) == 0x01
 p2_double_ko_bonus = prev(byte(0x0047c9f6)) == 0x00 && byte(0x0047c9f6) == 0x01
@@ -166,6 +193,31 @@ p1_berserker_bonus = prev(byte(0x0047c487)) == 0x00 && byte(0x0047c487) == 0x01
 p2_berserker_bonus = prev(byte(0x0047c98f)) == 0x00 && byte(0x0047c98f) == 0x01
 p3_berserker_bonus = prev(byte(0x0047ce97)) == 0x00 && byte(0x0047ce97) == 0x01
 p4_berserker_bonus = prev(byte(0x0047d39f)) == 0x00 && byte(0x0047d39f) == 0x01
+
+p1_poser_ko_bonus = prev(byte(0x0047c4e4)) == 0x00 && byte(0x0047c4e4) == 0x01
+p2_poser_ko_bonus = prev(byte(0x0047c9ec)) == 0x00 && byte(0x0047c9ec) == 0x01
+p3_poser_ko_bonus = prev(byte(0x0047cef4)) == 0x00 && byte(0x0047cef4) == 0x01
+p4_poser_ko_bonus = prev(byte(0x0047d3fc)) == 0x00 && byte(0x0047d3fc) == 0x01
+
+p1_bird_bonus = prev(byte(0x0047c474)) == 0x00 && byte(0x0047c474) == 0x01
+p2_bird_bonus = prev(byte(0x0047c97c)) == 0x00 && byte(0x0047c97c) == 0x01
+p3_bird_bonus = prev(byte(0x0047ce84)) == 0x00 && byte(0x0047ce84) == 0x01
+p4_bird_bonus = prev(byte(0x0047d38c)) == 0x00 && byte(0x0047d38c) == 0x01
+
+p1_meteor_smash_bonus = prev(byte(0x0047c47a)) == 0x00 && byte(0x0047c47a) == 0x01
+p2_meteor_smash_bonus = prev(byte(0x0047c47a + (0x508))) == 0x00 && byte(0x0047c47a + (0x508)) == 0x01
+p3_meteor_smash_bonus = prev(byte(0x0047c47a + (0x508 * 2))) == 0x00 && byte(0x0047c47a + (0x508 * 2)) == 0x01
+p4_meteor_smash_bonus = prev(byte(0x0047c47a + (0x508 * 3))) == 0x00 && byte(0x0047c47a + (0x508 * 3)) == 0x01
+
+p1_meteor_clear_bonus = prev(byte(0x0047c47b)) == 0x00 && byte(0x0047c47b) == 0x01
+p2_meteor_clear_bonus = prev(byte(0x0047c47b + (0x508))) == 0x00 && byte(0x0047c47b + (0x508)) == 0x01
+p3_meteor_clear_bonus = prev(byte(0x0047c47b + (0x508 * 2))) == 0x00 && byte(0x0047c47b + (0x508 * 2)) == 0x01
+p4_meteor_clear_bonus = prev(byte(0x0047c47b + (0x508 * 3))) == 0x00 && byte(0x0047c47b + (0x508 * 3)) == 0x01
+
+p1_compass_bonus = prev(byte(0x0047c49c)) == 0x00 && byte(0x0047c49c) == 0x01
+p2_compass_bonus = prev(byte(0x0047c49c + (0x508))) == 0x00 && byte(0x0047c49c + (0x508)) == 0x01
+p3_compass_bonus = prev(byte(0x0047c49c + (0x508 * 2))) == 0x00 && byte(0x0047c49c + (0x508 * 2)) == 0x01
+p4_compass_bonus = prev(byte(0x0047c49c + (0x508 * 3))) == 0x00 && byte(0x0047c49c + (0x508 * 3)) == 0x01
 
 // Flat Zone (Event #45) (Game and Watch Forever!)
 area_in_event_45 = area_id == 0xF6
@@ -574,6 +626,527 @@ achievement(
               ))
 )
 
+achievement(
+    title = "The Little Kicks",
+    points = 1,
+    description = "As Luigi, get the Poser KO bonus in any VS. Mode",
+    trigger = in_versus_mode
+              && ((
+                  p1_is_player
+                  && p1_character_id == CharacterToID["Luigi"]
+                  && p1_poser_ko_bonus
+              ) || (
+                  p2_is_player
+                  && p2_character_id == CharacterToID["Luigi"]
+                  && p2_poser_ko_bonus
+              ) || (
+                  p3_is_player
+                  && p3_character_id == CharacterToID["Luigi"]
+                  && p3_poser_ko_bonus
+              ) || (
+                  p4_is_player
+                  && p4_character_id == CharacterToID["Luigi"]
+                  && p4_poser_ko_bonus
+              ))
+)
+
+achievement(
+    title = "You Swim in the Air Now Too?",
+    points = 5,
+    description = "As Falco, get the Bird of Prey bonus and win in any VS. Mode except Super Sudden Death",
+    trigger = in_versus_mode_without_ssd
+              && ((
+                  p1_is_player
+                  && p1_won_versus
+                  && p1_character_id == CharacterToID["Falco"]
+                  && p1_bird_bonus
+              ) || (
+                  p2_is_player
+                  && p2_won_versus
+                  && p2_character_id == CharacterToID["Falco"]
+                  && p2_bird_bonus
+              ) || (
+                  p3_is_player
+                  && p3_won_versus
+                  && p3_character_id == CharacterToID["Falco"]
+                  && p3_bird_bonus
+              ) || (
+                  p4_is_player
+                  && p4_won_versus
+                  && p4_character_id == CharacterToID["Falco"]
+                  && p4_bird_bonus
+              ))
+)
+
+achievement(
+    title = "Meteor Shower",
+    points = 2,
+    description = "Get the Meteor Smash bonus in any VS. Mode except Super Sudden Death",
+    trigger = in_versus_mode_without_ssd
+              && ((
+                  p1_is_player
+                  && p1_meteor_smash_bonus
+              ) || (
+                  p2_is_player
+                  && p2_meteor_smash_bonus
+              ) || (
+                  p3_is_player
+                  && p3_meteor_smash_bonus
+              ) || (
+                  p4_is_player
+                  && p4_meteor_smash_bonus
+              ))
+)
+
+achievement(
+    title = "Get Out of My Stage!",
+    points = 3,
+    description = "Get the Meteor Clear bonus by ending the match with a meteor smash in any VS. Mode except Super Sudden Death",
+    trigger = in_versus_mode_without_ssd
+              && ((
+                  p1_is_player
+                  && p1_meteor_clear_bonus
+              ) || (
+                  p2_is_player
+                  && p2_meteor_clear_bonus
+              ) || (
+                  p3_is_player
+                  && p3_meteor_clear_bonus
+              ) || (
+                  p4_is_player
+                  && p4_meteor_clear_bonus
+              ))
+)
+
+achievement(
+    title = "Ragdoll",
+    points = 3,
+    description = "Use all four throws and win against a Lv. 5+ CPU in any VS Mode except Super Sudden Death",
+    trigger = in_versus_mode_without_ssd
+              && ((
+                  p1_is_player
+                  && p1_won_versus
+                  && p1_compass_bonus
+                  && ((p2_is_cpu
+                  && p2_cpu_level >= 5
+                  && p2_cpu_level <= 9)
+                  || p2_is_missing)
+                  && ((p3_is_cpu
+                  && p3_cpu_level >= 5
+                  && p3_cpu_level <= 9)
+                  || p3_is_missing)
+                  && ((p4_is_cpu
+                  && p4_cpu_level >= 5
+                  && p4_cpu_level <= 9)
+                  || p4_is_missing)
+              ) || (
+                  p2_is_player
+                  && p2_won_versus
+                  && p2_compass_bonus
+                  && ((p1_is_cpu
+                  && p1_cpu_level >= 5
+                  && p1_cpu_level <= 9)
+                  || p2_is_missing)
+                  && ((p3_is_cpu
+                  && p3_cpu_level >= 5
+                  && p3_cpu_level <= 9)
+                  || p3_is_missing)
+                  && ((p4_is_cpu
+                  && p4_cpu_level >= 5
+                  && p4_cpu_level <= 9)
+                  || p4_is_missing)
+              ) || (
+                  p3_is_player
+                  && p3_won_versus
+                  && p3_compass_bonus
+                  && ((p1_is_cpu
+                  && p1_cpu_level >= 5
+                  && p1_cpu_level <= 9)
+                  || p2_is_missing)
+                  && ((p2_is_cpu
+                  && p2_cpu_level >= 5
+                  && p2_cpu_level <= 9)
+                  || p2_is_missing)
+                  && ((p4_is_cpu
+                  && p4_cpu_level >= 5
+                  && p4_cpu_level <= 9)
+                  || p4_is_missing)
+              ) || (
+                  p4_is_player
+                  && p4_won_versus
+                  && p4_compass_bonus
+                  && ((p1_is_cpu
+                  && p1_cpu_level >= 5
+                  && p1_cpu_level <= 9)
+                  || p2_is_missing)
+                  && ((p2_is_cpu
+                  && p2_cpu_level >= 5
+                  && p2_cpu_level <= 9)
+                  || p2_is_missing)
+                  && ((p3_is_cpu
+                  && p3_cpu_level >= 5
+                  && p3_cpu_level <= 9)
+                  || p3_is_missing)
+              ))
+)
+
+achievement(
+    title = "Mewtwo Strikes Back",
+    points = 3,
+    description = "As P1, win a Stamina Mode match against a Lv. 5+ CPU as either Pikachu or Mewtwo, fighting against the character you did not play as",
+    trigger = mode_id == 0x1f // [Special Melee] Stamina Mode
+              && p1_is_player
+              && p2_is_cpu
+              && p2_cpu_level >= 5
+              && p2_cpu_level <= 9
+              && p3_is_missing
+              && p4_is_missing
+              && ((p1_character_id == CharacterToID["Pikachu"]
+              && p2_character_id == CharacterToID["Mewtwo"])
+              || (p1_character_id == CharacterToID["Mewtwo"]
+              && p2_character_id == CharacterToID["Pikachu"]))
+              && prev(p2_stamina) > 0
+              && p2_stamina == 0
+)
+
+achievement(
+    title = "First Blood",
+    points = 3,
+    description = "As P1, win a 4-stock Super Sudden Death match against a Lv. 5+ CPU in P2's slot as either Marth or Roy, fighting against the character you did not play as",
+    trigger = mode_id == 0x10 // [Special Melee] Super Sudden Death
+              && p1_is_player
+              && p2_is_cpu
+              && p2_cpu_level >= 5
+              && p2_cpu_level <= 9
+              && p3_is_missing
+              && p4_is_missing
+              && ((p1_character_id == CharacterToID["Marth"]
+              && p2_character_id == CharacterToID["Roy"])
+              || (p1_character_id == CharacterToID["Roy"]
+              && p2_character_id == CharacterToID["Marth"]))
+              && four_stocks
+              && p1_stocks >= 1
+              && prev(p2_stocks) == 1
+              && p2_stocks == 0
+)
+
+achievement(
+    title = "Cream Puff Throwdown",
+    points = 3,
+    description = "As P1, win a 4-stock Giant Melee match against a Lv. 5+ CPU in P2's slot as either Kirby or Jigglypuff, fighting against the character you did not play as",
+    trigger = mode_id == 0x1e // [Special Melee] Giant Melee
+              && p1_is_player
+              && p2_is_cpu
+              && p2_cpu_level >= 5
+              && p2_cpu_level <= 9
+              && p3_is_missing
+              && p4_is_missing
+              && ((p1_character_id == CharacterToID["Kirby"]
+              && p2_character_id == CharacterToID["Jigglypuff"])
+              || (p1_character_id == CharacterToID["Jigglypuff"]
+              && p2_character_id == CharacterToID["Kirby"]))
+              && four_stocks
+              && p1_stocks >= 1
+              && prev(p2_stocks) == 1
+              && p2_stocks == 0
+)
+
+achievement(
+    title = "Kaiju at Scale",
+    points = 3,
+    description = "As P1, win a 4-stock Tiny Melee match against a Lv. 5+ CPU in P2's slot as either Bowser or Donkey Kong, fighting against the character you did not play as",
+    trigger = mode_id == 0x1d // [Special Melee] Tiny Melee
+              && p1_is_player
+              && p2_is_cpu
+              && p2_cpu_level >= 5
+              && p2_cpu_level <= 9
+              && p3_is_missing
+              && p4_is_missing
+              && ((p1_character_id == CharacterToID["Bowser"]
+              && p2_character_id == CharacterToID["Donkey Kong"])
+              || (p1_character_id == CharacterToID["Donkey Kong"]
+              && p2_character_id == CharacterToID["Bowser"]))
+              && four_stocks
+              && p1_stocks >= 1
+              && prev(p2_stocks) == 1
+              && p2_stocks == 0
+)
+
+achievement(
+    title = "Will-o'-the-wisp",
+    points = 3,
+    description = "As P1, win a 4-stock Invisible Melee match against a Lv. 5+ CPU in P2's slot as either Captain Falcon or Ganondorf, fighting against the character you did not play as",
+    trigger = mode_id == 0x11 // [Special Melee] Invisible Melee
+              && p1_is_player
+              && p2_is_cpu
+              && p2_cpu_level >= 5
+              && p2_cpu_level <= 9
+              && p3_is_missing
+              && p4_is_missing
+              && ((p1_character_id == CharacterToID["Captain Falcon"]
+              && p2_character_id == CharacterToID["Ganondorf"])
+              || (p1_character_id == CharacterToID["Ganondorf"]
+              && p2_character_id == CharacterToID["Captain Falcon"]))
+              && four_stocks
+              && p1_stocks >= 1
+              && prev(p2_stocks) == 1
+              && p2_stocks == 0
+)
+
+achievement(
+    title = "Shader Pack",
+    points = 3,
+    description = "As P1, win a 4-stock Fixed-Camera Mode match against a Lv. 5+ CPU in P2's slot, with both characters set to Mr. Game & Watch, and the stage set to Flat Zone",
+    trigger = mode_id == 0x2a // [Special Melee] Fixed-Camera Mode
+              && area_id == 0x1b
+              && p1_is_player
+              && p2_is_cpu
+              && p2_cpu_level >= 5
+              && p2_cpu_level <= 9
+              && p3_is_missing
+              && p4_is_missing
+              && p1_character_id == CharacterToID["Mr. Game & Watch"]
+              && p2_character_id == CharacterToID["Mr. Game & Watch"]
+              && four_stocks
+              && p1_stocks >= 1
+              && prev(p2_stocks) == 1
+              && p2_stocks == 0
+)
+
+achievement(
+    title = "It's Dangerous to Go Alone",
+    points = 3,
+    description = "As P1, win a 4-stock Single-Button Mode match against a Lv. 5+ CPU in P2's slot as either Link or Young Link, fighting against the character you did not play as",
+    trigger = mode_id == 0x2c // [Special Melee] Single-Button Mode
+              && p1_is_player
+              && p2_is_cpu
+              && p2_cpu_level >= 5
+              && p2_cpu_level <= 9
+              && p3_is_missing
+              && p4_is_missing
+              && ((p1_character_id == CharacterToID["Link"]
+              && p2_character_id == CharacterToID["Young Link"])
+              || (p1_character_id == CharacterToID["Young Link"]
+              && p2_character_id == CharacterToID["Link"]))
+              && four_stocks
+              && p1_stocks >= 1
+              && prev(p2_stocks) == 1
+              && p2_stocks == 0
+)
+
+achievement(
+    title = "Shooting Stars",
+    points = 3,
+    description = "As P1, win a 4-stock Lightning Melee match against a Lv. 5+ CPU in P2's slot as either Fox or Falco, fighting against the character you did not play as",
+    trigger = mode_id == 0x13 // [Special Melee] Lightning Melee
+              && p1_is_player
+              && p2_is_cpu
+              && p2_cpu_level >= 5
+              && p2_cpu_level <= 9
+              && p3_is_missing
+              && p4_is_missing
+              && ((p1_character_id == CharacterToID["Fox"]
+              && p2_character_id == CharacterToID["Falco"])
+              || (p1_character_id == CharacterToID["Falco"]
+              && p2_character_id == CharacterToID["Fox"]))
+              && four_stocks
+              && p1_stocks >= 1
+              && prev(p2_stocks) == 1
+              && p2_stocks == 0
+)
+
+achievement(
+    title = "Kaizo Training",
+    points = 3,
+    description = "As P1, win a 4-stock Slo-Mo Melee match against a Lv. 5+ CPU in P2's slot as either Mario or Luigi, fighting against the character you did not play as",
+    trigger = mode_id == 0x12 // [Special Melee] Slo-Mo Melee
+              && p1_is_player
+              && p2_is_cpu
+              && p2_cpu_level >= 5
+              && p2_cpu_level <= 9
+              && p3_is_missing
+              && p4_is_missing
+              && ((p1_character_id == CharacterToID["Mario"]
+              && p2_character_id == CharacterToID["Luigi"])
+              || (p1_character_id == CharacterToID["Luigi"]
+              && p2_character_id == CharacterToID["Mario"]))
+              && four_stocks
+              && p1_stocks >= 1
+              && prev(p2_stocks) == 1
+              && p2_stocks == 0
+)
+
+achievement(
+    title = "Time is Running Short",
+    points = 5,
+    description = "Win a free-for-all timed battle with the time set to 4:00 against three Lv. 5+ CPUs using Ness, Kirby, Ice Climbers, and Pichu in regular Melee mode",
+    trigger = mode_id == 0x02 // Melee
+              && time_mode
+              && byte(0x0045bf13) == 4 // Time set to 4:00
+              && p1_is_player
+              && p2_is_cpu
+              && p2_cpu_level >= 5
+              && p2_cpu_level <= 9
+              && p3_is_cpu
+              && p3_cpu_level >= 5
+              && p3_cpu_level <= 9
+              && p4_is_cpu
+              && p4_cpu_level >= 5
+              && p4_cpu_level <= 9
+              && (p1_character_id == CharacterToID["Ness"]
+                 || p1_character_id == CharacterToID["Kirby"]
+                 || p1_character_id == CharacterToID["Ice Climbers"]
+                 || p1_character_id == CharacterToID["Pichu"]
+                 )
+              && (p2_character_id == CharacterToID["Ness"]
+                 || p2_character_id == CharacterToID["Kirby"]
+                 || p2_character_id == CharacterToID["Ice Climbers"]
+                 || p2_character_id == CharacterToID["Pichu"]
+                 )
+              && (p3_character_id == CharacterToID["Ness"]
+                 || p3_character_id == CharacterToID["Kirby"]
+                 || p3_character_id == CharacterToID["Ice Climbers"]
+                 || p3_character_id == CharacterToID["Pichu"]
+                 )
+              && (p4_character_id == CharacterToID["Ness"]
+                 || p4_character_id == CharacterToID["Kirby"]
+                 || p4_character_id == CharacterToID["Ice Climbers"]
+                 || p4_character_id == CharacterToID["Pichu"]
+                 )
+              && p1_character_id != p2_character_id
+              && p1_character_id != p3_character_id
+              && p1_character_id != p4_character_id
+              && p2_character_id != p3_character_id
+              && p2_character_id != p4_character_id
+              && p3_character_id != p4_character_id
+              && p1_won_versus
+              && p2_lost_versus
+              && p3_lost_versus
+              && p4_lost_versus
+              && (
+              p1_rank != prev(p1_rank)
+              || p2_rank != prev(p2_rank)
+              || p3_rank != prev(p3_rank)
+              || p4_rank != prev(p4_rank)
+              )
+)
+
+achievement(
+    title = "Fighting in Style",
+    points = 5,
+    description = "As P1, win a free-for-all bonus battle with the time set to 4:00 against three Lv. 5+ CPUs using Captain Falcon, Samus, Zelda, and Dr. Mario in regular Melee mode",
+    trigger = mode_id == 0x02 // Melee
+              && bonus_mode
+              && byte(0x0045bf13) == 4 // Time set to 4:00
+              && p1_is_player
+              && p2_is_cpu
+              && p2_cpu_level >= 5
+              && p2_cpu_level <= 9
+              && p3_is_cpu
+              && p3_cpu_level >= 5
+              && p3_cpu_level <= 9
+              && p4_is_cpu
+              && p4_cpu_level >= 5
+              && p4_cpu_level <= 9
+              && (p1_character_id == CharacterToID["Captain Falcon"]
+                 || p1_character_id == CharacterToID["Samus"]
+                 || p1_character_id == CharacterToID["Zelda"]
+                 || p1_character_id == CharacterToID["Sheik"]
+                 || p1_character_id == CharacterToID["Dr. Mario"]
+                 )
+              && (p2_character_id == CharacterToID["Captain Falcon"]
+                 || p2_character_id == CharacterToID["Samus"]
+                 || p2_character_id == CharacterToID["Zelda"]
+                 || p2_character_id == CharacterToID["Sheik"]
+                 || p2_character_id == CharacterToID["Dr. Mario"]
+                 )
+              && (p3_character_id == CharacterToID["Captain Falcon"]
+                 || p3_character_id == CharacterToID["Samus"]
+                 || p3_character_id == CharacterToID["Zelda"]
+                 || p3_character_id == CharacterToID["Sheik"]
+                 || p3_character_id == CharacterToID["Dr. Mario"]
+                 )
+              && (p4_character_id == CharacterToID["Captain Falcon"]
+                 || p4_character_id == CharacterToID["Samus"]
+                 || p4_character_id == CharacterToID["Zelda"]
+                 || p4_character_id == CharacterToID["Sheik"]
+                 || p4_character_id == CharacterToID["Dr. Mario"]
+                 )
+              && p1_character_id != p2_character_id
+              && p1_character_id != p3_character_id
+              && p1_character_id != p4_character_id
+              && p2_character_id != p3_character_id
+              && p2_character_id != p4_character_id
+              && p3_character_id != p4_character_id
+              && p1_won_versus
+              && p2_lost_versus
+              && p3_lost_versus
+              && p4_lost_versus
+              && (
+              p1_rank != prev(p1_rank)
+              || p2_rank != prev(p2_rank)
+              || p3_rank != prev(p3_rank)
+              || p4_rank != prev(p4_rank)
+              )
+)
+
+achievement(
+    title = "WELCOME TO WARIO WORLD",
+    points = 5,
+    description = "As P1, win a free-for-all coin battle with the time set to 4:00 against three Lv. 5+ CPUs using only characters from the Mario franchise in regular Melee mode",
+    trigger = mode_id == 0x02 // Melee
+              && coin_mode
+              && byte(0x0045bf13) == 4 // Time set to 4:00
+              && p1_is_player
+              && p2_is_cpu
+              && p2_cpu_level >= 5
+              && p2_cpu_level <= 9
+              && p3_is_cpu
+              && p3_cpu_level >= 5
+              && p3_cpu_level <= 9
+              && p4_is_cpu
+              && p4_cpu_level >= 5
+              && p4_cpu_level <= 9
+              && (p1_character_id == CharacterToID["Dr. Mario"]
+                 || p1_character_id == CharacterToID["Mario"]
+                 || p1_character_id == CharacterToID["Luigi"]
+                 || p1_character_id == CharacterToID["Bowser"]
+                 || p1_character_id == CharacterToID["Peach"]
+                 || p1_character_id == CharacterToID["Yoshi"]
+                 )
+              && (p2_character_id == CharacterToID["Dr. Mario"]
+                 || p2_character_id == CharacterToID["Mario"]
+                 || p2_character_id == CharacterToID["Luigi"]
+                 || p2_character_id == CharacterToID["Bowser"]
+                 || p2_character_id == CharacterToID["Peach"]
+                 || p2_character_id == CharacterToID["Yoshi"]
+                 )
+              && (p3_character_id == CharacterToID["Dr. Mario"]
+                 || p3_character_id == CharacterToID["Mario"]
+                 || p3_character_id == CharacterToID["Luigi"]
+                 || p3_character_id == CharacterToID["Bowser"]
+                 || p3_character_id == CharacterToID["Peach"]
+                 || p3_character_id == CharacterToID["Yoshi"]
+                 )
+              && (p4_character_id == CharacterToID["Dr. Mario"]
+                 || p4_character_id == CharacterToID["Mario"]
+                 || p4_character_id == CharacterToID["Luigi"]
+                 || p4_character_id == CharacterToID["Bowser"]
+                 || p4_character_id == CharacterToID["Peach"]
+                 || p4_character_id == CharacterToID["Yoshi"]
+                 )
+              && p1_won_versus
+              && p2_lost_versus
+              && p3_lost_versus
+              && p4_lost_versus
+              && (
+              p1_rank != prev(p1_rank)
+              || p2_rank != prev(p2_rank)
+              || p3_rank != prev(p3_rank)
+              || p4_rank != prev(p4_rank)
+              )
+)
+
 for c in CharacterToID {
     leaderboard(
         title = format("10-Man Melee: {0}", c),
@@ -662,3 +1235,4 @@ for c in CharacterToID {
         value = multiman_melee_kills
     )
 }
+
