@@ -396,8 +396,12 @@ EnemyHPLookup = {
     "BubbleMan": 500,
     "BubbleMan Beta": 1200,
     "DesertMan": 800,
+    "DesertMan Beta": 1600,
+    "PlantMan": 1000,
+    "FlameMan": 1000,
     "GutsMan": 300,
-    "GutsMan Alpha": 700
+    "GutsMan Alpha": 700,
+    "MetalMan Beta": 1200
 }
 
 ShopArrays = {
@@ -409,21 +413,61 @@ ShopArrays = {
     "Yoka Square": 0x00b720,
     "Beach Square": 0x00b7e0,
     "Beach Square Program": 0x00b820,
+    "Undernet 2": 0x00b860,
+    "Under Square": 0x00b920,
+    "Under Square Program": 0x00b960,
 }
 
 KeyItems = {
     "YaiCode": 0x009a12,
+    "SpinWht": 0x009a07,
+    "SpinPink": 0x009a08,
+    "SpinYllw": 0x009a09,
+    "SpinRed": 0x009a0a,
+    "SpinBlue": 0x009a0b,
+    "SpinGrn": 0x009a0c,
+    "SpinOrng": 0x009a0d,
+    "SpinPrpl": 0x009a0e,
+    "SpinDark": 0x009a0f,
     "WrstBand": 0x0099f9
 }
+
+Spinners = [
+    "SpinWht",
+    "SpinPink",
+    "SpinYllw",
+    "SpinRed",
+    "SpinBlue",
+    "SpinGrn",
+    "SpinOrng",
+    "SpinPrpl",
+    "SpinDark",
+]
 
 Jobs = [
     bit0(0x008300), // Transmission error
     bit1(0x008300), // Help me with my son!
     bit2(0x008300), // My Navi is sick
     bit3(0x008300), // Please deliver this
+    bit4(0x008300), // Gathering data (Tora)
+    bit5(0x008300), // Riot stopped (Tora)
+    bit6(0x008300), // Stuntmen wanted! (Tora)
+    bit7(0x008300), // Look for friends (Tora)
+    bit0(0x008301), // Help with rehab
+    bit1(0x008301), // Looking for condor
+    bit2(0x008301), // Somebody, please help!
+    bit3(0x008301), // Will you deliver?
+    bit4(0x008301), // Be my boyfriend!
     bit5(0x008301), // Rare chips for cheap!
     bit6(0x008301), // I'm broke!
     bit7(0x008301), // Chip prices
+    bit5(0x008302), // Please adopt a virus!
+    bit6(0x008302), // Catching gang members
+    bit7(0x008302), // Old Master
+]
+
+Trades = [
+    bit4(0x008162), // Staff Lounge, SonicWav W for ElecSwrd P
 ]
 
 MysteryData = {
@@ -440,16 +484,14 @@ MysteryData = {
         bit3(0x008242), // RockCube * BMD (ACDC Town: School Server Comp)
         bit7(0x008242), // Speader N BMD (ACDC Town: Control Panel Comp)
         bit3(0x008244), // Repair A BMD (ACDC Town: Yai's Phone Comp)
-        
-        // TODO: TV
         bit3(0x008248), // HPMemory BMD (ACDC: Sign Comp)
+        bit5(0x0081d0), // Panic C PMD (ACDC 1)
         bit6(0x0081d0), // MiniEnrg BMD (ACDC 1)
         bit7(0x0081d0), // WideSwrd L BMD (ACDC 1)
         bit6(0x0081d1), // 800Z BMD (ACDC 2)
         bit7(0x0081d1), // CopyDmg * BMD (ACDC 2)
         bit6(0x0081d2), // PanlOut3 * BMD (ACDC 3)
         bit7(0x0081d2), // LongSwrd E BMD (ACDC 3)
-        // TODO: WWW
     ],
     "Principal's PC": [
         bit0(0x008208), // Recov10 * BMD (ACDC Town: Principle's PC 1)
@@ -475,10 +517,10 @@ MysteryData = {
         bit7(0x008241), // RegUp2 BMD (SciLab: Vending Comp)
         bit2(0x008249), // 700 Zenny BMD (SciLab: DoorSens Cmp)
         bit3(0x008249), // AirShoes * BMD (SciLab: DoorSens Cmp)
+        bit6(0x0081d8), // CustSwrd Z BMD (SciLab 1)
+        bit7(0x0081d8), // Invis * BMD (SciLab 1)
         bit7(0x0081d9), // RegUp2 BMD (SciLab 2)
         bit6(0x0081d9), // GrabBack A BMD (SciLab 2)
-        bit7(0x0081d8), // Invis * BMD (SciLab 1)
-        // TODO: WWW
     ],
     "Yoka": [
         bit3(0x008247), // Unlocker BMD (Yoka: Old TV Comp)
@@ -488,11 +530,11 @@ MysteryData = {
         bit3(0x008246), // RegUp1 BMD (Yoka: Ticket Machine Comp)
         bit6(0x008249), // Geyser B PMD (Yoka: Alarm Comp)
         bit7(0x008249), // RegUP1 BMD (Yoka: Alarm Comp)
+        bit5(0x0081e0), // Prism Q BMD (Yoka 1)
         bit6(0x0081e0), // Tornado L PMD (Yoka 1)
         bit7(0x0081e0), // Speed+1 BMD (Yoka 1)
         bit6(0x0081e1), // HPMemory BMD (Yoka 2)
         bit7(0x0081e1), // FullEnrg BMD (Yoka 2)
-        /// TODO: WWW
     ],
     "Beach": [
         bit3(0x008243), // FireRatn H BMD (Beach Town: NetBattle Machine Comp)
@@ -501,9 +543,33 @@ MysteryData = {
         bit7(0x008244), // Atk+1 PMD (Beach Town: TV Station Control Panel Comp)
         bit0(0x00824b), // Jealousy J PMD (Beach Town: Editing Equipment Comp)
         bit1(0x00824b), // HPMemory BMD (Beach Town: Editing Equipment Comp)
+        bit6(0x0081e8), // SpinPink PMD (Beach 1)
         bit7(0x0081e8), // Charge+1 BMD (Beach 1)
         bit6(0x0081e9), // RegUP3 BMD (Beach 2)
         bit7(0x0081e9), // Recov50 G BMD (Beach 2)
+        bit5(0x0081eb), // BlkBomb1 P BMD (Hades Isle Area)
+        bit6(0x0081eb), // HadesKey BMD (Hades Isle Area)
+        bit3(0x00824b), // WeapLV+1 BMD (Hades Isle: Demon Statue Comp)
+    ],
+    "Hospital": [
+        bit5(0x008218), // Recov120 O BMD (Beach: Hospital Comp 1)
+        bit6(0x008218), // RegUp1 BMD (Beach: Hospital Comp 1)
+        bit7(0x008218), // OilBody BMD (Beach: Hospital Comp 1)
+        bit5(0x008219), // GutStrgt Q BMD (Beach: Hospital Comp 2)
+        bit6(0x008219), // HPMemory BMD (Beach: Hospital Comp 2)
+        bit7(0x008219), // Atk+1 BMD (Beach: Hospital Comp 2)
+        bit5(0x00821a), // SubMem BMD (Beach: Hospital Comp 3)
+        bit6(0x00821a), // 1600 Zenny BMD (Beach: Hospital Comp 3)
+        bit7(0x00821a), // HeatSide T BMD (Beach: Hospital Comp 3)
+        bit5(0x00821b), // 2000 Zennys BMD (Beach: Hospital Comp 4)
+        bit6(0x00821b), // Barr100 E BMD (Beach: Hospital Comp 4)
+        bit7(0x00821b), // FullEnrg BMD (Beach: Hospital Comp 4)
+        bit5(0x00821c), // Charge+1 BMD (Beach: Hospital Comp 5)
+        bit6(0x00821c), // HPMemory BMD (Beach: Hospital Comp 5)
+        bit7(0x00821c), // FireSwrd R BMD (Beach: Hospital Comp 5)
+        bit7(0x008246), // 9000 Zennys BMD (Hospital: Vending Machine Comp)
+        bit3(0x008245), // RegUp2 BMD (Hospital: Bed Comp)
+        bit7(0x008245), // Recov120 * BMD (Hospital: TV Comp)
     ],
     "Zoo Comp": [
         bit5(0x008210), // Geddon1 D BMD (Yoka: Zoo Comp 1)
@@ -519,7 +585,39 @@ MysteryData = {
         bit5(0x008213), // HP+100 BMD (Yoka: Zoo Comp 4)
         bit6(0x008213), // RegUp2 BMD (Yoka: Zoo Comp 4)
         bit7(0x008213), // Hammer T BMD (Yoka: Zoo Comp 4)
+    ],
+    "Undernet": [
+        bit6(0x0081f0), // HP+200 BMD (Undernet 1)
+        bit7(0x0081f0), // 1200 Zennys BMD (Undernet 1)
+        bit6(0x0081f1), // BlkBomb2 S BMD (Undernet 2)
+        bit7(0x0081f1), // RegUP2 BMD (Undernet 2)
+        // Lance S BMD (Undernet 3)
+        bit7(0x0081f2), // HPMemory BMD (Undernet 3)
+        bit6(0x0081f3), // Recov200 N BMD (Undernet 4)
+        // StepSwrd M BMD (Undernet 4)
+        // Speed+1 BMD (Undernet 4)
         
+    ],
+    "Deepweb": [
+        bit6(0x0081e9), // TODO: Delete
+        // SandStge C BMD (Undernet 5)
+        // HPMemory BMD (Undernet 5)
+        // SubMem BMD (Undernet 6)
+        // WeapLV+1 BMD (Undernet 6)
+        // Aura F BMD (Undernet 6)
+        // GutImpct J BMD (Undernet 7)
+        // Guardian O BMD (Undernet 7)
+        // HPMemory BMD (Undernet 7)
+        // Hammer BMD (Undernet 7)
+        // GigFldr1 PMD (Undernet 7)
+    ],
+    "WWW": [
+        bit6(0x0081e9), // TODO: Delete
+        // TODO: Plan out
+    ],
+    "Secret Area": [
+        bit6(0x0081e9), // TODO: Delete
+        // TODO: Plan out
     ]
 }
 
@@ -576,6 +674,10 @@ function bitflag_flipped(bitflag) {
 
 function bitflag_count(bitflag) {
     return bitflag
+}
+
+function has_key_item(name) {
+    return bit0(KeyItems[name])
 }
 
 function in_area(name) {
@@ -709,6 +811,40 @@ achievement(
     trigger = no_glitches_enabled() && in_area("TV Station Editing Room") && fighting_boss("DesertMan") && boss_killed()
 )
 
+achievement(
+    title = "Overgrown",
+    points = 10,
+    type = "progression",
+    description = "Defeat PlantMan for the first time!",
+    trigger = no_glitches_enabled() && in_area("Hospital Comp 5") && fighting_boss("PlantMan") && boss_killed()
+)
+
+achievement(
+    title = "Triple Cut",
+    points = 3,
+    description = "Bankrupt the gambler in the TV Station Control Panel Comp!",
+    // I used a zenny check here, since it's the only way to get that much in this area,
+    // and the bitflag for this is a bit unreliable (might be reused / area dependent)
+    trigger = no_glitches_enabled() && in_area("TV Station Control Panel Comp") && (zenny - prev(zenny)) == 40500
+)
+
+achievement(
+    title = "An After-Gamble Brawl",
+    points = 5,
+    description = "Bankrupt the gambler in the Hospital Vending Machine Comp!",
+    // I used a zenny check here, since it's the only way to get that much in this area,
+    // and the bitflag for this is a bit unreliable (might be reused / area dependent)
+    trigger = no_glitches_enabled() && in_area("Hospital Vending Machine Comp") && (zenny - prev(zenny)) == 256000
+)
+
+achievement(
+    title = "Birthday Party",
+    points = 10,
+    type = "progression",
+    description = "Defeat FlameMan for the first time!",
+    trigger = no_glitches_enabled() && in_area("Undernet 3") && fighting_boss("FlameMan") && boss_killed()
+)
+
 ///////////////////////
 // Beta Boss S-Ranks //
 ///////////////////////
@@ -734,6 +870,25 @@ achievement(
     trigger = no_glitches_enabled() && in_area("Beach Area 1") && fighting_boss("BubbleMan Beta") && s_ranked()
 )
 
+achievement(
+    title = "Eroded",
+    points = 5,
+    description = "Defeat DesertMan Beta with an S rank!",
+    trigger = no_glitches_enabled() && in_area("Old TV Comp") && fighting_boss("DesertMan Beta") && s_ranked()
+)
+
+achievement(
+    title = "Rusted",
+    points = 5,
+    description = "Defeat MetalMan Beta with an S rank!",
+    trigger = no_glitches_enabled() && in_area("Hotel Front") && fighting_boss("MetalMan Beta") && s_ranked()
+)
+
+
+// PlantMan Beta
+
+// FlameMan Beta
+
 /////////////////
 // Other Tasks //
 /////////////////
@@ -745,6 +900,15 @@ achievement(
     trigger = no_glitches_enabled()
               && prev(sum_of(Jobs, bitflag_count)) == length(Jobs) - 1
               && measured(sum_of(Jobs, bitflag_count) == length(Jobs))
+)
+
+achievement(
+    title = "Virtual DJ",
+    points = 5,
+    description = "Collect all of the Spin key items!",
+    trigger = no_glitches_enabled()
+              && prev(sum_of(Spinners, has_key_item)) == length(Spinners) - 1
+              && measured(sum_of(Spinners, has_key_item) == length(Spinners))
 )
 
 ////////////////////
@@ -797,12 +961,57 @@ achievement(
 )
 
 achievement(
-    title = "Beach: Data Collector",
-    points = 2,
-    description = "Collect all of the Blue and Purple Mystery Data throughout Yoka and Beach Area!",
+    title = "Beach & Boat: Data Collector",
+    points = 4,
+    description = "Collect all of the Blue and Purple Mystery Data throughout Beach, Beach Area, and Hades Isle!",
     trigger = no_glitches_enabled()
               && prev(sum_of(MysteryData["Beach"], bitflag_count)) == length(MysteryData["Beach"]) - 1
               && measured(sum_of(MysteryData["Beach"], bitflag_count) == length(MysteryData["Beach"]))
+)
+
+achievement(
+    title = "Hospital: Data Collector",
+    points = 3,
+    description = "Collect all of the Blue Mystery Data throughout Hospital and Hospital Comp!",
+    trigger = no_glitches_enabled()
+              && prev(sum_of(MysteryData["Hospital"], bitflag_count)) == length(MysteryData["Hospital"]) - 1
+              && measured(sum_of(MysteryData["Hospital"], bitflag_count) == length(MysteryData["Hospital"]))
+)
+
+achievement(
+    title = "Undernet: Data Collector",
+    points = 4,
+    description = "Collect all of the Blue Mystery Data throughout Undernet 1-4!",
+    trigger = no_glitches_enabled()
+              && prev(sum_of(MysteryData["Undernet"], bitflag_count)) == length(MysteryData["Undernet"]) - 1
+              && measured(sum_of(MysteryData["Undernet"], bitflag_count) == length(MysteryData["Undernet"]))
+)
+
+achievement(
+    title = "Deep Undernet: Data Collector",
+    points = 5,
+    description = "Collect all of the Blue and Purple Mystery Data throughout Undernet 5-7!",
+    trigger = no_glitches_enabled()
+              && prev(sum_of(MysteryData["Deepweb"], bitflag_count)) == length(MysteryData["Deepweb"]) - 1
+              && measured(sum_of(MysteryData["Deepweb"], bitflag_count) == length(MysteryData["Deepweb"]))
+)
+
+achievement(
+    title = "WWW: Data Collector",
+    points = 3,
+    description = "Collect all of the Blue and Purple Mystery Data throughout WWW Isle!",
+    trigger = no_glitches_enabled()
+              && prev(sum_of(MysteryData["WWW"], bitflag_count)) == length(MysteryData["WWW"]) - 1
+              && measured(sum_of(MysteryData["WWW"], bitflag_count) == length(MysteryData["WWW"]))
+)
+
+achievement(
+    title = "Secret Area: Data Collector",
+    points = 10,
+    description = "Collect all of the Blue and Purple Mystery Data throughout the Secret Area!",
+    trigger = no_glitches_enabled()
+              && prev(sum_of(MysteryData["Secret Area"], bitflag_count)) == length(MysteryData["Secret Area"]) - 1
+              && measured(sum_of(MysteryData["Secret Area"], bitflag_count) == length(MysteryData["Secret Area"]))
 )
 
 /////////////////////
@@ -850,6 +1059,24 @@ achievement(
     title = "Beach Square: Shopping Spree 2", points = 2,
     description = "Empty out the program shop in Beach Square!",
     trigger = no_glitches_enabled() && in_area("Beach Square") && shop_emptied("Beach Square Program")
+)
+
+achievement(
+    title = "Undernet 2: Shopping Spree", points = 5,
+    description = "Empty out the bugfrag shop in Undernet 2!",
+    trigger = no_glitches_enabled() && in_area("Undernet 2") && shop_emptied("Undernet 2")
+)
+
+achievement(
+    title = "Under Square: Shopping Spree", points = 3,
+    description = "Empty out the chip shop in Under Square!",
+    trigger = no_glitches_enabled() && in_area("Under Square") && shop_emptied("Under Square")
+)
+
+achievement(
+    title = "Under Square: Shopping Spree 2", points = 3,
+    description = "Empty out the program shop in Under Square!",
+    trigger = no_glitches_enabled() && in_area("Under Square") && shop_emptied("Under Square Program")
 )
 
 
@@ -909,6 +1136,28 @@ leaderboard(
 )
 
 leaderboard(
+    title = "Deletion Time: PlantMan",
+    description = "Defeat PlantMan for the first time as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Hospital Comp 5") && fighting_boss("PlantMan") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: FlameMan",
+    description = "Defeat FlameMan for the first time as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Undernet 3") && fighting_boss("FlameMan") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
     title = "Deletion Time: FlashMan Beta",
     description = "Defeat FlashMan Beta in ACDC Area 2 as fast as you can!",
     start  = no_glitches_enabled() && in_area("ACDC Area 2") && fighting_boss("FlashMan Beta") && boss_killed(),
@@ -932,7 +1181,7 @@ leaderboard(
 
 leaderboard(
     title = "Deletion Time: BubbleMan Beta",
-    description = "Defeat BubbleMan Beta in the Beach Area 1 as fast as you can!",
+    description = "Defeat BubbleMan Beta in Beach Area 1 as fast as you can!",
     start  = no_glitches_enabled() && in_area("Beach Area 1") && fighting_boss("BubbleMan Beta") && boss_killed(),
     cancel = always_false(),
     submit = always_true(),
@@ -941,9 +1190,40 @@ leaderboard(
     format = "FRAMES"
 )
 
+leaderboard(
+    title = "Deletion Time: DesertMan Beta",
+    description = "Defeat DesertMan Beta in the Old TV Comp as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Old TV Comp") && fighting_boss("DesertMan Beta") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: MetalMan Beta",
+    description = "Defeat MetalMan Beta in the Hotel Front as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Hotel Front") && fighting_boss("MetalMan Beta") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+// PlantMan Beta
+
+// FlameMan Beta
+
 ///////////////////
 // Rich Presence //
 ///////////////////
+rich_presence_conditional_display(
+    player_max_hp == 0 || zenny < 0,
+    "At title screen"
+)
+
 
 //rich_presence_conditional_display(
 //    buster_glitch(),
@@ -989,12 +1269,54 @@ rich_presence_conditional_display(
 )
 
 rich_presence_conditional_display(
+    in_battle && enemy_1_id != 0  && enemy_3_id != 0,
+    "In battle against {3} and {4} | {0} | HP: {1}/{2} | Zenny: {5}",
+    rich_presence_lookup("Area", map_id, AreaLookup, fallback="Unknown Area"),
+    rich_presence_value("Number", player_battle_hp),
+    rich_presence_value("Number", player_battle_max_hp),
+    rich_presence_lookup("Enemy", enemy_1_id, EnemyLookup, fallback="Unknown"),
+    rich_presence_lookup("Enemy", enemy_3_id, EnemyLookup, fallback="Unknown"),
+    rich_presence_value("Number", zenny)
+)
+
+rich_presence_conditional_display(
+    in_battle && enemy_2_id != 0  && enemy_3_id != 0,
+    "In battle against {3} and {4} | {0} | HP: {1}/{2} | Zenny: {5}",
+    rich_presence_lookup("Area", map_id, AreaLookup, fallback="Unknown Area"),
+    rich_presence_value("Number", player_battle_hp),
+    rich_presence_value("Number", player_battle_max_hp),
+    rich_presence_lookup("Enemy", enemy_2_id, EnemyLookup, fallback="Unknown"),
+    rich_presence_lookup("Enemy", enemy_3_id, EnemyLookup, fallback="Unknown"),
+    rich_presence_value("Number", zenny)
+)
+
+rich_presence_conditional_display(
     in_battle && enemy_1_id != 0,
     "In battle against {3} | {0} | HP: {1}/{2} | Zenny: {4}",
     rich_presence_lookup("Area", map_id, AreaLookup, fallback="Unknown Area"),
     rich_presence_value("Number", player_battle_hp),
     rich_presence_value("Number", player_battle_max_hp),
     rich_presence_lookup("Enemy", enemy_1_id, EnemyLookup, fallback="Unknown"),
+    rich_presence_value("Number", zenny)
+)
+
+rich_presence_conditional_display(
+    in_battle && enemy_2_id != 0,
+    "In battle against {3} | {0} | HP: {1}/{2} | Zenny: {4}",
+    rich_presence_lookup("Area", map_id, AreaLookup, fallback="Unknown Area"),
+    rich_presence_value("Number", player_battle_hp),
+    rich_presence_value("Number", player_battle_max_hp),
+    rich_presence_lookup("Enemy", enemy_2_id, EnemyLookup, fallback="Unknown"),
+    rich_presence_value("Number", zenny)
+)
+
+rich_presence_conditional_display(
+    in_battle && enemy_3_id != 0,
+    "In battle against {3} | {0} | HP: {1}/{2} | Zenny: {4}",
+    rich_presence_lookup("Area", map_id, AreaLookup, fallback="Unknown Area"),
+    rich_presence_value("Number", player_battle_hp),
+    rich_presence_value("Number", player_battle_max_hp),
+    rich_presence_lookup("Enemy", enemy_3_id, EnemyLookup, fallback="Unknown"),
     rich_presence_value("Number", zenny)
 )
 
