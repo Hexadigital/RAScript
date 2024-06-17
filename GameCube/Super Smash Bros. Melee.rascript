@@ -254,7 +254,7 @@ achievement(
 achievement(
     title = "Centurion",
     points = 10,
-    description = "Get 100+ KOs in Endless Melee",
+    description = "Get 100 KOs or more in Endless Melee",
     trigger = in_endless_melee
               && area_in_multiman_melee
               && p1_stocks == 1
@@ -281,7 +281,7 @@ achievement(
     type = "progression",
     title = "Wired to Survive",
     points = 10,
-    description = "Complete 15-Minute Melee, unlocking the Kongo Jungle stage",
+    description = "Complete 15-Minute Melee",
     trigger = in_15min_melee
               && area_in_multiman_melee
               && p1_stocks == 1
@@ -329,7 +329,7 @@ achievement(
 achievement(
     title = "Shield Buster",
     points = 3,
-    description = "Break the Shield of any CPU Lv 5 or Higher in VS. Mode",
+    description = "Earn the \"Shield Buster\" bonus by breaking the shield of a Level 5 CPU or higher in any VS. mode",
     trigger = in_versus_mode
               && (( // P1 player, other CPU
               p1_is_player
@@ -406,7 +406,7 @@ achievement(
 achievement(
     title = "Twosday",
     points = 5,
-    description = "Get a Double KO bonus against two or more Lv. 5+ CPUs in any VS. Mode except Super Sudden Death",
+    description = "Earn the \"Double KO\" bonus by defeating two or more Level 5 CPUs or higher with a single attack in any VS. mode match except Super Sudden Death",
     trigger = in_versus_mode_without_ssd
               && (( // P1 player, other CPU
                   p1_is_player
@@ -475,7 +475,7 @@ achievement(
 achievement(
     title = "Oh Baby, a Triple!",
     points = 10,
-    description = "Get a Triple KO bonus against three Lv. 3+ CPUs in any VS. Mode except Super Sudden Death",
+    description = "Earn the \"Triple KO\" bonus by defeating three Level 3 CPUs or higher with a single attack in any VS. mode match except Super Sudden Death",
     trigger = in_versus_mode_without_ssd
               && (( // P1 player, other CPU
                   p1_is_player
@@ -531,7 +531,7 @@ achievement(
 achievement(
     title = "They Love Me",
     points = 1,
-    description = "Get a Crowd Favourite bonus by getting the crowd to chant your name in any VS. Mode except Super Sudden Death",
+    description = "Get a Crowd Favorite bonus by getting the crowd to chant your name in any VS. Mode except Super Sudden Death",
     trigger = in_versus_mode_without_ssd
               && ((
                   p1_is_player
@@ -551,7 +551,7 @@ achievement(
 achievement(
     title = "Bullseye!",
     points = 2,
-    description = "As Mewtwo or Samus, get the Bull's-eye KO Bonus with items turned off in any VS. Mode except Super Sudden Death",
+    description = "Earn the \"Bull's-eye KO\" bonus as Mewtwo or Samus with items turned off in any VS. mode match except Super Sudden Death",
     trigger = in_versus_mode_without_ssd
               && items_off
               && ((
@@ -580,7 +580,7 @@ achievement(
 achievement(
     title = "Hungrybox Tribute",
     points = 10,
-    description = "As Jigglypuff, get the Combo King bonus in any VS. Mode except Super Sudden Death",
+    description = "Earn the \"Combo King\" bonus as Jigglypuff in any VS. mode except match Super Sudden Death",
     trigger = in_versus_mode_without_ssd
               && items_off
               && ((
@@ -605,7 +605,7 @@ achievement(
 achievement(
     title = "Flexing the Triforce of Power",
     points = 10,
-    description = "As Ganondorf, get the Berserker bonus in any VS. Mode except Super Sudden Death",
+    description = "Earn the \"Berserker\" bonus by using 60 attacks within a minute as Ganondorf in any VS. mode match except Super Sudden Death",
     trigger = in_versus_mode_without_ssd
               && ((
                   p1_is_player
@@ -629,7 +629,7 @@ achievement(
 achievement(
     title = "The Little Kicks",
     points = 1,
-    description = "As Luigi, get the Poser KO bonus in any VS. Mode",
+    description = "Earn the \"Poser KO\" bonus by defeating an opponent with a taunt as Luigi in any VS. mode match",
     trigger = in_versus_mode
               && ((
                   p1_is_player
@@ -653,7 +653,7 @@ achievement(
 achievement(
     title = "You Swim in the Air Now Too?",
     points = 5,
-    description = "As Falco, get the Bird of Prey bonus and win in any VS. Mode except Super Sudden Death",
+    description = "Earn the \"Bird of Prey\" bonus by using only aerial attacks as Falco in any VS. mode match except Super Sudden Death",
     trigger = in_versus_mode_without_ssd
               && ((
                   p1_is_player
@@ -681,7 +681,7 @@ achievement(
 achievement(
     title = "Meteor Shower",
     points = 2,
-    description = "Get the Meteor Smash bonus in any VS. Mode except Super Sudden Death",
+    description = "Earn the \"Meteor Smash\" bonus by defeating any opponent using a meteor smash in any VS. mode match except Super Sudden Death",
     trigger = in_versus_mode_without_ssd
               && ((
                   p1_is_player
@@ -701,7 +701,7 @@ achievement(
 achievement(
     title = "Get Out of My Stage!",
     points = 3,
-    description = "Get the Meteor Clear bonus by ending the match with a meteor smash in any VS. Mode except Super Sudden Death",
+    description = "Earn the \"Meteor Clear\" bonus by ending with a meteor smash in any VS. mode match except Super Sudden Death",
     trigger = in_versus_mode_without_ssd
               && ((
                   p1_is_player
@@ -721,7 +721,7 @@ achievement(
 achievement(
     title = "Ragdoll",
     points = 3,
-    description = "Use all four throws and win against a Lv. 5+ CPU in any VS Mode except Super Sudden Death",
+    description = "Earn the \"Compass Tosser\" bonus by using all four throws and winning against a Level 5 CPU or higher in any VS. mode match except Super Sudden Death",
     trigger = in_versus_mode_without_ssd
               && ((
                   p1_is_player
@@ -793,7 +793,7 @@ achievement(
 achievement(
     title = "Mewtwo Strikes Back",
     points = 3,
-    description = "As P1, win a Stamina Mode match against a Lv. 5+ CPU as either Pikachu or Mewtwo, fighting against the character you did not play as",
+    description = "As P1, win a Stamina Mode match against a Level 5 or higher Pikachu or Mewtwo in P2's slot, fighting against the character you did not play as",
     trigger = mode_id == 0x1f // [Special Melee] Stamina Mode
               && p1_is_player
               && p2_is_cpu
@@ -812,7 +812,7 @@ achievement(
 achievement(
     title = "First Blood",
     points = 3,
-    description = "As P1, win a 4-stock Super Sudden Death match against a Lv. 5+ CPU in P2's slot as either Marth or Roy, fighting against the character you did not play as",
+    description = "As P1, win a 4-stock Super Sudden Death match against a Level 5 or higher Marth or Roy in P2's slot, fighting against the character you did not play as",
     trigger = mode_id == 0x10 // [Special Melee] Super Sudden Death
               && p1_is_player
               && p2_is_cpu
@@ -833,7 +833,7 @@ achievement(
 achievement(
     title = "Cream Puff Throwdown",
     points = 3,
-    description = "As P1, win a 4-stock Giant Melee match against a Lv. 5+ CPU in P2's slot as either Kirby or Jigglypuff, fighting against the character you did not play as",
+    description = "As P1, win a 4-stock Giant Melee match against a Level 5 or higher Kirby or Jigglypuff in P2's slot, fighting against the character you did not play as",
     trigger = mode_id == 0x1e // [Special Melee] Giant Melee
               && p1_is_player
               && p2_is_cpu
@@ -854,7 +854,7 @@ achievement(
 achievement(
     title = "Kaiju at Scale",
     points = 3,
-    description = "As P1, win a 4-stock Tiny Melee match against a Lv. 5+ CPU in P2's slot as either Bowser or Donkey Kong, fighting against the character you did not play as",
+    description = "As P1, win a 4-stock Tiny Melee match against a Level 5 or higher Bowser or Donkey Kong in P2's slot, fighting against the character you did not play as",
     trigger = mode_id == 0x1d // [Special Melee] Tiny Melee
               && p1_is_player
               && p2_is_cpu
@@ -875,7 +875,7 @@ achievement(
 achievement(
     title = "Will-o'-the-wisp",
     points = 3,
-    description = "As P1, win a 4-stock Invisible Melee match against a Lv. 5+ CPU in P2's slot as either Captain Falcon or Ganondorf, fighting against the character you did not play as",
+    description = "As P1, win a 4-stock Invisible Melee match against a Level 5 or higher Captain Falcon or Ganondorf in P2's slot, fighting against the character you did not play as",
     trigger = mode_id == 0x11 // [Special Melee] Invisible Melee
               && p1_is_player
               && p2_is_cpu
@@ -896,7 +896,7 @@ achievement(
 achievement(
     title = "Shader Pack",
     points = 3,
-    description = "As P1, win a 4-stock Fixed-Camera Mode match against a Lv. 5+ CPU in P2's slot, with both characters set to Mr. Game & Watch, and the stage set to Flat Zone",
+    description = "As P1, win a 4-stock Fixed-Camera Mode match with both characters set to Mr. Game & Watch, against a level 5 or higher CPU on the Flat Zone stage",
     trigger = mode_id == 0x2a // [Special Melee] Fixed-Camera Mode
               && area_id == 0x1b
               && p1_is_player
@@ -916,7 +916,7 @@ achievement(
 achievement(
     title = "It's Dangerous to Go Alone",
     points = 3,
-    description = "As P1, win a 4-stock Single-Button Mode match against a Lv. 5+ CPU in P2's slot as either Link or Young Link, fighting against the character you did not play as",
+    description = "As P1, win a 4-stock Single-Button Mode match against a Level 5 or higher Link or Young Link in P2's slot, fighting against the character you did not play as",
     trigger = mode_id == 0x2c // [Special Melee] Single-Button Mode
               && p1_is_player
               && p2_is_cpu
@@ -937,7 +937,7 @@ achievement(
 achievement(
     title = "Shooting Stars",
     points = 3,
-    description = "As P1, win a 4-stock Lightning Melee match against a Lv. 5+ CPU in P2's slot as either Fox or Falco, fighting against the character you did not play as",
+    description = "As P1, win a 4-stock Lightning Melee match against a Level 5 or higher Fox or Falco in P2's slot, fighting against the character you did not play as",
     trigger = mode_id == 0x13 // [Special Melee] Lightning Melee
               && p1_is_player
               && p2_is_cpu
@@ -958,7 +958,7 @@ achievement(
 achievement(
     title = "Kaizo Training",
     points = 3,
-    description = "As P1, win a 4-stock Slo-Mo Melee match against a Lv. 5+ CPU in P2's slot as either Mario or Luigi, fighting against the character you did not play as",
+    description = "As P1, win a 4-stock Slo-Mo Melee match against a Level 5 or higher Mario or Luigi in P2's slot, fighting against the character you did not play as",
     trigger = mode_id == 0x12 // [Special Melee] Slo-Mo Melee
               && p1_is_player
               && p2_is_cpu
@@ -979,7 +979,7 @@ achievement(
 achievement(
     title = "Time is Running Short",
     points = 5,
-    description = "Win a free-for-all timed battle with the time set to 4:00 against three Lv. 5+ CPUs using Ness, Kirby, Ice Climbers, and Pichu in regular Melee mode",
+    description = "As P1, win a free-for-all timed battle in regular Melee mode against three Level 5 or higher CPUs, using Ness, Kirby, Ice Climbers, and Pichu (Time set to 4 minutes)",
     trigger = mode_id == 0x02 // Melee
               && time_mode
               && byte(0x0045bf13) == 4 // Time set to 4:00
@@ -1034,7 +1034,7 @@ achievement(
 achievement(
     title = "Fighting in Style",
     points = 5,
-    description = "As P1, win a free-for-all bonus battle with the time set to 4:00 against three Lv. 5+ CPUs using Captain Falcon, Samus, Zelda, and Dr. Mario in regular Melee mode",
+    description = "As P1, win a free-for-all bonus battle in regular Melee mode against three Level 5 or higher CPUs, using Captain Falcon, Samus, Zelda, and Dr. Mario (Time set to 4 minutes)",
     trigger = mode_id == 0x02 // Melee
               && bonus_mode
               && byte(0x0045bf13) == 4 // Time set to 4:00
@@ -1093,7 +1093,7 @@ achievement(
 achievement(
     title = "WELCOME TO WARIO WORLD",
     points = 5,
-    description = "As P1, win a free-for-all coin battle with the time set to 4:00 against three Lv. 5+ CPUs using only characters from the Mario franchise in regular Melee mode",
+    description = "As P1, win a free-for-all coin battle in regular Melee mode against three Level 5 or higher CPUs, using only characters from the Mario franchise (Time set to 4 minutes)",
     trigger = mode_id == 0x02 // Melee
               && coin_mode
               && byte(0x0045bf13) == 4 // Time set to 4:00
