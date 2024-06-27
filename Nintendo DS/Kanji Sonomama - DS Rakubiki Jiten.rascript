@@ -23,7 +23,7 @@ flagman_gameover = prev(flagman_lives) == 1 && flagman_lives == 0
 judge_pointer = tbyte(0x1fe63c)
 // 0x00 = Game A, 0x01 = Game B, 0x02 = Time
 judge_mode = byte(judge_pointer)
-judge_score = byte(judge_pointer + 0x0a)
+judge_score = byte(judge_pointer + 0x06)
 
 manhole_pointer = tbyte(0x1fe6d4)
 // 0x00 = Game A, 0x01 = Game B, 0x02 = Time
