@@ -312,11 +312,11 @@ EnemyLookup = {
     0xAC: "BeastMan",
     0xAD: "BeastMan Alpha",
     0xAE: "BeastMan Beta",
-    0xAF: "Beastman Omega",
+    0xAF: "BeastMan Omega",
     0xB0: "BubbleMan",
     0xB1: "BubbleMan Alpha",
     0xB2: "BubbleMan Beta",
-    0xB3: "Bubbleman Omega",
+    0xB3: "BubbleMan Omega",
     0xB4: "DesertMan",
     0xB5: "DesertMan Alpha",
     0xB6: "DesertMan Beta",
@@ -328,7 +328,7 @@ EnemyLookup = {
     0xBC: "FlameMan",
     0xBD: "FlameMan Alpha",
     0xBE: "FlameMan Beta",
-    0xBF: "Flameman Omega",
+    0xBF: "FlameMan Omega",
     0xC0: "DrillMan",
     0xC1: "DrillMan Alpha",
     0xC2: "DrillMan Beta",
@@ -340,11 +340,11 @@ EnemyLookup = {
     0xC8: "GutsMan",
     0xC9: "GutsMan Alpha",
     0xCA: "GutsMan Beta",
-    0xCB: "Gutsman Omega",
+    0xCB: "GutsMan Omega",
     0xCC: "ProtoMan",
     0xCD: "ProtoMan Alpha",
     0xCE: "ProtoMan Beta",
-    0xCF: "Protoman Omega",
+    0xCF: "ProtoMan Omega",
     0xD0: "MetalMan",
     0xD1: "MetalMan Alpha",
     0xD2: "MetalMan Beta",
@@ -391,17 +391,56 @@ for key in EnemyLookup {
 EnemyHPLookup = {
     "FlashMan": 300,
     "FlashMan Beta": 700,
+    "FlashMan Omega": 1500,
     "BeastMan": 500,
+    "BeastMan Alpha": 700,
     "BeastMan Beta": 900,
+    "BeastMan Omega": 1600,
     "BubbleMan": 500,
     "BubbleMan Beta": 1200,
+    "BubbleMan Omega": 1800,
     "DesertMan": 800,
     "DesertMan Beta": 1600,
+    "DesertMan Omega": 2000,
     "PlantMan": 1000,
+    "PlantMan Beta": 1700,
+    "PlantMan Omega": 2100,
     "FlameMan": 1000,
+    "FlameMan Beta": 1800,
+    "FlameMan Omega": 2400,
+    "MistMan": 1000,
+    "MistMan Beta": 1600,
+    "MistMan Omega": 2000,
+    "BowlMan Omega": 2000,
+    "DrillMan": 600,
+    "DrillMan Beta": 1200,
+    "DrillMan Omega": 1800,
+    "Bass": 1000,
+    "Alpha": 2000,
+    "Alpha Omega": 3000,
     "GutsMan": 300,
     "GutsMan Alpha": 700,
-    "MetalMan Beta": 1200
+    "GutsMan Beta": 900,
+    "GutsMan Omega": 2000,
+    "MetalMan": 500,
+    "MetalMan Beta": 1200,
+    "MetalMan Omega": 1700,
+    "KingMan": 800,
+    "KingMan Beta": 1500,
+    "KingMan Omega": 2000,
+    "ProtoMan": 1000,
+    "ProtoMan Beta": 1600,
+    "ProtoMan Omega": 2000,
+    "DarkMan": 1400,
+    "DarkMan Beta": 1800,
+    "DarkMan Omega": 2000,
+    "JapanMan": 1600,
+    "JapanMan Beta": 2000,
+    "JapanMan Omega": 2200,
+    "Serenade": 2000,
+    "Serenade Omega": 2600,
+    "BassGS": 2000,
+    "Bass Omega": 3000,
 }
 
 ShopArrays = {
@@ -416,6 +455,9 @@ ShopArrays = {
     "Undernet 2": 0x00b860,
     "Under Square": 0x00b920,
     "Under Square Program": 0x00b960,
+    "Undernet 4": 0x00b8a0,
+    "Undernet 6": 0x00b8e0,
+    "Secret Area 2": 0x00b9a0
 }
 
 KeyItems = {
@@ -461,13 +503,35 @@ Jobs = [
     bit5(0x008301), // Rare chips for cheap!
     bit6(0x008301), // I'm broke!
     bit7(0x008301), // Chip prices
+    bit0(0x008302), // Stamp collecting
+    bit1(0x008302), // Give your support!
+    bit2(0x008302), // Finding the blue Navi
+    bit3(0x008302), // Hide and seek!
+    bit4(0x008302), // Legendary Tomes
     bit5(0x008302), // Please adopt a virus!
     bit6(0x008302), // Catching gang members
     bit7(0x008302), // Old Master
+    bit7(0x008303), // Help with a will
 ]
 
 Trades = [
+    bit0(0x008162), // TV Station Hall 2F, WideSwrd C for Recov120 S
+    bit2(0x008162), // Hotel Front, FireSwrd P for IceStage *
+    bit3(0x008162), // Class 5-B, Bubbler C for WideSwrd C
     bit4(0x008162), // Staff Lounge, SonicWav W for ElecSwrd P
+    bit1(0x008163), // Beach, Shadow J for AntiSwrd Y
+    bit2(0x008163), // Hospital, DynaWave V for GrabBack K
+    bit4(0x008163), // SciLab, Shake1 S for VarSwrd B
+    bit6(0x008163), // ACDC, Recov120 S for DynaWave V
+    bit4(0x008164), // TV Station Editing Room, HoleMetr H for Rook F
+    bit7(0x008164), // Four Hades, GrabBack K for ZeusHamr Z
+]
+
+Quizzes = [
+    bit0(0x00805f), // Quiz King (Hades)
+    bit1(0x00805f), // Quiz Queen (Hospital)
+    bit2(0x00805f), // QuizMaster (Yoka)
+    bit3(0x00805f), // Mr. Quiz (Yoka)
 ]
 
 MysteryData = {
@@ -492,6 +556,8 @@ MysteryData = {
         bit7(0x0081d1), // CopyDmg * BMD (ACDC 2)
         bit6(0x0081d2), // PanlOut3 * BMD (ACDC 3)
         bit7(0x0081d2), // LongSwrd E BMD (ACDC 3)
+        bit6(0x008247), // RegUP2 in Tank
+        bit7(0x008247), // HPMemory in Tank
     ],
     "Principal's PC": [
         bit0(0x008208), // Recov10 * BMD (ACDC Town: Principle's PC 1)
@@ -535,6 +601,7 @@ MysteryData = {
         bit7(0x0081e0), // Speed+1 BMD (Yoka 1)
         bit6(0x0081e1), // HPMemory BMD (Yoka 2)
         bit7(0x0081e1), // FullEnrg BMD (Yoka 2)
+        bit5(0x00824b), // Fire+30 * BMD (Yoka: Hot Springs Lion Comp)
     ],
     "Beach": [
         bit3(0x008243), // FireRatn H BMD (Beach Town: NetBattle Machine Comp)
@@ -591,35 +658,253 @@ MysteryData = {
         bit7(0x0081f0), // 1200 Zennys BMD (Undernet 1)
         bit6(0x0081f1), // BlkBomb2 S BMD (Undernet 2)
         bit7(0x0081f1), // RegUP2 BMD (Undernet 2)
-        // Lance S BMD (Undernet 3)
+        bit6(0x0081f2), // Lance S BMD (Undernet 3)
         bit7(0x0081f2), // HPMemory BMD (Undernet 3)
         bit6(0x0081f3), // Recov200 N BMD (Undernet 4)
-        // StepSwrd M BMD (Undernet 4)
-        // Speed+1 BMD (Undernet 4)
+        bit5(0x0081f3), // StepSwrd M BMD (Undernet 4)
+        bit7(0x0081f3), // Speed+1 BMD (Undernet 4)
         
     ],
     "Deepweb": [
-        bit6(0x0081e9), // TODO: Delete
-        // SandStge C BMD (Undernet 5)
-        // HPMemory BMD (Undernet 5)
-        // SubMem BMD (Undernet 6)
-        // WeapLV+1 BMD (Undernet 6)
-        // Aura F BMD (Undernet 6)
-        // GutImpct J BMD (Undernet 7)
-        // Guardian O BMD (Undernet 7)
-        // HPMemory BMD (Undernet 7)
-        // Hammer BMD (Undernet 7)
-        // GigFldr1 PMD (Undernet 7)
+        bit6(0x0081f4), // SandStge C BMD (Undernet 5)
+        bit7(0x0081f4), // HPMemory BMD (Undernet 5)
+        bit7(0x0081f5), // SubMem BMD (Undernet 6)
+        bit5(0x0081f5), // WeapLV+1 BMD (Undernet 6)
+        bit6(0x0081f5), // Aura F BMD (Undernet 6)
+        bit7(0x0081f6), // GutImpct J BMD (Undernet 7)
+        bit5(0x0081f6), // Guardian O BMD (Undernet 7)
+        bit6(0x0081f6), // HPMemory BMD (Undernet 7)
+        bit0(0x0081f6), // Hammer BMD (Undernet 7)
+        bit4(0x0081f6), // GigFldr1 PMD (Undernet 7)
     ],
     "WWW": [
-        bit6(0x0081e9), // TODO: Delete
-        // TODO: Plan out
+        bit7(0x00824a), // Collect BMD (WWW: Outer Wall Comp)
+        bit4(0x008220), // HPMemory BMD (WWW Comp 1)
+        bit6(0x008220), // 1800 Zennys BMD (WWW Comp 1)
+        bit5(0x008220), // Recov150 P BMD (WWW Comp 1)
+        bit7(0x008220), // ID-DataA BMD (WWW Comp 1)
+        bit6(0x008221), // RegUP2 BMD (WWW Comp 2)
+        bit5(0x008221), // 3000 Zennys BMD (WWW Comp 2)
+        bit7(0x008221), // ID-DataB BMD (WWW Comp 2)
+        bit6(0x008222), // Jungle BMD (WWW Comp 3)
+        bit7(0x008222), // ID-DataC BMD (WWW Comp 3)
+        bit5(0x008222), // FullEnrg BMD (WWW Comp 3)
+        bit5(0x008223), // 1400 Zennys BMD (WWW Comp 4)
+        bit7(0x008223), // ID-DataD BMD (WWW Comp 4)
+        bit6(0x008223), // HPMemory BMD (WWW Comp 4)
     ],
     "Secret Area": [
-        bit6(0x0081e9), // TODO: Delete
-        // TODO: Plan out
+        bit7(0x008200), // Geddon3 U BMD (Secret Area 1)
+        bit5(0x008200), // 50000 Zenny BMD (Secret Area 1)
+        bit6(0x008200), // StepCros R BMD (Secret Area 1)
+        bit7(0x008201), // HP+500 BMD (Secret Area 2)
+        bit6(0x008201), // AntiNavi M BMD (Secret Area 2)
+        bit5(0x008201), // HPMemory BMD (Secret Area 2)
+        bit6(0x008202), // Snctuary C BMD (Secret Area 3)
+        bit7(0x008202), // Hole * BMD (Secret Area 3)
+        bit5(0x008202), // HubBatc BMD (Secret Area 3)
     ]
 }
+
+TimeTrialRecords = {
+    "FlashMan": 0x009280,
+    "BeastMan": 0x009288,
+    "BubbleMan": 0x009290,
+    "DesertMan": 0x009298,
+    "PlantMan": 0x0092a0,
+    "FlameMan": 0x0092a8,
+    "DrillMan": 0x0092b0,
+    "GutsMan": 0x0092b8,
+    "MetalMan": 0x0092c0,
+    "KingMan": 0x0092c8,
+    "MistMan": 0x0092d0,
+    "DarkMan": 0x0092d8,
+    "JapanMan": 0x0092e0,
+    "ProtoMan": 0x0092e8
+}
+
+TimeTrialBeats = {}
+for navi in TimeTrialRecords {
+    TimeTrialBeats[navi] = byte(TimeTrialRecords[navi] + 4)
+}
+
+MegaChips = [
+    bit6(0x008349),
+    bit5(0x008349),
+    bit4(0x008349),
+    bit3(0x008349),
+    bit2(0x008349),
+    bit1(0x008349),
+    bit0(0x008349),
+    bit7(0x00834a),
+    bit6(0x00834a),
+    bit5(0x00834a),
+    bit4(0x00834a),
+    bit3(0x00834a),
+    bit2(0x00834a),
+    bit1(0x00834a),
+    bit0(0x00834a),
+    bit7(0x00834b),
+    bit6(0x00834b),
+    bit5(0x00834b),
+    bit4(0x00834b),
+    bit3(0x00834b),
+    bit2(0x00834b),
+    bit1(0x00834b),
+    bit0(0x00834b),
+    bit7(0x00834c),
+    bit6(0x00834c),
+    bit4(0x00834c),
+    bit3(0x00834c),
+    bit2(0x00834c),
+    bit1(0x00834c),
+    bit7(0x00834d),
+    bit6(0x00834d),
+    bit5(0x00834d),
+    bit4(0x00834d),
+    bit2(0x00834d),
+    bit1(0x00834d),
+    bit0(0x00834d),
+    bit7(0x00834e),
+    bit5(0x00834e),
+    bit4(0x00834e),
+    bit3(0x00834e),
+    bit2(0x00834e),
+    bit0(0x00834e),
+    bit7(0x00834f),
+    bit6(0x00834f),
+    bit5(0x00834f),
+    bit3(0x00834f),
+    bit2(0x00834f),
+    bit1(0x00834f),
+    bit0(0x00834f),
+    bit6(0x008350),
+    bit5(0x008350),
+    bit4(0x008350),
+    bit3(0x008350),
+    bit1(0x008350),
+    bit0(0x008350),
+    bit7(0x008351),
+    bit6(0x008351),
+    bit4(0x008351),
+    bit3(0x008351),
+    bit2(0x008351),
+    bit1(0x008351),
+    bit6(0x008352),
+    bit5(0x008352),
+    bit4(0x008352),
+    bit3(0x008352),
+    bit2(0x008352),
+    bit1(0x008352),
+    bit0(0x008352),
+    bit7(0x008353),
+    bit5(0x008353),
+    bit4(0x008353),
+    bit3(0x008353),
+    bit2(0x008353),
+    bit0(0x008353),
+    bit7(0x008354),
+    bit6(0x008354),
+    bit5(0x008354),
+    bit3(0x008354),
+    bit2(0x008354),
+    bit1(0x008354),
+    bit0(0x008354),
+    bit6(0x008355),
+    bit5(0x008355),
+    bit4(0x008355),
+    bit3(0x008355),
+]
+
+V5Chips = [
+    bit5(0x00834c),
+    bit0(0x00834c),
+    bit3(0x00834d),
+    bit6(0x00834e),
+    bit1(0x00834e),
+    bit4(0x00834f),
+    bit7(0x008350),
+    bit2(0x008350),
+    bit5(0x008351),
+    bit0(0x008351),
+    bit6(0x008353),
+    bit1(0x008353),
+    bit4(0x008354),
+    bit7(0x008355),
+    bit2(0x008355)
+]
+
+GigaChips = [
+    bit3(0x008356),
+    bit4(0x008356),
+    bit5(0x008356),
+    bit6(0x008356),
+    bit7(0x008356)
+]
+
+for c in V5Chips {
+    array_push(GigaChips, c)
+}
+
+ProgramAdvances = [
+    bit7(0x008358),
+    bit6(0x008358),
+    bit5(0x008358),
+    bit4(0x008358),
+    bit3(0x008358),
+    bit2(0x008358),
+    bit1(0x008358),
+    bit0(0x008358),
+    bit7(0x008359),
+    bit6(0x008359),
+    bit5(0x008359),
+    bit4(0x008359),
+    bit3(0x008359),
+    bit2(0x008359),
+    bit1(0x008359),
+    bit0(0x008359),
+    bit7(0x00835a),
+    bit6(0x00835a),
+    bit5(0x00835a),
+    bit4(0x00835a),
+    bit3(0x00835a),
+    bit2(0x00835a),
+    bit1(0x00835a),
+    bit0(0x00835a),
+    bit7(0x00835b),
+    bit6(0x00835b),
+    bit5(0x00835b),
+    bit4(0x00835b),
+    bit3(0x00835b),
+    bit2(0x00835b),
+    bit1(0x00835b),
+    bit0(0x00835b),
+]
+
+VirusBreederRegulars = [
+    bit5(0x008302), // Bunny (job)
+    bit0(0x008166), // Jelly
+    bit1(0x008166), // Mushy
+    bit2(0x008166), // Spikey
+    bit3(0x008166), // Swordy
+    bit5(0x008166), // Mettaur
+    bit4(0x008167), // Scuttzer and Scuttlest
+    bit5(0x008167), // Scuttle Trio
+    bit6(0x008167), // Momogra
+    bit7(0x008167), // KillerEye
+]
+
+VirusBreederOmegas = [
+    bit0(0x008167), // Spikey
+    bit1(0x008167), // Swordy
+    bit2(0x008167), // Bunny
+    bit3(0x008167), // Mettaur
+    bit3(0x008168), // Scuttle
+    bit4(0x008168), // Momogra
+    bit5(0x008168), // KillerEye
+    bit6(0x008168), // Jelly
+    bit7(0x008168), // Mushy
+]
 
 // Overworld variables
 map_id = word(0x009884)
@@ -644,20 +929,26 @@ enemy_3_hp = word(0x03f510)
 enemy_3_max_hp = word(0x03f512)
 busting_level = byte(0x017330)
 
+// Other variables
+cybersimon_says = byte(0x011dc5)
+
+// Prevent things from submitting on title screen or in full-screen menus
+title_screen_check = byte(0x0017f8) != 0x00
+
 function buster_glitch() {
-    return false // TODO
+    return byte(0x00d778) > 0x0a
 }
 
 function hp_glitch() {
-    return false // TODO
+    return player_max_hp > 5000
 }
 
 function custom_glitch() {
-    return false // TODO
+    return byte(0x00d783) > 10
 }
 
 function bassgs_detected() {
-    return false // TODO
+    return bit7(0x008357) == 1
 }
 
 function no_glitches_enabled() {
@@ -688,6 +979,10 @@ function fighting_boss(name) {
     return enemy_1_id == EnemyNameToID[name] && enemy_1_max_hp == EnemyHPLookup[name]
 }
 
+function last_boss_fought(name) {
+    return enemy_1_id == EnemyNameToID[name]
+}
+
 function boss_killed() {
     return prev(enemy_1_hp) > 0 && enemy_1_hp == 0
 }
@@ -699,6 +994,27 @@ function battle_won_under_time(secs) {
 function s_ranked() {
     return prev(busting_level) == 0 && busting_level >= 0x0b && busting_level < 0x10
 }
+
+function time_trial_beaten(navi) {
+    return once(TimeTrialBeats[navi] == 0x00)
+}
+
+function time_trial_unbeaten(navi) {
+    return prev(TimeTrialBeats[navi]) == 0xEC
+}
+
+function one_time_trial_unbeaten(navis) {
+    return any_of(navis, time_trial_unbeaten)
+}
+
+function all_time_trials_beaten(navis) {
+    return all_of(navis, time_trial_beaten)
+}
+
+function new_time_trial_record(navi) {
+    return dword(TimeTrialRecords[navi]) < prev(dword(TimeTrialRecords[navi]))
+}
+
 
 function shop_emptied(name) {
     return prev(dword(ShopArrays[name])) != 0 && dword(ShopArrays[name]) == 0
@@ -742,7 +1058,7 @@ achievement(
     title = "Lights Out",
     points = 3,
     type = "progression",
-    description = "Defeat FlashMan for the first time!",
+    description = "Defeat FlashMan and break the hypnosis!",
     trigger = no_glitches_enabled() && in_area("Principal's PC 2") && fighting_boss("FlashMan") && boss_killed()
 )
 
@@ -781,10 +1097,17 @@ achievement(
 )
 
 achievement(
+    title = "Crushing Gears",
+    points = 3,
+    description = "Defeat MetalMan during your trip to the zoo!",
+    trigger = no_glitches_enabled() && in_area("Hotel Front") && fighting_boss("MetalMan") && boss_killed()
+)
+
+achievement(
     title = "Ripping Claws",
     points = 4,
     type = "progression",
-    description = "Defeat BeastMan for the first time!",
+    description = "Defeat BeastMan and restore order to the zoo!",
     trigger = no_glitches_enabled() && in_area("Zoo Comp 4") && fighting_boss("BeastMan") && boss_killed()
 )
 
@@ -796,18 +1119,40 @@ achievement(
 )
 
 achievement(
+    title = "CyberSimon Says: Round 1",
+    points = 1,
+    description = "Win a game of CyberSimon Says in Yoka Square!",
+    trigger = no_glitches_enabled() && in_area("Yoka Square") && prev(cybersimon_says) == 59 && cybersimon_says == 60
+)
+
+achievement(
     title = "All Washed Up",
     points = 5,
     type = "progression",
-    description = "Defeat BubbleMan for the first time!",
+    description = "Defeat BubbleMan and end the dishwasher crisis!",
     trigger = no_glitches_enabled() && in_area("Yoka Area 1") && fighting_boss("BubbleMan") && boss_killed()
+)
+
+achievement(
+    title = "CyberSimon Says: Round 2",
+    points = 2,
+    description = "Win a game of CyberSimon Says in Beach Square!",
+    trigger = no_glitches_enabled() && in_area("Beach Square") && prev(cybersimon_says) == 89 && cybersimon_says == 90
+)
+
+achievement(
+    title = "By the Book",
+    points = 4,
+    type = "missable",
+    description = "Defeat KingMan in the TV Station Lobby, before defeating DesertMan!",
+    trigger = no_glitches_enabled() && in_area("TV Station Lobby") && fighting_boss("KingMan") && boss_killed()
 )
 
 achievement(
     title = "Quicksand",
     points = 5,
     type = "progression",
-    description = "Defeat DesertMan for the first time!",
+    description = "Defeat DesertMan to put an end to the N1 Grand Prix!",
     trigger = no_glitches_enabled() && in_area("TV Station Editing Room") && fighting_boss("DesertMan") && boss_killed()
 )
 
@@ -815,7 +1160,7 @@ achievement(
     title = "Overgrown",
     points = 10,
     type = "progression",
-    description = "Defeat PlantMan for the first time!",
+    description = "Defeat PlantMan and restore the hospital's power!",
     trigger = no_glitches_enabled() && in_area("Hospital Comp 5") && fighting_boss("PlantMan") && boss_killed()
 )
 
@@ -841,8 +1186,207 @@ achievement(
     title = "Birthday Party",
     points = 10,
     type = "progression",
-    description = "Defeat FlameMan for the first time!",
+    description = "Defeat FlameMan to cool down the net!",
     trigger = no_glitches_enabled() && in_area("Undernet 3") && fighting_boss("FlameMan") && boss_killed()
+)
+
+achievement(
+    title = "CyberSimon Says: Final Round",
+    points = 3,
+    description = "Win a game of CyberSimon Says in Under Square!",
+    trigger = no_glitches_enabled() && in_area("Under Square") && prev(cybersimon_says) == 98 && cybersimon_says == 99
+)
+
+achievement(
+    title = "Make a Wish",
+    points = 5,
+    type = "progression",
+    description = "Defeat MistMan and claim Rank 2!",
+    trigger = no_glitches_enabled() && in_area("NetBattle Machine Comp") && fighting_boss("MistMan") && boss_killed()
+)
+
+achievement(
+    title = "Spiraling Out of Control",
+    points = 10,
+    type = "progression",
+    description = "Follow the trail in the Undernet and defeat DrillMan!",
+    trigger = no_glitches_enabled() && in_area("Undernet 5") && fighting_boss("DrillMan") && boss_killed()
+)
+
+achievement(
+    title = "Absorb This!",
+    points = 25,
+    type = "win_condition",
+    description = "Defeat Alpha and save the world!",
+    trigger = no_glitches_enabled() && in_area("Alpha") && fighting_boss("Alpha") && boss_killed()
+)
+
+achievement(
+    title = "Long-Time Rivalry",
+    points = 5,
+    description = "Defeat ProtoMan on Hades Isle!",
+    trigger = no_glitches_enabled() && in_area("Eternal Hades") && fighting_boss("ProtoMan") && boss_killed()
+)
+
+achievement(
+    title = "Elemental Edgelord",
+    points = 10,
+    description = "Survive the assassination attempt and defeat DarkMan!",
+    trigger = no_glitches_enabled() && in_area("Secret Area 1") && fighting_boss("DarkMan") && boss_killed()
+)
+
+achievement(
+    title = "Thousand Spears",
+    points = 10,
+    description = "Avoid being turned into a shish-kebab and defeat JapanMan!",
+    trigger = no_glitches_enabled() && in_area("Secret Area 2") && fighting_boss("JapanMan") && boss_killed()
+)
+
+achievement(
+    title = "Mercy Killing",
+    points = 25,
+    description = "Defeat Serenade and claim the title of UnderKing!",
+    trigger = no_glitches_enabled() && in_area("Secret Area 3") && fighting_boss("Serenade") && boss_killed()
+)
+
+achievement(
+    title = "In Power We Trust",
+    points = 25,
+    description = "Defeat BassGS to prove your bond!",
+    trigger = no_glitches_enabled() && in_area("Secret Area 3") && fighting_boss("BassGS") && boss_killed()
+)
+
+time_trial_navis_1 = ["FlashMan", "BeastMan", "BubbleMan", "DesertMan"]
+achievement(
+    title = "Lights, Claws, Soap, and Sand",
+    points = 25,
+    description = "Beat Serenade's record on the time trials for FlashMan, BeastMan, BubbleMan and DesertMan!",
+    trigger = no_glitches_enabled()
+           && title_screen_check
+           && in_area("Secret Area 1")
+           && never(!one_time_trial_unbeaten(time_trial_navis_1))
+           && measured(tally(4, array_map(time_trial_navis_1, time_trial_beaten)))
+)
+
+time_trial_navis_2 = ["PlantMan", "FlameMan", "DrillMan"]
+achievement(
+    title = "Vines, Embers, and Holes",
+    points = 25,
+    description = "Beat Serenade's record on the time trials for PlantMan, FlameMan, and DrillMan!",
+    trigger = no_glitches_enabled()
+           && title_screen_check
+           && in_area("Secret Area 1")
+           && never(!one_time_trial_unbeaten(time_trial_navis_2))
+           && measured(tally(3, array_map(time_trial_navis_2, time_trial_beaten)))
+)
+
+time_trial_navis_3 = ["GutsMan", "MetalMan", "KingMan", "MistMan"]
+achievement(
+    title = "Fists, Gears, Pawns and Wishes",
+    points = 25,
+    description = "Beat Serenade's record on the time trials for GutsMan, MetalMan, KingMan, and MistMan!",
+    trigger = no_glitches_enabled()
+           && title_screen_check
+           && in_area("Secret Area 2")
+           && never(!one_time_trial_unbeaten(time_trial_navis_3))
+           && measured(tally(4, array_map(time_trial_navis_3, time_trial_beaten)))
+)
+
+time_trial_navis_4 = ["DarkMan", "JapanMan", "ProtoMan"]
+achievement(
+    title = "Bats, Spears, and Swords",
+    points = 25,
+    description = "Beat Serenade's record on the time trials for DarkMan, JapanMan, and ProtoMan!",
+    trigger = no_glitches_enabled()
+           && title_screen_check
+           && in_area("Secret Area 3")
+           && never(!one_time_trial_unbeaten(time_trial_navis_4))
+           && measured(tally(3, array_map(time_trial_navis_4, time_trial_beaten)))
+)
+
+achievement(
+    title = "Living Up to the Name",
+    points = 25,
+    description = "Collect all 85 Mega Chips and unlock a purple star on the title screen!",
+    trigger = no_glitches_enabled()
+              && prev(sum_of(MegaChips, bitflag_count)) == length(MegaChips) - 1
+              && measured(sum_of(MegaChips, bitflag_count) == length(MegaChips))
+)
+
+achievement(
+    title = "Omega Trial Contestant",
+    points = 10,
+    description = "Collect 5 of the 15 V5 navi chips!",
+    trigger = no_glitches_enabled()
+              && prev(sum_of(V5Chips, bitflag_count)) == 4
+              && measured(sum_of(V5Chips, bitflag_count) == 5)
+)
+
+achievement(
+    title = "Omega Trial Combatant",
+    points = 25,
+    description = "Collect 10 of the 15 V5 navi chips!",
+    trigger = no_glitches_enabled()
+              && prev(sum_of(V5Chips, bitflag_count)) == 9
+              && measured(sum_of(V5Chips, bitflag_count) == 10)
+)
+
+achievement(
+    title = "Omega Trial Conqueror",
+    points = 25,
+    description = "Collect all 15 of the V5 navi chips!",
+    trigger = no_glitches_enabled()
+              && prev(sum_of(V5Chips, bitflag_count)) == length(V5Chips) - 1
+              && measured(sum_of(V5Chips, bitflag_count) == length(V5Chips))
+)
+
+achievement(
+    title = "Holy Shock",
+    points = 10,
+    description = "Defeat Serenade Omega!",
+    trigger = no_glitches_enabled() && in_area("Secret Area 3") && fighting_boss("Serenade Omega") && boss_killed()
+)
+
+achievement(
+    title = "Vanishing World",
+    points = 10,
+    description = "Defeat Bass Omega!",
+    trigger = no_glitches_enabled() && in_area("Secret Area 3") && fighting_boss("Bass Omega") && boss_killed()
+)
+
+achievement(
+    title = "Polymerization",
+    points = 25,
+    description = "Activate all 32 Program Advances and unlock the orange star on the title screen!",
+    trigger = no_glitches_enabled()
+              && prev(sum_of(ProgramAdvances, bitflag_count)) == length(ProgramAdvances) - 1
+              && measured(sum_of(ProgramAdvances, bitflag_count) == length(ProgramAdvances))
+)
+
+achievement(
+    title = "God Hand",
+    points = 50,
+    description = "Defeat Alpha Omega with all seven stars, obtaining a giga chip!",
+    trigger = no_glitches_enabled() && in_area("Alpha")
+           && fighting_boss("Alpha Omega") && boss_killed()
+)
+
+achievement(
+    title = "Recruiter",
+    points = 10,
+    description = "Find all 10 of the regular Virus Breeder recruiting opportunities!",
+    trigger = no_glitches_enabled()
+              && prev(sum_of(VirusBreederRegulars, bitflag_count)) == length(VirusBreederRegulars) - 1
+              && measured(sum_of(VirusBreederRegulars, bitflag_count) == length(VirusBreederRegulars))
+)
+
+achievement(
+    title = "Boss Hunter",
+    points = 25,
+    description = "Find all 9 of the Omega Virus Breeder recruiting opportunities!",
+    trigger = no_glitches_enabled()
+              && prev(sum_of(VirusBreederOmegas, bitflag_count)) == length(VirusBreederOmegas) - 1
+              && measured(sum_of(VirusBreederOmegas, bitflag_count) == length(VirusBreederOmegas))
 )
 
 ///////////////////////
@@ -851,43 +1395,108 @@ achievement(
 
 achievement(
     title = "Blackout",
-    points = 5,
+    points = 10,
     description = "Defeat FlashMan Beta with an S rank!",
     trigger = no_glitches_enabled() && in_area("ACDC Area 2") && fighting_boss("FlashMan Beta") && s_ranked()
 )
 
 achievement(
     title = "Declawed",
-    points = 5,
+    points = 10,
     description = "Defeat BeastMan Beta with an S rank!",
     trigger = no_glitches_enabled() && in_area("Doghouse Comp") && fighting_boss("BeastMan Beta") && s_ranked()
 )
 
 achievement(
     title = "Scrubbed",
-    points = 5,
+    points = 10,
     description = "Defeat BubbleMan Beta with an S rank!",
     trigger = no_glitches_enabled() && in_area("Beach Area 1") && fighting_boss("BubbleMan Beta") && s_ranked()
 )
 
 achievement(
     title = "Eroded",
-    points = 5,
+    points = 10,
     description = "Defeat DesertMan Beta with an S rank!",
     trigger = no_glitches_enabled() && in_area("Old TV Comp") && fighting_boss("DesertMan Beta") && s_ranked()
 )
 
 achievement(
     title = "Rusted",
-    points = 5,
+    points = 10,
     description = "Defeat MetalMan Beta with an S rank!",
     trigger = no_glitches_enabled() && in_area("Hotel Front") && fighting_boss("MetalMan Beta") && s_ranked()
 )
 
+achievement(
+    title = "Weeded",
+    points = 10,
+    description = "Defeat PlantMan Beta with an S rank!",
+    trigger = no_glitches_enabled() && in_area("Hospital Comp 3") && fighting_boss("PlantMan Beta") && s_ranked()
+)
 
-// PlantMan Beta
+achievement(
+    title = "Blown Out",
+    points = 10,
+    description = "Defeat FlameMan Beta with an S rank!",
+    trigger = no_glitches_enabled() && in_area("Yoka Area 1") && fighting_boss("FlameMan Beta") && s_ranked()
+)
 
-// FlameMan Beta
+achievement(
+    title = "Checkmate",
+    points = 10,
+    description = "Defeat KingMan Beta with an S rank!",
+    trigger = no_glitches_enabled() && in_area("Castle Wily") && fighting_boss("KingMan Beta") && s_ranked()
+)
+
+achievement(
+    title = "Knocked Out",
+    points = 10,
+    description = "Defeat GutsMan Beta with an S rank!",
+    trigger = no_glitches_enabled() && in_area("Castle Wily") && fighting_boss("GutsMan Beta") && s_ranked()
+)
+
+achievement(
+    title = "Distorted",
+    points = 10,
+    description = "Defeat Bass with an S rank!",
+    trigger = no_glitches_enabled() && in_area("Alpha") && fighting_boss("Bass") && s_ranked()
+)
+
+achievement(
+    title = "Smashing Antiques",
+    points = 10,
+    description = "Defeat MistMan Beta with an S rank!",
+    trigger = no_glitches_enabled() && in_area("NetBattle Machine Comp") && fighting_boss("MistMan Beta") && s_ranked()
+)
+
+achievement(
+    title = "Motor Burnout",
+    points = 10,
+    description = "Defeat DrillMan Beta with an S rank!",
+    trigger = no_glitches_enabled() && in_area("Hades Isle Area") && fighting_boss("DrillMan Beta") && s_ranked()
+)
+
+achievement(
+    title = "Light in the Dark",
+    points = 10,
+    description = "Defeat DarkMan Beta with an S rank!",
+    trigger = no_glitches_enabled() && in_area("Undernet 6") && fighting_boss("DarkMan Beta") && s_ranked()
+)
+
+achievement(
+    title = "Feudal Uprising",
+    points = 10,
+    description = "Defeat JapanMan Beta with an S rank!",
+    trigger = no_glitches_enabled() && in_area("Armor Comp") && fighting_boss("JapanMan Beta") && s_ranked()
+)
+
+achievement(
+    title = "Broken Sword",
+    points = 10,
+    description = "Defeat ProtoMan Beta with an S rank!",
+    trigger = no_glitches_enabled() && in_area("Eternal Hades") && fighting_boss("ProtoMan Beta") && s_ranked()
+)
 
 /////////////////
 // Other Tasks //
@@ -900,6 +1509,24 @@ achievement(
     trigger = no_glitches_enabled()
               && prev(sum_of(Jobs, bitflag_count)) == length(Jobs) - 1
               && measured(sum_of(Jobs, bitflag_count) == length(Jobs))
+)
+
+achievement(
+    title = "Loremaster",
+    points = 3,
+    description = "Outwit all four of the quiz givers!",
+    trigger = no_glitches_enabled()
+              && prev(sum_of(Quizzes, bitflag_count)) == length(Quizzes) - 1
+              && measured(sum_of(Quizzes, bitflag_count) == length(Quizzes))
+)
+
+achievement(
+    title = "Chip Swap",
+    points = 5,
+    description = "Fulfill all ten of the chip trades scattered across the world!",
+    trigger = no_glitches_enabled()
+              && prev(sum_of(Trades, bitflag_count)) == length(Trades) - 1
+              && measured(sum_of(Trades, bitflag_count) == length(Trades))
 )
 
 achievement(
@@ -916,7 +1543,7 @@ achievement(
 ////////////////////
 
 achievement(
-    title = "Principal's PC: Data Collector",
+    title = "Grade Manipulation",
     points = 2,
     description = "Collect all of the Blue Mystery Data throughout the Principal's PC!",
     trigger = no_glitches_enabled() && (in_area("Principal's PC 1") || in_area("Principal's PC 2"))
@@ -925,7 +1552,7 @@ achievement(
 )
 
 achievement(
-    title = "ACDC: Data Collector",
+    title = "Squirrel Stash",
     points = 3,
     description = "Collect all of the Blue and Purple Mystery Data throughout ACDC Town and ACDC Area!",
     trigger = no_glitches_enabled()
@@ -934,7 +1561,7 @@ achievement(
 )
 
 achievement(
-    title = "SciLab: Data Collector",
+    title = "Experimental Reports",
     points = 1,
     description = "Collect all of the Blue and Purple Mystery Data throughout the SciLab building and SciLab Area!",
     trigger = no_glitches_enabled()
@@ -943,7 +1570,7 @@ achievement(
 )
 
 achievement(
-    title = "Zoo Comp: Data Collector",
+    title = "Zoologist's Notes",
     points = 2,
     description = "Collect all of the Blue Mystery Data throughout the Zoo Comp!",
     trigger = no_glitches_enabled()
@@ -952,7 +1579,7 @@ achievement(
 )
 
 achievement(
-    title = "Yoka: Data Collector",
+    title = "Spa Research",
     points = 2,
     description = "Collect all of the Blue and Purple Mystery Data throughout Yoka and Yoka Area!",
     trigger = no_glitches_enabled()
@@ -961,7 +1588,7 @@ achievement(
 )
 
 achievement(
-    title = "Beach & Boat: Data Collector",
+    title = "Seaside Search",
     points = 4,
     description = "Collect all of the Blue and Purple Mystery Data throughout Beach, Beach Area, and Hades Isle!",
     trigger = no_glitches_enabled()
@@ -970,7 +1597,7 @@ achievement(
 )
 
 achievement(
-    title = "Hospital: Data Collector",
+    title = "Medical Data",
     points = 3,
     description = "Collect all of the Blue Mystery Data throughout Hospital and Hospital Comp!",
     trigger = no_glitches_enabled()
@@ -979,7 +1606,7 @@ achievement(
 )
 
 achievement(
-    title = "Undernet: Data Collector",
+    title = "Phishing for Packets",
     points = 4,
     description = "Collect all of the Blue Mystery Data throughout Undernet 1-4!",
     trigger = no_glitches_enabled()
@@ -988,8 +1615,8 @@ achievement(
 )
 
 achievement(
-    title = "Deep Undernet: Data Collector",
-    points = 5,
+    title = "Deep Web Downloads",
+    points = 25,
     description = "Collect all of the Blue and Purple Mystery Data throughout Undernet 5-7!",
     trigger = no_glitches_enabled()
               && prev(sum_of(MysteryData["Deepweb"], bitflag_count)) == length(MysteryData["Deepweb"]) - 1
@@ -997,16 +1624,16 @@ achievement(
 )
 
 achievement(
-    title = "WWW: Data Collector",
-    points = 3,
-    description = "Collect all of the Blue and Purple Mystery Data throughout WWW Isle!",
+    title = "Wily's Wireless Workstation",
+    points = 5,
+    description = "Collect all of the Blue Mystery Data throughout WWW Isle!",
     trigger = no_glitches_enabled()
               && prev(sum_of(MysteryData["WWW"], bitflag_count)) == length(MysteryData["WWW"]) - 1
               && measured(sum_of(MysteryData["WWW"], bitflag_count) == length(MysteryData["WWW"]))
 )
 
 achievement(
-    title = "Secret Area: Data Collector",
+    title = "Forbidden Knowledge",
     points = 10,
     description = "Collect all of the Blue and Purple Mystery Data throughout the Secret Area!",
     trigger = no_glitches_enabled()
@@ -1019,77 +1646,104 @@ achievement(
 /////////////////////
 
 achievement(
-    title = "ACDC 2: Shopping Spree",
+    title = "Shields & Shots",
     points = 1,
-    description = "Empty out the shop in ACDC Area 2!",
+    description = "Empty out the chip shop in ACDC Area 2!",
     trigger = no_glitches_enabled() && in_area("ACDC Area 2") && shop_emptied("ACDC Area 2")
 )
 
 achievement(
-    title = "ACDC Square: Shopping Spree", points = 1,
-    description = "Empty out the shop in ACDC Square!",
+    title = "Going Green", points = 1,
+    description = "Empty out the chip shop in ACDC Square!",
     trigger = no_glitches_enabled() && in_area("ACDC Square") && shop_emptied("ACDC Square")
 )
 
 achievement(
-    title = "SciLab Square: Shopping Spree", points = 2,
-    description = "Empty out the shop in SciLab Square!",
+    title = "Rocks in the Wind", points = 2,
+    description = "Empty out the chip shop in SciLab Square!",
     trigger = no_glitches_enabled() && in_area("SciLab Square") && shop_emptied("SciLab Square")
 )
 
 achievement(
-    title = "Yoka 1: Shopping Spree", points = 5,
-    description = "Empty out the bugfrag shop in Yoka Area 1!",
+    title = "Elemental Fury", points = 3,
+    description = "Empty out Higsby's chip shop!",
+    trigger = no_glitches_enabled() && in_area("Higsby's") && shop_emptied("Higsby's")
+)
+
+achievement(
+    title = "Lava Bombs", points = 5,
+    description = "Empty out the chip shop in Yoka Area 1!",
     trigger = no_glitches_enabled() && in_area("Yoka Area 1") && shop_emptied("Yoka 1")
 )
 
 achievement(
-    title = "Yoka Square: Shopping Spree", points = 2,
-    description = "Empty out the shop in Yoka Square!",
+    title = "Yo-Yo Zapper", points = 2,
+    description = "Empty out the chip shop in Yoka Square!",
     trigger = no_glitches_enabled() && in_area("Yoka Square") && shop_emptied("Yoka Square")
 )
 
 achievement(
-    title = "Beach Square: Shopping Spree", points = 2,
+    title = "Ancient Power", points = 2,
     description = "Empty out the chip shop in Beach Square!",
     trigger = no_glitches_enabled() && in_area("Beach Square") && shop_emptied("Beach Square")
 )
 
 achievement(
-    title = "Beach Square: Shopping Spree 2", points = 2,
+    title = "Gone Fishing", points = 2,
     description = "Empty out the program shop in Beach Square!",
     trigger = no_glitches_enabled() && in_area("Beach Square") && shop_emptied("Beach Square Program")
 )
 
 achievement(
-    title = "Undernet 2: Shopping Spree", points = 5,
+    title = "Recycling Bugs", points = 5,
     description = "Empty out the bugfrag shop in Undernet 2!",
     trigger = no_glitches_enabled() && in_area("Undernet 2") && shop_emptied("Undernet 2")
 )
 
 achievement(
-    title = "Under Square: Shopping Spree", points = 3,
+    title = "Aura Breaker", points = 3,
     description = "Empty out the chip shop in Under Square!",
     trigger = no_glitches_enabled() && in_area("Under Square") && shop_emptied("Under Square")
 )
 
 achievement(
-    title = "Under Square: Shopping Spree 2", points = 3,
+    title = "PvP Supply Pack", points = 3,
     description = "Empty out the program shop in Under Square!",
     trigger = no_glitches_enabled() && in_area("Under Square") && shop_emptied("Under Square Program")
 )
 
-
+achievement(
+    title = "Pawns & Puppets", points = 3,
+    description = "Empty out the chip shop in Undernet 4!",
+    trigger = no_glitches_enabled() && in_area("Undernet 4") && shop_emptied("Undernet 4")
+)
 
 achievement(
-    title = "Higsby's: Shopping Spree", points = 3,
-    description = "Empty out Higsby's shop!",
-    trigger = no_glitches_enabled() && in_area("Higsby's") && shop_emptied("Higsby's")
+    title = "Buster Rush", points = 5,
+    description = "Empty out the program shop in Undernet 6!",
+    trigger = no_glitches_enabled() && in_area("Undernet 6") && shop_emptied("Undernet 6")
+)
+
+achievement(
+    title = "Meteor Impact", points = 5,
+    description = "Empty out the chip shop in Secret Area 2!",
+    trigger = no_glitches_enabled() && in_area("Secret Area 2") && shop_emptied("Secret Area 2")
 )
 
 //////////////////
 // Leaderboards //
 //////////////////
+
+leaderboard(
+    title = "Deletion Time: GutsMan",
+    description = "Defeat GutsMan for the first time as fast as you can!",
+    start  = no_glitches_enabled() && in_area("ACDC Town") && fighting_boss("GutsMan") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
 
 leaderboard(
     title = "Deletion Time: FlashMan",
@@ -1125,6 +1779,17 @@ leaderboard(
 )
 
 leaderboard(
+    title = "Deletion Time: KingMan",
+    description = "Defeat KingMan for the first time as fast as you can!",
+    start  = no_glitches_enabled() && in_area("TV Station Lobby") && fighting_boss("KingMan") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
     title = "Deletion Time: DesertMan",
     description = "Defeat DesertMan for the first time as fast as you can!",
     start  = no_glitches_enabled() && in_area("TV Station Editing Room") && fighting_boss("DesertMan") && boss_killed(),
@@ -1150,6 +1815,83 @@ leaderboard(
     title = "Deletion Time: FlameMan",
     description = "Defeat FlameMan for the first time as fast as you can!",
     start  = no_glitches_enabled() && in_area("Undernet 3") && fighting_boss("FlameMan") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: MistMan",
+    description = "Defeat MistMan as fast as you can!",
+    start  = no_glitches_enabled() && in_area("NetBattle Machine Comp") && fighting_boss("MistMan") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: DrillMan",
+    description = "Defeat DrillMan for the first time as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Undernet 5") && fighting_boss("DrillMan") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: Bass",
+    description = "Defeat Bass inside of Alpha as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Alpha") && fighting_boss("Bass") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: ProtoMan",
+    description = "Defeat ProtoMan for the first time as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Eternal Hades") && fighting_boss("ProtoMan") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: ProtoMan Beta",
+    description = "Defeat ProtoMan Beta in Eternal Hades as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Eternal Hades") && fighting_boss("ProtoMan Beta") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: DarkMan",
+    description = "Defeat DarkMan for the first time as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Secret Area 1") && fighting_boss("DarkMan") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: JapanMan",
+    description = "Defeat JapanMan for the first time as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Secret Area 2") && fighting_boss("JapanMan") && boss_killed(),
     cancel = always_false(),
     submit = always_true(),
     value = measured(battle_time),
@@ -1202,6 +1944,17 @@ leaderboard(
 )
 
 leaderboard(
+    title = "Deletion Time: MetalMan",
+    description = "Defeat MetalMan as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Hotel Front") && fighting_boss("MetalMan") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
     title = "Deletion Time: MetalMan Beta",
     description = "Defeat MetalMan Beta in the Hotel Front as fast as you can!",
     start  = no_glitches_enabled() && in_area("Hotel Front") && fighting_boss("MetalMan Beta") && boss_killed(),
@@ -1212,9 +1965,456 @@ leaderboard(
     format = "FRAMES"
 )
 
-// PlantMan Beta
+leaderboard(
+    title = "Deletion Time: PlantMan Beta",
+    description = "Defeat PlantMan Beta in Hospital Comp 3 as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Hospital Comp 3") && fighting_boss("PlantMan Beta") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
 
-// FlameMan Beta
+leaderboard(
+    title = "Deletion Time: FlameMan Beta",
+    description = "Defeat FlameMan Beta in Yoka Area 1 as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Yoka Area 1") && fighting_boss("FlameMan Beta") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: KingMan Beta",
+    description = "Defeat KingMan Beta in Castle Wily as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Castle Wily") && fighting_boss("KingMan Beta") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: GutsMan Beta",
+    description = "Defeat GutsMan Beta in Castle Wily as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Castle Wily") && fighting_boss("GutsMan Beta") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: MistMan Beta",
+    description = "Defeat MistMan Beta in the NetBattle Machine Comp as fast as you can!",
+    start  = no_glitches_enabled() && in_area("NetBattle Machine Comp") && fighting_boss("MistMan Beta") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: DrillMan Beta",
+    description = "Defeat DrillMan Beta in the Hades Isle Area as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Hades Isle Area") && fighting_boss("DrillMan Beta") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: DarkMan Beta",
+    description = "Defeat DarkMan Beta in Undernet 6 as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Undernet 6") && fighting_boss("DarkMan Beta") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: JapanMan Beta",
+    description = "Defeat JapanMan Beta in the Armor Comp as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Armor Comp") && fighting_boss("JapanMan Beta") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: Serenade",
+    description = "Defeat Serenade in Secret Area 3 as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Secret Area 3") && fighting_boss("Serenade") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: BassGS",
+    description = "Defeat BassGS in Secret Area 3 as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Secret Area 3") && fighting_boss("BassGS") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Time Trial: FlashMan",
+    description = "Complete the time trial for FlashMan as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Secret Area 1") && new_time_trial_record("FlashMan") && title_screen_check,
+    cancel = always_false(),
+    submit = always_true(),
+    value = dword(TimeTrialRecords["FlashMan"]),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Time Trial: BeastMan",
+    description = "Complete the time trial for BeastMan as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Secret Area 1") && new_time_trial_record("BeastMan") && title_screen_check,
+    cancel = always_false(),
+    submit = always_true(),
+    value = dword(TimeTrialRecords["BeastMan"]),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Time Trial: BubbleMan",
+    description = "Complete the time trial for BubbleMan as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Secret Area 1") && new_time_trial_record("BubbleMan") && title_screen_check,
+    cancel = always_false(),
+    submit = always_true(),
+    value = dword(TimeTrialRecords["BubbleMan"]),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Time Trial: DesertMan",
+    description = "Complete the time trial for DesertMan as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Secret Area 1") && new_time_trial_record("DesertMan") && title_screen_check,
+    cancel = always_false(),
+    submit = always_true(),
+    value = dword(TimeTrialRecords["DesertMan"]),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Time Trial: PlantMan",
+    description = "Complete the time trial for PlantMan as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Secret Area 1") && new_time_trial_record("PlantMan") && title_screen_check,
+    cancel = always_false(),
+    submit = always_true(),
+    value = dword(TimeTrialRecords["PlantMan"]),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Time Trial: FlameMan",
+    description = "Complete the time trial for FlameMan as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Secret Area 1") && new_time_trial_record("FlameMan") && title_screen_check,
+    cancel = always_false(),
+    submit = always_true(),
+    value = dword(TimeTrialRecords["FlameMan"]),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Time Trial: DrillMan",
+    description = "Complete the time trial for DrillMan as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Secret Area 1") && new_time_trial_record("DrillMan") && title_screen_check,
+    cancel = always_false(),
+    submit = always_true(),
+    value = dword(TimeTrialRecords["DrillMan"]),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Time Trial: GutsMan",
+    description = "Complete the time trial for GutsMan as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Secret Area 2") && new_time_trial_record("GutsMan") && title_screen_check,
+    cancel = always_false(),
+    submit = always_true(),
+    value = dword(TimeTrialRecords["GutsMan"]),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Time Trial: MetalMan",
+    description = "Complete the time trial for MetalMan as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Secret Area 2") && new_time_trial_record("MetalMan") && title_screen_check,
+    cancel = always_false(),
+    submit = always_true(),
+    value = dword(TimeTrialRecords["MetalMan"]),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Time Trial: KingMan",
+    description = "Complete the time trial for KingMan as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Secret Area 2") && new_time_trial_record("KingMan") && title_screen_check,
+    cancel = always_false(),
+    submit = always_true(),
+    value = dword(TimeTrialRecords["KingMan"]),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Time Trial: MistMan",
+    description = "Complete the time trial for MistMan as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Secret Area 2") && new_time_trial_record("MistMan") && title_screen_check,
+    cancel = always_false(),
+    submit = always_true(),
+    value = dword(TimeTrialRecords["MistMan"]),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Time Trial: DarkMan",
+    description = "Complete the time trial for DarkMan as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Secret Area 3") && new_time_trial_record("DarkMan") && title_screen_check,
+    cancel = always_false(),
+    submit = always_true(),
+    value = dword(TimeTrialRecords["DarkMan"]),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Time Trial: JapanMan",
+    description = "Complete the time trial for JapanMan as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Secret Area 3") && new_time_trial_record("JapanMan") && title_screen_check,
+    cancel = always_false(),
+    submit = always_true(),
+    value = dword(TimeTrialRecords["JapanMan"]),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Time Trial: ProtoMan",
+    description = "Complete the time trial for ProtoMan as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Secret Area 3") && new_time_trial_record("ProtoMan") && title_screen_check,
+    cancel = always_false(),
+    submit = always_true(),
+    value = dword(TimeTrialRecords["ProtoMan"]),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: FlashMan Omega",
+    description = "Defeat FlashMan Omega in Principal's PC 2 as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Principal's PC 2") && fighting_boss("FlashMan Omega") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: GutsMan Omega",
+    description = "Defeat GutsMan Omega in Dex's HP as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Dex's HP") && fighting_boss("GutsMan Omega") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: BeastMan Omega",
+    description = "Defeat BeastMan Omega in Zoo Comp 3 as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Zoo Comp 3") && fighting_boss("BeastMan Omega") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: MetalMan Omega",
+    description = "Defeat MetalMan Omega in Tamako's HP as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Tamako's HP") && fighting_boss("MetalMan Omega") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: BubbleMan Omega",
+    description = "Defeat BubbleMan Omega in Yoka Area 2 as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Yoka Area 2") && fighting_boss("BubbleMan Omega") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: KingMan Omega",
+    description = "Defeat KingMan Omega in the TV Station Control Panel Comp as fast as you can!",
+    start  = no_glitches_enabled() && in_area("TV Station Control Panel Comp") && fighting_boss("KingMan Omega") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: DesertMan Omega",
+    description = "Defeat DesertMan Omega in the Relay Van Comp as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Relay Van Comp") && fighting_boss("DesertMan Omega") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: PlantMan Omega",
+    description = "Defeat PlantMan Omega in Hospital Comp 3 as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Hospital Comp 3") && fighting_boss("PlantMan Omega") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: FlameMan Omega",
+    description = "Defeat FlameMan Omega in Undernet 3 as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Undernet 3") && fighting_boss("FlameMan Omega") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: MistMan Omega",
+    description = "Defeat MistMan Omega in the NetBattle Machine Comp as fast as you can!",
+    start  = no_glitches_enabled() && in_area("NetBattle Machine Comp") && fighting_boss("MistMan Omega") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: BowlMan Omega",
+    description = "Defeat BowlMan Omega in the NetBattle Machine Comp as fast as you can!",
+    start  = no_glitches_enabled() && in_area("NetBattle Machine Comp") && fighting_boss("BowlMan Omega") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: DrillMan Omega",
+    description = "Defeat DrillMan Omega in Undernet 5 as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Undernet 5") && fighting_boss("DrillMan Omega") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: ProtoMan Omega",
+    description = "Defeat ProtoMan Omega in Hades Isle Area as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Hades Isle Area") && fighting_boss("ProtoMan Omega") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: DarkMan Omega",
+    description = "Defeat DarkMan Omega in Secret Area 1 as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Secret Area 1") && fighting_boss("DarkMan Omega") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: JapanMan Omega",
+    description = "Defeat JapanMan Omega in Secret Area 2 as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Secret Area 2") && fighting_boss("JapanMan Omega") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: Serenade Omega",
+    description = "Defeat Serenade Omega in Secret Area 3 as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Secret Area 3") && fighting_boss("Serenade Omega") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
+
+leaderboard(
+    title = "Deletion Time: Bass Omega",
+    description = "Defeat Bass Omega in Secret Area 3 as fast as you can!",
+    start  = no_glitches_enabled() && in_area("Secret Area 3") && fighting_boss("Bass Omega") && boss_killed(),
+    cancel = always_false(),
+    submit = always_true(),
+    value = measured(battle_time),
+    lower_is_better = true,
+    format = "FRAMES"
+)
 
 ///////////////////
 // Rich Presence //
@@ -1225,105 +2425,113 @@ rich_presence_conditional_display(
 )
 
 
-//rich_presence_conditional_display(
-//    buster_glitch(),
-//    "Buster glitch detected! Achievements have been disabled."
-//)
+rich_presence_conditional_display(
+    buster_glitch(),
+    "Buster glitch detected! Achievements have been disabled."
+)
 
-//rich_presence_conditional_display(
-//    hp_glitch(),
-//    "HP glitch detected! Achievements have been disabled."
-//)
+rich_presence_conditional_display(
+    hp_glitch(),
+    "HP glitch detected! Achievements have been disabled."
+)
 
-//rich_presence_conditional_display(
-//    custom_glitch(),
-//    "Custom glitch detected! Achievements have been disabled."
-//)
+rich_presence_conditional_display(
+    custom_glitch(),
+    "Custom glitch detected! Achievements have been disabled."
+)
 
-//rich_presence_conditional_display(
-//    bassgs_detected(),
-//    "BassGS chip detected! Achievements have been disabled."
-//)
+rich_presence_conditional_display(
+    bassgs_detected(),
+    "BassGS chip detected! Achievements have been disabled."
+)
 
 rich_presence_conditional_display(
     in_battle && enemy_1_id != 0  && enemy_2_id != 0  && enemy_3_id != 0,
-    "In battle against {3}, {4} and {5} | {0} | HP: {1}/{2} | Zenny: {6}",
+    "In battle against {3}, {4} and {5} | {0} | HP: {1}/{2} | Zenny: {6} | Bugfrags: {7}",
     rich_presence_lookup("Area", map_id, AreaLookup, fallback="Unknown Area"),
     rich_presence_value("Number", player_battle_hp),
     rich_presence_value("Number", player_battle_max_hp),
     rich_presence_lookup("Enemy", enemy_1_id, EnemyLookup, fallback="Unknown"),
     rich_presence_lookup("Enemy", enemy_2_id, EnemyLookup, fallback="Unknown"),
     rich_presence_lookup("Enemy", enemy_3_id, EnemyLookup, fallback="Unknown"),
-    rich_presence_value("Number", zenny)
+    rich_presence_value("Number", zenny),
+    rich_presence_value("Number", bugfrags)
 )
 
 rich_presence_conditional_display(
     in_battle && enemy_1_id != 0  && enemy_2_id != 0,
-    "In battle against {3} and {4} | {0} | HP: {1}/{2} | Zenny: {5}",
+    "In battle against {3} and {4} | {0} | HP: {1}/{2} | Zenny: {5} | Bugfrags: {6}",
     rich_presence_lookup("Area", map_id, AreaLookup, fallback="Unknown Area"),
     rich_presence_value("Number", player_battle_hp),
     rich_presence_value("Number", player_battle_max_hp),
     rich_presence_lookup("Enemy", enemy_1_id, EnemyLookup, fallback="Unknown"),
     rich_presence_lookup("Enemy", enemy_2_id, EnemyLookup, fallback="Unknown"),
-    rich_presence_value("Number", zenny)
+    rich_presence_value("Number", zenny),
+    rich_presence_value("Number", bugfrags)
 )
 
 rich_presence_conditional_display(
     in_battle && enemy_1_id != 0  && enemy_3_id != 0,
-    "In battle against {3} and {4} | {0} | HP: {1}/{2} | Zenny: {5}",
+    "In battle against {3} and {4} | {0} | HP: {1}/{2} | Zenny: {5} | Bugfrags: {6}",
     rich_presence_lookup("Area", map_id, AreaLookup, fallback="Unknown Area"),
     rich_presence_value("Number", player_battle_hp),
     rich_presence_value("Number", player_battle_max_hp),
     rich_presence_lookup("Enemy", enemy_1_id, EnemyLookup, fallback="Unknown"),
     rich_presence_lookup("Enemy", enemy_3_id, EnemyLookup, fallback="Unknown"),
-    rich_presence_value("Number", zenny)
+    rich_presence_value("Number", zenny),
+    rich_presence_value("Number", bugfrags)
 )
 
 rich_presence_conditional_display(
     in_battle && enemy_2_id != 0  && enemy_3_id != 0,
-    "In battle against {3} and {4} | {0} | HP: {1}/{2} | Zenny: {5}",
+    "In battle against {3} and {4} | {0} | HP: {1}/{2} | Zenny: {5} | Bugfrags: {6}",
     rich_presence_lookup("Area", map_id, AreaLookup, fallback="Unknown Area"),
     rich_presence_value("Number", player_battle_hp),
     rich_presence_value("Number", player_battle_max_hp),
     rich_presence_lookup("Enemy", enemy_2_id, EnemyLookup, fallback="Unknown"),
     rich_presence_lookup("Enemy", enemy_3_id, EnemyLookup, fallback="Unknown"),
-    rich_presence_value("Number", zenny)
+    rich_presence_value("Number", zenny),
+    rich_presence_value("Number", bugfrags)
 )
 
 rich_presence_conditional_display(
     in_battle && enemy_1_id != 0,
-    "In battle against {3} | {0} | HP: {1}/{2} | Zenny: {4}",
+    "In battle against {3} | {0} | HP: {1}/{2} | Zenny: {4} | Bugfrags: {5}",
     rich_presence_lookup("Area", map_id, AreaLookup, fallback="Unknown Area"),
     rich_presence_value("Number", player_battle_hp),
     rich_presence_value("Number", player_battle_max_hp),
     rich_presence_lookup("Enemy", enemy_1_id, EnemyLookup, fallback="Unknown"),
-    rich_presence_value("Number", zenny)
+    rich_presence_value("Number", zenny),
+    rich_presence_value("Number", bugfrags)
 )
 
 rich_presence_conditional_display(
     in_battle && enemy_2_id != 0,
-    "In battle against {3} | {0} | HP: {1}/{2} | Zenny: {4}",
+    "In battle against {3} | {0} | HP: {1}/{2} | Zenny: {4} | Bugfrags: {5}",
     rich_presence_lookup("Area", map_id, AreaLookup, fallback="Unknown Area"),
     rich_presence_value("Number", player_battle_hp),
     rich_presence_value("Number", player_battle_max_hp),
     rich_presence_lookup("Enemy", enemy_2_id, EnemyLookup, fallback="Unknown"),
-    rich_presence_value("Number", zenny)
+    rich_presence_value("Number", zenny),
+    rich_presence_value("Number", bugfrags)
 )
 
 rich_presence_conditional_display(
     in_battle && enemy_3_id != 0,
-    "In battle against {3} | {0} | HP: {1}/{2} | Zenny: {4}",
+    "In battle against {3} | {0} | HP: {1}/{2} | Zenny: {4} | Bugfrags: {5}",
     rich_presence_lookup("Area", map_id, AreaLookup, fallback="Unknown Area"),
     rich_presence_value("Number", player_battle_hp),
     rich_presence_value("Number", player_battle_max_hp),
     rich_presence_lookup("Enemy", enemy_3_id, EnemyLookup, fallback="Unknown"),
-    rich_presence_value("Number", zenny)
+    rich_presence_value("Number", zenny),
+    rich_presence_value("Number", bugfrags)
 )
 
 rich_presence_display(
-    "Exploring {0} | HP: {1}/{2} | Zenny: {3}",
+    "Exploring {0} | HP: {1}/{2} | Zenny: {3} | Bugfrags: {4}",
     rich_presence_lookup("Area", map_id, AreaLookup, fallback="Unknown Area"),
     rich_presence_value("Number", player_hp),
     rich_presence_value("Number", player_max_hp),
-    rich_presence_value("Number", zenny)
+    rich_presence_value("Number", zenny),
+    rich_presence_value("Number", bugfrags)
 )
