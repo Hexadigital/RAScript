@@ -1538,6 +1538,16 @@ achievement(
               && measured(sum_of(Spinners, has_key_item) == length(Spinners))
 )
 
+achievement(
+    title = "Treasure Tomes",
+    type = "missable",
+    points = 5,
+    description = "During the Legendary Tomes job, solve the riddle to collect 300000 Zenny before giving the tomes to the requester!",
+    // I used a zenny check here, since it's the only way to get that much in this area,
+    // and the bitflag for this is a bit unreliable (might be reused / area dependent)
+    trigger = no_glitches_enabled() && in_area("Staff Lounge") && (zenny - prev(zenny)) == 300000
+)
+
 ////////////////////
 // Data Collector //
 ////////////////////
