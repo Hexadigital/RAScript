@@ -35,6 +35,24 @@ Stamps = {
     "Quiz": byte(stamps_start + 6),
     "Universal Studios": byte(stamps_start + 7),
 }
+StampBits = {
+    "Jurassic Park": bit0(stamps_start),
+    "Back to the Future": bit0(stamps_start + 1),
+    "Wild West": bit0(stamps_start + 2),
+    "Backdraft": bit0(stamps_start + 3),
+    "ET": bit0(stamps_start + 4),
+    "Jaws": bit0(stamps_start + 5),
+    "Quiz": bit0(stamps_start + 6),
+    "Universal Studios": bit0(stamps_start + 7),
+    "Jurassic Park Red": bit1(stamps_start),
+    "Back to the Future Red": bit1(stamps_start + 1),
+    "Wild West Red": bit1(stamps_start + 2),
+    "Backdraft Red": bit1(stamps_start + 3),
+    "ET Red": bit1(stamps_start + 4),
+    "Jaws Red": bit1(stamps_start + 5),
+    "Quiz Red": bit1(stamps_start + 6),
+    "Universal Studios Red": bit1(stamps_start + 7),
+}
 
 Areas = {
     "Out of Game": 0x0000,
@@ -78,7 +96,7 @@ function bitflag_count(bitflag) {
 }
 
 function stamp_count(name) {
-    return Stamps[name]
+    return StampBits[name]
 }
 
 function item_bought(name) {
@@ -365,7 +383,7 @@ rich_presence_conditional_display(
     current_area == Areas["Shop"],
     "Checking out the shop • {0} • {1}/8 Stamps • {2} Points",
     rich_presence_lookup("Difficulty", difficulty, DifficultyLookup, fallback="Unknown"),
-    rich_presence_value("Number", sum_of(Stamps, stamp_count)),
+    rich_presence_value("Number", sum_of(StampBits, stamp_count)),
     rich_presence_value("Number", points)
 )
 
@@ -373,7 +391,7 @@ rich_presence_conditional_display(
     current_area == Areas["Quiz"],
     "Thinking hard • {0} • {1}/8 Stamps • {2} Points",
     rich_presence_lookup("Difficulty", difficulty, DifficultyLookup, fallback="Unknown"),
-    rich_presence_value("Number", sum_of(Stamps, stamp_count)),
+    rich_presence_value("Number", sum_of(StampBits, stamp_count)),
     rich_presence_value("Number", points)
 )
 
@@ -381,7 +399,7 @@ rich_presence_conditional_display(
     current_area == Areas["ET"],
     "Cycling freely • {0} • {1}/8 Stamps • {2} Points",
     rich_presence_lookup("Difficulty", difficulty, DifficultyLookup, fallback="Unknown"),
-    rich_presence_value("Number", sum_of(Stamps, stamp_count)),
+    rich_presence_value("Number", sum_of(StampBits, stamp_count)),
     rich_presence_value("Number", points)
 )
 
@@ -389,7 +407,7 @@ rich_presence_conditional_display(
     current_area == Areas["Wild West"],
     "Wrangling • {0} • {1}/8 Stamps • {2} Points",
     rich_presence_lookup("Difficulty", difficulty, DifficultyLookup, fallback="Unknown"),
-    rich_presence_value("Number", sum_of(Stamps, stamp_count)),
+    rich_presence_value("Number", sum_of(StampBits, stamp_count)),
     rich_presence_value("Number", points)
 )
 
@@ -397,7 +415,7 @@ rich_presence_conditional_display(
     current_area == Areas["Backdraft"],
     "Dealing with the heat • {0} • {1}/8 Stamps • {2} Points",
     rich_presence_lookup("Difficulty", difficulty, DifficultyLookup, fallback="Unknown"),
-    rich_presence_value("Number", sum_of(Stamps, stamp_count)),
+    rich_presence_value("Number", sum_of(StampBits, stamp_count)),
     rich_presence_value("Number", points)
 )
 
@@ -405,7 +423,7 @@ rich_presence_conditional_display(
     current_area == Areas["Back to the Future"],
     "Contemplating time travel • {0} • {1}/8 Stamps • {2} Points",
     rich_presence_lookup("Difficulty", difficulty, DifficultyLookup, fallback="Unknown"),
-    rich_presence_value("Number", sum_of(Stamps, stamp_count)),
+    rich_presence_value("Number", sum_of(StampBits, stamp_count)),
     rich_presence_value("Number", points)
 )
 
@@ -413,7 +431,7 @@ rich_presence_conditional_display(
     current_area == Areas["Jurassic Park"],
     "Playing with dinosaurs • {0} • {1}/8 Stamps • {2} Points",
     rich_presence_lookup("Difficulty", difficulty, DifficultyLookup, fallback="Unknown"),
-    rich_presence_value("Number", sum_of(Stamps, stamp_count)),
+    rich_presence_value("Number", sum_of(StampBits, stamp_count)),
     rich_presence_value("Number", points)
 )
 
@@ -421,13 +439,13 @@ rich_presence_conditional_display(
     current_area == Areas["Jaws"],
     "Slightly soaked • {0} • {1}/8 Stamps • {2} Points",
     rich_presence_lookup("Difficulty", difficulty, DifficultyLookup, fallback="Unknown"),
-    rich_presence_value("Number", sum_of(Stamps, stamp_count)),
+    rich_presence_value("Number", sum_of(StampBits, stamp_count)),
     rich_presence_value("Number", points)
 )
 
 rich_presence_display(
     "Exploring the park • {0} • {1}/8 Stamps • {2} Points",
     rich_presence_lookup("Difficulty", difficulty, DifficultyLookup, fallback="Unknown"),
-    rich_presence_value("Number", sum_of(Stamps, stamp_count)),
+    rich_presence_value("Number", sum_of(StampBits, stamp_count)),
     rich_presence_value("Number", points)
 )
