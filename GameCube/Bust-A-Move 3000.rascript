@@ -239,7 +239,7 @@ for c in battle_chars {
         description = format("Clear CPU Battle mode using {0}!", c),
         trigger = game_mode == GameModeNameToID["CPU Battle"]
                   && character == CharacterToID[c]
-                  && round_completed(5)
+                  && round_completed(10)
     )
 }
 
