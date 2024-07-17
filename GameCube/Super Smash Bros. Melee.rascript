@@ -119,6 +119,9 @@ coin_mode = byte(0x0045bf12) == 0x02
 bonus_mode = byte(0x0045bf12) == 0x03
 four_stocks = stock_mode && byte(0x0045bf14) == 0x04
 
+screen_id = byte(0x00479d33)
+versus_clear = prev(screen_id) == 0x02 && screen_id == 0x04
+
 p1_character_id = byte(0x00480820)
 p2_character_id = byte(0x00480844)
 p3_character_id = byte(0x00480868)
@@ -165,65 +168,65 @@ p4_rank = byte(0x0047c27d)
 p4_won_versus = p4_rank == 0x00
 p4_lost_versus = p4_rank >= 0x01 && p4_rank <= 0x04
 
-p1_double_ko_bonus = prev(byte(0x0047c4ee)) == 0x00 && byte(0x0047c4ee) == 0x01
-p2_double_ko_bonus = prev(byte(0x0047c9f6)) == 0x00 && byte(0x0047c9f6) == 0x01
-p3_double_ko_bonus = prev(byte(0x0047cefe)) == 0x00 && byte(0x0047cefe) == 0x01
-p4_double_ko_bonus = prev(byte(0x0047d406)) == 0x00 && byte(0x0047d406) == 0x01
-p1_triple_ko_bonus = prev(byte(0x0047c4ef)) == 0x00 && byte(0x0047c4ef) == 0x01
-p2_triple_ko_bonus = prev(byte(0x0047c9f7)) == 0x00 && byte(0x0047c9f7) == 0x01
-p3_triple_ko_bonus = prev(byte(0x0047ceff)) == 0x00 && byte(0x0047ceff) == 0x01
-p4_triple_ko_bonus = prev(byte(0x0047d407)) == 0x00 && byte(0x0047d407) == 0x01
+p1_double_ko_bonus = byte(0x0047c4ee) == 0x01
+p2_double_ko_bonus = byte(0x0047c9f6) == 0x01
+p3_double_ko_bonus = byte(0x0047cefe) == 0x01
+p4_double_ko_bonus = byte(0x0047d406) == 0x01
+p1_triple_ko_bonus = byte(0x0047c4ef) == 0x01
+p2_triple_ko_bonus = byte(0x0047c9f7) == 0x01
+p3_triple_ko_bonus = byte(0x0047ceff) == 0x01
+p4_triple_ko_bonus = byte(0x0047d407) == 0x01
 
-p1_crowd_bonus = prev(byte(0x0047c4cf)) == 0x00 && byte(0x0047c4cf) == 0x01
-p2_crowd_bonus = prev(byte(0x0047c9d7)) == 0x00 && byte(0x0047c9d7) == 0x01
-p3_crowd_bonus = prev(byte(0x0047cedf)) == 0x00 && byte(0x0047cedf) == 0x01
-p4_crowd_bonus = prev(byte(0x0047d3e7)) == 0x00 && byte(0x0047d3e7) == 0x01
+p1_crowd_bonus = byte(0x0047c4cf) == 0x01
+p2_crowd_bonus = byte(0x0047c9d7) == 0x01
+p3_crowd_bonus = byte(0x0047cedf) == 0x01
+p4_crowd_bonus = byte(0x0047d3e7) == 0x01
 
-p1_bullseye_bonus = prev(byte(0x0047c4e3)) == 0x00 && byte(0x0047c4e3) == 0x01
-p2_bullseye_bonus = prev(byte(0x0047c9eb)) == 0x00 && byte(0x0047c9eb) == 0x01
-p3_bullseye_bonus = prev(byte(0x0047cef3)) == 0x00 && byte(0x0047cef3) == 0x01
-p4_bullseye_bonus = prev(byte(0x0047d3fb)) == 0x00 && byte(0x0047d3fb) == 0x01
+p1_bullseye_bonus = byte(0x0047c4e3) == 0x01
+p2_bullseye_bonus = byte(0x0047c9eb) == 0x01
+p3_bullseye_bonus = byte(0x0047cef3) == 0x01
+p4_bullseye_bonus = byte(0x0047d3fb) == 0x01
 
-p1_combo_king_bonus = prev(byte(0x0047c475)) == 0x00 && byte(0x0047c475) == 0x01
-p2_combo_king_bonus = prev(byte(0x0047c97d)) == 0x00 && byte(0x0047c97d) == 0x01
-p3_combo_king_bonus = prev(byte(0x0047ce85)) == 0x00 && byte(0x0047ce85) == 0x01
-p4_combo_king_bonus = prev(byte(0x0047d38d)) == 0x00 && byte(0x0047d38d) == 0x01
+p1_combo_king_bonus = byte(0x0047c475) == 0x01
+p2_combo_king_bonus = byte(0x0047c97d) == 0x01
+p3_combo_king_bonus = byte(0x0047ce85) == 0x01
+p4_combo_king_bonus = byte(0x0047d38d) == 0x01
 
-p1_berserker_bonus = prev(byte(0x0047c487)) == 0x00 && byte(0x0047c487) == 0x01
-p2_berserker_bonus = prev(byte(0x0047c98f)) == 0x00 && byte(0x0047c98f) == 0x01
-p3_berserker_bonus = prev(byte(0x0047ce97)) == 0x00 && byte(0x0047ce97) == 0x01
-p4_berserker_bonus = prev(byte(0x0047d39f)) == 0x00 && byte(0x0047d39f) == 0x01
+p1_berserker_bonus = byte(0x0047c487) == 0x01
+p2_berserker_bonus = byte(0x0047c98f) == 0x01
+p3_berserker_bonus = byte(0x0047ce97) == 0x01
+p4_berserker_bonus = byte(0x0047d39f) == 0x01
 
-p1_poser_ko_bonus = prev(byte(0x0047c4e4)) == 0x00 && byte(0x0047c4e4) == 0x01
-p2_poser_ko_bonus = prev(byte(0x0047c9ec)) == 0x00 && byte(0x0047c9ec) == 0x01
-p3_poser_ko_bonus = prev(byte(0x0047cef4)) == 0x00 && byte(0x0047cef4) == 0x01
-p4_poser_ko_bonus = prev(byte(0x0047d3fc)) == 0x00 && byte(0x0047d3fc) == 0x01
+p1_poser_ko_bonus = byte(0x0047c4e4) == 0x01
+p2_poser_ko_bonus = byte(0x0047c9ec) == 0x01
+p3_poser_ko_bonus = byte(0x0047cef4) == 0x01
+p4_poser_ko_bonus = byte(0x0047d3fc) == 0x01
 
-p1_bird_bonus = prev(byte(0x0047c474)) == 0x00 && byte(0x0047c474) == 0x01
-p2_bird_bonus = prev(byte(0x0047c97c)) == 0x00 && byte(0x0047c97c) == 0x01
-p3_bird_bonus = prev(byte(0x0047ce84)) == 0x00 && byte(0x0047ce84) == 0x01
-p4_bird_bonus = prev(byte(0x0047d38c)) == 0x00 && byte(0x0047d38c) == 0x01
+p1_bird_bonus = byte(0x0047c474) == 0x01
+p2_bird_bonus = byte(0x0047c97c) == 0x01
+p3_bird_bonus = byte(0x0047ce84) == 0x01
+p4_bird_bonus = byte(0x0047d38c) == 0x01
 
-p1_meteor_smash_bonus = prev(byte(0x0047c47a)) == 0x00 && byte(0x0047c47a) == 0x01
-p2_meteor_smash_bonus = prev(byte(0x0047c47a + (0x508))) == 0x00 && byte(0x0047c47a + (0x508)) == 0x01
-p3_meteor_smash_bonus = prev(byte(0x0047c47a + (0x508 * 2))) == 0x00 && byte(0x0047c47a + (0x508 * 2)) == 0x01
-p4_meteor_smash_bonus = prev(byte(0x0047c47a + (0x508 * 3))) == 0x00 && byte(0x0047c47a + (0x508 * 3)) == 0x01
+p1_meteor_smash_bonus = byte(0x0047c47a) == 0x01
+p2_meteor_smash_bonus = byte(0x0047c47a + (0x508)) == 0x01
+p3_meteor_smash_bonus = byte(0x0047c47a + (0x508 * 2)) == 0x01
+p4_meteor_smash_bonus = byte(0x0047c47a + (0x508 * 3)) == 0x01
 
-p1_meteor_clear_bonus = prev(byte(0x0047c47b)) == 0x00 && byte(0x0047c47b) == 0x01
-p2_meteor_clear_bonus = prev(byte(0x0047c47b + (0x508))) == 0x00 && byte(0x0047c47b + (0x508)) == 0x01
-p3_meteor_clear_bonus = prev(byte(0x0047c47b + (0x508 * 2))) == 0x00 && byte(0x0047c47b + (0x508 * 2)) == 0x01
-p4_meteor_clear_bonus = prev(byte(0x0047c47b + (0x508 * 3))) == 0x00 && byte(0x0047c47b + (0x508 * 3)) == 0x01
+p1_meteor_clear_bonus = byte(0x0047c47b) == 0x01
+p2_meteor_clear_bonus = byte(0x0047c47b + (0x508)) == 0x01
+p3_meteor_clear_bonus = byte(0x0047c47b + (0x508 * 2)) == 0x01
+p4_meteor_clear_bonus = byte(0x0047c47b + (0x508 * 3)) == 0x01
 
-p1_compass_bonus = prev(byte(0x0047c49c)) == 0x00 && byte(0x0047c49c) == 0x01
-p2_compass_bonus = prev(byte(0x0047c49c + (0x508))) == 0x00 && byte(0x0047c49c + (0x508)) == 0x01
-p3_compass_bonus = prev(byte(0x0047c49c + (0x508 * 2))) == 0x00 && byte(0x0047c49c + (0x508 * 2)) == 0x01
-p4_compass_bonus = prev(byte(0x0047c49c + (0x508 * 3))) == 0x00 && byte(0x0047c49c + (0x508 * 3)) == 0x01
+p1_compass_bonus = byte(0x0047c49c) == 0x01
+p2_compass_bonus = byte(0x0047c49c + (0x508)) == 0x01
+p3_compass_bonus = byte(0x0047c49c + (0x508 * 2)) == 0x01
+p4_compass_bonus = byte(0x0047c49c + (0x508 * 3)) == 0x01
 
 // Flat Zone (Event #45) (Game and Watch Forever!)
 area_in_event_45 = area_id == 0xF6
 // Battlefield (Multi-Man Melee)
 area_in_multiman_melee = area_id == 0x11d
-playing_as_gameandwatch = character_id == CharacterToID["Mr. Game & Watch"]
+playing_as_gameandwatch = byte(0x470778) == CharacterToID["Mr. Game & Watch"]
 
 items_off = byte(0x0045c370) == 0xff
 
@@ -242,12 +245,12 @@ function damage_taken(player, amount) {
 achievement(
     title = "I'm The Strongest!",
     points = 1,
-    description = "Land a 9 on a CPU in any single-player mode using Mr. Game & Watch's Judgement",
+    description = "As P1, land a 9 on any playable character CPU in any single-player mode using Mr. Game & Watch's Judgement",
     trigger = in_a_good_mode
               && playing_as_gameandwatch
               && hammer_out
               && judgement_number == 9
-              && (damage_taken("p2", 15) || damage_taken("p3", 15) || damage_taken("p4", 15))
+              && (damage_taken("p2", 5) || damage_taken("p3", 5) || damage_taken("p4", 5))
 )
 
 //Centurion Get 100+ KOs in Endless Melee 
@@ -278,7 +281,6 @@ achievement(
 
 //Wired to Survive Complete 15-Minute Melee, unlocking the Kongo Jungle stage
 achievement(
-    type = "progression",
     title = "Wired to Survive",
     points = 10,
     description = "Complete 15-Minute Melee",
@@ -329,7 +331,7 @@ achievement(
 achievement(
     title = "Shield Buster",
     points = 3,
-    description = "Earn the \"Shield Buster\" bonus by breaking the shield of a Level 5 CPU or higher in any VS. mode",
+    description = "Earn the \"Shield Buster\" bonus by breaking the shield of a Level 5 CPU or higher in any VS. mode match",
     trigger = in_versus_mode
               && (( // P1 player, other CPU
               p1_is_player
@@ -408,6 +410,7 @@ achievement(
     points = 5,
     description = "Earn the \"Double KO\" bonus by defeating two or more Level 5 CPUs or higher with a single attack in any VS. mode match except Super Sudden Death",
     trigger = in_versus_mode_without_ssd
+              && versus_clear
               && (( // P1 player, other CPU
                   p1_is_player
                   && p1_double_ko_bonus
@@ -477,6 +480,7 @@ achievement(
     points = 10,
     description = "Earn the \"Triple KO\" bonus by defeating three Level 3 CPUs or higher with a single attack in any VS. mode match except Super Sudden Death",
     trigger = in_versus_mode_without_ssd
+              && versus_clear
               && (( // P1 player, other CPU
                   p1_is_player
                   && p1_triple_ko_bonus
@@ -531,8 +535,9 @@ achievement(
 achievement(
     title = "They Love Me",
     points = 1,
-    description = "Get a Crowd Favorite bonus by getting the crowd to chant your name in any VS. Mode except Super Sudden Death",
+    description = "Earn the \"Crowd Favorite\" bonus by getting the crowd to chant your name in any VS. mode match except Super Sudden Death",
     trigger = in_versus_mode_without_ssd
+              && versus_clear
               && ((
                   p1_is_player
                   && p1_crowd_bonus
@@ -553,6 +558,7 @@ achievement(
     points = 2,
     description = "Earn the \"Bull's-eye KO\" bonus as Mewtwo or Samus with items turned off in any VS. mode match except Super Sudden Death",
     trigger = in_versus_mode_without_ssd
+              && versus_clear
               && items_off
               && ((
                   p1_is_player
@@ -580,9 +586,9 @@ achievement(
 achievement(
     title = "Hungrybox Tribute",
     points = 10,
-    description = "Earn the \"Combo King\" bonus as Jigglypuff in any VS. mode except match Super Sudden Death",
+    description = "Earn the \"Combo King\" bonus by keeping up a good combo as Jigglypuff in any VS. mode match except Super Sudden Death",
     trigger = in_versus_mode_without_ssd
-              && items_off
+              && versus_clear
               && ((
                   p1_is_player
                   && p1_character_id == CharacterToID["Jigglypuff"]
@@ -607,6 +613,7 @@ achievement(
     points = 10,
     description = "Earn the \"Berserker\" bonus by using 60 attacks within a minute as Ganondorf in any VS. mode match except Super Sudden Death",
     trigger = in_versus_mode_without_ssd
+              && versus_clear
               && ((
                   p1_is_player
                   && p1_character_id == CharacterToID["Ganondorf"]
@@ -631,6 +638,7 @@ achievement(
     points = 1,
     description = "Earn the \"Poser KO\" bonus by defeating an opponent with a taunt as Luigi in any VS. mode match",
     trigger = in_versus_mode
+              && versus_clear
               && ((
                   p1_is_player
                   && p1_character_id == CharacterToID["Luigi"]
@@ -655,6 +663,7 @@ achievement(
     points = 5,
     description = "Earn the \"Bird of Prey\" bonus by using only aerial attacks as Falco in any VS. mode match except Super Sudden Death",
     trigger = in_versus_mode_without_ssd
+              && versus_clear
               && ((
                   p1_is_player
                   && p1_won_versus
@@ -683,6 +692,7 @@ achievement(
     points = 2,
     description = "Earn the \"Meteor Smash\" bonus by defeating any opponent using a meteor smash in any VS. mode match except Super Sudden Death",
     trigger = in_versus_mode_without_ssd
+              && versus_clear
               && ((
                   p1_is_player
                   && p1_meteor_smash_bonus
@@ -703,6 +713,7 @@ achievement(
     points = 3,
     description = "Earn the \"Meteor Clear\" bonus by ending with a meteor smash in any VS. mode match except Super Sudden Death",
     trigger = in_versus_mode_without_ssd
+              && versus_clear
               && ((
                   p1_is_player
                   && p1_meteor_clear_bonus
@@ -723,6 +734,7 @@ achievement(
     points = 3,
     description = "Earn the \"Compass Tosser\" bonus by using all four throws and winning against a Level 5 CPU or higher in any VS. mode match except Super Sudden Death",
     trigger = in_versus_mode_without_ssd
+              && versus_clear
               && ((
                   p1_is_player
                   && p1_won_versus
@@ -1148,91 +1160,103 @@ achievement(
 )
 
 for c in CharacterToID {
-    leaderboard(
-        title = format("10-Man Melee: {0}", c),
-        description = "Complete it as fast as you can!",
-        start = in_10man_melee
-              && area_in_multiman_melee
-              && multiman_melee_character_id == CharacterToID[c]
-              && p1_stocks == 1
-              && multiman_success,
-        cancel = always_false(),
-        submit = always_true(), 
-        value = multiman_melee_frames_passed,
-        format = "FRAMES",
-        lower_is_better = true
-    )
+    if c != "Sheik" {
+        leaderboard(
+            title = format("10-Man Melee: {0}", c),
+            description = "Complete it as fast as you can!",
+            start = in_10man_melee
+                  && area_in_multiman_melee
+                  && multiman_melee_character_id == CharacterToID[c]
+                  && p1_stocks == 1
+                  && multiman_success,
+            cancel = always_false(),
+            submit = always_true(), 
+            value = multiman_melee_frames_passed,
+            format = "FRAMES",
+            lower_is_better = true
+        )
+    }
 }
 for c in CharacterToID {
-    leaderboard(
-        title = format("100-Man Melee: {0}", c),
-        description = "Complete it as fast as you can!",
-        start = in_100man_melee
-              && area_in_multiman_melee
-              && multiman_melee_character_id == CharacterToID[c]
-              && p1_stocks == 1
-              && multiman_success,
-        cancel = always_false(),
-        submit = always_true(), 
-        value = multiman_melee_frames_passed,
-        format = "FRAMES",
-        lower_is_better = true
-    )
+    if c != "Sheik" {
+        leaderboard(
+            title = format("100-Man Melee: {0}", c),
+            description = "Complete it as fast as you can!",
+            start = in_100man_melee
+                  && area_in_multiman_melee
+                  && multiman_melee_character_id == CharacterToID[c]
+                  && p1_stocks == 1
+                  && multiman_success,
+            cancel = always_false(),
+            submit = always_true(), 
+            value = multiman_melee_frames_passed,
+            format = "FRAMES",
+            lower_is_better = true
+        )
+    }
 }
 for c in CharacterToID {
-    leaderboard(
-        title = format("3-Minute Melee: {0}", c),
-        description = "KO as many opponents as you can!",
-        start = in_3min_melee
-              && area_in_multiman_melee
-              && multiman_melee_character_id == CharacterToID[c]
-              && p1_stocks == 1
-              && multiman_success,
-        cancel = always_false(),
-        submit = always_true(), 
-        value = multiman_melee_kills
-    )
+    if c != "Sheik" {
+        leaderboard(
+            title = format("3-Minute Melee: {0}", c),
+            description = "KO as many opponents as you can!",
+            start = in_3min_melee
+                  && area_in_multiman_melee
+                  && multiman_melee_character_id == CharacterToID[c]
+                  && p1_stocks == 1
+                  && multiman_success,
+            cancel = always_false(),
+            submit = always_true(), 
+            value = multiman_melee_kills
+        )
+    }
 }
 for c in CharacterToID {
-    leaderboard(
-        title = format("15-Minute Melee: {0}", c),
-        description = "KO as many opponents as you can!",
-        start = in_15min_melee
-              && area_in_multiman_melee
-              && multiman_melee_character_id == CharacterToID[c]
-              && p1_stocks == 1
-              && multiman_success,
-        cancel = always_false(),
-        submit = always_true(), 
-        value = multiman_melee_kills
-    )
+    if c != "Sheik" {
+        leaderboard(
+            title = format("15-Minute Melee: {0}", c),
+            description = "KO as many opponents as you can!",
+            start = in_15min_melee
+                  && area_in_multiman_melee
+                  && multiman_melee_character_id == CharacterToID[c]
+                  && p1_stocks == 1
+                  && multiman_success,
+            cancel = always_false(),
+            submit = always_true(), 
+            value = multiman_melee_kills
+        )
+    }
 }
 for c in CharacterToID {
-    leaderboard(
-        title = format("Endless Melee: {0}", c),
-        description = "KO as many opponents as you can!",
-        start = in_endless_melee
-              && area_in_multiman_melee
-              && multiman_melee_character_id == CharacterToID[c]
-              && prev(p1_stocks) == 1
-              && p1_stocks == 0,
-        cancel = always_false(),
-        submit = always_true(), 
-        value = multiman_melee_kills
-    )
+    if c != "Sheik" {
+        leaderboard(
+            title = format("Endless Melee: {0}", c),
+            description = "KO as many opponents as you can!",
+            start = in_endless_melee
+                  && area_in_multiman_melee
+                  && multiman_melee_character_id == CharacterToID[c]
+                  && prev(p1_stocks) == 1
+                  && p1_stocks == 0,
+            cancel = always_false(),
+            submit = always_true(), 
+            value = multiman_melee_kills
+        )
+    }
 }
 for c in CharacterToID {
-    leaderboard(
-        title = format("Cruel Melee: {0}", c),
-        description = "KO as many opponents as you can!",
-        start = in_cruel_melee
-              && area_in_multiman_melee
-              && multiman_melee_character_id == CharacterToID[c]
-              && prev(p1_stocks) == 1
-              && p1_stocks == 0,
-        cancel = always_false(),
-        submit = always_true(), 
-        value = multiman_melee_kills
-    )
+    if c != "Sheik" {
+        leaderboard(
+            title = format("Cruel Melee: {0}", c),
+            description = "KO as many opponents as you can!",
+            start = in_cruel_melee
+                  && area_in_multiman_melee
+                  && multiman_melee_character_id == CharacterToID[c]
+                  && prev(p1_stocks) == 1
+                  && p1_stocks == 0,
+            cancel = always_false(),
+            submit = always_true(), 
+            value = multiman_melee_kills
+        )
+    }
 }
 
