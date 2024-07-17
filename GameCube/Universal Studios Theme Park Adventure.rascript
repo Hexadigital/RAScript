@@ -17,6 +17,7 @@ Items = {
     "E.T. Cap": bit1(0x0022d26a),
     "Jaws Cap": bit2(0x0022d26a),
     "JP Cap": bit3(0x0022d26a),
+    "Jaws Cap 2": bit4(0x0022d26a),
     "T-Rex Shoes": bit5(0x0022d26a),
     "Hover Board": bit7(0x0022d26a),
     "Cowboy Hat": bit6(0x0022d26b),
@@ -92,6 +93,43 @@ function red_stamp_get(name) {
     return prev(Stamps[name]) <= 1 && Stamps[name] == 2
 }
 
+game_clear_sanity_check = dword(0x0022d168)
+function game_clear() {
+    return // Logic 1: Fast hardware, only works if Dolphin doesn't stall on memory card action
+      // (prev(current_area) == Areas["Shop"]
+      // && current_area == Areas["Out of Game"]
+      // && points == prev(points)
+      // && points > 0
+      // && quiz_progress > 0)
+      prev(current_area) == Areas["Shop"]
+      && prev(Stamps["Jurassic Park"]) >= 1
+      && prev(Stamps["Jurassic Park"]) <= 2
+      && prev(Stamps["Back to the Future"]) >= 1
+      && prev(Stamps["Back to the Future"]) <= 2
+      && prev(Stamps["Wild West"]) >= 1
+      && prev(Stamps["Wild West"]) <= 2
+      && prev(Stamps["Backdraft"]) >= 1
+      && prev(Stamps["Backdraft"]) <= 2
+      && prev(Stamps["ET"]) >= 1
+      && prev(Stamps["ET"]) <= 2
+      && prev(Stamps["Jaws"]) >= 1
+      && prev(Stamps["Jaws"]) <= 2
+      && prev(Stamps["Quiz"]) >= 1
+      && prev(Stamps["Quiz"]) <= 2
+      && prev(Stamps["Universal Studios"]) >= 1
+      && prev(Stamps["Universal Studios"]) <= 2
+      && Stamps["Jurassic Park"] == 0
+      && Stamps["Back to the Future"] == 0
+      && Stamps["Wild West"] == 0
+      && Stamps["Backdraft"] == 0
+      && Stamps["ET"] == 0
+      && Stamps["Jaws"] == 0
+      && Stamps["Quiz"] == 0
+      && Stamps["Universal Studios"] == 0
+      && game_clear_sanity_check != 0
+      
+}
+
 // Buy the Cowboy Hat 1p
 achievement(
     title = "Cowkid",
@@ -129,7 +167,7 @@ achievement(
     title = "Not a Blahaj",
     points = 1,
     description = "Buy the Jaws Cap",
-    trigger = current_area == Areas["Shop"] && item_bought("Jaws Cap")
+    trigger = current_area == Areas["Shop"] && (item_bought("Jaws Cap") || item_bought("Jaws Cap 2"))
 )
 
 // Buy the JP Cap 1p
@@ -301,23 +339,15 @@ achievement(
     type = "win_condition",
     points = 10,
     description = "Collect all 8 stamps and watch the ending",
-    trigger = prev(current_area) == Areas["Shop"]
-      && current_area == Areas["Out of Game"]
-      && points == prev(points)
-      && points > 0
-      && quiz_progress > 0
+    trigger = game_clear()
 )
 
 achievement(
     title = "All This for a Special End Screen?",
     points = 10,
     description = "Collect all 8 stamps and watch the ending on Hard difficulty",
-    trigger = difficulty == Difficulties["Hard"]
-      && prev(current_area) == Areas["Shop"]
-      && current_area == Areas["Out of Game"]
-      && points == prev(points)
-      && points > 0
-      && quiz_progress > 0
+    trigger = prev(difficulty) == Difficulties["Hard"]
+      && game_clear()
 )
 
 rich_presence_conditional_display(
