@@ -113,6 +113,7 @@ in_3min_melee = mode_check(0x23)
 in_15min_melee = mode_check(0x24)
 in_endless_melee = mode_check(0x25)
 in_cruel_melee = mode_check(0x26)
+master_hand_in_multiman = byte(0x004735a3) == 0x1a
 time_mode = byte(0x0045bf12) == 0x00
 stock_mode = byte(0x0045bf12) == 0x01
 coin_mode = byte(0x0045bf12) == 0x02
@@ -121,6 +122,9 @@ four_stocks = stock_mode && byte(0x0045bf14) == 0x04
 
 screen_id = byte(0x00479d33)
 versus_clear = prev(screen_id) == 0x02 && screen_id == 0x04
+not_no_contest = byte(0x0047c02c) != 0x07
+sp_score = dword_be(0x00472e24)
+sp_clear = sp_score > prev(sp_score)
 
 p1_character_id = byte(0x00480820)
 p2_character_id = byte(0x00480844)
@@ -167,6 +171,8 @@ p3_lost_versus = p3_rank >= 0x01 && p3_rank <= 0x04
 p4_rank = byte(0x0047c27d)
 p4_won_versus = p4_rank == 0x00
 p4_lost_versus = p4_rank >= 0x01 && p4_rank <= 0x04
+
+sp_meteor_bonus = dword(0x00453a5c) != 0
 
 p1_double_ko_bonus = byte(0x0047c4ee) == 0x01
 p2_double_ko_bonus = byte(0x0047c9f6) == 0x01
@@ -222,6 +228,11 @@ p2_compass_bonus = byte(0x0047c49c + (0x508)) == 0x01
 p3_compass_bonus = byte(0x0047c49c + (0x508 * 2)) == 0x01
 p4_compass_bonus = byte(0x0047c49c + (0x508 * 3)) == 0x01
 
+p1_shield_buster_bonus = byte(0x0047c4b2) == 0x01
+p2_shield_buster_bonus = byte(0x0047c4b2 + (0x508)) == 0x01
+p3_shield_buster_bonus = byte(0x0047c4b2 + (0x508 * 2)) == 0x01
+p4_shield_buster_bonus = byte(0x0047c4b2 + (0x508 * 3)) == 0x01
+
 // Flat Zone (Event #45) (Game and Watch Forever!)
 area_in_event_45 = area_id == 0xF6
 // Battlefield (Multi-Man Melee)
@@ -265,6 +276,7 @@ achievement(
               && prev(multiman_melee_kills) < 100
               && multiman_melee_kills >= 100
               && multiman_melee_kills < 105
+              && !master_hand_in_multiman
 )
 
 
@@ -277,6 +289,7 @@ achievement(
               && area_in_multiman_melee
               && p1_stocks == 1
               && multiman_success
+              && !master_hand_in_multiman
 )
 
 //Wired to Survive Complete 15-Minute Melee, unlocking the Kongo Jungle stage
@@ -288,6 +301,7 @@ achievement(
               && area_in_multiman_melee
               && p1_stocks == 1
               && multiman_success
+              && !master_hand_in_multiman
 )
 
 //Give Me One Second Complete 10-Man Melee in under 12 seconds
@@ -300,6 +314,7 @@ achievement(
               && p1_stocks == 1
               && multiman_melee_frames_passed <= 12 * 60
               && multiman_success
+              && !master_hand_in_multiman
 )
 
 //Two Four You Complete 100-Man Melee within 240 seconds
@@ -312,6 +327,7 @@ achievement(
               && p1_stocks == 1
               && multiman_melee_frames_passed <= 240 * 60
               && multiman_success
+              && !master_hand_in_multiman
 )
 
 //Tough Crowd KO more than 5 opponents in Cruel Melee
@@ -325,6 +341,7 @@ achievement(
               && prev(multiman_melee_kills) < 5
               && multiman_melee_kills >= 5
               && multiman_melee_kills < 10
+              && !master_hand_in_multiman
 )
 
 //Shield Buster Break the Shield of any CPU Lv 5 or Higher
@@ -333,74 +350,67 @@ achievement(
     points = 3,
     description = "Earn the \"Shield Buster\" bonus by breaking the shield of a Level 5 CPU or higher in any VS. mode match",
     trigger = in_versus_mode
+              && versus_clear
               && (( // P1 player, other CPU
-              p1_is_player
-              && (p2_is_cpu
-              && p2_cpu_level >= 5
-              && p2_cpu_level <= 9
-              && prev(p2_state) == 0xB3 // Shielding
-              && p2_state == 0xCD) // Shield Break
-              || (p3_is_cpu
-              && p3_cpu_level >= 5
-              && p3_cpu_level <= 9
-              && prev(p3_state) == 0xB3 // Shielding
-              && p3_state == 0xCD) // Shield Break
-              || (p4_is_cpu
-              && p4_cpu_level >= 5
-              && p4_cpu_level <= 9
-              && prev(p4_state) == 0xB3 // Shielding
-              && p4_state == 0xCD) // Shield Break
+                  p1_is_player
+                  && p1_shield_buster_bonus
+                  && ((p2_is_cpu
+                  && p2_cpu_level >= 5
+                  && p2_cpu_level <= 9)
+                  || p2_is_missing)
+                  && ((p3_is_cpu
+                  && p3_cpu_level >= 5
+                  && p3_cpu_level <= 9)
+                  || p3_is_missing)
+                  && ((p4_is_cpu
+                  && p4_cpu_level >= 5
+                  && p4_cpu_level <= 9)
+                  || p4_is_missing)
               ) || ( // P2 player, other CPU
-              p2_is_player
-              && (p1_is_cpu
-              && p1_cpu_level >= 5
-              && p1_cpu_level <= 9
-              && prev(p1_state) == 0xB3 // Shielding
-              && p1_state == 0xCD) // Shield Break
-              || (p3_is_cpu
-              && p3_cpu_level >= 5
-              && p3_cpu_level <= 9
-              && prev(p3_state) == 0xB3 // Shielding
-              && p3_state == 0xCD) // Shield Break
-              || (p4_is_cpu
-              && p4_cpu_level >= 5
-              && p4_cpu_level <= 9
-              && prev(p4_state) == 0xB3 // Shielding
-              && p4_state == 0xCD) // Shield Break
+                  p2_is_player
+                  && p2_shield_buster_bonus
+                  && ((p1_is_cpu
+                  && p1_cpu_level >= 5
+                  && p1_cpu_level <= 9)
+                  || p1_is_missing)
+                  && ((p3_is_cpu
+                  && p3_cpu_level >= 5
+                  && p3_cpu_level <= 9)
+                  || p3_is_missing)
+                  && ((p4_is_cpu
+                  && p4_cpu_level >= 5
+                  && p4_cpu_level <= 9)
+                  || p4_is_missing)
               ) || ( // P3 player, other CPU
-              p3_is_player
-              && (p1_is_cpu
-              && p1_cpu_level >= 5
-              && p1_cpu_level <= 9
-              && prev(p1_state) == 0xB3 // Shielding
-              && p1_state == 0xCD) // Shield Break
-              || (p2_is_cpu
-              && p2_cpu_level >= 5
-              && p2_cpu_level <= 9
-              && prev(p2_state) == 0xB3 // Shielding
-              && p2_state == 0xCD) // Shield Break
-              || (p4_is_cpu
-              && p4_cpu_level >= 5
-              && p4_cpu_level <= 9
-              && prev(p4_state) == 0xB3 // Shielding
-              && p4_state == 0xCD) // Shield Break
+                  p3_is_player
+                  && p3_shield_buster_bonus
+                  && ((p1_is_cpu
+                  && p1_cpu_level >= 5
+                  && p1_cpu_level <= 9)
+                  || p1_is_missing)
+                  && ((p2_is_cpu
+                  && p2_cpu_level >= 5
+                  && p2_cpu_level <= 9)
+                  || p2_is_missing)
+                  && ((p4_is_cpu
+                  && p4_cpu_level >= 5
+                  && p4_cpu_level <= 9)
+                  || p4_is_missing)
               ) || ( // P4 player, other CPU
-              p4_is_player
-              && (p1_is_cpu
-              && p1_cpu_level >= 5
-              && p1_cpu_level <= 9
-              && prev(p1_state) == 0xB3 // Shielding
-              && p1_state == 0xCD) // Shield Break
-              || (p2_is_cpu
-              && p2_cpu_level >= 5
-              && p2_cpu_level <= 9
-              && prev(p2_state) == 0xB3 // Shielding
-              && p2_state == 0xCD) // Shield Break
-              || (p3_is_cpu
-              && p3_cpu_level >= 5
-              && p3_cpu_level <= 9
-              && prev(p3_state) == 0xB3 // Shielding
-              && p3_state == 0xCD) // Shield Break
+                  p4_is_player
+                  && p4_shield_buster_bonus
+                  && ((p1_is_cpu
+                  && p1_cpu_level >= 5
+                  && p1_cpu_level <= 9)
+                  || p1_is_missing)
+                  && ((p2_is_cpu
+                  && p2_cpu_level >= 5
+                  && p2_cpu_level <= 9)
+                  || p2_is_missing)
+                  && ((p3_is_cpu
+                  && p3_cpu_level >= 5
+                  && p3_cpu_level <= 9)
+                  || p3_is_missing)
               ))
 )
 
@@ -711,22 +721,10 @@ achievement(
 achievement(
     title = "Get Out of My Stage!",
     points = 3,
-    description = "Earn the \"Meteor Clear\" bonus by ending with a meteor smash in any VS. mode match except Super Sudden Death",
-    trigger = in_versus_mode_without_ssd
-              && versus_clear
-              && ((
-                  p1_is_player
-                  && p1_meteor_clear_bonus
-              ) || (
-                  p2_is_player
-                  && p2_meteor_clear_bonus
-              ) || (
-                  p3_is_player
-                  && p3_meteor_clear_bonus
-              ) || (
-                  p4_is_player
-                  && p4_meteor_clear_bonus
-              ))
+    description = "Earn the \"Meteor Clear\" bonus by ending with a meteor smash in Classic, Adventure, or All-Star Mode",
+    trigger = (mode_id == 0x03 || mode_id == 0x04 || mode_id == 0x05)
+              && sp_clear
+              && sp_meteor_bonus
 )
 
 achievement(
@@ -1035,12 +1033,8 @@ achievement(
               && p2_lost_versus
               && p3_lost_versus
               && p4_lost_versus
-              && (
-              p1_rank != prev(p1_rank)
-              || p2_rank != prev(p2_rank)
-              || p3_rank != prev(p3_rank)
-              || p4_rank != prev(p4_rank)
-              )
+              && not_no_contest
+              && versus_clear
 )
 
 achievement(
@@ -1094,12 +1088,8 @@ achievement(
               && p2_lost_versus
               && p3_lost_versus
               && p4_lost_versus
-              && (
-              p1_rank != prev(p1_rank)
-              || p2_rank != prev(p2_rank)
-              || p3_rank != prev(p3_rank)
-              || p4_rank != prev(p4_rank)
-              )
+              && not_no_contest
+              && versus_clear
 )
 
 achievement(
@@ -1151,12 +1141,8 @@ achievement(
               && p2_lost_versus
               && p3_lost_versus
               && p4_lost_versus
-              && (
-              p1_rank != prev(p1_rank)
-              || p2_rank != prev(p2_rank)
-              || p3_rank != prev(p3_rank)
-              || p4_rank != prev(p4_rank)
-              )
+              && not_no_contest
+              && versus_clear
 )
 
 for c in CharacterToID {
