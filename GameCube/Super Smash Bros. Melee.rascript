@@ -131,8 +131,9 @@ p2_character_id = byte(0x00480844)
 p3_character_id = byte(0x00480868)
 p4_character_id = byte(0x0048088c)
 
+p1_stamina = byte(0x0046b94d)
 p2_damage = word_be(0x00453f70)
-p2_stamina = byte(0x004a1137)
+p2_stamina = byte(0x0046b9f5)
 p3_damage = word_be(0x00454e00)
 p4_damage = word_be(0x00455c90)
 p1_stocks = byte(0x0045310e)
@@ -815,8 +816,10 @@ achievement(
               && p2_character_id == CharacterToID["Mewtwo"])
               || (p1_character_id == CharacterToID["Mewtwo"]
               && p2_character_id == CharacterToID["Pikachu"]))
+              && once(p1_stamina == 150 && p2_stamina == 150)
               && prev(p2_stamina) > 0
               && p2_stamina == 0
+              && never(mode_id != 0x1f)
 )
 
 achievement(
