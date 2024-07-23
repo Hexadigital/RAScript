@@ -110,6 +110,7 @@ achievement(
 // Defeat Bombman on his stage and unlock his power without using weapons, 10p
 achievement(
     title = "Large Range Explosives",
+    type = "missable",
     points = 10,
     description = "Defeat Bombman on his stage and unlock his power without using weapons",
     trigger = stage_id == Stages["Bombman"] && room_id == BossRooms["Bombman"]
@@ -130,6 +131,7 @@ achievement(
 // Defeat Elecman on his stage and unlock his power without using weapons, 10p
 achievement(
     title = "A Shocking Victory",
+    type = "missable",
     points = 10,
     description = "Defeat Elecman on his stage and unlock his power without using weapons",
     trigger = stage_id == Stages["Elecman"] && room_id == BossRooms["Elecman"]
@@ -150,6 +152,7 @@ achievement(
 // Defeat Gutsman on his stage and unlock his power without using weapons, 10p
 achievement(
     title = "Float Like a Butterfly",
+    type = "missable",
     points = 10,
     description = "Defeat Gutsman on his stage and unlock his power without using weapons",
     trigger = stage_id == Stages["Gutsman"] && room_id == BossRooms["Gutsman"]
@@ -170,6 +173,7 @@ achievement(
 // Defeat Iceman on his stage and unlock his power without using weapons, 10p
 achievement(
     title = "Cracking the Ice",
+    type = "missable",
     points = 10,
     description = "Defeat Iceman on his stage and unlock his power without using weapons",
     trigger = stage_id == Stages["Iceman"] && room_id == BossRooms["Iceman"]
@@ -190,6 +194,7 @@ achievement(
 // Defeat Cutman on his stage and unlock his power without using weapons, 10p
 achievement(
     title = "Holey Scissors",
+    type = "missable",
     points = 10,
     description = "Defeat Cutman on his stage and unlock his power without using weapons",
     trigger = stage_id == Stages["Cutman"] && room_id == BossRooms["Cutman"]
@@ -210,6 +215,7 @@ achievement(
 // Defeat Fireman on his stage and unlock his power without using weapons, 10p
 achievement(
     title = "Shooting Out Flames",
+    type = "missable",
     points = 10,
     description = "Defeat Fireman on his stage and unlock his power without using weapons",
     trigger = stage_id == Stages["Fireman"] && room_id == BossRooms["Fireman"]
