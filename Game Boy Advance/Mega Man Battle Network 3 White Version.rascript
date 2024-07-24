@@ -912,6 +912,7 @@ player_hp = word(0x0098a0)
 player_max_hp = word(0x0098a2)
 zenny = dword(0x0098f4)
 bugfrags = dword(0x0098f8)
+style_level = byte(0x009895) + 1
 
 // Battle variables
 in_battle = byte(0x00eca0) == 0x04
@@ -1504,7 +1505,7 @@ achievement(
 
 achievement(
     title = "Helpful Hikari",
-    points = 10,
+    points = 25,
     description = "Complete all of the jobs on the Job BBS!",
     trigger = no_glitches_enabled()
               && prev(sum_of(Jobs, bitflag_count)) == length(Jobs) - 1
@@ -1546,6 +1547,15 @@ achievement(
     // I used a zenny check here, since it's the only way to get that much in this area,
     // and the bitflag for this is a bit unreliable (might be reused / area dependent)
     trigger = no_glitches_enabled() && in_area("Staff Lounge") && (zenny - prev(zenny)) == 300000
+)
+
+achievement(
+    title = "Elemental Evolution",
+    points = 5,
+    description = "Upgrade any Style Change to Level 4!",
+    trigger = no_glitches_enabled()
+              && in_battle
+              && prev(style_level) == 3 && style_level == 4
 )
 
 ////////////////////
@@ -1609,7 +1619,7 @@ achievement(
 achievement(
     title = "Medical Data",
     points = 3,
-    description = "Collect all of the Blue Mystery Data throughout Hospital and Hospital Comp!",
+    description = "Collect all of the Blue Mystery Data throughout the Hospital and Hospital Comp!",
     trigger = no_glitches_enabled()
               && prev(sum_of(MysteryData["Hospital"], bitflag_count)) == length(MysteryData["Hospital"]) - 1
               && measured(sum_of(MysteryData["Hospital"], bitflag_count) == length(MysteryData["Hospital"]))
