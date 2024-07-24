@@ -1065,7 +1065,7 @@ achievement(
 
 achievement(
     title = "Out Like a Flash",
-    points = 3,
+    points = 5,
     type = "missable",
     description = "During the first fight with FlashMan, defeat him in under 20 seconds!",
     trigger = no_glitches_enabled() && in_area("Principal's PC 2") && fighting_boss("FlashMan") 
@@ -1106,7 +1106,7 @@ achievement(
 
 achievement(
     title = "Ripping Claws",
-    points = 4,
+    points = 5,
     type = "progression",
     description = "Defeat BeastMan and restore order to the zoo!",
     trigger = no_glitches_enabled() && in_area("Zoo Comp 4") && fighting_boss("BeastMan") && boss_killed()
@@ -1582,7 +1582,7 @@ achievement(
 
 achievement(
     title = "Experimental Reports",
-    points = 1,
+    points = 2,
     description = "Collect all of the Blue and Purple Mystery Data throughout the SciLab building and SciLab Area!",
     trigger = no_glitches_enabled()
               && prev(sum_of(MysteryData["SciLab"], bitflag_count)) == length(MysteryData["SciLab"]) - 1
