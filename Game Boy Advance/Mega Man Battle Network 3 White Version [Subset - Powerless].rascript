@@ -477,7 +477,7 @@ no_submem_upgrades = bit7(0x0081f5) == 0 // SubMem BMD (Undernet 6)
 
 navicust_start = 0x009300
 navicust_addresses = []
-for i in range(0,50) {
+for i in range(0,45) {
     array_push(navicust_addresses, dword(navicust_start + (4*i)))
 }
 
@@ -529,7 +529,7 @@ achievement(
     title = "Underdog vs. FlashMan",
     type = "missable",
     points = 3,
-    description = "Defeat FlashMan with 100 HP, 4MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat FlashMan while having only 100 HP, 4MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("Principal's PC 2")
            && player_max_hp == 100
@@ -566,7 +566,7 @@ achievement(
     title = "Underdog vs. GutsMan",
     type = "missable",
     points = 3,
-    description = "Defeat GutsMan with 100 HP, 4MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat GutsMan while having only 100 HP, 4MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("ACDC Town")
            && player_max_hp == 100
@@ -603,7 +603,7 @@ achievement(
     title = "Underdog vs. FlashMan Beta",
     type = "missable",
     points = 10,
-    description = "Defeat FlashMan Beta with 100 HP, 4MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat FlashMan β while having only 100 HP, 4MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("ACDC Area 2")
            && player_max_hp == 100
@@ -640,7 +640,7 @@ achievement(
     title = "Underdog vs. MetalMan",
     type = "missable",
     points = 4,
-    description = "Defeat MetalMan with 100 HP, 4MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat MetalMan while having only 100 HP, 4MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("Hotel Front")
            && player_max_hp == 100
@@ -677,7 +677,7 @@ achievement(
     title = "Underdog vs. BeastMan",
     type = "missable",
     points = 5,
-    description = "Defeat BeastMan with 100 HP, 4MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat BeastMan while having only 100 HP, 4MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("Zoo Comp 4")
            && player_max_hp == 100
@@ -714,7 +714,7 @@ achievement(
     title = "Underdog vs. BeastMan Beta",
     type = "missable",
     points = 10,
-    description = "Defeat BeastMan Beta with 100 HP, 4MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat BeastMan β while having only 100 HP, 4MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("Doghouse Comp")
            && player_max_hp == 100
@@ -751,7 +751,7 @@ achievement(
     title = "Underdog vs. BubbleMan",
     type = "missable",
     points = 5,
-    description = "Defeat BubbleMan with 100 HP, 4MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat BubbleMan while having only 100 HP, 4MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("Yoka Area 1")
            && player_max_hp == 100
@@ -788,7 +788,7 @@ achievement(
     title = "Underdog vs. BubbleMan Beta",
     type = "missable",
     points = 10,
-    description = "Defeat BubbleMan Beta with 100 HP, 4MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat BubbleMan β while having only 100 HP, 4MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("Beach Area 1")
            && player_max_hp == 100
@@ -825,7 +825,7 @@ achievement(
     title = "Underdog vs. KingMan",
     type = "missable",
     points = 5,
-    description = "Defeat KingMan with 100 HP, 4MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat KingMan while having only 100 HP, 4MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && (in_area("TV Station Lobby") || in_area("TV Station Studio"))
            && player_max_hp == 100
@@ -862,7 +862,7 @@ achievement(
     title = "Underdog vs. DesertMan",
     type = "missable",
     points = 10,
-    description = "Defeat DesertMan with 100 HP, 4MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat DesertMan while having only 100 HP, 4MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("TV Station Editing Room")
            && player_max_hp == 100
@@ -899,7 +899,7 @@ achievement(
     title = "Underdog vs. DesertMan Beta",
     type = "missable",
     points = 25,
-    description = "Defeat DesertMan Beta with 100 HP, 4MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat DesertMan β while having only 100 HP, 4MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("Old TV Comp")
            && player_max_hp == 100
@@ -936,7 +936,7 @@ achievement(
     title = "Underdog vs. PlantMan",
     type = "missable",
     points = 10,
-    description = "Defeat PlantMan with 120 HP, 7MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat PlantMan while having only 120 HP, 7MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("Hospital Comp 5")
            && player_max_hp == 120
@@ -973,7 +973,7 @@ achievement(
     title = "Underdog vs. FlameMan",
     type = "missable",
     points = 10,
-    description = "Defeat FlameMan with 120 HP, 7MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat FlameMan while having only 120 HP, 7MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("Undernet 3")
            && player_max_hp == 120
@@ -1010,7 +1010,7 @@ achievement(
     title = "Underdog vs. MetalMan Beta",
     type = "missable",
     points = 10,
-    description = "Defeat MetalMan Beta with 120 HP, 7MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat MetalMan β while having only 120 HP, 7MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("Hotel Front")
            && player_max_hp == 120
@@ -1047,7 +1047,7 @@ achievement(
     title = "Underdog vs. PlantMan Beta",
     type = "missable",
     points = 10,
-    description = "Defeat PlantMan Beta with 120 HP, 7MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat PlantMan β while having only 120 HP, 7MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("Hospital Comp 3")
            && player_max_hp == 120
@@ -1084,7 +1084,7 @@ achievement(
     title = "Underdog vs. FlameMan Beta",
     type = "missable",
     points = 10,
-    description = "Defeat FlameMan Beta with 120 HP, 7MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat FlameMan β while having only 120 HP, 7MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("Yoka Area 1")
            && player_max_hp == 120
@@ -1121,7 +1121,7 @@ achievement(
     title = "Underdog vs. MistMan",
     type = "missable",
     points = 10,
-    description = "Defeat MistMan with 120 HP, 7MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat MistMan while having only 120 HP, 7MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("NetBattle Machine Comp")
            && player_max_hp == 120
@@ -1158,7 +1158,7 @@ achievement(
     title = "Underdog vs. DrillMan",
     type = "missable",
     points = 10,
-    description = "Defeat DrillMan with 120 HP, 7MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat DrillMan while having only 120 HP, 7MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("Undernet 5")
            && player_max_hp == 120
@@ -1195,7 +1195,7 @@ achievement(
     title = "Underdog vs. DrillMan Beta",
     type = "missable",
     points = 25,
-    description = "Defeat DrillMan Beta with 120 HP, 7MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat DrillMan β while having only 120 HP, 7MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("Hades Isle Area")
            && player_max_hp == 120
@@ -1232,7 +1232,7 @@ achievement(
     title = "Underdog vs. KingMan Beta",
     type = "missable",
     points = 25,
-    description = "Defeat KingMan Beta with 120 HP, 7MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat KingMan β while having only 120 HP, 7MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("Castle Wily")
            && player_max_hp == 120
@@ -1269,7 +1269,7 @@ achievement(
     title = "Underdog vs. GutsMan Beta",
     type = "missable",
     points = 10,
-    description = "Defeat GutsMan Beta with 120 HP, 7MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat GutsMan β while having only 120 HP, 7MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("Castle Wily")
            && player_max_hp == 120
@@ -1306,7 +1306,7 @@ achievement(
     title = "Underdog vs. Bass",
     type = "missable",
     points = 10,
-    description = "Defeat Bass with 120 HP, 7MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat Bass while having only 120 HP, 7MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("Alpha")
            && player_max_hp == 120
@@ -1343,7 +1343,7 @@ achievement(
     title = "Underdog vs. Alpha",
     type = "missable",
     points = 50,
-    description = "Defeat Alpha with 120 HP, 7MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat Alpha while having only 120 HP, 7MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("Alpha")
            && player_max_hp == 120
@@ -1360,7 +1360,7 @@ achievement(
     title = "Underdog vs. MistMan Beta",
     type = "missable",
     points = 10,
-    description = "Defeat MistMan Beta with 120 HP, 7MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat MistMan β while having only 120 HP, 7MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("NetBattle Machine Comp")
            && player_max_hp == 120
@@ -1397,7 +1397,7 @@ achievement(
     title = "Underdog vs. ProtoMan",
     type = "missable",
     points = 10,
-    description = "Defeat ProtoMan with 120 HP, 7MB of regular memory, no NaviCust programs equipped, no ModTools, no style change, and no SubMem upgrades!",
+    description = "Defeat ProtoMan while having only 120 HP, 7MB regular memory, and no NaviCust programs, ModTools, style changes, or SubMem upgrades",
     trigger = no_glitches_enabled()
            && in_area("Eternal Hades")
            && player_max_hp == 120
