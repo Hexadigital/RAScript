@@ -224,7 +224,7 @@ achievement(
 // Get a red stamp in Jurassic Park 4p
 achievement(
     title = "Dino Destroyer",
-    points = 4,
+    points = 10,
     description = "Get a red stamp in Jurassic Park",
     trigger = current_area == Areas["Jurassic Park"] && red_stamp_get("Jurassic Park")
 )
@@ -362,7 +362,7 @@ achievement(
 
 achievement(
     title = "All This for a Special End Screen?",
-    points = 10,
+    points = 25,
     description = "Collect all 8 stamps and watch the ending on Hard difficulty",
     trigger = prev(difficulty) == Difficulties["Hard"]
       && game_clear()
