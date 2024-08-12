@@ -29,7 +29,7 @@ good_desune = dword(0x0144ba) == 0x00450044
 && dword(0x0144c2) == 0x0045004e
 
 function scored(num) {
-    return prev(score) >= num - 20000 && prev(score) < num && score >= num && score < num + 20000
+    return prev(score) < num && score >= num && score < num + 100000
 }
 
 function cleared(num) {
@@ -165,11 +165,11 @@ achievement(
               && power_activated("Satellite")
 )
 
-// As P1, get a Good Desune bonus using the Shot/Satellite on default settings
+// As P1, get a Good Desune bonus on default settings
 achievement(
-    title = "Aerial Wipeout",
+    title = "All Clear!",
     points = 2,
-    description = "As P1, get a Good Desune bonus using the Shot/Satellite on default settings",
+    description = "As P1, get a Good Desune bonus on default settings",
     trigger = default_settings
               && in_game
               && good_desune
