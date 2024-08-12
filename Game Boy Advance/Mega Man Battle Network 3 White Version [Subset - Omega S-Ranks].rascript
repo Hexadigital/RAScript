@@ -522,7 +522,7 @@ leaderboard(
 achievement(
     title = "Shattered Bulbs",
     points = 10,
-    description = "Defeat FlashMan Omega with an S rank!",
+    description = "Defeat FlashMan Ω with an S Rank",
     trigger = no_glitches_enabled() && in_area("Principal's PC 2") && fighting_boss("FlashMan Omega") && s_ranked()
 )
 
@@ -540,7 +540,7 @@ leaderboard(
 achievement(
     title = "Battered Fists",
     points = 10,
-    description = "Defeat GutsMan Omega with an S rank!",
+    description = "Defeat GutsMan Ω with an S Rank",
     trigger = no_glitches_enabled() && in_area("Dex's HP") && fighting_boss("GutsMan Omega") && s_ranked()
 )
 
@@ -558,7 +558,7 @@ leaderboard(
 achievement(
     title = "Caged",
     points = 10,
-    description = "Defeat BeastMan Omega with an S rank!",
+    description = "Defeat BeastMan Ω with an S Rank",
     trigger = no_glitches_enabled() && in_area("Zoo Comp 3") && fighting_boss("BeastMan Omega") && s_ranked()
 )
 
@@ -576,7 +576,7 @@ leaderboard(
 achievement(
     title = "Bent Metal",
     points = 10,
-    description = "Defeat MetalMan Omega with an S rank!",
+    description = "Defeat MetalMan Ω with an S Rank",
     trigger = no_glitches_enabled() && in_area("Tamako's HP") && fighting_boss("MetalMan Omega") && s_ranked()
 )
 
@@ -594,7 +594,7 @@ leaderboard(
 achievement(
     title = "Popped",
     points = 10,
-    description = "Defeat BubbleMan Omega with an S rank!",
+    description = "Defeat BubbleMan Ω with an S Rank",
     trigger = no_glitches_enabled() && in_area("Yoka Area 2") && fighting_boss("BubbleMan Omega") && s_ranked()
 )
 
@@ -612,7 +612,7 @@ leaderboard(
 achievement(
     title = "Outplayed",
     points = 10,
-    description = "Defeat KingMan Omega with an S rank!",
+    description = "Defeat KingMan Ω with an S Rank",
     trigger = no_glitches_enabled() && in_area("TV Station Control Panel Comp") && fighting_boss("KingMan Omega") && s_ranked()
 )
 
@@ -630,8 +630,8 @@ leaderboard(
 achievement(
     title = "Gone with the Tide",
     points = 10,
-    description = "Defeat DesertMan Omega with an S rank!",
-    trigger = no_glitches_enabled() && in_area("TV Station Control Panel Comp") && fighting_boss("DesertMan Omega") && s_ranked()
+    description = "Defeat DesertMan Ω with an S Rank",
+    trigger = no_glitches_enabled() && in_area("Relay Van Comp") && fighting_boss("DesertMan Omega") && s_ranked()
 )
 
 leaderboard(
@@ -648,7 +648,7 @@ leaderboard(
 achievement(
     title = "Composted",
     points = 10,
-    description = "Defeat PlantMan Omega with an S rank!",
+    description = "Defeat PlantMan Ω with an S Rank",
     trigger = no_glitches_enabled() && in_area("Hospital Comp 3") && fighting_boss("PlantMan Omega") && s_ranked()
 )
 
@@ -666,7 +666,7 @@ leaderboard(
 achievement(
     title = "Defused",
     points = 10,
-    description = "Defeat FlameMan Omega with an S rank!",
+    description = "Defeat FlameMan Ω with an S Rank",
     trigger = no_glitches_enabled() && in_area("Undernet 3") && fighting_boss("FlameMan Omega") && s_ranked()
 )
 
@@ -684,7 +684,7 @@ leaderboard(
 achievement(
     title = "Corrupted Wish",
     points = 10,
-    description = "Defeat MistMan Omega with an S rank!",
+    description = "Defeat MistMan Ω with an S Rank",
     trigger = no_glitches_enabled() && in_area("NetBattle Machine Comp") && fighting_boss("MistMan Omega") && s_ranked()
 )
 
@@ -702,7 +702,7 @@ leaderboard(
 achievement(
     title = "Perfect Game",
     points = 10,
-    description = "Defeat BowlMan Omega with an S rank!",
+    description = "Defeat BowlMan Ω with an S Rank",
     trigger = no_glitches_enabled() && in_area("NetBattle Machine Comp") && fighting_boss("BowlMan Omega") && s_ranked()
 )
 
@@ -720,7 +720,7 @@ leaderboard(
 achievement(
     title = "Unbreakable",
     points = 10,
-    description = "Defeat DrillMan Omega with an S rank!",
+    description = "Defeat DrillMan Ω with an S Rank",
     trigger = no_glitches_enabled() && in_area("Undernet 5") && fighting_boss("DrillMan Omega") && s_ranked()
 )
 
@@ -738,7 +738,7 @@ leaderboard(
 achievement(
     title = "The End of a Rivalry",
     points = 10,
-    description = "Defeat ProtoMan Omega with an S rank!",
+    description = "Defeat ProtoMan Ω with an S Rank",
     trigger = no_glitches_enabled() && in_area("Hades Isle Area") && fighting_boss("ProtoMan Omega") && s_ranked()
 )
 
@@ -756,7 +756,7 @@ leaderboard(
 achievement(
     title = "Assassinating the Assassin",
     points = 10,
-    description = "Defeat DarkMan Omega with an S rank!",
+    description = "Defeat DarkMan Ω with an S Rank",
     trigger = no_glitches_enabled() && in_area("Secret Area 1") && fighting_boss("DarkMan Omega") && s_ranked()
 )
 
@@ -774,7 +774,7 @@ leaderboard(
 achievement(
     title = "Conquest",
     points = 10,
-    description = "Defeat JapanMan Omega with an S rank!",
+    description = "Defeat JapanMan Ω with an S Rank",
     trigger = no_glitches_enabled() && in_area("Secret Area 2") && fighting_boss("JapanMan Omega") && s_ranked()
 )
 
@@ -792,7 +792,7 @@ leaderboard(
 achievement(
     title = "Broken Faith",
     points = 25,
-    description = "Defeat Serenade Omega with an S rank!",
+    description = "Defeat Serenade Ω with an S Rank",
     trigger = no_glitches_enabled() && in_area("Secret Area 3") && fighting_boss("Serenade Omega") && s_ranked()
 )
 
@@ -810,6 +810,6 @@ leaderboard(
 achievement(
     title = "Dream Destroyer",
     points = 25,
-    description = "Defeat Bass Omega with an S rank!",
+    description = "Defeat Bass Ω with an S Rank",
     trigger = no_glitches_enabled() && in_area("Secret Area 3") && fighting_boss("Bass Omega") && s_ranked()
 )
