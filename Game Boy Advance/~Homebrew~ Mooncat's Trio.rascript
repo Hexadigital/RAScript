@@ -25,7 +25,7 @@ selected_hero = byte(0x002A80)
 current_level = byte(0x003438) + 1
 
 balls_left = byte(0x003444)
-paused = byte(0x002a8d) == 0x01
+paused = byte(0x002a8d) == 0x01 && byte(0x002a8f) == 0x01
 
 function level_completed(num) {
     return prev(current_level) == num && current_level == num + 1
@@ -40,7 +40,7 @@ achievement(
     type = "progression",
     title = "Ball Bouncer",
     points = 1,
-    description = "Clear level 1 as any hero without pausing",
+    description = "Clear level 1 as any hero without pressing the right shoulder button",
     trigger = level_completed(1) && disable_when(once(paused))
 )
 
@@ -49,7 +49,7 @@ achievement(
     type = "progression",
     title = "Block Breaker",
     points = 2,
-    description = "Clear level 5 as any hero without pausing",
+    description = "Clear level 5 as any hero without pressing the right shoulder button",
     trigger = level_completed(5) && disable_when(once(paused))
 )
 
@@ -58,7 +58,7 @@ achievement(
     type = "progression",
     title = "Earth Shaker",
     points = 4,
-    description = "Clear level 10 as any hero without pausing",
+    description = "Clear level 10 as any hero without pressing the right shoulder button",
     trigger = level_completed(10) && disable_when(once(paused))
 )
 
@@ -67,7 +67,7 @@ achievement(
     type = "progression",
     title = "Ice Cruncher",
     points = 5,
-    description = "Clear level 15 as any hero without pausing",
+    description = "Clear level 15 as any hero without pressing the right shoulder button",
     trigger = level_completed(15) && disable_when(once(paused))
 )
 
@@ -76,7 +76,7 @@ achievement(
     type = "progression",
     title = "Heart Stopper",
     points = 5,
-    description = "Clear level 20 as any hero without pausing",
+    description = "Clear level 20 as any hero without pressing the right shoulder button",
     trigger = level_completed(20) && disable_when(once(paused))
 )
 
@@ -85,7 +85,7 @@ achievement(
     type = "win_condition",
     title = "Frogtastic",
     points = 10,
-    description = "Clear the game as the Frog without pausing",
+    description = "Clear the game as the Frog without pressing the right shoulder button",
     trigger = selected_hero == 0x00 && game_clear() && disable_when(once(paused))
 )
 
@@ -94,7 +94,7 @@ achievement(
     type = "win_condition",
     title = "Purrfect",
     points = 10,
-    description = "Clear the game as the Cat without pausing",
+    description = "Clear the game as the Cat without pressing the right shoulder button",
     trigger = selected_hero == 0x01 && game_clear() && disable_when(once(paused))
 )
 
@@ -103,7 +103,7 @@ achievement(
     type = "win_condition",
     title = "Chewing Through",
     points = 10,
-    description = "Clear the game as the Chipmunk without pausing",
+    description = "Clear the game as the Chipmunk without pressing the right shoulder button",
     trigger = selected_hero == 0x02 && game_clear() && disable_when(once(paused))
 )
 
@@ -120,7 +120,7 @@ leaderboard(
 // Rich Presence
 rich_presence_conditional_display(
     once(paused),
-    "Pause detected, achievements disabled."
+    "Right shoulder button detected, achievements disabled."
 )
 
 rich_presence_conditional_display(
