@@ -37,7 +37,7 @@ function cleared(num) {
 }
 
 function power_activated(name) {
-    return last_powerup != Powers[name] && last_powerup == Powers[name]
+    return prev(last_powerup) != Powers[name] && last_powerup == Powers[name]
 }
 
 // As P1, score 20,000 points on default settings
