@@ -54,7 +54,6 @@ not_demo = bit0(0x0dd7c6) == 1
 // Clear Stage 1-1 in Stage Mode on any difficulty! 1p
 achievement(
     title = "First Pops",
-    type = "progression",
     points = 1,
     description = "Clear Stage 1-1 in Stage Mode on any difficulty!",
     trigger = free_play_disabled
@@ -68,7 +67,6 @@ achievement(
 // Clear Stage 1-5 in Stage Mode on Normal or higher difficulty! 2p
 achievement(
     title = "Warming Up",
-    type = "progression",
     points = 2,
     description = "Clear Stage 1-5 in Stage Mode on Normal or higher difficulty!",
     trigger = free_play_disabled
@@ -83,7 +81,6 @@ achievement(
 // Clear Stage 2-5 in Stage Mode on Normal or higher difficulty! 4p
 achievement(
     title = "A Bit Loopy",
-    type = "progression",
     points = 4,
     description = "Clear Stage 2-5 in Stage Mode on Normal or higher difficulty!",
     trigger = free_play_disabled
@@ -98,7 +95,6 @@ achievement(
 // Clear Stage 3-5 in Stage Mode on Normal or higher difficulty! 5p
 achievement(
     title = "Spiraling Down",
-    type = "progression",
     points = 5,
     description = "Clear Stage 3-5 in Stage Mode on Normal or higher difficulty!",
     trigger = free_play_disabled
@@ -113,7 +109,6 @@ achievement(
 // Clear Stage 4-5 in Stage Mode on Normal or higher difficulty! 10p
 achievement(
     title = "Just Like a Rollercoaster",
-    type = "progression",
     points = 10,
     description = "Clear Stage 4-5 in Stage Mode on Normal or higher difficulty!",
     trigger = free_play_disabled
@@ -128,7 +123,7 @@ achievement(
 // Clear Stage 5-5 in Stage Mode on Normal or higher difficulty! 25p
 achievement(
     title = "Looptastic",
-    type = "progression",
+    type = "win_condition",
     points = 25,
     description = "Clear Stage 5-5 in Stage Mode on Normal or higher difficulty to see the credits!",
     trigger = free_play_disabled
@@ -149,8 +144,8 @@ achievement(
            && not_demo
            && stage_mode_difficulty == DifficultyToID["Most Difficult"]
            && game_mode == ModeToID["Stage Mode"]
-           && prev(stage_mode_stage) == 5
-           && stage_mode_stage == 6
+           && trigger_when(prev(stage_mode_stage) == 5
+           && stage_mode_stage == 6)
 )
 
 // Clear Level 10 in Panic Mode on Normal or higher difficulty! 2p
@@ -207,7 +202,6 @@ achievement(
 // Clear Level 75 in Panic Mode on any difficulty! 25p
 achievement(
     title = "The Struggle",
-    type = "progression",
     points = 25,
     description = "Clear Level 75 in Panic Mode on any difficulty!",
     trigger = free_play_disabled
@@ -218,7 +212,7 @@ achievement(
 
 achievement(
     title = "Survivor",
-    type = "progression",
+    type = "win_condition",
     points = 50,
     description = "Reach Level 100 in Panic Mode on any difficulty to see the credits!",
     trigger = free_play_disabled
@@ -236,7 +230,7 @@ achievement(
            && not_demo
            && panic_mode_difficulty == DifficultyToID["Most Difficult"]
            && game_mode == ModeToID["Panic Mode"]
-           && cleared_panic_mode_level(50)
+           && trigger_when(cleared_panic_mode_level(50))
 )
 
 // Get a chain / combo of 10 or more on Normal or higher difficulty! 3p
@@ -261,8 +255,8 @@ achievement(
            && not_demo
            && continues_disabled
            && game_mode == ModeToID["Stage Mode"]
-           && prev(stage_mode_stage) == 5
-           && stage_mode_stage == 6
+           && trigger_when(prev(stage_mode_stage) == 5
+           && stage_mode_stage == 6)
 )
 
 // Clear Level 50 in Panic Mode on Normal or higher difficulty with continues disabled! 50p
@@ -274,7 +268,7 @@ achievement(
            && not_demo
            && continues_disabled
            && game_mode == ModeToID["Panic Mode"]
-           && cleared_panic_mode_level(99)
+           && trigger_when(cleared_panic_mode_level(99))
 )
 
 for d in DifficultyLookup {
@@ -352,3 +346,11 @@ rich_presence_conditional_display(
 rich_presence_display(
     "Now loading..."
 )
+
+temp_score = low4(0x8a2d)
++ high4(0x8a2d) * 10
++ low4(0x8a2c) * 100
++ high4(0x8a2c) * 1000
++ low4(0x8a2b) * 10000
++ high4(0x8a2b) * 100000
++ low4(0x8a2a) * 1000000
