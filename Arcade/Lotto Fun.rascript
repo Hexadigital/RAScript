@@ -26,7 +26,7 @@ num6 = byte(0x00da2a)
 match_count = byte(0x00da30)
 
 function matched(n) {
-    return prev(match_count) == n && match_count == n + 1
+    return prev(match_count) == n - 1 && match_count == n
 }
 
 // Match at least two numbers in any game mode! 1p
