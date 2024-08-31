@@ -35,6 +35,7 @@ food_eaten = prev(bit2(0x06bc)) == 0 && bit2(0x06bc) == 1
 default_settings = starting_lives == 3 && bonus_life == 0x10
 
 power_outage = repeated(50, dword(0x1070) == 0) && never(dword(0x1070) != 0)
+&& pellets_eaten != 0 && pellets_eaten != 244
 
 function round_cleared(num) {
     return current_round == num && prev(pellets_eaten) == 243 && pellets_eaten == 244
