@@ -355,7 +355,8 @@ achievement(
     && difficulty >= 2
     && story_mode
     && p2_character == CharacterToID["Death 13"]
-    && rounds_won == prev(rounds_won) + 1
+    && prev(p2_health) <= 0x90
+    && p2_health >= 0xfff0
 )
 
 // Defeat Geb with a perfect in Story Mode on default settings!
@@ -369,7 +370,8 @@ achievement(
     && difficulty >= 2
     && story_mode
     && p2_character == CharacterToID["N'Dool"]
-    && rounds_won == prev(rounds_won) + 1
+    && prev(p2_health) == 0
+    && p2_health >= 0xfff0
     && p1_full_health
 )
 
