@@ -22,8 +22,9 @@ multi_player = dword(0x0106) == 0x00040706 && timer != 90
 function game_ended() {
     return penalty == 0
         && timer == 0
-        && repeated(10, score > 0)
+        && repeated(30, score > 0)
         && never(score == 0)
+        && never(penalty > 0)
 }
 
 // Finish a game with at least 2000 points! 1p
