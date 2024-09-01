@@ -90,7 +90,7 @@ achievement(
            && pattern == 1
            && hole == 9
            && total_strokes > prev(total_strokes)
-           && total_strokes <= 0x30
+           && total_strokes <= 30
 )
 
 // Score a birdie, 2p
