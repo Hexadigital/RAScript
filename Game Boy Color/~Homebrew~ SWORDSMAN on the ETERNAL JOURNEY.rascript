@@ -428,7 +428,7 @@ achievement(
 achievement(
     title = "S&M",
     points = 10,
-    description = "Defeat Painful in the Cave of Trials",
+    description = "Turn pain into power by completing the Cave of Trials",
     trigger = map_id == BossRooms["Painful"]
     && cave_trial_completed(6)
 )
