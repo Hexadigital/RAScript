@@ -18,8 +18,7 @@ achievement(
     points = 1,
     description = "Drive at full speed for 10 minutes without dying (of boredom)",
     trigger = in_game
-              && !crashed
-              && measured(repeated(10*60*60, momentum == 512))
+              && measured(repeated(10*60*60, momentum == 512), format="percent")
               && never(momentum != 512)
 )
 
@@ -30,7 +29,6 @@ achievement(
     points = 1,
     description = "Drive for 8 hours, earning your first point",
     trigger = in_game
-              && !crashed
               && prev(score) == 0
               && score == 1
 )
@@ -42,7 +40,6 @@ achievement(
     points = 1,
     description = "Drive for 16 hours, earning your second point",
     trigger = in_game
-              && !crashed
               && prev(score) == 1
               && score == 2
 )
@@ -54,7 +51,6 @@ achievement(
     points = 1,
     description = "Drive for 24 hours, earning your third point",
     trigger = in_game
-              && !crashed
               && prev(score) == 2
               && score == 3
 )
@@ -65,7 +61,6 @@ achievement(
     points = 2,
     description = "Drive for 32 hours, earning your fourth point",
     trigger = in_game
-              && !crashed
               && prev(score) == 3
               && score == 4
 )
@@ -76,7 +71,6 @@ achievement(
     points = 3,
     description = "Drive for 40 hours, earning your fifth point",
     trigger = in_game
-              && !crashed
               && prev(score) == 4
               && score == 5
 )
@@ -108,42 +102,42 @@ rich_presence_conditional_display(
 )
 
 rich_presence_conditional_display(
-    crashed,
-    "Crashed! • Speed: Stopped • Miles Driven: {0}",
+    crashed && momentum == 0,
+    "Crashed! • Speed: Stopped • Points: {0}",
     rich_presence_value("Number", score)
 )
 
 rich_presence_conditional_display(
     momentum == 0,
-    "Heading east • Speed: Stopped • Miles Driven: {0}",
+    "Heading east • Speed: Stopped • Points: {0}",
     rich_presence_value("Number", score)
 )
 
 rich_presence_conditional_display(
     momentum <= 128,
-    "Heading east • Speed: Slow • Miles Driven: {0}",
+    "Heading east • Speed: Slow • Points: {0}",
     rich_presence_value("Number", score)
 )
 
 rich_presence_conditional_display(
     momentum <= 256,
-    "Heading east • Speed: Medium • Miles Driven: {0}",
+    "Heading east • Speed: Medium • Points: {0}",
     rich_presence_value("Number", score)
 )
 
 rich_presence_conditional_display(
     momentum <= 384,
-    "Heading east • Speed: Fast • Miles Driven: {0}",
+    "Heading east • Speed: Fast • Points: {0}",
     rich_presence_value("Number", score)
 )
 
 rich_presence_conditional_display(
     momentum == 512,
-    "Heading east • Speed: Max • Miles Driven: {0}",
+    "Heading east • Speed: Max • Points: {0}",
     rich_presence_value("Number", score)
 )
 
 rich_presence_display(
-    "Heading east • Speed: Very Fast • Miles Driven: {0}",
+    "Heading east • Speed: Very Fast • Points: {0}",
     rich_presence_value("Number", score)
 )
