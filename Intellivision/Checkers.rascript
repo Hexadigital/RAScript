@@ -92,7 +92,7 @@ function versus_low_skill() {
 function player_moves_first() => byte(0x000618) == 7
 function player_moves_second() => byte(0x000614) == 7
 
-function key_5_pressed() => byte(0x000878) == 0xbd
+function key_5_pressed() => byte(0x000878) == 0xbd || byte(0x00087c) == 0xbd
 function game_reset() => byte(0x000614) == 0 && byte(0x000618) == 0
 
 function you_win() {
@@ -108,8 +108,6 @@ function you_win() {
 // Crown one of your pieces!
 
 achievement(
-    id = 397014,
-    badge = "448895",
     title = "Royal Arrival",
     description = "Crown one of your pieces!",
     points = 1,
@@ -120,8 +118,6 @@ achievement(
 // Win a single-player game [2] where you move first!
 
 achievement(
-    id = 397015,
-    badge = "448890",
     title = "The Early Bird",
     description = "Win a single-player game [2] where you move first!",
     points = 2,
@@ -132,8 +128,6 @@ achievement(
 // Win a single-player game [3] where you move second!
 
 achievement(
-    id = 397016,
-    badge = "448891",
     title = "Lost the Coin Toss",
     description = "Win a single-player game [3] where you move second!",
     points = 2,
@@ -144,8 +138,7 @@ achievement(
 // Win a single-player game against a lo skill [8] opponent!
 
 achievement(
-    id = 397017,
-    badge = "448892",
+    type = "win_condition",
     title = "Testing the Waters",
     description = "Win a single-player game against a low skill [8] opponent!",
     points = 3,
@@ -156,8 +149,7 @@ achievement(
 // Win a single-player game against a hi skill [6] opponent!
 
 achievement(
-    id = 397018,
-    badge = "448893",
+    type = "win_condition",
     title = "On the Ropes",
     description = "Win a single-player game against a high skill [6] opponent!",
     points = 5,
@@ -168,8 +160,6 @@ achievement(
 // Win a single-player game against a hi skill opponent without using hints!
 
 achievement(
-    id = 397019,
-    badge = "448894",
     title = "Self-Sufficient",
     description = "Win a single-player game against a high skill opponent without pressing 5 or using a hint!",
     points = 10,
