@@ -42,14 +42,20 @@ for key in SceneLookup {
 score = word(0x004f8a) + (byte(0x004f88) * 65536) + (byte(0x004f89) * 6777216)
 
 shots_hit = byte(0x0099ec)
-perfect_bonus = prev(shots_hit) == 19 && shots_hit == 20
+bonus_hits = byte(0x00db50)
+// perfect_bonus = prev(shots_hit) == 19 && shots_hit == 20
+perfect_bonus = prev(bonus_hits) == 1 && bonus_hits == 0 && shots_hit >= 19
 
-scene = byte(0x009a28)
+shooting_range_scene = byte(0x009a28) // used for desert chariots too
+track_wagons_scene = byte(0x009a2a)
 selected_game = byte(0x009a22)
 in_menu = selected_game == 0x00
 
 lives_remaining = byte(0x00db66)
-game_over = prev(lives_remaining) == 1 && lives_remaining == 0 && scene != SceneNameToID["Ending"]
+shooting_range_game_over = prev(lives_remaining) == 1 && lives_remaining == 0
+&& shooting_range_scene != SceneNameToID["Ending"]
+track_wagons_game_over = prev(lives_remaining) == 1 && lives_remaining == 0
+&& track_wagons_scene != SceneNameToID["Ending"]
 
 p1_inactive = byte(0x00dbf2) == 0
 p1_active = byte(0x00dbf2) == 1
@@ -64,8 +70,15 @@ achievement(
     description = "Clear Scene 1 of any game in single-player as P1!",
     trigger = p1_active
               && p2_inactive
-              && prev(scene) == SceneNameToID["Scene 1, Stage 3"]
-              && scene == SceneNameToID["Scene 2, Stage 1"]
+              && ((selected_game == AreaNameToID["Shooting Range"]
+              && prev(shooting_range_scene) == SceneNameToID["Scene 1, Stage 3"]
+              && shooting_range_scene == SceneNameToID["Scene 2, Stage 1"])
+              || (selected_game == AreaNameToID["Desert Chariots"]
+              && prev(shooting_range_scene) == SceneNameToID["Scene 1, Stage 3"]
+              && shooting_range_scene == SceneNameToID["Scene 2, Stage 1"])
+              || (selected_game == AreaNameToID["Shooting Range"]
+              && prev(track_wagons_scene) == SceneNameToID["Scene 1, Stage 3"]
+              && track_wagons_scene == SceneNameToID["Scene 2, Stage 1"]))
 )
 
 // Clear Scene 2 of the Shooting Range in single-player as P1! 3p
@@ -77,8 +90,8 @@ achievement(
     trigger = p1_active
               && p2_inactive
               && selected_game == AreaNameToID["Shooting Range"]
-              && prev(scene) == SceneNameToID["Scene 2, Stage 3"]
-              && scene == SceneNameToID["Scene 3, Stage 1"]
+              && prev(shooting_range_scene) == SceneNameToID["Scene 2, Stage 3"]
+              && shooting_range_scene == SceneNameToID["Scene 3, Stage 1"]
 )
 
 // Clear Scene 4 of the Shooting Range in single-player as P1! 5p
@@ -90,8 +103,8 @@ achievement(
     trigger = p1_active
               && p2_inactive
               && selected_game == AreaNameToID["Shooting Range"]
-              && prev(scene) == SceneNameToID["Scene 4, Stage 3"]
-              && scene == SceneNameToID["Scene 5, Stage 1"]
+              && prev(shooting_range_scene) == SceneNameToID["Scene 4, Stage 3"]
+              && shooting_range_scene == SceneNameToID["Scene 5, Stage 1"]
 )
 
 // Clear Scene 6 of the Shooting Range in single-player as P1! 10p
@@ -103,8 +116,8 @@ achievement(
     trigger = prev(p1_active)
               && p2_inactive
               && selected_game == AreaNameToID["Shooting Range"]
-              && prev(scene) == SceneNameToID["Scene 6, Stage 3"]
-              && scene == SceneNameToID["Ending"]
+              && prev(shooting_range_scene) == SceneNameToID["Scene 6, Stage 3"]
+              && shooting_range_scene == SceneNameToID["Ending"]
 )
 
 // Clear Scene 2 of the Desert Chariots game in single-player as P1! 3p
@@ -116,8 +129,8 @@ achievement(
     trigger = p1_active
               && p2_inactive
               && selected_game == AreaNameToID["Desert Chariots"]
-              && prev(scene) == SceneNameToID["Scene 2, Stage 3"]
-              && scene == SceneNameToID["Scene 3, Stage 1"]
+              && prev(shooting_range_scene) == SceneNameToID["Scene 2, Stage 3"]
+              && shooting_range_scene == SceneNameToID["Scene 3, Stage 1"]
 )
 
 // Clear Scene 4 of the Desert Chariots game in single-player as P1! 5p
@@ -129,8 +142,8 @@ achievement(
     trigger = p1_active
               && p2_inactive
               && selected_game == AreaNameToID["Desert Chariots"]
-              && prev(scene) == SceneNameToID["Scene 4, Stage 3"]
-              && scene == SceneNameToID["Scene 5, Stage 1"]
+              && prev(shooting_range_scene) == SceneNameToID["Scene 4, Stage 3"]
+              && shooting_range_scene == SceneNameToID["Scene 5, Stage 1"]
 )
 
 // Clear Scene 6 of the Desert Chariots game in single-player as P1! 10p
@@ -142,8 +155,8 @@ achievement(
     trigger = prev(p1_active)
               && p2_inactive
               && selected_game == AreaNameToID["Desert Chariots"]
-              && prev(scene) == SceneNameToID["Scene 6, Stage 3"]
-              && scene == SceneNameToID["Ending"]
+              && prev(shooting_range_scene) == SceneNameToID["Scene 6, Stage 3"]
+              && shooting_range_scene == SceneNameToID["Ending"]
 )
 
 // Clear Scene 2 of the Track Wagons game in single-player as P1! 3p
@@ -155,8 +168,8 @@ achievement(
     trigger = p1_active
               && p2_inactive
               && selected_game == AreaNameToID["Track Wagons"]
-              && prev(scene) == SceneNameToID["Scene 2, Stage 3"]
-              && scene == SceneNameToID["Scene 3, Stage 1"]
+              && prev(track_wagons_scene) == SceneNameToID["Scene 2, Stage 3"]
+              && track_wagons_scene == SceneNameToID["Scene 3, Stage 1"]
 )
 
 // Clear Scene 4 of the Track Wagons game in single-player as P1! 5p
@@ -168,8 +181,8 @@ achievement(
     trigger = p1_active
               && p2_inactive
               && selected_game == AreaNameToID["Track Wagons"]
-              && prev(scene) == SceneNameToID["Scene 4, Stage 3"]
-              && scene == SceneNameToID["Scene 5, Stage 1"]
+              && prev(track_wagons_scene) == SceneNameToID["Scene 4, Stage 3"]
+              && track_wagons_scene == SceneNameToID["Scene 5, Stage 1"]
 )
 
 // Clear Scene 6 of the Track Wagons game in single-player as P1! 10p
@@ -181,8 +194,8 @@ achievement(
     trigger = prev(p1_active)
               && p2_inactive
               && selected_game == AreaNameToID["Track Wagons"]
-              && prev(scene) == SceneNameToID["Scene 6, Stage 3"]
-              && scene == SceneNameToID["Ending"]
+              && prev(track_wagons_scene) == SceneNameToID["Scene 6, Stage 3"]
+              && track_wagons_scene == SceneNameToID["Ending"]
 )
 
 // Get a perfect on any bonus round in the Shooting Range game in single-player as P1! 5p
@@ -193,8 +206,7 @@ achievement(
     trigger = p1_active
               && p2_inactive
               && selected_game == AreaNameToID["Shooting Range"]
-              && prev(shots_hit) == 19
-              && shots_hit == 20
+              && perfect_bonus
 )
 
 // Get a perfect on any bonus round in the Desert Chariots game in single-player as P1! 5p
@@ -205,8 +217,7 @@ achievement(
     trigger = p1_active
               && p2_inactive
               && selected_game == AreaNameToID["Desert Chariots"]
-              && prev(shots_hit) == 19
-              && shots_hit == 20
+              && perfect_bonus
 )
 
 // Get a perfect on any bonus round in the Track Wagons game in single-player as P1! 5p
@@ -217,8 +228,7 @@ achievement(
     trigger = p1_active
               && p2_inactive
               && selected_game == AreaNameToID["Track Wagons"]
-              && prev(shots_hit) == 19
-              && shots_hit == 20
+              && perfect_bonus
 )
 
 // Complete the Shooting Range game without using a continue in single-player as P1! 25p
@@ -230,13 +240,13 @@ achievement(
     trigger = p2_inactive
               && selected_game == AreaNameToID["Shooting Range"]
               && once(p1_active
-              && prev(scene) == SceneNameToID["Scene 1, Stage 1"]
-              && scene == SceneNameToID["Scene 1, Stage 2"])
-              && trigger_when(prev(scene) == SceneNameToID["Scene 6, Stage 3"]
-              && scene == SceneNameToID["Ending"])
+              && prev(shooting_range_scene) == SceneNameToID["Scene 1, Stage 1"]
+              && shooting_range_scene == SceneNameToID["Scene 1, Stage 2"])
+              && trigger_when(prev(shooting_range_scene) == SceneNameToID["Scene 6, Stage 3"]
+              && shooting_range_scene == SceneNameToID["Ending"])
               && never(p2_active)
-              && never(game_over)
-              && never(scene < prev(scene))
+              && never(shooting_range_game_over)
+              && never(shooting_range_scene < prev(shooting_range_scene))
 )
 
 // Complete the Desert Chariots game without using a continue in single-player as P1! 25p
@@ -248,13 +258,13 @@ achievement(
     trigger = p2_inactive
               && selected_game == AreaNameToID["Desert Chariots"]
               && once(p1_active
-              && prev(scene) == SceneNameToID["Scene 1, Stage 1"]
-              && scene == SceneNameToID["Scene 1, Stage 2"])
-              && trigger_when(prev(scene) == SceneNameToID["Scene 6, Stage 3"]
-              && scene == SceneNameToID["Ending"])
+              && prev(shooting_range_scene) == SceneNameToID["Scene 1, Stage 1"]
+              && shooting_range_scene == SceneNameToID["Scene 1, Stage 2"])
+              && trigger_when(prev(shooting_range_scene) == SceneNameToID["Scene 6, Stage 3"]
+              && shooting_range_scene == SceneNameToID["Ending"])
               && never(p2_active)
-              && never(game_over)
-              && never(scene < prev(scene))
+              && never(shooting_range_game_over)
+              && never(shooting_range_scene < prev(shooting_range_scene))
 )
 
 // Complete the Track Wagons game without using a continue in single-player as P1! 25p
@@ -266,13 +276,13 @@ achievement(
     trigger = p2_inactive
               && selected_game == AreaNameToID["Track Wagons"]
               && once(p1_active
-              && prev(scene) == SceneNameToID["Scene 1, Stage 1"]
-              && scene == SceneNameToID["Scene 1, Stage 2"])
-              && trigger_when(prev(scene) == SceneNameToID["Scene 6, Stage 3"]
-              && scene == SceneNameToID["Ending"])
+              && prev(track_wagons_scene) == SceneNameToID["Scene 1, Stage 1"]
+              && track_wagons_scene == SceneNameToID["Scene 1, Stage 2"])
+              && trigger_when(prev(track_wagons_scene) == SceneNameToID["Scene 6, Stage 3"]
+              && track_wagons_scene == SceneNameToID["Ending"])
               && never(p2_active)
-              && never(game_over)
-              && never(scene < prev(scene))
+              && never(track_wagons_game_over)
+              && never(track_wagons_scene < prev(track_wagons_scene))
 )
 
 leaderboard(
@@ -281,8 +291,8 @@ leaderboard(
     start = prev(p1_active)
          && p2_inactive
          && selected_game == AreaNameToID["Shooting Range"]
-         && prev(scene) == SceneNameToID["Scene 6, Stage 3"]
-         && scene == SceneNameToID["Ending"],
+         && prev(shooting_range_scene) == SceneNameToID["Scene 6, Stage 3"]
+         && shooting_range_scene == SceneNameToID["Ending"],
     cancel = always_false(),
     submit = always_true(), 
     value = score
@@ -294,8 +304,8 @@ leaderboard(
     start = prev(p1_active)
          && p2_inactive
          && selected_game == AreaNameToID["Desert Chariots"]
-         && prev(scene) == SceneNameToID["Scene 6, Stage 3"]
-         && scene == SceneNameToID["Ending"],
+         && prev(shooting_range_scene) == SceneNameToID["Scene 6, Stage 3"]
+         && shooting_range_scene == SceneNameToID["Ending"],
     cancel = always_false(),
     submit = always_true(), 
     value = score
@@ -307,8 +317,8 @@ leaderboard(
     start = prev(p1_active)
          && p2_inactive
          && selected_game == AreaNameToID["Track Wagons"]
-         && prev(scene) == SceneNameToID["Scene 6, Stage 3"]
-         && scene == SceneNameToID["Ending"],
+         && prev(track_wagons_scene) == SceneNameToID["Scene 6, Stage 3"]
+         && track_wagons_scene == SceneNameToID["Ending"],
     cancel = always_false(),
     submit = always_true(), 
     value = score
@@ -325,14 +335,28 @@ rich_presence_conditional_display(
 )
 
 rich_presence_conditional_display(
-    scene == SceneNameToID["Ending"],
+    selected_game == AreaNameToID["Track Wagons"] && track_wagons_scene == SceneNameToID["Ending"],
     "Watching the ending • Score: {0}",
+    rich_presence_value("Round", score)
+)
+
+rich_presence_conditional_display(
+    selected_game != AreaNameToID["Track Wagons"] && shooting_range_scene == SceneNameToID["Ending"],
+    "Watching the ending • Score: {0}",
+    rich_presence_value("Round", score)
+)
+
+rich_presence_conditional_display(
+    selected_game == AreaNameToID["Track Wagons"],
+    "{0} • {1} • Score: {2}",
+    rich_presence_lookup("Game", selected_game, AreaLookup, fallback="Unknown Game"),
+    rich_presence_lookup("Scene", track_wagons_scene, SceneLookup, fallback="Unknown Scene"),
     rich_presence_value("Round", score)
 )
 
 rich_presence_display(
     "{0} • {1} • Score: {2}",
     rich_presence_lookup("Game", selected_game, AreaLookup, fallback="Unknown Game"),
-    rich_presence_lookup("Scene", scene, SceneLookup, fallback="Unknown Scene"),
+    rich_presence_lookup("Scene", shooting_range_scene, SceneLookup, fallback="Unknown Scene"),
     rich_presence_value("Round", score)
 )
