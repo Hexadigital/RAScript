@@ -2,6 +2,7 @@
 // #ID = 19755
 mode_check = dword(0x8c)
 title_screen = mode_check == 0x6c746974
+continue_screen = mode_check == 0x65766f22
 in_game = mode_check == 0x494e49f5
 ufo_minigame = mode_check == 0x4c4c4142
 roulette_minigame = mode_check == 0x28432c29
@@ -94,15 +95,15 @@ achievement(
     title = "Red Perfectionist",
     points = 10,
     description = "Complete stages 1 through 5 without losing a life",
-    trigger = in_game
-    && once(stage_start(1))
+    trigger = prev(stage) > 0
+    && prev(stage) <= 5
     && trigger_when(once(stage_complete(1))
     && once(stage_complete(2))
     && once(stage_complete(3))
     && once(stage_complete(4))
     && once(stage_complete(5)))
-    && never(lives < prev(lives))
-    && never(title_screen)
+    && disable_when(in_game && prev(in_game) && lives < prev(lives))
+    && (always_false() || never(title_screen || stage < prev(stage)))
 )
 
 // Complete stages 6 through 10 without losing a life
@@ -111,15 +112,15 @@ achievement(
     title = "On the Sunny Slide",
     points = 10,
     description = "Complete stages 6 through 10 without losing a life",
-    trigger = in_game
-    && once(stage_start(6))
+    trigger = prev(stage) > 5
+    && prev(stage) <= 10
     && trigger_when(once(stage_complete(6))
     && once(stage_complete(7))
     && once(stage_complete(8))
     && once(stage_complete(9))
     && once(stage_complete(10)))
-    && never(lives < prev(lives))
-    && never(title_screen)
+    && disable_when(in_game && prev(in_game) && lives < prev(lives))
+    && (always_false() || never(title_screen || stage < prev(stage)))
 )
 
 // Complete stages 11 through 15 without losing a life
@@ -128,15 +129,15 @@ achievement(
     title = "A Perfect Throw",
     points = 10,
     description = "Complete stages 11 through 15 without losing a life",
-    trigger = in_game
-    && once(stage_start(11))
+    trigger = prev(stage) > 10
+    && prev(stage) <= 15
     && trigger_when(once(stage_complete(11))
     && once(stage_complete(12))
     && once(stage_complete(13))
     && once(stage_complete(14))
     && once(stage_complete(15)))
-    && never(lives < prev(lives))
-    && never(title_screen)
+    && disable_when(in_game && prev(in_game) && lives < prev(lives))
+    && (always_false() || never(title_screen || stage < prev(stage)))
 )
 
 // Complete stages 16 through 20 without losing a life
@@ -145,15 +146,15 @@ achievement(
     title = "Brilliant Mind",
     points = 10,
     description = "Complete stages 16 through 20 without losing a life",
-    trigger = in_game
-    && once(stage_start(16))
+    trigger = prev(stage) > 15
+    && prev(stage) <= 20
     && trigger_when(once(stage_complete(16))
     && once(stage_complete(17))
     && once(stage_complete(18))
     && once(stage_complete(19))
     && once(stage_complete(20)))
-    && never(lives < prev(lives))
-    && never(title_screen)
+    && disable_when(in_game && prev(in_game) && lives < prev(lives))
+    && (always_false() || never(title_screen || stage < prev(stage)))
 )
 
 // Complete stages 21 through 25 without losing a life
@@ -162,15 +163,15 @@ achievement(
     title = "Ready to Gamble",
     points = 10,
     description = "Complete stages 21 through 25 without losing a life",
-    trigger = in_game
-    && once(stage_start(21))
+    trigger = prev(stage) > 20
+    && prev(stage) <= 25
     && trigger_when(once(stage_complete(21))
     && once(stage_complete(22))
     && once(stage_complete(23))
     && once(stage_complete(24))
     && once(stage_complete(25)))
-    && never(lives < prev(lives))
-    && never(title_screen)
+    && disable_when(in_game && prev(in_game) && lives < prev(lives))
+    && (always_false() || never(title_screen || stage < prev(stage)))
 )
 
 // Complete stages 26 through 30 without losing a life
@@ -179,15 +180,15 @@ achievement(
     title = "Thank You for Playing!",
     points = 10,
     description = "Complete stages 26 through 30 without losing a life",
-    trigger = in_game
-    && once(stage_start(26))
+    trigger = prev(stage) > 25
+    && prev(stage) <= 30
     && trigger_when(once(stage_complete(26))
     && once(stage_complete(27))
     && once(stage_complete(28))
     && once(stage_complete(29))
     && once(stage_complete(30)))
-    && never(lives < prev(lives))
-    && never(title_screen)
+    && disable_when(in_game && prev(in_game) && lives < prev(lives))
+    && (always_false() || never(title_screen || stage < prev(stage)))
 )
 
 // Get an extra life on the UFO shooter bonus stage! (16, lives += 1)
@@ -224,6 +225,11 @@ achievement(
 rich_presence_conditional_display(
     title_screen,
     "At the title screen"
+)
+
+rich_presence_conditional_display(
+    continue_screen,
+    "Continue?"
 )
 
 rich_presence_conditional_display(
