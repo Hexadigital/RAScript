@@ -10,6 +10,8 @@ bios = dword(0x008c) == 0
 
 // $86B2: Lives [8-bit]
 lives = byte(0x0086B2)
+ufo_lives = byte(0x008666)
+roulette_lives = byte(0x00864e)
 
 // $86B8: Stage [8-bit]
 stage = byte(0x0086B8)
@@ -26,13 +28,17 @@ function stage_complete(num) {
     return stage == num && prev(balls_remaining) == 1 && balls_remaining == 0
 }
 
+function stage_complete_2(num) {
+    return prev(stage) == num && stage == num + 1
+}
+
 // Complete stage 1
 achievement(
     type = "progression",
     title = "I am Kana",
     points = 1,
     description = "Complete stage 1",
-    trigger = in_game && stage_complete(1)
+    trigger = in_game && stage_complete_2(1)
 )
 
 // Complete stage 5 (get password: nekomi)
@@ -41,7 +47,7 @@ achievement(
     title = "Red Runner",
     points = 2,
     description = "Complete stage 5",
-    trigger = in_game && stage_complete(5)
+    trigger = in_game && stage_complete_2(5)
 )
 
 // Complete stage 10 (get password: paokun)
@@ -50,7 +56,7 @@ achievement(
     title = "Sokoban Slider",
     points = 4,
     description = "Complete stage 10",
-    trigger = in_game && stage_complete(10)
+    trigger = in_game && stage_complete_2(10)
 )
 
 // Complete stage 15 (get password: gomada)
@@ -59,7 +65,7 @@ achievement(
     title = "Throw Them Up High",
     points = 5,
     description = "Complete stage 15",
-    trigger = in_game && stage_complete(15)
+    trigger = in_game && stage_complete_2(15)
 )
 
 // Complete stage 20 (get password: y2dayo)
@@ -68,7 +74,7 @@ achievement(
     title = "Ballistic Brilliance",
     points = 5,
     description = "Complete stage 20",
-    trigger = in_game && stage_complete(20)
+    trigger = in_game && stage_complete_2(20)
 )
 
 // Complete stage 25 (get password: kanayo)
@@ -77,7 +83,7 @@ achievement(
     title = "Test Your Luck",
     points = 5,
     description = "Complete stage 25",
-    trigger = in_game && stage_complete(25)
+    trigger = in_game && stage_complete_2(25)
 )
 
 // Complete stage 30 and beat the game (credits)
@@ -198,17 +204,17 @@ achievement(
     points = 1,
     description = "Get an extra life on the UFO shooter bonus stage",
     trigger = ufo_minigame
-    && lives == prev(lives) + 1
+    && ufo_lives == prev(ufo_lives) + 1
 )
 
-// Get five extra lives on the UFO shooter bonus stage! (16, lives += 1, 5 hits)
+// Get four extra lives on the UFO shooter bonus stage! (16, lives += 1, 4 hits)
 achievement(
     type = "missable",
     title = "UFO Obliterator",
     points = 3,
-    description = "Get five extra lives on the UFO shooter bonus stage",
+    description = "Get four extra lives on the UFO shooter bonus stage",
     trigger = ufo_minigame
-    && repeated(5, lives == prev(lives) + 1)
+    && repeated(4, ufo_lives == prev(ufo_lives) + 1)
     && never(!ufo_minigame)
 )
 
@@ -219,7 +225,7 @@ achievement(
     points = 2,
     description = "Get an extra life on the roulette bonus stage",
     trigger = roulette_minigame
-    && lives == prev(lives) + 1
+    && roulette_lives == prev(roulette_lives) + 1
 )
 
 rich_presence_conditional_display(
