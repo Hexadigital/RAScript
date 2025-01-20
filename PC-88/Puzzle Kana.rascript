@@ -6,6 +6,7 @@ continue_screen = mode_check == 0x65766f22
 in_game = mode_check == 0x494e49f5
 ufo_minigame = mode_check == 0x4c4c4142
 roulette_minigame = mode_check == 0x28432c29
+ending = dword(0x83) == 0x30646e65
 bios = dword(0x008c) == 0
 
 // $86B2: Lives [8-bit]
@@ -30,6 +31,10 @@ function stage_complete(num) {
 
 function stage_complete_2(num) {
     return prev(stage) == num && stage == num + 1
+}
+
+function final_stage_complete() {
+    return stage == 30 && balls_remaining == 0 && prev(in_game) && ending
 }
 
 // Complete stage 1
@@ -92,7 +97,7 @@ achievement(
     title = "Rolling with Style",
     points = 10,
     description = "Complete stage 30 and beat the game",
-    trigger = in_game && stage_complete(30)
+    trigger = final_stage_complete()
 )
 
 // Complete stages 1 through 5 without losing a life
