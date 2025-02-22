@@ -71,7 +71,7 @@ achievement(
 achievement(
     title = "Fatal Wounds Can't Keep Me Down",
     points = 10,
-    description = "Clear all three stages without dying more than twice",
+    description = "Clear all three stages without dying more than once",
     trigger = once(prev(loading) && in_game) && trigger_when(stage_ended(3)) && never(repeated(2, in_game && lives < prev(lives)))
     && never(out_of_game)
 )
