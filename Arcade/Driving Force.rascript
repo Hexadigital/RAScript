@@ -62,7 +62,7 @@ achievement(
     title = "Steady Wheel",
     points = 10,
     description = "Reach the checkpoint at 4,000 miles without crashing",
-    trigger = once(game_start) && time_remaining > 0 && trigger_when(prev(raw_miles) == 0x3990 && raw_miles == 0x4000) && never(time_up) && never(crashed)
+    trigger = once(game_start) && time_remaining > 0 && trigger_when(prev(raw_miles) == 0x399 && raw_miles == 0x400) && never(time_up) && never(crashed)
 )
 
 
