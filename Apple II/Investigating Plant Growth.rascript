@@ -57,6 +57,8 @@ plant_lab_text = {
     "Turnip":      "  Turnips  ",
 }
 
+in_game_check = ascii_string_equals(0x007be7, "Grow Crops")
+
 first_percentage = byte(0x00030d)
 second_percentage = byte(0x00030e)
 third_percentage = byte(0x00030f)
@@ -80,7 +82,7 @@ achievement(
     title = "First Crop",
     points = 2,
     description = "Complete a Trainee assignment with enough food to feed everyone",
-    trigger = difficulty == 0 && prev(people_fed) == 0 && people_fed >= crew_members && crew_members > 10
+    trigger = in_game_check && difficulty == 0 && prev(people_fed) == 0 && people_fed >= crew_members && crew_members > 10
 )
 
 // Complete an Assistant assignment with enough food to feed everyone
@@ -89,7 +91,7 @@ achievement(
     title = "Crop Rotation",
     points = 3,
     description = "Complete an Assistant assignment with enough food to feed everyone",
-    trigger = difficulty == 1 && prev(people_fed) == 0 && people_fed >= crew_members && crew_members > 10
+    trigger = in_game_check && difficulty == 1 && prev(people_fed) == 0 && people_fed >= crew_members && crew_members > 10
 )
 
 // Complete a Leader assignment with enough food to feed everyone
@@ -98,7 +100,7 @@ achievement(
     title = "Generous Commander",
     points = 4,
     description = "Complete an Leader assignment with enough food to feed everyone",
-    trigger = difficulty == 2 && prev(people_fed) == 0 && people_fed >= crew_members && crew_members > 10
+    trigger = in_game_check && difficulty == 2 && prev(people_fed) == 0 && people_fed >= crew_members && crew_members > 10
 )
 
 // Grow all three crops with 100% of possible growth at once
@@ -106,7 +108,7 @@ achievement(
     title = "Full Harvest",
     points = 3,
     description = "Grow all three crops with 100% of possible growth at once",
-    trigger = first_percentage == 100 && second_percentage == 100 && third_percentage == 100
+    trigger = in_game_check && first_percentage == 100 && second_percentage == 100 && third_percentage == 100
            && prev(people_fed) == 0 && people_fed >= crew_members && crew_members > 10
 )
 
@@ -115,7 +117,7 @@ achievement(
     title = "Data Scientist",
     points = 2,
     description = "Earn an efficiency rating of 100% on any assignment",
-    trigger = prev(people_fed) == 0 && people_fed >= crew_members && crew_members > 10 && efficiency_rating == 100
+    trigger = in_game_check && prev(people_fed) == 0 && people_fed >= crew_members && crew_members > 10 && efficiency_rating == 100
 )
 
 // Earn an efficiency rating of 100% on any Leader assignment
@@ -123,7 +125,7 @@ achievement(
     title = "One With Nature",
     points = 4,
     description = "Earn an efficiency rating of 100% on any Leader assignment",
-    trigger = difficulty == 2 && prev(people_fed) == 0 && people_fed >= crew_members && crew_members > 10 && efficiency_rating == 100
+    trigger = in_game_check && difficulty == 2 && prev(people_fed) == 0 && people_fed >= crew_members && crew_members > 10 && efficiency_rating == 100
 )
 
 // Discover the ideal conditions for x in the Plant Lab
@@ -132,7 +134,7 @@ for x in plant_lab_text {
         title = format("{0} Expert", x),
         points = 1,
         description = format("Discover the ideal conditions for {0} in the Plant Lab", VegDescs[x]),
-        trigger = ascii_string_equals(plant_lab_name, plant_lab_text[x]) && plant_lab_fully_grown
+        trigger = in_game_check && ascii_string_equals(plant_lab_name, plant_lab_text[x]) && plant_lab_fully_grown
                && third_percentage == prev(third_percentage) // This prevents it from triggering in the Greenhouse
     )
 }
