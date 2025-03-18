@@ -75,7 +75,7 @@ achievement(
     trigger = devils_tomb_loaded
     && room_id == DTImportantLocations["Neamo"]
     && (
-    ascii_string_equals(text_buffer, "SAYSAY NEAMOSAY NEAMO")
+    ascii_string_equals(text_buffer, "NEAMOSAYSAY NEAMO")
     )
 )
 
@@ -100,8 +100,8 @@ achievement(
     trigger = devils_tomb_loaded
     && room_id == DTImportantLocations["Diamond Necklace"]
     && (
-    ascii_string_equals(text_buffer, "IN A N/S HALLNECKLACETAKE TAKE NECKLACE")
-    || ascii_string_equals(text_buffer, "IN A N/S HALLNECKLACEGET GET NECKLACE")
+    ascii_string_equals(text_buffer, "NECKLACETAKETAKE NECKLACE")
+    || ascii_string_equals(text_buffer, "NECKLACEGETGET NECKLACE")
     )
 )
 
