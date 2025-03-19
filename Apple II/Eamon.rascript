@@ -49,7 +49,7 @@ CODImportantLocations = {
     "Docksiders": 15,
     "Copper Coins": 16,
     "Black Jewel": 14,
-    "Sceptre 1": 121,
+    "Sceptre 1": 109,
     "Sceptre 2": 21,
 }
 
@@ -281,27 +281,28 @@ achievement(
     type = "progression",
     title = "[#96] Scaled Thief",
     points = 5,
-    description = "Steal a sceptre from the nasty dragon and escape",
+    description = "Steal a sceptre from the nasty dragon and escape in one session",
     trigger = chamber_of_dragons_loaded
     && (
         once(
             room_id == CODImportantLocations["Sceptre 1"]
-            && ascii_string_equals(text_buffer, "IN A EXTREMELY LARGE CAVERNSCEPTRETAKETAKE SCEPTRE")
+            && ascii_string_equals(text_buffer, "SCEPTRETAKETAKE SCEPTRE")
         )
         || once(
         room_id == CODImportantLocations["Sceptre 1"]
-            && ascii_string_equals(text_buffer, "IN A EXTREMELY LARGE CAVERNSCEPTREGETGET SCEPTRE")
+            && ascii_string_equals(text_buffer, "SCEPTREGETGET SCEPTRE")
         )
         || once(
             room_id == CODImportantLocations["Sceptre 2"]
-            && ascii_string_equals(text_buffer, "IN A EXTREMELY LARGE CAVERNSCEPTRETAKETAKE SCEPTRE")
+            && ascii_string_equals(text_buffer, "SCEPTRETAKETAKE SCEPTRE")
         )
         || once(
         room_id == CODImportantLocations["Sceptre 2"]
-            && ascii_string_equals(text_buffer, "IN A EXTREMELY LARGE CAVERNSCEPTREGETGET SCEPTRE")
+            && ascii_string_equals(text_buffer, "SCEPTREGETGET SCEPTRE")
         )
     )
-    && trigger_when(room_id == CODImportantLocations["Entrance"] && ascii_string_equals(text_buffer, "UPUPUP"))
+    && trigger_when(room_id == CODImportantLocations["Entrance"] && 
+    (ascii_string_equals(text_buffer, "UPUPUP") || ascii_string_equals(text_buffer, "UUU")))
 )
 
 rich_presence_conditional_display(
