@@ -82,7 +82,7 @@ achievement(
     title = "First Crop",
     points = 2,
     description = "Complete a Trainee assignment with enough food to feed everyone",
-    trigger = in_game_check && difficulty == 0 && prev(people_fed) == 0 && people_fed >= crew_members && crew_members > 10
+    trigger = in_game_check && difficulty == 0 && prev(people_fed) != people_fed && people_fed >= crew_members && crew_members > 10
 )
 
 // Complete an Assistant assignment with enough food to feed everyone
@@ -91,7 +91,7 @@ achievement(
     title = "Crop Rotation",
     points = 3,
     description = "Complete an Assistant assignment with enough food to feed everyone",
-    trigger = in_game_check && difficulty == 1 && prev(people_fed) == 0 && people_fed >= crew_members && crew_members > 10
+    trigger = in_game_check && difficulty == 1 && prev(people_fed) != people_fed && people_fed >= crew_members && crew_members > 10
 )
 
 // Complete a Leader assignment with enough food to feed everyone
@@ -100,7 +100,7 @@ achievement(
     title = "Generous Commander",
     points = 4,
     description = "Complete an Leader assignment with enough food to feed everyone",
-    trigger = in_game_check && difficulty == 2 && prev(people_fed) == 0 && people_fed >= crew_members && crew_members > 10
+    trigger = in_game_check && difficulty == 2 && prev(people_fed) != people_fed && people_fed >= crew_members && crew_members > 10
 )
 
 // Grow all three crops with 100% of possible growth at once
@@ -109,7 +109,7 @@ achievement(
     points = 3,
     description = "Grow all three crops with 100% of possible growth at once",
     trigger = in_game_check && first_percentage == 100 && second_percentage == 100 && third_percentage == 100
-           && prev(people_fed) == 0 && people_fed >= crew_members && crew_members > 10
+           && prev(people_fed) != people_fed && people_fed >= crew_members && crew_members > 10
 )
 
 // Earn an efficiency rating of 100% on any assignment
@@ -117,7 +117,7 @@ achievement(
     title = "Data Scientist",
     points = 2,
     description = "Earn an efficiency rating of 100% on any assignment",
-    trigger = in_game_check && prev(people_fed) == 0 && people_fed >= crew_members && crew_members > 10 && efficiency_rating == 100
+    trigger = in_game_check && prev(people_fed) != people_fed && people_fed >= crew_members && crew_members > 10 && efficiency_rating == 100
 )
 
 // Earn an efficiency rating of 100% on any Leader assignment
@@ -125,7 +125,7 @@ achievement(
     title = "One With Nature",
     points = 4,
     description = "Earn an efficiency rating of 100% on any Leader assignment",
-    trigger = in_game_check && difficulty == 2 && prev(people_fed) == 0 && people_fed >= crew_members && crew_members > 10 && efficiency_rating == 100
+    trigger = in_game_check && difficulty == 2 && prev(people_fed) != people_fed && people_fed >= crew_members && crew_members > 10 && efficiency_rating == 100
 )
 
 // Discover the ideal conditions for x in the Plant Lab
