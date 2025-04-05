@@ -880,11 +880,11 @@ function in_pokedex(p) => pokedex_lookup[p] == 1
 function not_in_pokedex(p) => pokedex_lookup[p] == 0
 
 function all_caught(list) {
-    all_of(list, in_pokedex)
+    return all_of(list, in_pokedex)
 }
 
 function none_caught(list) {
-    all_of(list, not_in_pokedex)
+    return all_of(list, not_in_pokedex)
 }
 
 function hitmon_obtained() {
@@ -1244,7 +1244,7 @@ for p in zero_badges {
         badge = badge_lookup[p],
         title = p,
         description = format("Register {0} as caught in your Pokedex!", p),
-        points = point_lookup[p],
+        points = 0,
         trigger = good_to_catch_0b_pokemon() && pokemon_caught(p)
     )
 }
@@ -1259,7 +1259,7 @@ achievement(
     badge = badge_lookup["Brock"],
     title = "Brock",
     description = "Obtain the Boulder Badge with all 25 possible Pokemon!",
-    points = 10,
+    points = 50,
     trigger = ready_for_first_badge() && trigger_when(first_gym_beat())
 )
 
@@ -1268,7 +1268,7 @@ for p in one_badge_p1 {
         badge = badge_lookup[p],
         title = p,
         description = format("Register {0} as caught in your Pokedex!", p),
-        points = point_lookup[p],
+        points = 0,
         trigger = good_to_catch_1b_pokemon() && pokemon_caught(p)
     )
 }
@@ -1278,7 +1278,7 @@ achievement(
     badge = badge_lookup["The First Hitmon"],
     title = "The First Hitmon",
     description = "Register Hitmonchan or Hitmonlee as caught in your Pokedex!",
-    points = 1,
+    points = 0,
     trigger = good_to_catch_1b_pokemon() && get_first_hitmon()
 )
 
@@ -1287,7 +1287,7 @@ for p in one_badge_p2 {
         badge = badge_lookup[p],
         title = p,
         description = format("Register {0} as caught in your Pokedex!", p),
-        points = point_lookup[p],
+        points = 0,
         trigger = good_to_catch_1b_pokemon() && pokemon_caught(p)
     )
 }
@@ -1296,7 +1296,7 @@ achievement(
     badge = badge_lookup["The First Moon Evo"],
     title = "The First Moon Evo",
     description = "Register Nidoqueen, Nidoking, Clefable or Wigglytuff as caught in your Pokedex!",
-    points = 3,
+    points = 0,
     trigger = good_to_catch_1b_pokemon() && get_first_moon_evo()
 )
 
@@ -1304,7 +1304,7 @@ achievement(
     badge = badge_lookup["The Second Moon Evo"],
     title = "The Second Moon Evo",
     description = "Register Nidoqueen, Nidoking, Clefable or Wigglytuff as caught in your Pokedex!",
-    points = 3,
+    points = 0,
     trigger = good_to_catch_1b_pokemon() && get_second_moon_evo()
 )
 
@@ -1312,7 +1312,7 @@ achievement(
     badge = badge_lookup["The Third Moon Evo"],
     title = "The Third Moon Evo",
     description = "Register Nidoqueen, Nidoking, Clefable or Wigglytuff as caught in your Pokedex!",
-    points = 2,
+    points = 0,
     trigger = good_to_catch_1b_pokemon() && get_third_moon_evo()
 )
 
@@ -1324,7 +1324,7 @@ achievement(
     badge = badge_lookup["Koga"],
     title = "Koga",
     description = "Obtain the Soul Badge with all 119 possible Pokemon!",
-    points = 10,
+    points = 100,
     trigger = ready_for_second_badge() && trigger_when(second_gym_beat())
 )
 
@@ -1333,7 +1333,7 @@ for p in two_badges_p1 {
         badge = badge_lookup[p],
         title = p,
         description = format("Register {0} as caught in your Pokedex!", p),
-        points = point_lookup[p],
+        points = 0,
         trigger = good_to_catch_2b_pokemon() && pokemon_caught(p)
     )
 }
@@ -1343,7 +1343,7 @@ achievement(
     badge = badge_lookup["The Mt. Moon Fossil"],
     title = "The Mt. Moon Fossil",
     description = "Register Omanyte or Kabuto as caught in your Pokedex!",
-    points = 1,
+    points = 0,
     trigger = good_to_catch_2b_pokemon() && get_first_stage1_fossil()
 )
 
@@ -1352,7 +1352,7 @@ achievement(
     badge = badge_lookup["The Mt. Moon Evolution"],
     title = "The Mt. Moon Evolution",
     description = "Register Omastar or Kabutops as caught in your Pokedex!",
-    points = 2,
+    points = 0,
     trigger = good_to_catch_2b_pokemon() && get_first_stage2_fossil()
 )
 
@@ -1361,7 +1361,7 @@ for p in two_badges_p2 {
         badge = badge_lookup[p],
         title = p,
         description = format("Register {0} as caught in your Pokedex!", p),
-        points = point_lookup[p],
+        points = 0,
         trigger = good_to_catch_2b_pokemon() && pokemon_caught(p)
     )
 }
@@ -1370,7 +1370,7 @@ achievement(
     badge = badge_lookup["The Final Moon Evo"],
     title = "The Final Moon Evo",
     description = "Register Nidoqueen, Nidoking, Clefable or Wigglytuff as caught in your Pokedex!",
-    points = 2,
+    points = 0,
     trigger = good_to_catch_2b_pokemon() && get_fourth_moon_evo()
 )
 
@@ -1381,7 +1381,7 @@ achievement(
     badge = badge_lookup["Lt. Surge"],
     title = "Lt. Surge",
     description = "Obtain the Thunder Badge with all 143 possible Pokemon!",
-    points = 10,
+    points = 25,
     trigger = ready_for_third_badge() && trigger_when(third_gym_beat())
 )
 
@@ -1390,7 +1390,7 @@ for p in three_badges {
         badge = badge_lookup[p],
         title = p,
         description = format("Register {0} as caught in your Pokedex!", p),
-        points = point_lookup[p],
+        points = 0,
         trigger = good_to_catch_3b_pokemon() && pokemon_caught(p)
     )
 }
@@ -1412,7 +1412,7 @@ for p in four_badges {
         badge = badge_lookup[p],
         title = p,
         description = format("Register {0} as caught in your Pokedex!", p),
-        points = point_lookup[p],
+        points = 0,
         trigger = good_to_catch_4b_pokemon() && pokemon_caught(p)
     )
 }
@@ -1425,7 +1425,7 @@ achievement(
     badge = badge_lookup["Erika"],
     title = "Erika",
     description = "Obtain the Rainbow Badge with all 148 possible Pokemon!",
-    points = 10,
+    points = 5,
     trigger = ready_for_fifth_badge() && trigger_when(fifth_gym_beat())
 )
 
@@ -1434,7 +1434,7 @@ for p in five_badges {
         badge = badge_lookup[p],
         title = p,
         description = format("Register {0} as caught in your Pokedex!", p),
-        points = point_lookup[p],
+        points = 0,
         trigger = good_to_catch_5b_pokemon() && pokemon_caught(p)
     )
 }
@@ -1446,7 +1446,7 @@ achievement(
     badge = badge_lookup["Sabrina and Blaine - Part 1"],
     title = "Sabrina and Blaine - Part 1",
     description = "Obtain the Marsh or Volcano Badge with all 149 possible Pokemon!",
-    points = 10,
+    points = 5,
     trigger = ready_for_67_badge() && trigger_when(sixth_gym_beat())
 )
 
@@ -1457,7 +1457,7 @@ achievement(
     badge = badge_lookup["Sabrina and Blaine - Part 2"],
     title = "Sabrina and Blaine - Part 2",
     description = "Obtain the Marsh or Volcano Badge with all 149 possible Pokemon!",
-    points = 10,
+    points = 5,
     trigger = ready_for_67_badge() && trigger_when(seventh_gym_beat())
 )
 
@@ -1468,7 +1468,7 @@ achievement(
     badge = badge_lookup["Oboma"],
     title = "Oboma",
     description = "Obtain the Change Badge with all 149 possible Pokemon!",
-    points = 10,
+    points = 5,
     trigger = ready_for_eighth_badge() && trigger_when(eighth_gym_beat())
 )
 
@@ -1477,7 +1477,7 @@ achievement(
     badge = badge_lookup["The Other Hitmon"],
     title = "The Other Hitmon",
     description = "Register Hitmonchan or Hitmonlee as caught in your Pokedex!",
-    points = 1,
+    points = 0,
     trigger = good_to_catch_8b_pokemon() && get_second_hitmon()
 )
 
@@ -1486,7 +1486,7 @@ for p in pre_league {
         badge = badge_lookup[p],
         title = p,
         description = format("Register {0} as caught in your Pokedex!", p),
-        points = point_lookup[p],
+        points = 0,
         trigger = good_to_catch_8b_pokemon() && pokemon_caught(p)
     )
 }
@@ -1499,7 +1499,7 @@ achievement(
     badge = badge_lookup["Pokemon League"],
     title = "Pokemon League",
     description = "Defeat the Elite Four and Champion with all 151 possible Pokemon!",
-    points = 25,
+    points = 10,
     trigger = ready_for_elite_four() && trigger_when(elite_four_beat())
 )
 
@@ -1512,7 +1512,7 @@ achievement(
     badge = badge_lookup["The Other Fossil"],
     title = "The Other Fossil",
     description = "Register Omanyte or Kabuto as caught in your Pokedex!",
-    points = 1,
+    points = 0,
     trigger = good_to_catch_postgame_pokemon() && get_second_stage1_fossil()
 )
 
@@ -1521,7 +1521,7 @@ achievement(
     badge = badge_lookup["The Other Evolution"],
     title = "The Other Evolution",
     description = "Register Omastar or Kabutops as caught in your Pokedex!",
-    points = 2,
+    points = 0,
     trigger = good_to_catch_postgame_pokemon() && get_second_stage2_fossil()
 )
 
@@ -1530,7 +1530,7 @@ for p in post_game {
         badge = badge_lookup[p],
         title = p,
         description = format("Register {0} as caught in your Pokedex!", p),
-        points = point_lookup[p],
+        points = 0,
         trigger = good_to_catch_postgame_pokemon() && pokemon_caught(p)
     )
 }
