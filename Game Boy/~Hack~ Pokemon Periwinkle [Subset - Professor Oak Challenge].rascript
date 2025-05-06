@@ -525,7 +525,8 @@ zero_badges = [
     "Mankey",
     "Primeape",
     "Bellsprout",
-    "Weepinbell"
+    "Weepinbell",
+    "Farfetch'd"
 ]
 
 // Route 3: Sandshrew
@@ -688,7 +689,6 @@ three_badges = [
 ]
 
 four_badges = [
-    "Farfetch'd",
     "Aerodactyl"
 ]
 
@@ -1258,7 +1258,7 @@ for p in zero_badges {
 achievement(
     badge = badge_lookup["Brock"],
     title = "Brock",
-    description = "Obtain the Boulder Badge with all 25 possible Pokemon!",
+    description = "Obtain the Boulder Badge with all 26 possible Pokemon!",
     points = 50,
     trigger = ready_for_first_badge() && trigger_when(first_gym_beat())
 )
