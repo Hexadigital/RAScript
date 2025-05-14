@@ -43,8 +43,10 @@ score = word(0x004f8a) + (byte(0x004f88) * 65536) + (byte(0x004f89) * 6777216)
 
 shots_hit = byte(0x0099ec)
 bonus_hits = byte(0x00db50)
+bonus_hits_track_wagons = byte(0x00dc22)
 // perfect_bonus = prev(shots_hit) == 19 && shots_hit == 20
 perfect_bonus = prev(bonus_hits) == 1 && bonus_hits == 0 && shots_hit >= 19
+perfect_bonus_track_wagons = prev(bonus_hits_track_wagons) == 1 && bonus_hits_track_wagons == 0 && shots_hit >= 19
 
 shooting_range_scene = byte(0x009a28) // used for desert chariots too
 track_wagons_scene = byte(0x009a2a)
@@ -228,7 +230,7 @@ achievement(
     trigger = p1_active
               && p2_inactive
               && selected_game == AreaNameToID["Track Wagons"]
-              && perfect_bonus
+              && perfect_bonus_track_wagons
 )
 
 // Complete the Shooting Range game without using a continue in single-player as P1! 25p
