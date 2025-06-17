@@ -50,7 +50,7 @@ manhole_score = max_of(measured(
     ))
 
 function word_selected(target) {
-    ascii_string_equals(current_word, target, length(target) + 1)
+    return ascii_string_equals(current_word, target, length(target) + 1)
 }
 
 // Ball, Flagman, Judge, Manhole
@@ -207,7 +207,7 @@ achievement(
 //////////////////
 
 leaderboard(
-    title = "Ball: Game 1 High Score",
+    title = "Ball: Game A High Score",
     description = "",
     start = game_loaded("Ball")
             && ball_mode == 0x00
@@ -218,18 +218,18 @@ leaderboard(
 )
 
 leaderboard(
-    title = "Ball: Game 2 High Score",
+    title = "Ball: Game B High Score",
     description = "",
     start = game_loaded("Ball")
             && ball_mode == 0x01
             && ball_gameover,
     cancel = always_false(),
     submit = always_true(), 
-    value = ball_score * 100
+    value = ball_score * 10
 )
 
 leaderboard(
-    title = "Flagman: Game 1 High Score",
+    title = "Flagman: Game A High Score",
     description = "",
     start = game_loaded("Flagman")
             && flagman_mode == 0x00
@@ -240,7 +240,7 @@ leaderboard(
 )
 
 leaderboard(
-    title = "Flagman: Game 2 High Score",
+    title = "Flagman: Game B High Score",
     description = "",
     start = game_loaded("Flagman")
             && flagman_mode == 0x01
@@ -251,7 +251,7 @@ leaderboard(
 )
 
 leaderboard(
-    title = "Manhole: Game 1 High Score",
+    title = "Manhole: Game A High Score",
     description = "",
     start = game_loaded("Manhole")
             && manhole_mode == 0x00
@@ -262,7 +262,7 @@ leaderboard(
 )
 
 leaderboard(
-    title = "Manhole: Game 2 High Score",
+    title = "Manhole: Game B High Score",
     description = "",
     start = game_loaded("Manhole")
             && manhole_mode == 0x01
