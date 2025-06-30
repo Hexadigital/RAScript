@@ -3,9 +3,9 @@
 
 current_case = byte(0x0244fc)
 
-mummy_score = byte(0x02433c)
-mystified_score = byte(0x0242b8)
-tin_score = byte(0x0242fa)
+mummy_score = word(0x02433c)
+mystified_score = word(0x0242b8)
+tin_score = word(0x0242fa)
 
 game_state = byte(0x0200ae)
 mummy_case_solved = prev(game_state) == 4 && game_state == 7
@@ -98,7 +98,7 @@ leaderboard(
 )
 
 leaderboard(
-    title = "Low Score: The Mummy's Curse",
+    title = "Low Score: The Tin Soldier",
     description = "",
     lower_is_better=true,
     start = current_case == 3
