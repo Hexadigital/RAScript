@@ -191,6 +191,7 @@ achievement(
     points = 1,
     description = "As P1, activate the Bomb power block on default settings",
     trigger = default_settings
+              && score > 0
               && in_game
               && power_activated("Bomb")
 )
