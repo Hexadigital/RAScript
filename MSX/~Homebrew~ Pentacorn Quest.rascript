@@ -1,6 +1,8 @@
 // ~Homebrew~ Pentacorn Quest
 // #ID = 33799
 
+function addr_offset() => ~bit0(0x00FC48) * 0x00C000
+
 golden_acorn_rooms = [
     0x0000,
     0x0001,
@@ -35,18 +37,18 @@ item_ids = {
 }
 
 inventory_slots = {
-    1: byte(0x002fb4),
-    2: byte(0x002fb5),
-    3: byte(0x002fb6),
-    4: byte(0x002fb7),
-    5: byte(0x002fb8),
-    6: byte(0x002fb9),
+    1: byte(0x002fb4 + addr_offset()),
+    2: byte(0x002fb5 + addr_offset()),
+    3: byte(0x002fb6 + addr_offset()),
+    4: byte(0x002fb7 + addr_offset()),
+    5: byte(0x002fb8 + addr_offset()),
+    6: byte(0x002fb9 + addr_offset()),
 }
 
-map_id = word(0x002f73)
-hp = byte(0x002f77)
-acorns_found = byte(0x002f76)
-ending_bitflag = byte(0x002fb0)
+map_id = word(0x002f73 + addr_offset())
+hp = byte(0x002f77 + addr_offset())
+acorns_found = byte(0x002f76 + addr_offset())
+ending_bitflag = byte(0x002fb0 + addr_offset())
 
 you_win = map_id == item_locations["Ending"]
     && once(map_id == item_locations["Ending"] && prev(acorns_found) == 2 && acorns_found == 1)
