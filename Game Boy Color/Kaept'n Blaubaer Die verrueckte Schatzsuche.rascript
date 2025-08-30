@@ -22,34 +22,58 @@
 
 checkpoints = [5, 10, 15]
 
+function p1_five_levels_completed(offset, num) {
+    return once(prev(byte(0x00c5da)) == offset + (num - 5)
+    && byte(0x00c5da) == offset + num - 4)
+    && once(prev(byte(0x00c5da)) == offset + (num - 4)
+    && byte(0x00c5da) == offset + num - 3)
+    && once(prev(byte(0x00c5da)) == offset + (num - 3)
+    && byte(0x00c5da) == offset + num - 2)
+    && once(prev(byte(0x00c5da)) == offset + (num - 2)
+    && byte(0x00c5da) == offset + num - 1)
+    && prev(byte(0x00c5da)) == offset + (num - 1)
+    && byte(0x00c5da) == offset + num
+    && never(byte(0x00c5da) < offset + (num - 5))
+    && never(byte(0x00c5da) > offset + num)
+}
+
+function p2_five_levels_completed(offset, num) {
+    return once(prev(byte(0x00c5db)) == offset + (num - 5)
+    && byte(0x00c5db) == offset + num - 4)
+    && once(prev(byte(0x00c5db)) == offset + (num - 4)
+    && byte(0x00c5db) == offset + num - 3)
+    && once(prev(byte(0x00c5db)) == offset + (num - 3)
+    && byte(0x00c5db) == offset + num - 2)
+    && once(prev(byte(0x00c5db)) == offset + (num - 2)
+    && byte(0x00c5db) == offset + num - 1)
+    && prev(byte(0x00c5db)) == offset + (num - 1)
+    && byte(0x00c5db) == offset + num
+    && never(byte(0x00c5db) < offset + (num - 5))
+    && never(byte(0x00c5db) > offset + num)
+}
+
 function klippen_kuste_level_completed(num) {
-    return prev(byte(0x00c5da)) == (num - 1)
-    && byte(0x00c5da) == num
+    return p1_five_levels_completed(0x00, num)
 }
 
 function todesklippe_level_completed(num) {
-    return prev(byte(0x00c5da)) == 0x10 + (num - 1)
-    && byte(0x00c5da) == 0x10 + num
+    return p1_five_levels_completed(0x10, num)
 }
 
 function klabauter_eiland_level_completed(num) {
-    return prev(byte(0x00c5da)) == 0x20 + (num - 1)
-    && byte(0x00c5da) == 0x20 + num
+    return p1_five_levels_completed(0x20, num)
 }
 
 function schatzinel_level_completed(num) {
-    return prev(byte(0x00c5da)) == 0x40 + (num - 1)
-    && byte(0x00c5da) == 0x40 + num
+    return p1_five_levels_completed(0x40, num)
 }
 
 function stiefelolmen_riff_level_completed(num) {
-    return prev(byte(0x00c5db)) == 0x10 + (num - 1)
-    && byte(0x00c5db) == 0x10 + num
+    return p2_five_levels_completed(0x10, num)
 }
 
 function seeschweine_bucht_level_completed(num) {
-    return prev(byte(0x00c5db)) == 0x20 + (num - 1)
-    && byte(0x00c5db) == 0x20 + num
+    return p2_five_levels_completed(0x20, num)
 }
 
 function get_cheevo_title(island, level) {
@@ -69,7 +93,8 @@ function get_cheevo_title(island, level) {
 
 function get_cheevo_description(island, level) {
     return format(
-            "Clear {0} puzzles on {1}!",
+            "Clear puzzles {0} through {1} on {2} in one session!",
+            level - 4,
             level,
             island
         )
@@ -79,6 +104,7 @@ function get_cheevo_description(island, level) {
 for c in checkpoints {
     achievement(
         title = get_cheevo_title("Klippen Kuste", c),
+        type = "progression",
         description = get_cheevo_description("Klippen Kuste", c),
         points = 3,
         trigger = klippen_kuste_level_completed(c)
@@ -89,6 +115,7 @@ for c in checkpoints {
 for c in checkpoints {
     achievement(
         title = get_cheevo_title("Stiefelolmen Riff", c),
+        type = "progression",
         description = get_cheevo_description("Stiefelolmen Riff", c),
         points = 5,
         trigger = stiefelolmen_riff_level_completed(c)
@@ -99,6 +126,7 @@ for c in checkpoints {
 for c in checkpoints {
     achievement(
         title = get_cheevo_title("Todesklippe", c),
+        type = "progression",
         description = get_cheevo_description("Todesklippe", c),
         points = 5,
         trigger = todesklippe_level_completed(c)
@@ -109,6 +137,7 @@ for c in checkpoints {
 for c in checkpoints {
     achievement(
         title = get_cheevo_title("Seeschweine Bucht", c),
+        type = "progression",
         description = get_cheevo_description("Seeschweine Bucht", c),
         points = 5,
         trigger = seeschweine_bucht_level_completed(c)
@@ -119,6 +148,7 @@ for c in checkpoints {
 for c in checkpoints {
     achievement(
         title = get_cheevo_title("Klabauter Eiland", c),
+        type = "progression",
         description = get_cheevo_description("Klabauter Eiland", c),
         points = 5,
         trigger = klabauter_eiland_level_completed(c)
@@ -129,6 +159,7 @@ for c in checkpoints {
 for c in checkpoints {
     achievement(
         title = get_cheevo_title("Schatz Insel", c),
+        type = "progression",
         description = get_cheevo_description("Schatz Insel", c),
         points = 10,
         trigger = schatzinel_level_completed(c)
