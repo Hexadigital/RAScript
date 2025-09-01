@@ -133,9 +133,9 @@ progression_cheevo_descriptions = {
 }
 
 progression_cheevo_points = {
-    "Chomper Island One": 4,
+    "Chomper Island One": 5,
     "Yellow Switch Palace": 5,
-    "Chomper Island Two": 5,
+    "Chomper Island Two": 4,
     "Chomper Island Three": 5,
     "Chomper Island Five": 5,
     "Chomper Castle": 10,
