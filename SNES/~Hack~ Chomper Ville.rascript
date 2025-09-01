@@ -190,7 +190,7 @@ rich_presence_conditional_display(
 )
 
 rich_presence_conditional_display(
-    game_mode <= 0x0a,
+    game_mode <= 0x0e,
     "In the overworld • Exits: {0}/{1} • {2} Switch{3} Activated",
     rich_presence_value("Number", exits_completed),
     NumExits,
