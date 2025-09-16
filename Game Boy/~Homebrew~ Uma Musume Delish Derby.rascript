@@ -163,7 +163,7 @@ for chartype in CharacterGroups {
                         || selected_character == CharNameLookup[CharacterGroups[chartype][i][2]]
                       )
                       && prev(map_id) == MapNameLookup[FinalAreas[Courses[i]]]
-                      && map_id == MapNameLookup["Results"]
+                      && map_id == MapNameLookup["Transition"]
         )
     }
 }
