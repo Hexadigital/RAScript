@@ -207,7 +207,15 @@ for chartype in CharacterGroups {
             title = format("{0}: {1} Type Speedrun", course, chartype),
             description = "",
             start  = prev(map_id) == MapNameLookup[FinalAreas[course]]
-                     && map_id == MapNameLookup["Transition"],
+                     && map_id == MapNameLookup["Transition"]
+                     && (
+                        selected_character == CharNameLookup[CharacterGroups[chartype][0][0]]
+                        || selected_character == CharNameLookup[CharacterGroups[chartype][0][1]]
+                        || selected_character == CharNameLookup[CharacterGroups[chartype][0][2]]
+                        || selected_character == CharNameLookup[CharacterGroups[chartype][1][0]]
+                        || selected_character == CharNameLookup[CharacterGroups[chartype][1][1]]
+                        || selected_character == CharNameLookup[CharacterGroups[chartype][1][2]]
+                      ),
             cancel = always_false(),
             submit = always_true(),
             value  = time,
@@ -218,7 +226,15 @@ for chartype in CharacterGroups {
             title = format("{0}: {1} Type Point Maniac", course, chartype),
             description = "",
             start  = prev(map_id) == MapNameLookup[FinalAreas[course]]
-                     && map_id == MapNameLookup["Transition"],
+                     && map_id == MapNameLookup["Transition"]
+                     && (
+                        selected_character == CharNameLookup[CharacterGroups[chartype][0][0]]
+                        || selected_character == CharNameLookup[CharacterGroups[chartype][0][1]]
+                        || selected_character == CharNameLookup[CharacterGroups[chartype][0][2]]
+                        || selected_character == CharNameLookup[CharacterGroups[chartype][1][0]]
+                        || selected_character == CharNameLookup[CharacterGroups[chartype][1][1]]
+                        || selected_character == CharNameLookup[CharacterGroups[chartype][1][2]]
+                      ),
             cancel = always_false(),
             submit = always_true(),
             value  = points
