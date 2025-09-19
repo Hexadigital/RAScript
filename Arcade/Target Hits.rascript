@@ -78,7 +78,7 @@ achievement(
               || (selected_game == AreaNameToID["Desert Chariots"]
               && prev(shooting_range_scene) == SceneNameToID["Scene 1, Stage 3"]
               && shooting_range_scene == SceneNameToID["Scene 2, Stage 1"])
-              || (selected_game == AreaNameToID["Shooting Range"]
+              || (selected_game == AreaNameToID["Track Wagons"]
               && prev(track_wagons_scene) == SceneNameToID["Scene 1, Stage 3"]
               && track_wagons_scene == SceneNameToID["Scene 2, Stage 1"]))
 )
