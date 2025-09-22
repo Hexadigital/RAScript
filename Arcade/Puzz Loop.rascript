@@ -213,7 +213,7 @@ achievement(
 achievement(
     title = "Survivor",
     type = "win_condition",
-    points = 50,
+    points = 100,
     description = "Reach Level 100 in Panic Mode on any difficulty to see the credits!",
     trigger = free_play_disabled
            && not_demo
