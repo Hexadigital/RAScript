@@ -27,7 +27,7 @@ language_id = byte(0x00b9ff)
 map_id = byte(0x0001ed)
 boco_hp = byte(0x000206)
 cat_hp = byte(0x000207)
-victory = map_id == MapNameLookup["Blue Ruins"] && ascii_string_equals(0x001e81, "CHEND")
+victory = map_id == MapNameLookup["Blue Ruins"] && (ascii_string_equals(0x001e81, "CHEND") || ascii_string_equals(0x001e7c, "CHEND"))
 
 function flag_not_previously_flipped(flag) {
     return once(prev(byte(flag)) != 0xfe && never(prev(byte(flag)) == 0xfe))
