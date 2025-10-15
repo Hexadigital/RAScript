@@ -52,7 +52,7 @@ ending_bitflag = byte(0x002fb0 + addr_offset())
 
 you_win = map_id == item_locations["Ending"]
     && once(map_id == item_locations["Ending"] && prev(acorns_found) == 2 && acorns_found == 1)
-    && prev(ending_bitflag) == 1 && ending_bitflag == 0
+    && prev(ending_bitflag) == 0 && ending_bitflag == 1
 
 ////////////////////
 
