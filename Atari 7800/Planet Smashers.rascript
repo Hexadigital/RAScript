@@ -29,7 +29,7 @@ function lives_check() {
     return lives <= 10
 }
 function wave_cleared(num) {
-    return prev(wave) == num && wave == num + 1
+    return once(prev(wave) == num && wave == num + 1) && repeated(60, wave == num + 1) && never(wave == 0xff)
 }
 function game_beat() {
     return wave == 7 && prev(game_status) == 0 && game_status == 0x48
@@ -43,7 +43,7 @@ achievement(
     id = 352260,
     badge = "397428",
     trigger = not_demo() && any_difficulty() && lives_check()
-              && prev(weapon_level) == 0 && prev(weapon_level) == 1
+              && prev(weapon_level) == 0 && weapon_level == 1
 )
 
 achievement(
