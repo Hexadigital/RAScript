@@ -27,7 +27,6 @@ language_id = byte(0x00b9ff)
 map_id = byte(0x0001ed)
 boco_hp = byte(0x000206)
 cat_hp = byte(0x000207)
-victory = map_id == MapNameLookup["Blue Ruins"] && (ascii_string_equals(0x001e81, "CHEND") || ascii_string_equals(0x001e7c, "CHEND"))
 
 function flag_not_previously_flipped(flag) {
     return once(prev(byte(flag)) != 0xfe && never(prev(byte(flag)) == 0xfe))
@@ -42,6 +41,16 @@ function all_flags_flipped(map, flags) {
     && tally_of(flags, 1, flag_not_previously_flipped)
     && measured(tally_of(flags, length(flags), measured_flag_flipped), when=map_id == MapNameLookup[map])
 }
+
+function chend_found(offset) {
+    return ascii_string_equals(0x001e70 + offset, "CHEND")
+}
+
+function any_chend_found() {
+    return any_of(range(0, 79), chend_found)
+}
+
+victory = map_id == MapNameLookup["Blue Ruins"] && any_chend_found()
 
 // Defeat all of the enemies and find all of the treasure on the grassy island
 grassy_island_enemies = [0x0010d1, 0x0010e1, 0x001111, 0x001121, 0x001131]
