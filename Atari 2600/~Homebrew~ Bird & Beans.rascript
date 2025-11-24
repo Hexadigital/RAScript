@@ -20,8 +20,8 @@ score_tenthousands = byte(0x0000) * 2000
 score = score_ones + score_tens + score_hundreds + score_thousands + score_tenthousands
 
 function score_earned(target) {
-    return prev(score) >= target - 100 && prev(score) < target
-        && score >= target && score < target + 100
+    return prev(score) >= target - 500 && prev(score) < target
+        && score >= target && score < target + 500
 }
 
 // Earn 1000 points in regular mode!
