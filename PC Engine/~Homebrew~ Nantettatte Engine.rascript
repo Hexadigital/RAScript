@@ -115,6 +115,12 @@ leaderboard(
 )
 
 rich_presence_conditional_display(
+    lives == 0xff,
+    "Score: {0} • Game Over!",
+    rich_presence_value("Score", score)
+)
+
+rich_presence_conditional_display(
     once(game_started()) && never(soft_reset()),
     "Score: {0} • Lives Remaining: {1}",
     rich_presence_value("Score", score),
