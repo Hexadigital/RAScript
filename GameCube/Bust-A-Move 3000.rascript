@@ -89,7 +89,8 @@ for key in LetterLookup {
 
 final_letters = ["U", "V", "W", "?", "X", "Y", "Z"]
 
-game_mode = byte(0x001b178b)
+// game_mode = byte(0x001b178b) // Old value, prone to breakage
+game_mode = byte(0x001513db)
 puzzle_mode = byte(0x001513df)
 battle_difficulty = byte(0x001b15b3)
 round = byte(0x001b1737) + 1
@@ -130,7 +131,7 @@ achievement(
     trigger = !another_world
               && game_mode == GameModeNameToID["1P Puzzle"]
               && puzzle_mode == PuzzleModeNameToID["Normal"]
-              && letter == LetterToID["A"]
+              && any_of(["A", "B"], on_letter)
               && round_completed(5)
 )
 
