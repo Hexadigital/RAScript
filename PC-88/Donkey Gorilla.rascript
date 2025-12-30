@@ -84,7 +84,7 @@ achievement(
     title = "I Love Swooping",
     points = 1,
     description = "Kill a bat",
-    trigger = still_alive && score >= prev(score) + 200 && score > prev(score) + 20
+    trigger = still_alive && score <= prev(score) + 200 && score > prev(score) + 20
 )
 
 leaderboard(
