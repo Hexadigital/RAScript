@@ -47,6 +47,7 @@ cheevo_names = {
 stage = byte(0x00b521)
 time = word(0x00b524)
 lives = byte(0x00b52e)
+demo_flag = byte(0x00a053)
 
 loading = stage == 0 || stage > 200 || lives >= 100
 title_screen = stage == 1 && lives == 0
@@ -87,7 +88,7 @@ achievement(
         title = "Thanks for Picking the PC-88!",
         points = 1,
         description = "Clear stage 1",
-        trigger = stage_clear(1)
+        trigger = lives > 0 && prev(stage) == 1 && stage == 2 && prev(demo_flag) != 1
     )
 
 for i in range(0, 39) {
