@@ -11,6 +11,8 @@ exit_id = byte(0x000dd5)
 sprite_pointer = tbyte(0x0000ce)
 exits_completed = byte(0x001f2e)
 yoshi_coins = byte(0x001422)
+xpos = word(0x94)
+ypos = word(0x96)
 
 SwitchAddresses = {
     "Green": 0x1F27,
@@ -43,6 +45,8 @@ function level_started(name) {
     return level_id == LevelNameLookup[name]
     && prev(sprite_pointer) == 0x0
     && sprite_pointer == level_sprite_pointers[name]
+    && xpos == level_starts[name][0]
+    && ypos == level_starts[name][1]
 }
 
 function level_beat(name) {
@@ -79,39 +83,6 @@ function speedrun_fail(level) {
 ////////////////////////
 // Hack Specific Data //
 ////////////////////////
-
-regular_levels = [
-    "Stage 1-1",
-    "Stage 1-2",
-    "Stage 1-3",
-    "Stage 1-4",
-    "Stage 1-5",
-    "Stage 1-6",
-    "Stage 2-1",
-    "Stage 2-2",
-    "Stage 2-3",
-    "Stage 3-1",
-    "Stage 3-2",
-    "Stage 3-3",
-    "Stage 3-4",
-    "Stage 3-5",
-    "Stage 4-1",
-    "Stage 4-2",
-    "Stage 4-3",
-    "Stage 4-4",
-    "Stage 4-5",
-    "Stage 4-6",
-    "Stage 4-7",
-    "Stage 5-1",
-    "Stage 5-2",
-    "Stage 5-3",
-    "Stage 5-4",
-    "Stage 5-5",
-    "Stage 5-6",
-    "Stage ?-1",
-    "Stage ?-2",
-    "Stage ?-3",
-]
 
 LevelNameLookup = {
     // "Hey, Tutoshi! You're the best!": 0x28,
@@ -194,6 +165,41 @@ level_sprite_pointers = {
    "Stage ?-3": 0x14f465,
    "Ending": 0x13ecb1,
 }
+
+level_starts = {
+    // X, Y
+    "Stage 1-1": [0x0010, 0x0160],
+    "Stage 1-2": [0x0010, 0x0160],
+    "Stage 1-3": [0x0010, 0x0160],
+    "Stage 1-4": [0x0010, 0x0160],
+    "Stage 1-5": [0x0010, 0x0160],
+    "Stage 1-6": [0x0010, 0x0160],
+    "Stage 2-1": [0x0010, 0x0160],
+    "Stage 2-2": [0x0010, 0x0160],
+    "Stage 2-3": [0x0030, 0x0170],
+    "Stage 3-1": [0x0010, 0x0160],
+    "Stage 3-2": [0x0010, 0x0160],
+    "Stage 3-3": [0x0010, 0x0160],
+    "Stage 3-4": [0x0010, 0x0160],
+    "Stage 3-5": [0x0010, 0x0160],
+    "Stage 4-1": [0x0010, 0x0160],
+    "Stage 4-2": [0x0010, 0x0160],
+    "Stage 4-3": [0x0010, 0x0160],
+    "Stage 4-4": [0x0010, 0x0160],
+    "Stage 4-5": [0x0010, 0x0160],
+    "Stage 4-6": [0x0010, 0x0160],
+    "Stage 4-7": [0x0010, 0x0160],
+    "Stage 5-1": [0x0010, 0x0160],
+    "Stage 5-2": [0x0010, 0x0160],
+    "Stage 5-3": [0x0010, 0x0160],
+    "Stage 5-4": [0x0010, 0x0160],
+    "Stage 5-5": [0x0010, 0x0160],
+    "Stage 5-6": [0x0010, 0x0160],
+    "Stage ?-1": [0x0020, 0x0da0],
+    "Stage ?-2": [0x0020, 0x0da0],
+    "Stage ?-3": [0x0020, 0x0da0],
+}
+
 
 cheevo_names = {
     // "No Way, Not Happening": "Reason and Logic",
@@ -279,8 +285,8 @@ cheevo_exit_types = {
     "Stage 5-5": 1,
     "Stage 5-6": 1,
     "Stage ?-1": 1,
-    "Stage ?-2": 0000,
-    "Stage ?-3": 0000,
+    "Stage ?-2": 1,
+    "Stage ?-3": 1, 
 }
 
 ////////////////////////////////////////
@@ -297,17 +303,20 @@ for c in cheevo_names {
     )
 }
 
-for c in regular_levels {
-    leaderboard(
-        title = format("{0} Speedrun", c),
-        description = "Clear the regular exit as fast as you can!",
-        start = level_started(c),
-        cancel = speedrun_fail(c),
-        submit = level_beat(c), 
-        value = measured(always_true()), 
-        format = "FRAMES",
-        lower_is_better = true
-    )
+for c in LevelNameLookup {
+    // Only create a leaderboard if the level has an exit and isn't special
+    if dictionary_contains_key(cheevo_exit_types, c) {
+        leaderboard(
+            title = format("{0} Speedrun", c),
+            description = "Clear the regular exit as fast as you can!",
+            start = level_started(c),
+            cancel = speedrun_fail(c),
+            submit = level_beat(c), 
+            value = measured(always_true()), 
+            format = "FRAMES",
+            lower_is_better = true
+        )
+    }
 }
 
 /////////////////////////////////////////////////
@@ -335,7 +344,7 @@ achievement(
      description = "Clear all three paths in Stage 1-2 in one session",
      points = 2,
      //trigger = measured(once(stage_1_2_path_1_cleared) && once (stage_1_2_path_2_cleared) && once(stage_1_2_path_3_cleared))
-     trigger = measured(tally_of(stage_1_2_rooms, 4, stage_1_2_room_cleared))
+     trigger = measured(tally_of(stage_1_2_rooms, 3, stage_1_2_room_cleared))
 )
 
 achievement(
