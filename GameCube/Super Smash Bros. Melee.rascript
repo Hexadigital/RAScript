@@ -122,6 +122,8 @@ four_stocks = stock_mode && byte(0x0045bf14) == 0x04
 
 screen_id = byte(0x00479d33)
 versus_clear = prev(screen_id) == 0x02 && screen_id == 0x04
+stamina_clear = prev(byte(0x0046b6a6)) == 0 && byte(0x0046b6a6) == 1
+stamina_reset = prev(byte(0x0046b6a6)) == 1 && byte(0x0046b6a6) == 0
 not_no_contest = byte(0x0047c02c) != 0x07
 sp_score = dword_be(0x00472e24)
 sp_clear = sp_score > prev(sp_score)
@@ -175,24 +177,24 @@ p4_lost_versus = p4_rank >= 0x01 && p4_rank <= 0x04
 
 sp_meteor_bonus = dword(0x00453a5c) != 0
 
-p1_double_ko_bonus = byte(0x0047c4ee) == 0x01
-p2_double_ko_bonus = byte(0x0047c9f6) == 0x01
-p3_double_ko_bonus = byte(0x0047cefe) == 0x01
-p4_double_ko_bonus = byte(0x0047d406) == 0x01
-p1_triple_ko_bonus = byte(0x0047c4ef) == 0x01
-p2_triple_ko_bonus = byte(0x0047c9f7) == 0x01
-p3_triple_ko_bonus = byte(0x0047ceff) == 0x01
-p4_triple_ko_bonus = byte(0x0047d407) == 0x01
+p1_double_ko_bonus = byte(0x0047c4ee) >= 0x01 && byte(0x0047c4ee) <= 0x10
+p2_double_ko_bonus = byte(0x0047c9f6) >= 0x01 && byte(0x0047c9f6) <= 0x10
+p3_double_ko_bonus = byte(0x0047cefe) >= 0x01 && byte(0x0047cefe) <= 0x10
+p4_double_ko_bonus = byte(0x0047d406) >= 0x01 && byte(0x0047d406) <= 0x10
+p1_triple_ko_bonus = byte(0x0047c4ef) >= 0x01 && byte(0x0047c4ef) <= 0x10
+p2_triple_ko_bonus = byte(0x0047c9f7) >= 0x01 && byte(0x0047c9f7) <= 0x10
+p3_triple_ko_bonus = byte(0x0047ceff) >= 0x01 && byte(0x0047ceff) <= 0x10
+p4_triple_ko_bonus = byte(0x0047d407) >= 0x01 && byte(0x0047d407) <= 0x10
 
-p1_crowd_bonus = byte(0x0047c4cf) == 0x01
-p2_crowd_bonus = byte(0x0047c9d7) == 0x01
-p3_crowd_bonus = byte(0x0047cedf) == 0x01
-p4_crowd_bonus = byte(0x0047d3e7) == 0x01
-
-p1_bullseye_bonus = byte(0x0047c4e3) == 0x01
-p2_bullseye_bonus = byte(0x0047c9eb) == 0x01
-p3_bullseye_bonus = byte(0x0047cef3) == 0x01
-p4_bullseye_bonus = byte(0x0047d3fb) == 0x01
+p1_crowd_bonus = byte(0x0047c4cf) >= 0x01 && byte(0x0047c4cf) <= 0x10
+p2_crowd_bonus = byte(0x0047c9d7) >= 0x01 && byte(0x0047c9d7) <= 0x10
+p3_crowd_bonus = byte(0x0047cedf) >= 0x01 && byte(0x0047cedf) <= 0x10
+p4_crowd_bonus = byte(0x0047d3e7) >= 0x01 && byte(0x0047d3e7) <= 0x10
+//  && byte() <= 0x10
+p1_bullseye_bonus = byte(0x0047c4e3) >= 0x01 && byte(0x0047c4e3) <= 0x10
+p2_bullseye_bonus = byte(0x0047c9eb) >= 0x01 && byte(0x0047c9eb) <= 0x10
+p3_bullseye_bonus = byte(0x0047cef3) >= 0x01 && byte(0x0047cef3) <= 0x10
+p4_bullseye_bonus = byte(0x0047d3fb) >= 0x01 && byte(0x0047d3fb) <= 0x10
 
 p1_combo_king_bonus = byte(0x0047c475) == 0x01
 p2_combo_king_bonus = byte(0x0047c97d) == 0x01
@@ -204,20 +206,20 @@ p2_berserker_bonus = byte(0x0047c98f) == 0x01
 p3_berserker_bonus = byte(0x0047ce97) == 0x01
 p4_berserker_bonus = byte(0x0047d39f) == 0x01
 
-p1_poser_ko_bonus = byte(0x0047c4e4) == 0x01
-p2_poser_ko_bonus = byte(0x0047c9ec) == 0x01
-p3_poser_ko_bonus = byte(0x0047cef4) == 0x01
-p4_poser_ko_bonus = byte(0x0047d3fc) == 0x01
+p1_poser_ko_bonus = byte(0x0047c4e4) >= 0x01 && byte(0x0047c4e4) <= 0x10
+p2_poser_ko_bonus = byte(0x0047c9ec) >= 0x01 && byte(0x0047c9ec) <= 0x10
+p3_poser_ko_bonus = byte(0x0047cef4) >= 0x01 && byte(0x0047cef4) <= 0x10
+p4_poser_ko_bonus = byte(0x0047d3fc) >= 0x01 && byte(0x0047d3fc) <= 0x10
 
 p1_bird_bonus = byte(0x0047c474) == 0x01
 p2_bird_bonus = byte(0x0047c97c) == 0x01
 p3_bird_bonus = byte(0x0047ce84) == 0x01
 p4_bird_bonus = byte(0x0047d38c) == 0x01
 
-p1_meteor_smash_bonus = byte(0x0047c47a) == 0x01
-p2_meteor_smash_bonus = byte(0x0047c47a + (0x508)) == 0x01
-p3_meteor_smash_bonus = byte(0x0047c47a + (0x508 * 2)) == 0x01
-p4_meteor_smash_bonus = byte(0x0047c47a + (0x508 * 3)) == 0x01
+p1_meteor_smash_bonus = byte(0x0047c47a) >= 0x01 && byte(0x0047c4e4) <= 0x10
+p2_meteor_smash_bonus = byte(0x0047c47a + (0x508)) >= 0x01 && byte(0x0047c47a + (0x508)) <= 0x10
+p3_meteor_smash_bonus = byte(0x0047c47a + (0x508 * 2)) >= 0x01 && byte(0x0047c47a + (0x508 * 2)) <= 0x10
+p4_meteor_smash_bonus = byte(0x0047c47a + (0x508 * 3)) >= 0x01 && byte(0x0047c47a + (0x508 * 3)) <= 0x10
 
 p1_meteor_clear_bonus = byte(0x0047c47b) == 0x01
 p2_meteor_clear_bonus = byte(0x0047c47b + (0x508)) == 0x01
@@ -229,10 +231,10 @@ p2_compass_bonus = byte(0x0047c49c + (0x508)) == 0x01
 p3_compass_bonus = byte(0x0047c49c + (0x508 * 2)) == 0x01
 p4_compass_bonus = byte(0x0047c49c + (0x508 * 3)) == 0x01
 
-p1_shield_buster_bonus = byte(0x0047c4b2) == 0x01
-p2_shield_buster_bonus = byte(0x0047c4b2 + (0x508)) == 0x01
-p3_shield_buster_bonus = byte(0x0047c4b2 + (0x508 * 2)) == 0x01
-p4_shield_buster_bonus = byte(0x0047c4b2 + (0x508 * 3)) == 0x01
+p1_shield_buster_bonus = byte(0x0047c4b2) >= 0x01 && byte(0x0047c4b2) <= 0x10
+p2_shield_buster_bonus = byte(0x0047c4b2 + (0x508)) >= 0x01 && byte(0x0047c4b2 + (0x508)) <= 0x10
+p3_shield_buster_bonus = byte(0x0047c4b2 + (0x508 * 2)) >= 0x01 && byte(0x0047c4b2 + (0x508 * 2)) <= 0x10
+p4_shield_buster_bonus = byte(0x0047c4b2 + (0x508 * 3)) >= 0x01 && byte(0x0047c4b2 + (0x508 * 3)) <= 0x10
 
 // Flat Zone (Event #45) (Game and Watch Forever!)
 area_in_event_45 = area_id == 0xF6
@@ -817,9 +819,13 @@ achievement(
               || (p1_character_id == CharacterToID["Mewtwo"]
               && p2_character_id == CharacterToID["Pikachu"]))
               && once(p1_stamina == 150 && p2_stamina == 150)
-              && prev(p2_stamina) > 0
-              && p2_stamina == 0
+              && p1_stamina > 0
+              && p1_stocks > 0
+              && (p2_stamina == 0
+              || p2_stocks == 0)
+              && stamina_clear
               && never(mode_id != 0x1f)
+              && never(stamina_reset)
 )
 
 achievement(
