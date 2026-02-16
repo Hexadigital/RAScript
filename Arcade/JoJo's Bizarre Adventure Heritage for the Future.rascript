@@ -218,6 +218,7 @@ p2_cpu_status = byte(0x034e3b) // 0x01 = CPU Controlled
 
 stage = byte(0x031459)
 rounds_won = byte(0x034863)
+p2_rounds_won = byte(0x034887)
 challenge_mode_points = dword(0x032eb8)
 challenge_mode_submit = stage == 0x09 && rounds_won == 1 && prev(p2_health) > 0xff00 && p2_health == 0
 
@@ -238,7 +239,7 @@ function default_settings() {
 // Character Cheevos and LB's
 for c in PlayableCharacters {
     achievement(
-        type = ProgressionTypes[c],
+        type = "win_condition",
         title = NormalStoryTitles[c],
         points = 5,
         description = format("Clear Story Mode as {0} on Difficulty 2 or higher and otherwise default settings!", c),
@@ -373,6 +374,27 @@ achievement(
     && prev(p2_health) == 0
     && p2_health >= 0xfff0
     && p1_full_health
+)
+
+function character_won_final_story_stage(name) {
+    return p1_character == CharacterToID[name] && stage == FinalStoryEpisodes[name] && prev(rounds_won) == 1 && rounds_won == 2
+}
+
+achievement(
+    title = "Stand Proud",
+    points = 25,
+    type = "missable",
+    description = "Clear Story Mode without using a continue on Difficulty 8 and otherwise default settings!",
+    trigger = default_settings()
+    && never(p2_cpu_status != 1)
+    && never(difficulty != 8)
+    && never(!story_mode)
+    && never(prev(p2_rounds_won) == 1 && p2_rounds_won == 2)
+    && once(stage == 0
+        && prev(rounds_won) == 0
+        && rounds_won == 1
+    )
+    && trigger_when(any_of(PlayableCharacters, character_won_final_story_stage))
 )
 
 rich_presence_conditional_display(
