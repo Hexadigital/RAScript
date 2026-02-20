@@ -6,6 +6,7 @@ wave = byte(0x00b2) + 1
 difficulty = byte(0x1a94)
 weapon_level = byte(0x007c)
 game_status = byte(0x006f)
+reset_check = dword(0x0082)
 function get_score() {
     return low4(0x1a5c) +
     high4(0x1a5c) * 10 +
@@ -29,12 +30,14 @@ function lives_check() {
     return lives <= 10
 }
 function wave_cleared(num) {
-    return once(prev(wave) == num && wave == num + 1) && repeated(60, wave == num + 1) && never(wave == 0xff)
+    return once(prev(wave) == num && wave == num + 1) && repeated(60, wave == num + 1) && never(wave == 0xff) && never(game_reset())
 }
 function game_beat() {
-    return wave == 7 && prev(game_status) == 0 && game_status == 0x48
+    return wave == 7 && prev(game_status) == 0 && game_status == 0x48 && never(game_reset())
 }
-
+function game_reset() {
+    return reset_check == 0
+}
 
 achievement(
     title = "Button Saver",
@@ -50,6 +53,7 @@ achievement(
     title = "Not a Dreamcast",
     points = 2,
     description = "Clear wave 1 on any difficulty!",
+    type = "progression",
     id = 352261,
     badge = "397404", 
     trigger = not_demo() && any_difficulty() && lives_check()
@@ -60,6 +64,7 @@ achievement(
     title = "Protecting the Earth",
     points = 3,
     description = "Clear wave 2 on any difficulty!",
+    type = "progression",
     id = 352263,
     badge = "397406", 
     trigger = not_demo() && any_difficulty() && lives_check()
@@ -70,6 +75,7 @@ achievement(
     title = "Stellar Frisbee",
     points = 4,
     description = "Clear wave 3 on any difficulty!",
+    type = "progression",
     id = 352265,
     badge = "397408",
     trigger = not_demo() && any_difficulty() && lives_check()
@@ -80,6 +86,7 @@ achievement(
     title = "Space Hex",
     points = 5,
     description = "Clear wave 4 on any difficulty!",
+    type = "progression",
     id = 352267,
     badge = "397410",
     trigger = not_demo() && any_difficulty() && lives_check()
@@ -90,6 +97,7 @@ achievement(
     title = "Lunar Flower",
     points = 5,
     description = "Clear wave 5 on any difficulty!",
+    type = "progression",
     id = 352269,
     badge = "397412",
     trigger = not_demo() && any_difficulty() && lives_check()
@@ -100,6 +108,7 @@ achievement(
     title = "Moon Bug",
     points = 5,
     description = "Clear wave 6 on any difficulty!",
+    type = "progression",
     id = 352271,
     badge = "397414",
     trigger = not_demo() && any_difficulty() && lives_check()
@@ -110,6 +119,7 @@ achievement(
     title = "Planet Defender",
     points = 10,
     description = "Clear wave 7 and beat the game on any difficulty!",
+    type = "win_condition",
     id = 352302,
     badge = "397416",
     trigger = not_demo() && any_difficulty() && lives_check()
