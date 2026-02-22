@@ -6,7 +6,8 @@
 //////////////////
 
 // screen_id = byte(0x00d14f) // v1.0.0
-screen_id = byte(0x00d162) // v1.1.0
+// screen_id = byte(0x00d162) // v1.1.0-private
+screen_id = byte(0x00d150) // v1.1.0
 
 Screens = {
     "Level Select": 0x00,
@@ -24,11 +25,13 @@ for key in Screens {
 }
 
 //puzzles_solved = byte(0x00d151) // v1.0.0
-puzzles_solved = byte(0x00d164) // v1.1.0
-// current_puzzle_number = byte(0x00d2ff) + 1 // v1.1.0
+//puzzles_solved = byte(0x00d164) // v1.1.0-private
+puzzles_solved = byte(0x00d152) // v1.1.0
+// current_puzzle_number = byte(0x00d2ff) + 1 // v1.0.0
 current_puzzle_number = byte(0x00d300) + 1 // v1.1.0
+
 // how_to_play_page = byte(0x00d302) + 1 // v1.0.0
-how_to_play_page = byte(0x00d303) + 1 // v1.1.0
+how_to_play_page = byte(0x00d303) + 1 // v1.1.0-private
 
 current_timer_location = 0x00c110
 current_puzzle_seconds = low4(current_timer_location) + (high4(current_timer_location) * 10)
