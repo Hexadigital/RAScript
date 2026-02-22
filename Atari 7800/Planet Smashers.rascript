@@ -33,7 +33,7 @@ function wave_cleared(num) {
     return once(prev(wave) == num && wave == num + 1) && repeated(60, wave == num + 1) && never(wave == 0xff) && never(game_reset())
 }
 function game_beat() {
-    return wave == 7 && prev(game_status) == 0 && game_status == 0x48 && never(game_reset())
+    return byte(0x00b2) == 0xff && prev(game_status) == 0 && game_status == 0x48 && never(game_reset())
 }
 function game_reset() {
     return reset_check == 0
@@ -122,7 +122,7 @@ achievement(
     type = "win_condition",
     id = 352302,
     badge = "397416",
-    trigger = not_demo() && any_difficulty() && lives_check()
+    trigger = any_difficulty() && lives_check()
               && game_beat()
 )
 
@@ -190,7 +190,7 @@ achievement(
     description = "Clear wave 7 and beat the game on Hard!",
     id = 352303,
     badge = "397417",
-    trigger = not_demo() && hard_difficulty() && lives_check()
+    trigger = hard_difficulty() && lives_check()
               && game_beat()
 )
 
