@@ -54,9 +54,9 @@ selected_game = byte(0x009a22)
 in_menu = selected_game == 0x00
 
 lives_remaining = byte(0x00db66)
-shooting_range_game_over = prev(lives_remaining) == 1 && lives_remaining == 0
+shooting_range_game_over = prev(lives_remaining) >= 1 && prev(lives_remaining) <= 2 && lives_remaining == 0
 && shooting_range_scene != SceneNameToID["Ending"]
-track_wagons_game_over = prev(lives_remaining) == 1 && lives_remaining == 0
+track_wagons_game_over = prev(lives_remaining) >= 1 && prev(lives_remaining) <= 2
 && track_wagons_scene != SceneNameToID["Ending"]
 
 p1_inactive = byte(0x00dbf2) == 0
