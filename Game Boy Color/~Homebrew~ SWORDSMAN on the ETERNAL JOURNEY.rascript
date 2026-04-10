@@ -119,6 +119,8 @@ player_mind = word(0x00cbc5)
 player_power = word(0x00cbc7)
 player_speed = word(0x00cb97)
 
+devils_mark_equipped = byte(0x00cc0d) == 0x08
+
 function cave_trial_completed(num) {
     return prev(trials_completed) == num - 1 && trials_completed == num
 }
@@ -282,7 +284,7 @@ achievement(
     points = 5,
     description = "Rely on your curse too much, and obtain the bad ending as the cost",
     trigger = map_id == BossRooms["Demon Lord"]
-    && demon_player
+    && devils_mark_equipped
     && boss_defeated("Demon Lord")
 )
 
@@ -293,7 +295,7 @@ achievement(
     points = 5,
     description = "Prove the strength of humanity, and obtain the good ending as a reward",
     trigger = map_id == BossRooms["Demon Lord"]
-    && human_player
+    && !devils_mark_equipped
     && boss_defeated("Demon Lord")
 )
 
