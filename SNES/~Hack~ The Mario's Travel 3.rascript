@@ -114,7 +114,7 @@ for key in LevelNameLookup {
     LevelIDLookup[LevelNameLookup[key]] = key
 }
 
-NumExits = 0
+NumExits = 24
 
 // Start of level/room
 level_sprite_pointers = {
@@ -132,6 +132,7 @@ level_sprite_pointers = {
    "Stage 11": 0x16fdfb,
    "Stage 12": 0x17c646,
    "Stage 13": 0x17d7dd,
+   "Stage ??-2": 0x18f6b1,
    "Stage 14": 0x17aa0b,
    "Stage 15": 0x17bf00,
    "Stage 16": 0x189b4a,
@@ -159,6 +160,7 @@ level_starts = {
    "Stage 11": [0x0010, 0x0160],
    "Stage 12": [0x0010, 0x0160],
    "Stage 13": [0x0010, 0x0160],
+   "Stage ??-2": [0x0010, 0x0160],
    "Stage 14": [0x0010, 0x0160],
    "Stage 15": [0x0010, 0x0160],
    "Stage 16": [0x0010, 0x0160],
@@ -179,6 +181,7 @@ cheevo_names = {
     "Stage 07 Secret": "Smashing Locks",
     "Stage 11": "Not-So-Secret Secret",
     "Stage 13 Secret": "With the Help of a Friend...",
+    "Stage ??-2": "Blue Skies",
     "Stage 16": "Elemental Passage",
     "Stage 20": "Like It's 1985",
     "Stage 22": "Now Do It Again and Again and Again and Again",
@@ -191,6 +194,7 @@ cheevo_types = {
     "Stage 07 Secret": "",
     "Stage 11": "progression",
     "Stage 13 Secret": "",
+    "Stage ??-2": "",
     "Stage 16": "progression",
     "Stage 20": "progression",
     "Stage 22": "win_condition",
@@ -203,6 +207,7 @@ cheevo_descriptions = {
     "Stage 07 Secret": "Clear the secret exit on Stage 07",
     "Stage 11": "Clear Stage 11",
     "Stage 13 Secret": "Clear the secret exit on Stage 13",
+    "Stage ??-2": "Find and activate the blue switch",
     "Stage 16": "Clear Stage 16",
     "Stage 20": "Clear Stage 20",
     "Stage 22": "Clear Stage 22 and beat the game",
@@ -215,6 +220,7 @@ cheevo_points = {
     "Stage 07 Secret": 1,
     "Stage 11": 3,
     "Stage 13 Secret": 1,
+    "Stage ??-2": 1,
     "Stage 16": 5,
     "Stage 20": 5,
     "Stage 22": 10,
@@ -236,6 +242,7 @@ cheevo_exit_types = {
    "Stage 12": 1,
    "Stage 13": 1,
    "Stage 13 Secret": 2,
+   "Stage ??-2": "Blue Switch",
    "Stage 14": 1,
    "Stage 15": 1,
    "Stage 16": 1,
@@ -326,7 +333,7 @@ rich_presence_conditional_display(
 
 rich_presence_conditional_display(
     game_mode <= 0x0e,
-    "In the overworld • Exits: {0}/24",
+    "In the overworld • Exits: {0}/{1} • {2} Switch{3} Activated",
     rich_presence_value("Number", exits_completed),
     NumExits,
     rich_presence_value("Number", switch_count),
@@ -334,7 +341,7 @@ rich_presence_conditional_display(
 )
 
 rich_presence_display(
-    "{0} • Exits: {1}/24",
+    "{0} • Exits: {1}/{2} • {3} Switch{4} Activated",
     rich_presence_lookup("LevelName", level_id, LevelIDLookup, fallback="Unknown"),
     rich_presence_value("Number", exits_completed),
     NumExits,
