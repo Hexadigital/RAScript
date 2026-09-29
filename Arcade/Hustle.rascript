@@ -32,7 +32,7 @@ achievement(
     title = "An Easy Start",
     type = "progression",
     points = 1,
-    description = "Finish a single-player game with at least 2000 points!",
+    description = "Finish a single-player game with at least 2,000 points!",
     trigger = game_ended() && score >= 2000
 )
 
@@ -41,7 +41,7 @@ achievement(
     title = "A Third of the Way There",
     type = "progression",
     points = 2,
-    description = "Finish a single-player game with at least 5000 points!",
+    description = "Finish a single-player game with at least 5,000 points!",
     trigger = game_ended() && score >= 5000
 )
 
@@ -50,7 +50,7 @@ achievement(
     title = "Toiling for Ten",
     type = "progression",
     points = 3,
-    description = "Finish a single-player game with at least 10000 points!",
+    description = "Finish a single-player game with at least 10,000 points!",
     trigger = game_ended() && score >= 10000
 )
  
@@ -59,8 +59,10 @@ achievement(
     title = "Watching the Walls",
     type = "missable",
     points = 4,
-    description = "Score 10000 points without a penalty in a single-player game!",
-    trigger = timer > 0 && repeated(10, score >= 10000) && penalty == 0 && never(score == 0)
+    description = "Score 10,000 points without a penalty in a single-player game!",
+    trigger = once(prev(timer) == 90 && timer == 89)
+    && trigger_when(repeated(10, score >= 10000))
+    && never(repeated(10, penalty > 0)) && never(timer == 0)
 )
 
 // Finish a game with at least 15000 points! 10p
@@ -68,7 +70,7 @@ achievement(
     title = "Hunting for Secrets",
     type = "win_condition",
     points = 5,
-    description = "Finish a single-player game with at least 15000 points!",
+    description = "Finish a single-player game with at least 15,000 points!",
     trigger = game_ended() && score >= 15000
 )
 
@@ -76,7 +78,7 @@ achievement(
 achievement(
     title = "Reaching for the Sky",
     points = 10,
-    description = "Finish a single-player game with at least 19000 points!",
+    description = "Finish a single-player game with at least 19,000 points!",
     trigger = game_ended() && score >= 19000
 )
 
